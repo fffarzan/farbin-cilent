@@ -28,7 +28,7 @@
 
     <!-- Product button -->
     <li class="FooteMenuItem ProductMenuIcon LeftBorder">
-      <a>
+      <a (click)="onToggleProductMenu()">
         <img class="ProductIcon ProductMenuIconIMG FooterMenuIcon" src="../../assets/img/ProductsIcon.png"
           alt="محصولات شرکت فربین" />
         <div class="Navbar-Item-Details">
@@ -66,3 +66,4 @@
 </nav>
 
 <app-contact-us *ngIf="toggleContactMenu" [@showContactMenu]></app-contact-us>
+<app-product-brands *ngIf="toggleProductMenu"></app-product-brands>

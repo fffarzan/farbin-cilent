@@ -28,6 +28,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class NavbarComponent implements OnInit {
   toggleContactMenu: boolean = false;
+  toggleProductMenu: boolean = false;
 
   constructor() { }
 
@@ -36,5 +37,9 @@ export class NavbarComponent implements OnInit {
 
   onToggleContactMenu() {
     this.toggleContactMenu = !this.toggleContactMenu;
+  }
+
+  onToggleProductMenu() {
+    this.toggleProductMenu = !this.toggleProductMenu
   }
 }
