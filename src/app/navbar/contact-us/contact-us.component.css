@@ -1,0 +1,215 @@
+/* Mobile */
+
+@media screen and (max-width: 767px) {
+  .ContactUs-Mobile p {
+    margin: 0;
+  }
+  .ContactUs-Mobile-IconsWrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 10px 10px 0 10px;
+  }
+  .ContactUs-Mobile-AddressWrapper {
+    padding: 0 20px;
+  }
+  .ContactInfoInFooter {
+    width: 100%;
+    float: left;
+  }
+  .ContactInfoInFooter .Address-Fa {
+    font-size: 15px;
+    text-align: right;
+    direction: rtl;
+    margin-top: 15px;
+  }
+  .ContactInfoInFooter .Address-En {
+    font-size: 15px;
+    text-align: left;
+    direction: ltr;
+    line-height: 20px;
+    margin-top: 12px;
+  }
+  .ContactInfoInFooter .Item {
+    width: 59px;
+    display: inline-block;
+    margin: 10px 6px 0 6px;
+  }
+  .ContactInfoInFooter .Item a img {
+    width: 40px;
+  }
+  .ContactInfoInFooter .Item .ContactIconText {
+    color: #ccc;
+    font-size: 10px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
+  }
+  .DescktopContactMenu {
+    display: none;
+  }
+  .MobileContactMenu {
+    display: block;
+  }
+  .AboutInContact {
+    width: 50%;
+    padding-right: 0px;
+    direction: rtl;
+    text-align: right;
+    float: right;
+  }
+  .AboutInContact .AboutItem {
+    color: #fff;
+    font-size: 14px;
+    float: right;
+    width: 350px;
+    text-align: right;
+    padding: 5px 70px 10px 5px;
+    background-color: #282829;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: block;
+  }
+  .AboutHeaderTitle {
+    color: #81b7cc;
+    font-size: 15px;
+    float: right;
+    padding: 8px 70px 0;
+  }
+  .MobileContactMenu .ContactTab {
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+    color: #ffb500;
+    float: left;
+    background-color: #282829;
+    border: solid 1px #666;
+  }
+  .MobileContactMenu .AboutTab {
+    display: inline-block;
+    width: 50%;
+    padding: 10px;
+    color: #ccc;
+    float: right;
+    background-color: #282829;
+    border: solid 1px #666;
+  }
+  .ContainerContactTab {
+    display: block;
+  }
+}
+
+/* Desktop */
+
+@media only screen and (min-width: 768px) {
+  .ContactMenu {
+    top: 1500px;
+    width: 90%;
+    background-color: rgba(51, 51, 51, 0.5) !important;
+    color: black !important;
+    position: fixed;
+    z-index: 39999;
+    text-align: center;
+    padding: 0px;
+    bottom: 50px;
+  }
+  .ContactMenu>.Item {
+    width: 33%;
+    text-align: center;
+    display: inline-block;
+    padding-top: 6px;
+    height: 120px;
+    float: left;
+  }
+  .ContactMenu>.Item img {
+    width: 50px;
+  }
+  .ContactInfoInFooter {
+    width: 50%;
+    padding-left: 5%;
+    float: left;
+  }
+  .ContactInfoInFooter .Address-Fa {
+    font-size: 15px;
+    text-align: left;
+    direction: rtl;
+  }
+  .ContactInfoInFooter .Address-En {
+    font-size: 15px;
+    text-align: left;
+    direction: ltr;
+    line-height: 20px;
+  }
+  .ContactInfoInFooter .Item {
+    width: 43px;
+    display: inline-block;
+    float: left;
+    margin: 30px 20px 0 0;
+  }
+  .ContactInfoInFooter .Item a img {
+    width: 40px;
+  }
+  .ContactInfoInFooter .Item .ContactIconText {
+    color: #ccc;
+    font-size: 10px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
+  }
+  .DescktopContactMenu {
+    display: block;
+  }
+  .MobileContactMenu {
+    display: none;
+  }
+  .AboutInContact {
+    width: 50%;
+    padding-right: 0px;
+    direction: rtl;
+    text-align: right;
+    float: right;
+  }
+  .AboutInContact .AboutItem {
+    color: #fff;
+    font-size: 14px;
+    float: right;
+    width: 340px;
+    text-align: right;
+    padding: 5px 70px 10px 5px;
+    background-color: #282829;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: block;
+  }
+  .AboutHeaderTitle {
+    /*color: #81b7cc;*/
+    color: #ffb500;
+    font-size: 15px;
+    float: right;
+    padding: 8px 70px 0;
+  }
+  .TabContainer {
+    width: 100%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .AboutHeaderTitle, .AboutInContact .AboutItem, .ContactInfoInFooter .Address-Fa, .ContactInfoInFooter .Address-En {
+      line-height: 150%;
+    }
+    .ContactInfoInFooter .Item {
+      width: 30px;
+    }
+    .ContactInfoInFooter .Item a img {
+      width: 25px;
+    }
+    .ContactInfoInFooter .Item .ContactIconText {
+      display: none;
+    }
+    .ContactMenu {
+      width: 100%;
+    }
+    .AboutHeaderTitle, .AboutInContact .AboutItem {
+      padding-right: 20px;
+      width: 100%;
+    }
+  }
+}

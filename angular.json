@@ -24,6 +24,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/font.css",
+              "src/assets/css/base.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "farbin-client"
+    }
+  },
+  "defaultProject": "farbin-client",
+  "cli": {
+    "analytics": "5a3eec74-29ef-4ada-9d85-4f94e138cabd"
+  }
 }

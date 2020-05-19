@@ -1,0 +1,135 @@
+/* mobile-first */
+
+.FooterMenu {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  bottom: -1px;
+  background-color: #333;
+  font-size: 30px;
+  z-index: 40000;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.FooteMenuItem {
+  margin: 3px 0 18px 0;
+  text-align: right;
+  text-align: center;
+  width: 50px;
+}
+
+.FooterMenuIcon {
+  width: 31px;
+  height: 31px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.Navbar-Item-Details {
+  cursor: pointer;
+}
+
+.Navbar-Item-Details p {
+  font-size: 11px;
+  line-height: 0;
+  margin: 5px 0 0 0;
+}
+
+.Navbar-Item-Details p:first-child {
+  display: none;
+}
+
+.Navbar-Item-Details-MaterialList {
+  display: none;
+}
+
+.Footer-HeaderBoxText {
+  color: #000;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.FooterMenuTel {
+  margin-top: 20px;
+  font-size: 20px;
+  float: left;
+  color: #fff !important;
+  padding: 5px 5px 5px 70px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #282829;
+}
+
+.FooteMenuItem a {
+  color: #fff;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+@media screen and (min-width: 768px) {
+  .FooterMenu {
+    height: 50px;
+    padding: 0 15px;
+  }
+  .FooteMenuItem {
+    margin: 7px 5px;
+    text-align: right;
+    width: 16%;
+    display: inline-block;
+  }
+  .FooteMenuItem a {
+    flex-flow: row wrap;
+    justify-content: flex-end;
+  }
+  .FooterMenuIcon {
+    width: 35px;
+    height: 35px;
+    order: 1;
+    margin: 0;
+  }
+  .Navbar-Item-Details {
+    order: 0;
+    padding-right: 5px;
+  }
+  .Navbar-Item-Details p {
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+  }
+  .Navbar-Item-Details p:first-child {
+    display: block;
+  }
+  .Navbar-Item-Details p:last-child {
+    font-size: 14px;
+  }
+  .Navbar-Item-Details-MaterialList {
+    display: block;
+  }
+  .Navbar-Item-Details-Material {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .FooterMenu {
+    width: 90%;
+    padding: 0 90px 0 47px;
+    height: 50px;
+    left: 5%;
+    justify-content: space-between;
+  }
+  .FooterMenu .LeftBorder {
+    border-left: solid 1px #fff;
+  }
+  .Navbar-Item-Details {
+    padding-right: 10px;
+  }
+  .Navbar-Item-Details p:last-child {
+    font-size: 15px;
+  }
+}

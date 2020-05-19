@@ -1,0 +1,66 @@
+<nav>
+  <ul class="FooterMenu">
+
+    <!-- Contanct us button -->
+    <li class="FooteMenuItem">
+      <a onclick="ToggleContactMenu(this)">
+        <img class="ContactIcon ContactMenuIconIMG FooterMenuIcon" src="../../assets/img/ContactUsIcon.png"
+          alt="ارتباط با فربین" />
+        <div class="Navbar-Item-Details">
+          <p>ارتباط با فربین</p>
+          <p>Contact Us</p>
+        </div>
+      </a>
+    </li>
+
+    <!-- Material list button -->
+    <li class="FooteMenuItem LeftBorder">
+      <a onclick="ToggleFooterIcon(event)">
+        <img class="MaterialIcon MaterialMenuIcon FooterMenuIcon" src="../../assets/img/MaterialListIcon.png"
+          alt="لیست تجهیزات" />
+        <div class="Navbar-Item-Details">
+          <p>لیست تجهیزات</p>
+          <p class="Navbar-Item-Details-MaterialList">Material List</p>
+          <p class="Navbar-Item-Details-Material">Material</p>
+        </div>
+      </a>
+    </li>
+
+    <!-- Product button -->
+    <li class="FooteMenuItem ProductMenuIcon LeftBorder">
+      <a onclick="ToggleProductMenu(this)">
+        <img class="ProductIcon ProductMenuIconIMG FooterMenuIcon" src="../../assets/img/ProductsIcon.png"
+          alt="محصولات شرکت فربین" />
+        <div class="Navbar-Item-Details">
+          <p>محصولات</p>
+          <p>Products</p>
+        </div>
+      </a>
+    </li>
+
+    <!-- Article button -->
+    <li class="FooteMenuItem LeftBorder">
+      <a onclick="ToggleFooterIcon(event)" routerLink="/articles">
+        <img class="ArticlesIcon ArticleMenuIcon FooterMenuIcon" src="../../assets/img/ArticleIcon.png"
+          alt="مقالات منتشر شده توسط فربین" />
+        <div class="Navbar-Item-Details">
+          <p>مقــالات</p>
+          <p>Articles</p>
+        </div>
+      </a>
+    </li>
+
+    <!-- Training button -->
+    <li class="FooteMenuItem LeftBorder">
+      <a onclick="ToggleFooterIcon(event)" routerLink="/training">
+        <img class="TrainingIcon TrainingMenuIcon FooterMenuIcon" src="../../assets/img/TrainingIcon.png"
+          alt="آموزش شرکت فربین" />
+        <div class="Navbar-Item-Details">
+          <p>آمـــوزش</p>
+          <p>Training</p>
+        </div>
+      </a>
+    </li>
+
+  </ul>
+</nav>
