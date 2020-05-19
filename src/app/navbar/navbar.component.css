@@ -133,3 +133,9 @@
     font-size: 15px;
   }
 }
+
+app-contact-us {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}

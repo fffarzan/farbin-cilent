@@ -1,6 +1,12 @@
 /* Mobile */
 
 @media screen and (max-width: 767px) {
+  .TabBtn {
+    color: #ffb500;
+  }
+  .ContactUs-Mobile {
+    height: 319px;
+  }
   .ContactUs-Mobile p {
     margin: 0;
   }
@@ -50,6 +56,8 @@
   }
   .MobileContactMenu {
     display: block;
+    color: #ccc;
+    text-align: center;
   }
   .AboutInContact {
     width: 50%;
@@ -80,7 +88,6 @@
     display: inline-block;
     width: 50%;
     padding: 10px;
-    color: #ffb500;
     float: left;
     background-color: #282829;
     border: solid 1px #666;
@@ -89,7 +96,6 @@
     display: inline-block;
     width: 50%;
     padding: 10px;
-    color: #ccc;
     float: right;
     background-color: #282829;
     border: solid 1px #666;

@@ -1,25 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Component, OnInit, Input } from '@angular/core';
+import { trigger, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css'],
   animations: [
-    trigger('switchTab', [
-      state('contact', style({
-        'opacity': 0,
-      })),
-      state('about', style({
-        'opacity': 0,
-      })),
-      transition('contanct => about', [
+    trigger('switchTabFading', [
+      transition('void => *', [
         style({
           'opacity': 0
         }),
-        animate(1000)
+        animate(300)
       ])
-    ])
+    ]),
   ]
 })
 export class ContactUsComponent implements OnInit {

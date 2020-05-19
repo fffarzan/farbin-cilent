@@ -3,7 +3,7 @@
 
     <!-- Contanct us button -->
     <li class="FooteMenuItem">
-      <a onclick="ToggleContactMenu(this)">
+      <a (click)="onToggleContactMenu()">
         <img class="ContactIcon ContactMenuIconIMG FooterMenuIcon" src="../../assets/img/ContactUsIcon.png"
           alt="ارتباط با فربین" />
         <div class="Navbar-Item-Details">
@@ -15,7 +15,7 @@
 
     <!-- Material list button -->
     <li class="FooteMenuItem LeftBorder">
-      <a onclick="ToggleFooterIcon(event)">
+      <a>
         <img class="MaterialIcon MaterialMenuIcon FooterMenuIcon" src="../../assets/img/MaterialListIcon.png"
           alt="لیست تجهیزات" />
         <div class="Navbar-Item-Details">
@@ -28,7 +28,7 @@
 
     <!-- Product button -->
     <li class="FooteMenuItem ProductMenuIcon LeftBorder">
-      <a onclick="ToggleProductMenu(this)">
+      <a>
         <img class="ProductIcon ProductMenuIconIMG FooterMenuIcon" src="../../assets/img/ProductsIcon.png"
           alt="محصولات شرکت فربین" />
         <div class="Navbar-Item-Details">
@@ -64,3 +64,5 @@
 
   </ul>
 </nav>
+
+<app-contact-us *ngIf="toggleContactMenu" [@showContactMenu]></app-contact-us>
