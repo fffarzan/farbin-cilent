@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://farbin.ir/"
+  baseUrl: "http://192.168.10.15:2015/"
 };
 
 /*

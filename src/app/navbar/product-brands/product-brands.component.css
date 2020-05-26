@@ -1,14 +1,14 @@
 .PopoverProductMenu {
-  top: 938px;
-  width: 100%;
+  /* top: 938px; */
+  /* width: 100%; */
   background-color: rgba(51, 51, 51, 0.5) !important;
   color: black !important;
-  position: fixed;
+  /* position: fixed; */
   z-index: 10000;
   text-align: center;
-  padding-top: 15px;
+  padding: 15px 0;
   background-color: #fff;
-  bottom: 50px;
+  /* bottom: 50px; */
 }
 
 .PopoverProductMenu>.Item {
