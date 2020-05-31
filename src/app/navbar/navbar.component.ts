@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { showTabMenu } from './navbar.animation';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   toggleContactMenu: boolean = false;
   toggleProductMenu: boolean = false;
 
-  constructor() { }
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void { }
 
@@ -24,5 +25,7 @@ export class NavbarComponent implements OnInit {
 
   onToggleProductMenu() {
     this.toggleProductMenu = !this.toggleProductMenu
+
+    this.dataStorageService.fetchSuppliers().subscribe();
   }
 }

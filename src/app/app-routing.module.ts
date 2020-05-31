@@ -25,67 +25,73 @@ import { CourseGroupComponent } from './training-category/course-groups/course-g
 import { CourseHeldComponent } from './training-category/course-held/course-held.component';
 import { CourseAttendanceComponent } from './training-category/course-held/course-attendance/course-attendance.component';
 import { CoursesHeldComponent } from './training-category/courses-held/courses-held.component';
-
+import { SliderResolverService } from './home/dynamic-slider/slider-resolver.service';
+import { SupplierResolverService } from './navbar/product-brands/supplier-resolver.service'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
   {
-    path: 'about-us', component: AboutUsComponent, children: [
+    path: '', resolve: [SupplierResolverService], children: [
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent, resolve: [SliderResolverService] },
       {
-        path: 'news-and-events', component: NewsAndEventsComponent, children: [
+        path: 'about-us', component: AboutUsComponent, children: [
           {
-            path: 'incidents', component: IncidentArchiveComponent, children: [
-              { path: ':id', component: IncidentComponent }
+            path: 'news-and-events', component: NewsAndEventsComponent, children: [
+              {
+                path: 'incidents', component: IncidentArchiveComponent, children: [
+                  { path: ':id', component: IncidentComponent }
+                ]
+              }
+            ]
+          },
+          {
+            path: 'news-letters', component: NewsLetterArchiveComponent, children: [
+              { path: ':id', component: NewsLetterComponent }
             ]
           }
         ]
       },
       {
-        path: 'news-letters', component: NewsLetterArchiveComponent, children: [
-          { path: ':id', component: NewsLetterComponent }
+        path: 'articles', component: ArticleCategoryComponent, children: [
+          { path: 'article/:id', component: ArticleComponent },
+          { path: 'dictionary/:id', component: DictionaryComponent }
         ]
-      }
-    ]
-  },
-  {
-    path: 'articles', component: ArticleCategoryComponent, children: [
-      { path: 'article/:id', component: ArticleComponent },
-      { path: 'dictionary/:id', component: DictionaryComponent }
-    ]
-  },
-  { path: 'auth/incident-register/:id', component: IncidentRegisterComponent },
-  {
-    path: 'compare', component: CompareComponent, children: [
-      { path: ':id', component: CompareDetailComponent }
-    ]
-  },
-  {
-    path: 'product-category/:id/:id', component: ProductCategoryComponent, children: [
+      },
+      { path: 'auth/incident-register/:id', component: IncidentRegisterComponent },
       {
-        path: 'master-product/:id', component: MasterProductComponent, children: [
-          { path: 'define-detail-produt/:id', component: DefineDetailProductComponent }
-        ]
-      }
-    ]
-  },
-  {
-    path: 'training', component: TrainingCategoryComponent, children: [
-      { path: 'course/:id', component: CourseComponent },
-      {
-        path: 'course-groups', component: CourseGroupsComponent, children: [
-          { path: ':id', component: CourseGroupComponent }
+        path: 'compare', component: CompareComponent, children: [
+          { path: ':id', component: CompareDetailComponent }
         ]
       },
       {
-        path: 'course-held/:id', component: CourseHeldComponent, children: [
-          { path: 'course-attendance/:id', component: CourseAttendanceComponent }
+        path: 'product-category/:id/:id', component: ProductCategoryComponent, children: [
+          {
+            path: 'master-product/:id', component: MasterProductComponent, children: [
+              { path: 'define-detail-produt/:id', component: DefineDetailProductComponent }
+            ]
+          }
         ]
       },
-      { path: 'courses-held/:id', component: CoursesHeldComponent }
+      {
+        path: 'training', component: TrainingCategoryComponent, children: [
+          { path: 'course/:id', component: CourseComponent },
+          {
+            path: 'course-groups', component: CourseGroupsComponent, children: [
+              { path: ':id', component: CourseGroupComponent }
+            ]
+          },
+          {
+            path: 'course-held/:id', component: CourseHeldComponent, children: [
+              { path: 'course-attendance/:id', component: CourseAttendanceComponent }
+            ]
+          },
+          { path: 'courses-held/:id', component: CoursesHeldComponent }
+        ]
+      },
+      { path: 'unsubscribe/:id', component: UnsubscribeComponent }
     ]
   },
-  { path: 'unsubscribe/:id', component: UnsubscribeComponent }
+
 ];
 
 @NgModule({

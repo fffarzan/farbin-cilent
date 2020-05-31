@@ -36,6 +36,10 @@ import { CompareComponent } from './compare/compare.component';
 import { CompareDetailComponent } from './compare/compare-detail/compare-detail.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { IncidentRegisterComponent } from './auth/incident-register/incident-register.component';
+import { OwlModule } from 'ngx-owl-carousel';
+import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
+import { SliderService } from './home/dynamic-slider/slider.service';
+import { DataStorageService } from './shared/data-storage.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +73,8 @@ import { IncidentRegisterComponent } from './auth/incident-register/incident-reg
     CompareComponent,
     CompareDetailComponent,
     UnsubscribeComponent,
-    IncidentRegisterComponent
+    IncidentRegisterComponent,
+    DynamicSliderComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,8 @@ import { IncidentRegisterComponent } from './auth/incident-register/incident-reg
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OwlModule
   ],
   providers: [],
   bootstrap: [AppComponent]
