@@ -1,13 +1,10 @@
-<owl-carousel id="DefaultPage-BannerSlider" class="clearfix defaultpage-MainSlider" [options]="slideOptions"
-  [carouselClasses]="['owl-theme', 'sliding']">
+<owl-carousel [carouselClasses]="['defaultpage-MainSlider', 'clearfix', 'owl-theme', 'sliding']"
+  [options]="slideOptions">
   <div *ngFor="let banner of banners">
-    <a href="#" class="item">
-      <img [src]="enviornment.baseUrl + banner.PicUrl_Mobile" class="IndexBanner"
-        alt="نوآوران شبکه فربین - Farbin Corporation" />
+    <a [href]="banner.ForeignLink" class="item">
+      <img
+        [src]="(isMobile || (isTablet && !isLandscape)) ? enviornment.baseUrl + banner.PicUrl_Mobile : enviornment.baseUrl + banner.PicUrl"
+        class="IndexBanner" alt="نوآوران شبکه فربین - Farbin Corporation" />
     </a>
   </div>
 </owl-carousel>
-
-<!-- href="{{::BannerUrl.ForeignLink}}" -->
-<!-- ng-src="{{::(IsMobile || (IsTablet && !IsLandscape)) ? ServerUrl + BannerUrl.PicUrl_Mobile : ServerUrl + BannerUrl.PicUrl}}" -->
-<!-- [items]="images" -->

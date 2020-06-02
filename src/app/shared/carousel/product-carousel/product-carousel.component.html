@@ -1,0 +1,74 @@
+<!-- Desktop -->
+<!-- <article ng-if="!IsMobile && !IsTablet" class="ProductCarousel">
+  <div id="Product{{::DynamicID}}" class="ProductCarousel-OwlCarousel owl-carousel" data-owl-carousel
+    data-options=owlcarouseloptions>
+    <article class="item ProductCarousel-Desktop-MainCarousel-Item" data-owl-carousel-item
+      data-ng-repeat="DataDetails in datasource">
+
+      <a href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" class="ProductCarousel-Desktop-MainCarousel-ItemInner">
+        <img
+          ng-src="{{::DataDetails[dynamicfieldname] ? ServerUrl + DataDetails[dynamicfieldname] : staticurl | GetSmallImage}}"
+          alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
+          class="DefineItemImage{{::DataDetails.IDX}} ProductCarousel-Desktop-MainCarousel-ItemMainImage" />
+        <section class="ProductCarousel-Desktop-MainCarousel-ItemDesc">
+          <span class="UnderSpotPartNumber">{{::DataDetails.PartNumber}}</span>
+          <div class="clearfix"></div>
+          <span class="UnderSpotPartIndex">{{::DataDetails.IndexDescriptionText}}</span>
+        </section>
+      </a>
+
+      <section class="ProductCarousel-Desktop-MainCarousel-Thumbnail">
+        <img ng-src="{{::ServerUrl + DataDetails.IndexDescriptionPicUrl}}"
+          class="ProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage" />
+        <section class="ProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
+          <img src="/images/AddToListWhite.png" class="AddToListButton" data-placement="left" title="Add to List"
+            tooltip
+            alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
+            ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" />
+          <div class="clearfix"></div>
+          <img src="/images/Compare.png" class="CompareButton" data-placement="left" title="Compare" tooltip
+            alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
+            ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" />
+        </section>
+
+      </section>
+    </article>
+  </div>
+</article> -->
+
+<!-- Mobile -->
+<!-- <article ng-if="IsMobile || IsTablet" class="ProductCarousel-Mobile">
+  <section ng-repeat="DataDetails in datasource" class="ProductCarousel-Mobile-Inner">
+
+    <a href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" class="ProductCarousel-Mobile-MainIamge">
+      <img
+        ng-src="{{::DataDetails[dynamicfieldname] ? ServerUrl + DataDetails[dynamicfieldname] : staticurl | GetSmallImage}}"
+        alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}" class="DefineItemImage{{::DataDetails.IDX}}"
+        ng-style="CarouselItemsStyle" />
+    </a>
+
+    <section class="ProductCarousel-Mobile-Thumbnail">
+      <a href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" class="ProductCarousel-Mobile-Thumbnail-Desc">
+        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber">
+          {{::DataDetails.PartNumber}}
+        </span>
+        <div class="clearfix"></div>
+        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">
+          {{::DataDetails.IndexDescriptionText}}
+        </span>
+      </a>
+      <section class="ProductCarousel-Mobile-Thumbnail-Buttons">
+        <img src="/images/AddToListWhite.png" class="AddToListButton" data-placement="left" title="Add to List"
+          alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
+          ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" />
+        <div class="clearfix"></div>
+        <img src="/images/Compare.png" class="CompareButton" data-placement="left" title="Compare"
+          alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
+          ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" />
+      </section>
+      <img ng-src="{{::ServerUrl + DataDetails.IndexDescriptionPicUrl}}"
+        class="ProductCarousel-Mobile-Thumbnail-ItemColor" />
+    </section>
+
+  </section>
+</article> -->

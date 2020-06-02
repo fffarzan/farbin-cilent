@@ -38,8 +38,8 @@ import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { IncidentRegisterComponent } from './auth/incident-register/incident-register.component';
 import { OwlModule } from 'ngx-owl-carousel';
 import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
-import { SliderService } from './home/dynamic-slider/slider.service';
-import { DataStorageService } from './shared/data-storage.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +74,8 @@ import { DataStorageService } from './shared/data-storage.service';
     CompareDetailComponent,
     UnsubscribeComponent,
     IncidentRegisterComponent,
-    DynamicSliderComponent
+    DynamicSliderComponent,
+    ProductCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,8 @@ import { DataStorageService } from './shared/data-storage.service';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    OwlModule
+    OwlModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

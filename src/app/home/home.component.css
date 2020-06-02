@@ -1,0 +1,68 @@
+.DefaultPage-Wrapper {
+  line-height: 15px;
+}
+
+.DefaultCarouselContainer {
+  padding: 0 15px;
+}
+
+@media screen and (min-width: 768px) {       
+  .DefaultCarouselContainer {
+      padding: 0 25px 0 25px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .DefaultCarouselContainer {
+    padding: 0 70px 20px 46px;
+  }
+}
+
+/* Underspot */
+
+.UnderSpotTitle {
+  width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.UnderSpotTitle .UnderSpotEn {
+  text-align: left;
+  display: inline-block;
+  font-size: 15px;
+  color: #ffb500;
+  float: left;
+}
+
+.UnderSpotTitle .UnderSpotFa {
+  text-align: right;
+  display: inline-block;
+  font-size: 15px;
+  color: #ffb500;
+  float: right;
+}
+
+.DefaultPage-UnderSpotEn-Clearfix {
+  border-bottom: solid 1px #bebebe;
+}
+
+.DefaultPage-UnderSpotFa-Clearfix {
+  margin-top: 1px;
+}
+
+@media screen and (min-width: 768px) {
+  .UnderSpotTitle {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .UnderSpotTitle {
+    width: unset;
+    margin-bottom: 15px;
+  }
+  .UnderSpotTitle .UnderSpotEn, .UnderSpotTitle .UnderSpotFa {
+    font-size: 17px;
+    margin-bottom: 3px;
+  }
+}

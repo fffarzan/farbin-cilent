@@ -809,3 +809,24 @@ body {
     left: 5%;
   }
 } */
+
+/* main slider */
+
+.defaultpage-MainSlider .owl-nav button i {
+  background: none;
+  color: #ffb500;
+  font-size: 40px;
+}
+
+.defaultpage-MainSlider .owl-next, .defaultpage-MainSlider .owl-prev {
+  position: absolute;
+  top: 95px;
+}
+
+.defaultpage-MainSlider .owl-next {
+  right: 10px;
+}
+
+.defaultpage-MainSlider .owl-prev {
+  left: 10px;
+}
