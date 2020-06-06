@@ -208,6 +208,45 @@ export class ExtensionMethodService {
     }
   }
 
+  getSmallImage(imageUrl) {
+    if (imageUrl) {
+      let temp = [];
+
+      if (imageUrl.includes('/')) {
+        if (!imageUrl.includes('\\')) {
+          temp = imageUrl.split('/');
+        }
+      } else if (imageUrl.includes('\\')) {
+        if (!imageUrl.includes('/')) {
+          temp = imageUrl.split('\\');
+        }
+      } else if (imageUrl.includes('\\')) {
+        if (imageUrl.includes('/')) {
+          temp = imageUrl.split('\\');
+        }
+      }
+
+      let tempLength = temp.length;
+      temp.splice(tempLength - 1, 0, 'Small');
+
+      if (imageUrl.includes('/')) {
+        if (!imageUrl.includes('\\')) {
+          imageUrl = temp.join('/');
+        }
+      } else if (imageUrl.includes('\\')) {
+        if (!imageUrl.includes('/')) {
+          imageUrl = temp.join('\\');
+        }
+      } else if (imageUrl.includes('\\')) {
+        if (imageUrl.includes('/')) {
+          imageUrl = temp.join('\\');
+        }
+      }
+
+      return imageUrl;
+    }
+  }
+
   // unfamilers!
   EmptyGuid() {
     return '00000000-0000-0000-0000-000000000000';

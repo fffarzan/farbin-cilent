@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductCarouselParams } from '../shared/carousel/product-carousel/product-carousel-params.model';
 
 @Component({
@@ -20,10 +20,19 @@ export class HomeComponent implements OnInit {
         }
       }
     },
-    productCarouselOptions: { 
-      itemsMobile: [500, 2.1],
-      itemsTablet: [768, 0],
-      itemsDesktop: [1024, 4]
+    productCarouselOptions: {
+      itemsMobile: {
+        maxSize: 500,
+        items: 2.1
+      },
+      itemsTablet: {
+        maxSize: 768,
+        items: 0
+      },
+      itemsDesktop: {
+        maxSize: 1024,
+        items: 4
+      }
     }
   };
 

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductCarouselResolverService implements Resolve<Product[]> {
+export class ProductCarouselResolver implements Resolve<Product[]> {
   param: object = {}
 
   constructor(

@@ -41,6 +41,7 @@ import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
 import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
+import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { MobileTemplateDirective } from './shared/carousel/mobile-template.direc
     IncidentRegisterComponent,
     DynamicSliderComponent,
     ProductCarouselComponent,
-    MobileTemplateDirective
+    MobileTemplateDirective,
+    GetSmallImagePipe
   ],
   imports: [
     BrowserModule,

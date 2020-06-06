@@ -37,38 +37,34 @@
 </article> -->
 
 <!-- Mobile -->
-<!-- <article ng-if="IsMobile || IsTablet" class="ProductCarousel-Mobile">
-  <section ng-repeat="DataDetails in datasource" class="ProductCarousel-Mobile-Inner">
+<article [appMobileTemplate]="productCarouselParams" *ngIf="isMobile || isTablet" class="ProductCarousel-Mobile">
+  <section *ngFor="let product of products" class="ProductCarousel-Mobile-Inner">
 
-    <a href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" class="ProductCarousel-Mobile-MainIamge">
+    <!-- href="/{{ pageurldirection }}/{{ DataDetails.IDX }}" -->
+    <a href="#" class="ProductCarousel-Mobile-MainIamge">
+      <!-- ng-style="CarouselItemsStyle" -->
       <img
-        ng-src="{{::DataDetails[dynamicfieldname] ? ServerUrl + DataDetails[dynamicfieldname] : staticurl | GetSmallImage}}"
-        alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}" class="DefineItemImage{{::DataDetails.IDX}}"
-        ng-style="CarouselItemsStyle" />
+        [src]="product.dynamicfieldname ? enviornment.baseUrl + product.dynamicfieldname : productCarouselParams.staticUrl | getSmallImage"
+        alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" class="DefineItemImage{{ product.IDX }}" />
     </a>
 
+    <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}"  -->
     <section class="ProductCarousel-Mobile-Thumbnail">
-      <a href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" class="ProductCarousel-Mobile-Thumbnail-Desc">
-        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber">
-          {{::DataDetails.PartNumber}}
-        </span>
-        <div class="clearfix"></div>
-        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">
-          {{::DataDetails.IndexDescriptionText}}
-        </span>
+      <a href="#" class="ProductCarousel-Mobile-Thumbnail-Desc">
+        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
+        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
       </a>
       <section class="ProductCarousel-Mobile-Thumbnail-Buttons">
-        <img src="/images/AddToListWhite.png" class="AddToListButton" data-placement="left" title="Add to List"
-          alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
-          ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" />
-        <div class="clearfix"></div>
-        <img src="/images/Compare.png" class="CompareButton" data-placement="left" title="Compare"
-          alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
-          ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" />
+        <!-- ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" -->
+        <img src="assets/img/AddToListWhite.png" class="AddToListButton clearfix" data-placement="left"
+          title="Add to List" alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+        <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)"  -->
+        <img src="assets/img/Compare.png" class="CompareButton" data-placement="left" title="Compare"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
       </section>
-      <img ng-src="{{::ServerUrl + DataDetails.IndexDescriptionPicUrl}}"
+      <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
         class="ProductCarousel-Mobile-Thumbnail-ItemColor" />
     </section>
 
   </section>
-</article> -->
+</article>
