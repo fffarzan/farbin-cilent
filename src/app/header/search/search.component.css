@@ -1,0 +1,498 @@
+/* mobile-first */
+
+.SearchModule-Container {
+  display: inline;
+  width: 69%;
+}
+
+.SearchModule-Wrapper {
+  display: inline;
+  width: 69%;
+}
+
+.SearchModule-Title {
+  text-align: right;
+  color: #ffb500;
+  font-size: 15px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  direction: rtl;
+  margin-bottom: 20px;
+}
+
+.SearchModule-Body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.SearchModule-Body::-webkit-scrollbar {
+  width: 5px;
+  display: none;
+}
+
+.SearchModule-Body::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: #666;
+  border-left: 2px solid #333;
+  border-right: 2px solid #333;
+  background-clip: content-box;
+  /* disappear shadow around the box */
+  -webkit-background-clip: padding-box;
+}
+
+.SearchModule-Body::-webkit-scrollbar-thumb {
+  background-color: #999;
+  outline: none;
+  border-left: 1px solid #333;
+  border-right: 2px solid #333;
+  background-clip: content-box;
+  -webkit-background-clip: padding-box;
+}
+
+.SearchModule-NotFoundMessage {
+  direction: rtl;
+  text-align: right;
+  display: none;
+}
+
+.SearchModule-ShowNotFoundMessage {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-Body {
+    /*height: 38vh;*/
+    height: 45vh;
+  }
+  .SearchModule-Body::-webkit-scrollbar {
+    display: block;
+  }
+  .SearchModule-Training-Body {
+    height: 31vh;
+  }
+  .SearchModule-Title {
+    margin: 10px 0;
+  }
+}
+
+/* Backward */
+
+.SearchModule-Backward {
+  width: 67px;
+  float: left;
+  text-align: center;
+  margin-left: 0;
+  margin-right: 8.5px;
+  padding-top: 15px;
+}
+
+.SearchModule-Backward img {
+  height: 15px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-Backward {
+    margin-right: 0;
+    margin-left: 20px;
+    padding-top: 8px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .SearchModule-Backward {
+    margin-left: 70px;
+    padding-top: 10px;
+  }
+}
+
+/* Template */
+
+.SearchModule-Template {
+  position: fixed;
+  top: 60px;
+  right: -100%;
+  width: 100%;
+  bottom: 0;
+  background-color: #333;
+  z-index: 10002;
+  padding: 0;
+}
+
+.SearchModule-Template-Inner {
+  /* height: 22px; */
+  height: 100%;
+  width: 100%;
+  background: none;
+  text-align: left;
+  /* display: flex; */
+  margin: 0;
+}
+
+.SearchMobilePadding {
+  padding: 5px 0 0 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-Template {
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 0 25px;
+  }
+  .SearchMobilePadding {
+    padding: 0 !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .SearchModule-Template {
+    left: 5%;
+    width: 90%;
+    padding: 0 47px;
+  }
+}
+
+/* Mobile search list */
+
+.SearchModule-MobileSearchList {
+  direction: rtl;
+  display: none;
+}
+
+.SearchModule-MobileSearchList-Item {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #666;
+  padding: 15px 15px;
+}
+
+.SearchModule-MobileSearchList-Title {
+  display: flex;
+}
+
+.SearchModule-MobileSearchList-Title h1 {
+  font-size: 14px;
+  margin: 5px 0 0 10px;
+}
+
+.SearchModule-MobileSearchList-Number {
+  background-color: #222;
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  padding: 10px;
+  position: relative;
+}
+
+.SearchModule-MobileSearchList-Number span {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+
+.SearchModule-MobileSearchList-AngleLeft {
+  font-size: 30px;
+  color: #ffb500;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Product template */
+
+.SearchModule-ProductTemplate {
+  width: 100%;
+  display: none;
+  padding: 0;
+}
+
+.SearchModule-ProductTemplate-Item {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 15px 0;
+}
+
+.SearchModule-ProductTemplate::-webkit-scrollbar {
+  width: 2px;
+}
+
+.SearchModule-ProductTemplate::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: lightgray;
+}
+
+.SearchModule-ProductTemplate::-webkit-scrollbar-thumb {
+  background-color: #666695;
+  outline: 1px solid #666695;
+}
+
+.SearchModule-ProductTemplate hr {
+  margin: 5px 5px 5px 0;
+  border-color: #666;
+}
+
+.SearchModule-ProductTemplate img {
+  width: 30%;
+  height: 100% !important;
+}
+
+.SearchModule-ProductTemplate-ItemDesc h6 {
+  display: inline-block;
+  letter-spacing: 0.5px;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.SearchModule-ProductTemplate-ItemDesc {
+  width: 70%;
+  padding-left: 10px;
+  padding-right: 3px
+}
+
+.SearchModule-ProductTemplate-IndexDesc {
+  float: left;
+  display: inline-block;
+  width: 90%;
+  margin-top: 8px;
+  margin-bottom: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-ProductTemplate-Inner {
+    margin-right: 2px;
+  }
+  .SearchModule-ProductTemplate {
+    display: block;
+    margin-bottom: 10px;
+    width: 49%;
+    margin-right: 5px;
+  }
+  .SearchModule-ProductTemplate-ItemDesc {
+    width: 60%;
+  }
+}
+
+/* Article template */
+
+.SearchModule-ArticleTemplate {
+  display: none;
+  width: 100%;
+  padding: 0;
+}
+
+.SearchModule-ArticleTemplate-Inner {
+  width: 100%;
+  margin: 0 0 10px 0; 
+  direction: ltr;
+}
+
+.SearchModule-ArticleTemplate-Image img {
+  height: auto;
+}
+
+.SearchModule-ArticleTemplate-AbstractArticle {
+  padding-bottom: 0px;
+}
+
+.TitleTopArticleContent {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.AbstractArticle {
+  padding: 0 0 0 5px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-ArticleTemplate {
+    width: 50.3%;
+    display: block;
+  }
+  .SearchModule-ArticleTemplate-Inner {
+    direction: rtl;
+    margin: 0 5px 10px 5px;
+    width: 97%;
+  }
+  .TitleTopArticleContent {
+    font-size: unset;
+    line-height: unset;
+  }
+  .AbstractArticle {
+    padding: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-ArticleTemplate-Inner {
+    width: 98%;
+  }
+}
+
+/* SearchModule-TrainingTemplate */
+
+.SearchModule-TrainingTemplate-Wrapper {
+  width: 100%;
+  padding: 0 15px;
+  display: none;
+}
+
+.SearchModule-TrainingTemplate-Outer {
+  position: relative;
+}
+
+.SearchModule-TrainingTemplate-SliderHeader h1 {
+  font-size: 17px !important;
+  margin: 5px 0 5px 0;
+  text-align: right;
+}
+
+.SearchModule-TrainingTemplate-SliderHeader hr {
+  margin: 5px 0 5px 0;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel {
+  margin: 10px 0 10px 0;
+  direction: ltr;
+  width: 99%;
+  display: none !important;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel .owl-item {
+  padding: 0px 12px;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel .item {
+  cursor: pointer;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel a p {
+  color: #fff !important;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel img {
+  width: 100%;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel .owl-item .item p {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.SearchModule-TrainingTemplate-MobileSlider {
+  display: block;
+}
+
+.SearchModule-TrainingTemplate-MobileSliderHorizontalScroll {
+  overflow-x: scroll;
+}
+
+.SearchModule-TrainingTemplate-MobileSliderHorizontalScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.SearchHorizontalTrainingItems {
+  display: inline-flex;
+}
+
+.SearchModule-TrainingTemplate-MobileSlider ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.SearchModule-TrainingTemplate-MobileSlider-li {
+  width: 200px;
+  padding: 0px 10px;
+}
+
+.SearchModule-TrainingTemplate-MobileSlider img {
+  width: 100%;
+  height: auto;
+}
+
+.SearchModule-TrainingTemplate-MobileSlider p {
+  direction: rtl;
+  text-align: right;
+  margin: 5px 0 20px 0;
+  font-size: 14px;
+  line-height: 23px;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-TrainingTemplate-Wrapper {
+    display: block;
+    padding: 0
+  }
+  .SearchModule-TrainingTemplate-Sections {
+    margin-right: 7px;
+  }
+  .SearchModule-TrainingTemplate-SliderHeader hr {
+    margin: 5px 0 5px 0;
+  }
+  .SearchModule-TrainingCourseUserSection {
+    margin-right: 0;
+  }
+  .SearchModule-TrainingTemplate-OwlCarousel {
+    display: block !important;
+    margin-right: 0;
+  }
+  .SearchModule-TrainingTemplate-MobileSlider {
+    display: none;
+  }
+  .SearchModule-TrainingTemplate-MobileSliderHorizontalScroll {
+    overflow-x: unset;
+  }
+  .SearchModule-TrainingTemplate-MobileSliderHorizontalScroll::-webkit-scrollbar {
+    display: block;
+  }
+  .SearchHorizontalTrainingItems {
+    display: block;
+  }
+}
+
+/* Close Button */
+
+.SearchModule-CloseBtn {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 18px;
+  left: 48%;
+}
+
+.SearchModule-CloseBtn img {
+  width: 50px;
+  height: 20px;
+}
+
+.SearchModule-CloseSearchBox {
+  border: solid 1px #666;
+  border-radius: 50px;
+  padding: 5px 5px 5px 6px;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgba(195, 192, 192, 0.8);
+  cursor: pointer;
+}
+
+.SearchModule-Times {
+  display: inline-block;
+}
+
+.SearchModule-CloseSearchBoxText {
+  color: #000 !important;
+  font-size: 20px;
+  display: none;
+  font-size: 15px;
+}
+
+.SearchModule-CloseSearchBox .bordered {
+  border: solid 1px #000;
+  border-radius: 50%;
+  padding: 3px 3px 4px 4px;
+}

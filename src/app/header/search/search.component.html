@@ -1,1 +1,284 @@
-<p>search works!</p>
+<article class="SearchModule-Wrapper" ng-controller="SearchController">
+
+  <!-- <section id="SearchBackWard1" class="SearchModule-Backward">
+    <img src="/images/backward.png" onclick="CloseSearchMenuBackward1()" ng-click="ClearTextSearch()" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+  </section>
+  <section id="SearchBackWard2" class="SearchModule-Backward">
+    <img src="/images/backward.png" onclick="CloseSearchMenuBackward2()" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+  </section> -->
+
+  <article class="SearchModule-Inner">
+
+    <i class="fa fa-search SearchModule-Icon"></i>
+    <!-- ng-change="Search(SearchText)" autocomplete="off" ng-model="SearchText" onclick="OpenSearchMenu()" ng-model-options="{ debounce: 500 }"  -->
+    <input id="txtIndexSearch" class="SearchModule-TextBox-TextSearch" type="text"/>
+    <!-- ng-click="ClearTextSearch()" onclick="HideSearchListWithClearButton()" -->
+    <span class="Color-Withe SearchModule-ClearTextSearch">×</span>
+    <img class="SearchModule-ImgLoaderSearch" src="assets/img/loader1.gif" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+
+    <!-- <article class="SearchModule-Template">
+
+      <article class="SearchModule-MobileSearchList">
+
+        <article class="SearchModule-MobileSearchList-Item" onclick="ShowSearchResultTempalte('Product')">
+          <section class="SearchModule-MobileSearchList-Title">
+            <h1>محصولات</h1>
+            <div class="SearchModule-MobileSearchList-Number">
+              <span>{{SearchesLength}}</span>
+            </div>
+          </section>
+          <span class="SearchModule-MobileSearchList-AngleLeft">
+            <i class='fa fa-angle-left'></i>
+          </span>
+        </article>
+
+        <article class="SearchModule-MobileSearchList-Item" onclick="ShowSearchResultTempalte('Article')">
+          <section class="SearchModule-MobileSearchList-Title">
+            <h1>مقالات</h1>
+            <div class="SearchModule-MobileSearchList-Number">
+              <span>{{SearchContentLength}}</span>
+            </div>
+          </section>
+          <span class="SearchModule-MobileSearchList-AngleLeft">
+            <i class='fa fa-angle-left'></i>
+          </span>
+        </article>
+
+        <article class="SearchModule-MobileSearchList-Item" onclick="ShowSearchResultTempalte('Training')">
+          <section class="SearchModule-MobileSearchList-Title">
+            <h1>آموزش</h1>
+            <div class="SearchModule-MobileSearchList-Number">
+              <span>{{SearchTrainingCoursesLength + SearchTrainingCourseUsersLength + SearchTrainingCourseBatchsLength + SearchIncidentsLength}}</span>
+            </div>
+          </section>
+          <span class="SearchModule-MobileSearchList-AngleLeft">
+            <i class='fa fa-angle-left'></i>
+          </span>
+        </article>
+
+      </article>
+
+      <article class="row SearchModule-Template-Inner">
+
+        <article class="col-xs-12 col-sm-6 SearchModule-ProductTemplate SearchMobilePadding SearchTemplate-SearchItemsWrapper" ng-if="SearchContent.length || Searches.RuleDefine.length  || IsMobile">
+
+          <section class="SearchModule-Title">
+            <div>محصولات</div>
+          </section>
+
+          <section class="SearchModule-Body" autoheightdirective heightforthisclass=".SearchModule-Body">
+            <div class="SearchModule-ProductTemplate-Inner" ng-repeat="RuleDefine in Searches.RuleDefine">
+              <a class="SearchModule-ProductTemplate-Item" href="/DefineDetailProduct/{{RuleDefine.IDX}}" ng-click="HideMenuBox()">
+                <img ng-src="{{ServerUrl + RuleDefine.PicUrl | GetSmallImage}}" alt="{{RuleDefine.PartNumber}}" />
+                <div class="SearchModule-ProductTemplate-ItemDesc">
+                  <h6>{{RuleDefine.PartNumber}}</h6>
+                  <div class="clearfix"></div>
+                  <h6 class="Color-Withe SearchModule-ProductTemplate-IndexDesc">
+                    {{RuleDefine.IndexDescriptionText}}
+                  </h6>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+              </a>
+              <hr />
+            </div>
+
+            <section class="SearchModule-NotFoundMessage" ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[Searches.RuleDefine.length == 0]">
+              موردی یافت نشد!
+            </section>
+
+          </section>
+          
+        </article>
+
+        <article class="col-xs-12 col-sm-6 SearchModule-ArticleTemplate SearchMobilePadding SearchTemplate-SearchItemsWrapper" ng-if="SearchContent.length || Searches.RuleDefine.length || IsMobile">
+
+          <section class="SearchModule-Title">
+            <div>مقالات</div>
+          </section>
+
+          <section class="SearchModule-Body" autoheightdirective heightforthisclass=".SearchModule-Body">
+            <div class="TopArticleContent SearchModule-ArticleTemplate-Inner" ng-repeat="Article in SearchContent">
+              <section class="imgTopArticleContent SearchModule-ArticleTemplate-Image">
+                <a href="//Article/{{Article.IDX}}" ng-click="HideMenuBox()">
+                  <img ng-src="{{ServerUrl + Article.PicUrl | GetSmallImage}}" alt="{{Article.Name_Fa}}" />
+                </a>
+              </section>
+              <section class="TitleTopArticleContent SearchModule-ArticleTemplate-Title">
+                <a href="//Article/{{Article.IDX}}" ng-click="HideMenuBox()">
+                  <span dir="rtl">{{Article.Name_Fa}}</span>
+                </a>
+                <div class="clearfix"></div>
+                <p class="SearchModule-ArticleTemplate-AbstractArticle AbstractArticle">
+                  {{Article.Abstract_Fa}}
+                  <div class="clearfix"></div>
+                </p>
+              </section>
+            </div>
+
+            <section class="SearchModule-NotFoundMessage" ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[SearchContent.length == 0]">
+              موردی یافت نشد!
+            </section>
+          </section>
+        </article>
+
+        <article class="col-xs-12 SearchModule-TrainingTemplate-Wrapper SearchTemplate-SearchItemsWrapper" ng-if="SearchTrainingCourses.length || SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length || IsMobile">
+
+          <section class="SearchModule-Title SearchMobilePadding">
+            <div>آموزش</div>
+          </section>
+
+          <section class="SearchModule-Body SearchModule-Training-Body" autoheightdirective heightforthisclass=".SearchModule-Body">
+            <div class="SearchModule-Template-Inner">
+              <section class="SearchModule-TrainingTemplate-Sections">
+                <section class="SearchModule-TrainingCourseSection">
+
+                  <section class="SearchModule-TrainingTemplate-SliderBody">
+
+                    <div id="xxx{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
+                        stagePadding: 20,
+                        items: 3,
+                        responsive: { 1024: { items: 5 } }
+                      }">
+                      <a href="/TrainingCoursesHeld/{{TrainingCourses.IDX}}" class="item" data-owl-carousel-item ng-repeat="TrainingCourses in SearchTrainingCourses" ng-click="HideMenuBox()">
+                        <img style="height: auto;" ng-src="{{ServerUrl + TrainingCourses.PicUrl | GetSmallImage}}" />
+                        <p style="direction: rtl;">{{TrainingCourses.Name_Fa}}</p>
+                      </a>
+                    </div>
+
+                    <div class="SearchModule-TrainingTemplate-MobileSlider" ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}">
+                      <ul ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}">
+                        <li ng-repeat="TrainingCourses in SearchTrainingCourses" ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}">
+                          <a href="/TrainingCoursesHeld/{{TrainingCourses.IDX}}" ng-click="HideMenuBox()">
+                            <img ng-src="{{ServerUrl + TrainingCourses.PicUrl | GetSmallImage}}" />
+                            <p>{{TrainingCourses.Name_Fa}}</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section class="SearchModule-TrainingCourseUserSection" ng-repeat="SearchTrainingCourseUser in SearchTrainingCourseUsers">
+
+                    <section class="SearchModule-TrainingTemplate-SliderHeader">
+                      <h1>{{SearchTrainingCourseUser.FullName_Fa}}</h1>
+                      <hr style="border-color: #666;" />
+                    </section>
+
+                    <section class="SearchModule-TrainingTemplate-SliderBody">
+
+                      <section id="yyy{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
+                          stagePadding: 20,
+                          items: 3,
+                          responsive: { 1024: { items: 5 } }
+                        }">
+                        <a href="/TrainingCoursesHeld/{{SearchUserCertificate.IDX}}" class="item" data-owl-carousel-item ng-repeat="SearchUserCertificate in SearchTrainingCourseUser.Certification" ng-click="HideMenuBox()">
+                          <img style="height: auto;" ng-src="{{ServerUrl + SearchUserCertificate.PicUrl | GetSmallImage}}" />
+                          <p style="direction: rtl;">
+                            {{SearchUserCertificate.TrainingCourseCategoryName_Fa}}
+                          </p>
+                        </a>
+                      </section>
+
+                      <section class="SearchModule-TrainingTemplate-MobileSlider" ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}">
+                        <ul ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}">
+                          <li ng-repeat="SearchUserCertificate in SearchTrainingCourseUser.Certification" ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}">
+                            <a href="/TrainingCoursesHeld/{{SearchUserCertificate.IDX}}" ng-click="HideMenuBox()">
+                              <img ng-src="{{ServerUrl + SearchUserCertificate.PicUrl | GetSmallImage}}" />
+                              <p>{{SearchUserCertificate.TrainingCourseCategoryName_Fa}}</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </section>
+                    </section>
+                  </section>
+  
+                  <section class="SearchModule-TrainingCourseBatchSection" ng-repeat="SearchTrainingCourseBatch in SearchTrainingCourseBatchs">
+
+                    <section class="SearchModule-TrainingTemplate-SliderHeader">
+                      <h1>{{SearchTrainingCourseBatch.Name_Fa}}</h1>
+                      <hr style="border-color: #666;" />
+                    </section>
+
+                    <section class="SearchModule-TrainingTemplate-SliderBody">
+                      <div id="zzz{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
+                          stagePadding: 20,
+                          items: 3,
+                          responsive: { 1024: { items: 5 } }
+                        }">
+                        <a href="/TrainingCoursesHeld/{{TrainingCourseForBatch.IDX}}" class="item" data-owl-carousel-item ng-repeat="TrainingCourseForBatch in SearchTrainingCourseBatch.TrainingCourse" ng-click="HideMenuBox()">
+                          <img style="height: auto;" ng-src="{{ServerUrl + TrainingCourseForBatch.PicUrl | GetSmallImage}}" />
+                          <p style="direction: rtl;">{{TrainingCourseForBatch.Name_Fa}}</p>
+                        </a>
+                      </div>
+                    </section>
+
+                    <section class="SearchModule-TrainingTemplate-MobileSlider" ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll':SearchTrainingCourseUsers.length || SearchTrainingCourses.length || SearchIncidents.length }">
+                      <ul ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourseUsers.length ||SearchTrainingCourses.length || SearchIncidents.length}">
+                        <li ng-repeat="TrainingCourseForBatch in SearchTrainingCourseBatch.TrainingCourse" ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourseUsers.length || SearchTrainingCourses.length || SearchIncidents.length}">
+                          <a href="/TrainingCoursesHeld/{{TrainingCourseForBatch.IDX}}" ng-click="HideMenuBox()">
+                            <img ng-src="{{ServerUrl + TrainingCourseForBatch.PicUrl | GetSmallImage}}" class="" />
+                            <p>{{TrainingCourseForBatch.Name_Fa}}</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </section>
+
+                  <article class="">
+
+                    <section class="SearchModule-TrainingTemplate-SliderHeader">
+                      <h1>{{SearchIncidents.Name_Fa}}</h1>
+                      <hr style="border-color: #666;" />
+                    </section>
+
+                    <article class="SearchModule-TrainingTemplate-SliderBody">
+
+                      <section id="aaa{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
+                          stagePadding: 20,
+                          items: 3,
+                          responsive: { 1024: { items: 5 } }
+                        }">
+                        <a href="/Incident/{{SearchIncident.IDX}}" class="item" data-owl-carousel-item ng-repeat="SearchIncident in SearchIncidents" ng-click="HideMenuBox()">
+                          <img style="height: auto;" ng-src="{{ServerUrl + SearchIncident.PicUrl | GetSmallImage}}" alt="{{SearchIncident.Name_Fa}}" />
+                          <p style="direction: rtl;">
+                            {{SearchIncident.Name_Fa}}
+                          </p>
+                        </a>
+                      </section>
+
+                      <section class="SearchModule-TrainingTemplate-MobileSlider" ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchTrainingCourseUsers.length}">
+                        <ul ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchTrainingCourseUsers.length}">
+                          <li ng-repeat="SearchIncident in SearchIncidents" ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchTrainingCourseUsers.length}">
+                            <a href="/Incident/{{SearchIncident.IDX}}" ng-click="HideMenuBox()">
+                              <img ng-src="{{ServerUrl + SearchIncident.PicUrl | GetSmallImage}}" />
+                              <p>
+                                {{SearchIncident.Name_Fa}}
+                              </p>
+                            </a>
+                          </li>
+                        </ul>
+                      </section>
+                      
+                    </article>
+                    
+                  </article>
+
+                  <section class="SearchModule-NotFoundMessage SearchMobilePadding" ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[SearchTrainingCourses.length == 0 && SearchTrainingCourseUsers.length == 0 && SearchTrainingCourseBatchs.length == 0 && SearchIncidentsLength.length]">
+                    موردی یافت نشد!
+                  </section>
+
+                </section>
+              </section>
+            </div>
+          </section>
+          
+        </article>
+
+      </article>
+
+    </article> -->
+    
+  </article>
+
+</article>

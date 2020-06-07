@@ -1,1 +1,48 @@
-<p>header works!</p>
+<!-- Header -->
+<header class="SideMenu">
+
+  <!-- Open catalog menu button -->
+  <a class="CatalogMenuButton">
+    <!-- onclick="OpenCatalogMenu()" -->
+    <img id="OpenCatalogMenu" src="assets/img/Catalog.png" class="CursorPointer btnMenu"
+      alt="نوآوران شبکه فربین - کاتالوگها" />
+  </a>
+
+  <!-- SignIn button -->
+  <!-- href="/SignIn"  -->
+  <!-- ng-if="!Login" -->
+  <a id="SignInIcon" class="CatalogMenuButton" href="#">
+    <img src="assets/img/UserIcon.png" class="CursorPointer btnMenu" alt="نوآوران شبکه فربین - ورود به بخش کاربری" />
+  </a>
+
+  <!-- User menu button -->
+  <!-- onclick="ToggleSideUserMenu()" -->
+  <!-- ng-if="Login" -->
+  <!-- ng-click="ToggleSideMenu()" -->
+  <a id="UserMenuButton" class="CatalogMenuButton"  >
+    <img id="UserMenuIcon" src="assets/img/eq.png" class="CursorPointer btnMenu EqIcon"
+      alt="نوآوران شبکه فربین - ورود به بخش کاربری" />
+  </a>
+
+  <!-- Compare button -->
+  <!-- href="/Compare" -->
+  <a class="CatalogMenuButton" href="#">
+    <img src="assets/img/Compare.png" class="CursorPointer btnMenu imgCompareTopButton"
+      alt="نوآوران شبکه فربین - مقایسه محصولات" />
+    <!-- <h3 class="ComareCount" ng-show="CompareList.length">{{CompareList.length}}</h3> -->
+    <div id="CompareImageDefineMovable">
+    </div>
+  </a>
+
+  <!-- Logo in header -->
+  <!-- href="/Default" -->
+  <!-- onclick="ClickDarkBody()" -->
+  <a href="#" class="LogoInHeader">
+    <!-- onclick="UnBlueFooterIcons()" -->
+    <img src="assets/img/header2.png" id="OpenCatalogMenu" class="CursorPointer"
+      alt="نوآوران شبکه فربین - لوگو" />
+  </a>
+
+  <!-- <app-search class="SearchModule-Container"></app-search> -->
+
+</header>
