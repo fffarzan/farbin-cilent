@@ -4,24 +4,24 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'getSmallImage'
 })
 export class GetSmallImagePipe implements PipeTransform {
-  transform(input: string) {
-    if (!input.includes("\\Small\\")) {
-      if (!input.includes("/Small/")) {
+  transform(value: string): string {
+    if (!value.includes("\\Small\\")) {
+      if (!value.includes("/Small/")) {
         let temp = [];
 
-        if (input.includes("Picture/")) {
-          temp = input.split("/");
+        if (value.includes("Picture/")) {
+          temp = value.split("/");
           let tempLength = temp.length;
           temp.splice(tempLength - 1, 0, 'Small');
-          input = temp.join("/");
-        } else if (input.includes("Picture\\")) {
-          temp = input.split("\\");
+          value = temp.join("/");
+        } else if (value.includes("Picture\\")) {
+          temp = value.split("\\");
           let tempLength = temp.length;
           temp.splice(tempLength - 1, 0, 'Small');
-          input = temp.join("\\");
+          value = temp.join("\\");
         }
 
-        return input;
+        return value;
       }
     }
   }
