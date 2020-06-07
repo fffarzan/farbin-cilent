@@ -1,1 +1,47 @@
-<p>catalogs works!</p>
+<!-- <article id="CatalogeMenuContainer" class="CatalogeMenu">
+
+  <div id="CloseCatalogMenu" class="CursorPointer" onclick="CloseCatalogMenu()">&times;</div>
+  <h3>Catalogs</h3>
+
+  <div class="CatalogeMenu-LineOut">
+    <div class="CatalogeMenu-LineIN"></div>
+  </div>
+
+  <section id="CatalogList">
+
+    <section ng-if="Supplier.Name_En" ng-repeat="Supplier in Suppliers">
+      <h4 class="CatalogHeader">{{::Supplier.Name_En}}</h4><br />
+      <section class="CatalogMenu-Items">
+        <div class="CatalogList-Catalogs" ng-repeat="Catalog in Catalogs" data-ng-if="Catalog.IDRet === Supplier.IDUser">
+          <a href="{{::ServerUrl + Catalog.PDFUrl}}">
+            <img class="CatalogMenu-Item-CatalogImage" ng-src="{{::ServerUrl + Catalog.PicUrl}}" />
+          </a>
+          <b>{{::Catalog.Name_En}}</b>
+          <div class="clearfix"></div>
+          <span>File size: {{::Catalog.SizeOfPDF}}MB </span>
+          <img src="/images/CopyToClipboarad.png"
+            class="CatalogMenu-Item-CopyToClipboard" 
+            data-toggle="tooltip" 
+            title="Copy to clipboard"
+            ng-click="CopyToClipboard(Catalog.IDCatalog)" />
+          <p id="LinkOfCatalogIDCatalog{{::Catalog.IDCatalog}}">http://scmcenter.ir/{{::Catalog.PDFUrl}}</p>
+        </div>
+      </section>
+    </section>
+
+    <h4 class="CatalogHeader">Videos</h4>
+    <section class="index-catalog-videos">
+      <staticgallerycarousel galleryname="CatalogStaticVideoCarousel" mobilecarouseloptions="{
+          itemsMobile: [500,1.7],
+          itemsTablet: [768,0],
+          itemsDesktop: [1024,5]
+        }">
+      </staticgallerycarousel>
+    </section>
+
+  </section>
+  
+  <div class="CatalogeMenu-LineOut">
+    <div class="CatalogeMenu-LineIN"></div>
+  </div>
+</article> -->
