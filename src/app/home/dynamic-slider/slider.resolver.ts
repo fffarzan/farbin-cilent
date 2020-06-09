@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { Banner } from './banner.model';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { DataStorageService } from '../../shared/data-storage.service';
 import { SliderService } from './slider.service';
 
 @Injectable({

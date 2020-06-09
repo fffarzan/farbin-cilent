@@ -40,13 +40,10 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
-<<<<<<< develop
-import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
-import { GetSmallImagePipe } from './shared/get-small-image.pipe';
-=======
 import { CatalogPlaceholderDirective } from './shared/catalog-placeholder.directive';
 import { CatalogsService } from './header/catalogs/catalogs.service';
->>>>>>> Creating Fundamentals of Catalog
+import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
+import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 
 @NgModule({
   declarations: [
@@ -83,12 +80,9 @@ import { CatalogsService } from './header/catalogs/catalogs.service';
     IncidentRegisterComponent,
     DynamicSliderComponent,
     ProductCarouselComponent,
-<<<<<<< develop
+    CatalogPlaceholderDirective,
     MobileTemplateDirective,
     GetSmallImagePipe
-=======
-    CatalogPlaceholderDirective
->>>>>>> Creating Fundamentals of Catalog
   ],
   imports: [
     BrowserModule,

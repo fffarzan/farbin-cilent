@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { Product } from './product.model';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { DataStorageService } from '../../data-storage.service';
 import { ProductCarouselService } from './product-carousel.service';
 import { Observable } from 'rxjs';
 
