@@ -40,6 +40,8 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
+import { CatalogPlaceholderDirective } from './shared/catalog-placeholder.directive';
+import { CatalogsService } from './header/catalogs/catalogs.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { ProductCarouselComponent } from './shared/carousel/product-carousel/pro
     UnsubscribeComponent,
     IncidentRegisterComponent,
     DynamicSliderComponent,
-    ProductCarouselComponent
+    ProductCarouselComponent,
+    CatalogPlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,12 @@ import { ProductCarouselComponent } from './shared/carousel/product-carousel/pro
     OwlModule,
     FontAwesomeModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    CatalogsService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CatalogsComponent
+  ]
 })
 export class AppModule { }

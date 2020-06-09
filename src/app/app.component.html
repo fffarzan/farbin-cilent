@@ -1,5 +1,6 @@
+<ng-template appCatalogPlaceholder></ng-template>
 <div id="MovableContainer" class="MovableContainer">
-  <app-header></app-header>
+  <app-header (catalogSituation)="onToggleCatalog($event)"></app-header>
   <router-outlet></router-outlet>
   <app-navbar></app-navbar>
 </div>

@@ -25,14 +25,14 @@ import { CourseGroupComponent } from './training-category/course-groups/course-g
 import { CourseHeldComponent } from './training-category/course-held/course-held.component';
 import { CourseAttendanceComponent } from './training-category/course-held/course-attendance/course-attendance.component';
 import { CoursesHeldComponent } from './training-category/courses-held/courses-held.component';
-import { SliderResolverService } from './home/dynamic-slider/slider-resolver.service';
-import { SupplierResolverService } from './navbar/product-brands/supplier-resolver.service'
+import { SliderResolver } from './home/dynamic-slider/slider.resolver';
+import { SupplierResolver } from './navbar/product-brands/supplier.resolver'
 
 const routes: Routes = [
   {
-    path: '', resolve: [SupplierResolverService], children: [
+    path: '', resolve: [SupplierResolver], children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, resolve: [SliderResolverService] },
+      { path: 'home', component: HomeComponent, resolve: [SliderResolver] },
       {
         path: 'about-us', component: AboutUsComponent, children: [
           {

@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { Banner } from './banner.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { SliderService } from './slider.service';
+import { Supplier } from './supplier.model';
+import { SupplierService } from './supplier.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SliderResolverService implements Resolve<Banner[]> {
+export class SupplierResolver implements Resolve<Supplier[]> {
   constructor(
     private dataStorageService: DataStorageService,
-    private sliderService: SliderService
+    private supplierService: SupplierService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const banners = this.sliderService.getBanners();
+    const suppliers = this.supplierService.getSuppliers();
 
-    if (banners.length === 0)
-      return this.dataStorageService.fetchBanners();
+    if (suppliers.length === 0)
+      return this.dataStorageService.fetchSuppliers();
     else 
-      return banners;
+      return suppliers;
   }
 }
