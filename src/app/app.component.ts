@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, ComponentFactoryResolver, OnDestroy } from
 
 import { CatalogPlaceholderDirective } from './shared/catalog-placeholder.directive';
 import { CatalogsComponent } from './header/catalogs/catalogs.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,19 @@ import { CatalogsComponent } from './header/catalogs/catalogs.component';
 })
 export class AppComponent implements OnDestroy {
   @ViewChild(CatalogPlaceholderDirective, { static: false }) catalogHost: CatalogPlaceholderDirective;
+  private closeSub: Subscription;
   title = 'farbin-client';
 
   constructor(private componentFatoryResolver: ComponentFactoryResolver) { }
 
-  ngOnDestroy() {
-  }
-
   onToggleCatalog(isOpen: boolean) {
     if(isOpen)
       this.showCatalog();
+  }
+
+  ngOnDestroy() {
+    if (this.closeSub)
+      this.closeSub.unsubscribe();
   }
 
   private showCatalog() {
@@ -29,5 +33,9 @@ export class AppComponent implements OnDestroy {
     hostViewContainerRef.clear();
 
     const componentRef = hostViewContainerRef.createComponent(catalogCmpFactory);
+    this.closeSub = componentRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      hostViewContainerRef.clear();
+    })
   }
 }

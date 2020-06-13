@@ -8,7 +8,6 @@ import { DataStorageService } from '../shared/data-storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isCatalogOpen: boolean = false;
   @Output() catalogSituation = new EventEmitter<boolean>();
 
   constructor(private dataStorageService: DataStorageService) { }
@@ -17,8 +16,7 @@ export class HeaderComponent implements OnInit {
     this.dataStorageService.fetchCatalogs().subscribe();
   }
 
-  openCatalog(situation: boolean) {
-    this.isCatalogOpen = !situation;
-    this.catalogSituation.emit(this.isCatalogOpen);
+  openCatalog() {
+    this.catalogSituation.emit(true);
   }
 }

@@ -1,15 +1,14 @@
 <article id="CatalogeMenuContainer" class="CatalogeMenu">
 
-  <!-- onclick="CloseCatalogMenu()" -->
-  <div id="CloseCatalogMenu" class="CursorPointer">&times;</div>
+  <div id="CloseCatalogMenu" class="CursorPointer" (click)="onCloseCatalog()">&times;</div>
   <h3>Catalogs</h3>
   <div class="CatalogeMenu-LineOut">
     <div class="CatalogeMenu-LineIN"></div>
   </div>
 
   <div id="CatalogList">
+    
     <div *ngFor="let supplier of suppliers">
-
       <div *ngIf="supplier.Name_En">
         <h4 class="CatalogHeader">{{ supplier.Name_En }}</h4><br />
         <section class="CatalogMenu-Items">
@@ -21,14 +20,12 @@
               <strong class="clearfix">{{ catalog.Name_En }}</strong>
               <span>File size: {{ catalog.SizeOfPDF }}MB </span>
 
-              <!-- data-toggle="tooltip"  -->
-              <img src="assets/img/CopyToClipboarad.png" class="CatalogMenu-Item-CopyToClipboard"
+              <img src="assets/img/CopyToClipboarad.png" data-toggle="tooltip" class="CatalogMenu-Item-CopyToClipboard"
                 title="Copy to clipboard" (click)="onCopyToClipboard(catalog.PDFUrl)" />
             </div>
           </div>
         </section>
       </div>
-
     </div>
 
     <h4 class="CatalogHeader">Videos</h4>

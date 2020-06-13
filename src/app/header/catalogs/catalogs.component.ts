@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, ElementRef, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { ExtensionMethodService } from '../../shared/extension-method.service';
@@ -14,6 +14,7 @@ import { Supplier } from 'src/app/shared/supplier.model';
 })
 export class CatalogsComponent implements OnInit {
   @ViewChildren('linkOfCatalog') linksOfCatalogs: QueryList<ElementRef>;
+  @Output() close = new EventEmitter<void>();
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
@@ -40,5 +41,9 @@ export class CatalogsComponent implements OnInit {
     document.execCommand("copy");
     tempEl.remove();
     // AutoClosingSuccessAlert("Url copied in clipboard", 2000);
+  }
+
+  onCloseCatalog() {
+    this.close.emit();
   }
 }
