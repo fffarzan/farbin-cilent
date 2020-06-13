@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SupplierService } from './supplier.service';
-import { Supplier } from 'src/app/navbar/product-brands/supplier.model';
+import { SupplierService } from '../../shared/supplier.service';
+import { Supplier } from 'src/app/shared/supplier.model';
 
 @Component({
   selector: 'app-product-brands',

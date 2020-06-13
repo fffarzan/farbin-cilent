@@ -3,31 +3,33 @@
   <!-- onclick="CloseCatalogMenu()" -->
   <div id="CloseCatalogMenu" class="CursorPointer">&times;</div>
   <h3>Catalogs</h3>
-  <div class="CatalogeMenu-LineOut"><div class="CatalogeMenu-LineIN"></div></div>
+  <div class="CatalogeMenu-LineOut">
+    <div class="CatalogeMenu-LineIN"></div>
+  </div>
 
   <div id="CatalogList">
 
-    <!-- ng-repeat="Supplier in Suppliers" -->
-    <!-- ng-if="Supplier.Name_En" -->
-    <div>
-      <!-- <h4 class="CatalogHeader">{{ Supplier.Name_En }}</h4><br /> -->
-      <section class="CatalogMenu-Items">
-        <!-- data-ng-if="Catalog.IDRet === Supplier.IDUser" -->
-        <!-- ng-repeat="Catalog in Catalogs" -->
-        <div class="CatalogList-Catalogs">
-          <!-- <a href="{{ ServerUrl + Catalog.PDFUrl }}">
-            <img class="CatalogMenu-Item-CatalogImage" ng-src="{{ ServerUrl + Catalog.PicUrl }}" />
-          </a> -->
-          <!-- <b class="clearfix">{{ Catalog.Name_En }}</b> -->
-          <!-- <span>File size: {{ Catalog.SizeOfPDF }}MB </span> -->
+    <div *ngFor="let supplier of suppliers">
+      <div *ngIf="supplier.Name_En">
+        <h4 class="CatalogHeader">{{ supplier.Name_En }}</h4><br />
+        <section class="CatalogMenu-Items">
+          <div class="CatalogList-Catalogs" *ngFor="let catalog of catalogs">
+            <div *ngIf="catalog.IDRet === supplier.IDUser">
+              <a href="{{ enviornment.baseUrl + catalog.PDFUrl }}">
+                <img class="CatalogMenu-Item-CatalogImage" src="{{ enviornment.baseUrl + catalog.PicUrl }}" />
+              </a>
+              <strong class="clearfix">{{ catalog.Name_En }}</strong>
+              <span>File size: {{ catalog.SizeOfPDF }}MB </span>
 
-          <!-- ng-click="CopyToClipboard(Catalog.IDCatalog)" -->
-          <!-- data-toggle="tooltip"  -->
-          <img src="assets/img/CopyToClipboarad.png" class="CatalogMenu-Item-CopyToClipboard"
-            title="Copy to clipboard" />
-          <!-- <p id="LinkOfCatalogIDCatalog{{ Catalog.IDCatalog }}">http://scmcenter.ir/{{ Catalog.PDFUrl }}</p> -->
-        </div>
-      </section>
+              <!-- ng-click="CopyToClipboard(Catalog.IDCatalog)" -->
+              <!-- data-toggle="tooltip"  -->
+              <img src="assets/img/CopyToClipboarad.png" class="CatalogMenu-Item-CopyToClipboard"
+                title="Copy to clipboard" />
+              <p id="LinkOfCatalogIDCatalog{{ catalog.IDCatalog }}">http://scmcenter.ir/{{ catalog.PDFUrl }}</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <h4 class="CatalogHeader">Videos</h4>
@@ -42,6 +44,8 @@
 
   </div>
 
-  <div class="CatalogeMenu-LineOut"><div class="CatalogeMenu-LineIN"></div></div>
+  <div class="CatalogeMenu-LineOut">
+    <div class="CatalogeMenu-LineIN"></div>
+  </div>
 
 </article>

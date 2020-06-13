@@ -26,7 +26,7 @@ import { CourseHeldComponent } from './training-category/course-held/course-held
 import { CourseAttendanceComponent } from './training-category/course-held/course-attendance/course-attendance.component';
 import { CoursesHeldComponent } from './training-category/courses-held/courses-held.component';
 import { SliderResolver } from './home/dynamic-slider/slider.resolver';
-import { SupplierResolver } from './navbar/product-brands/supplier.resolver';
+import { SupplierResolver } from './shared/supplier.resolver';
 import { ProductCarouselResolver } from './shared/carousel/product-carousel/product-carousel.resolver';
 
 const routes: Routes = [
