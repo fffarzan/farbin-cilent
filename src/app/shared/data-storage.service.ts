@@ -11,7 +11,8 @@ import { Catalog } from '../header/catalogs/catalog.model';
 import { CatalogsService } from '../header/catalogs/catalogs.service';
 import { Product } from './carousel/product-carousel/product.model';
 import { ProductCarouselService } from './carousel/product-carousel/product-carousel.service';
-
+import { SearchService } from '../header/search/search.service';
+import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident } from '../header/search/search.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class DataStorageService {
     private sliderService: SliderService,
     private supplierService: SupplierService,
     private catalogService: CatalogsService,
-    private productCarouselService: ProductCarouselService
+    private productCarouselService: ProductCarouselService,
+    private searchService: SearchService,
   ) { }
 
   fetchBanners() {
@@ -75,10 +77,112 @@ export class DataStorageService {
 
   fetchCatalogs() {
     return this.http
-      .post<Catalog[]>(environment.baseUrl + '/api/Catalog/FillCatalog/', '')
+      .post<Catalog[]>(
+        environment.baseUrl + '/api/Catalog/FillCatalog/',
+        '',
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
       .pipe(
         tap(catalogs => {
           this.catalogService.setCatalogs(catalogs);
+        })
+      );
+  }
+
+  fetchSearchDefineDetailProducts(param: object) {
+    return this.http
+      .post<SearchDefineDetail[]>(
+        environment.baseUrl + '/api/Search/SearchRuleDefineProduct/',
+        param,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
+      .pipe(
+        tap(defineDetailProducts => {
+          this.searchService.setDefneDetailProducts(defineDetailProducts);
+        })
+      );
+  }
+
+  fetchSearchContent(param: object) {
+    return this.http
+      .post<SearchContent[]>(
+        environment.baseUrl + '/api/Search/SearchContent/',
+        param,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
+      .pipe(
+        tap(contents => {
+          this.searchService.setContents(contents);
+        })
+      );
+  }
+
+  fetchSearchTrainingCourse(param: object) {
+    return this.http
+      .post<SearchTrainingCourse[]>(
+        environment.baseUrl + '/api/Search/SearchTrainingCourse/',
+        param,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
+      .pipe(
+        tap(trainingCourse => {
+          this.searchService.setTrainingCourses(trainingCourse);
+        })
+      );
+  }
+
+  fetchSearchTrainingCourseUser(param: object) {
+    return this.http
+      .post<SearchTrainingCourseUser[]>(
+        environment.baseUrl + '/api/Search/SearchTrainingCourseUser/',
+        param,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
+      .pipe(
+        tap(trainingCourseUsers => {
+          this.searchService.setTrainingCourseUsers(trainingCourseUsers);
+        })
+      );
+  }
+
+  fetchSearchTrainingCourseBatch(param: object) {
+    return this.http
+      .post<SearchTrainingCourseBatch[]>(
+        environment.baseUrl + '/api/Search/SearchTrainingCourseBatch/',
+        param,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
+      .pipe(
+        tap(trainingCourseBatchs => {
+          this.searchService.setTrainingCourseBatchs(trainingCourseBatchs);
+        })
+      );
+  }
+
+  fetchSearchIncindent(param: object) {
+    return this.http
+      .post<SearchIncident[]>(
+        environment.baseUrl + '/api/Search/SearchIncindent/',
+        param,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        }
+      )
+      .pipe(
+        tap(incidents => {
+          this.searchService.setIncidents(incidents);
         })
       );
   }
