@@ -8,8 +8,8 @@
   </div>
 
   <div id="CatalogList">
-
     <div *ngFor="let supplier of suppliers">
+
       <div *ngIf="supplier.Name_En">
         <h4 class="CatalogHeader">{{ supplier.Name_En }}</h4><br />
         <section class="CatalogMenu-Items">
@@ -21,15 +21,14 @@
               <strong class="clearfix">{{ catalog.Name_En }}</strong>
               <span>File size: {{ catalog.SizeOfPDF }}MB </span>
 
-              <!-- ng-click="CopyToClipboard(Catalog.IDCatalog)" -->
               <!-- data-toggle="tooltip"  -->
               <img src="assets/img/CopyToClipboarad.png" class="CatalogMenu-Item-CopyToClipboard"
-                title="Copy to clipboard" />
-              <p id="LinkOfCatalogIDCatalog{{ catalog.IDCatalog }}">http://scmcenter.ir/{{ catalog.PDFUrl }}</p>
+                title="Copy to clipboard" (click)="onCopyToClipboard(catalog.PDFUrl)" />
             </div>
           </div>
         </section>
       </div>
+
     </div>
 
     <h4 class="CatalogHeader">Videos</h4>

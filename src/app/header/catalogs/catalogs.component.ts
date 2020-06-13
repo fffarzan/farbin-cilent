@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
 import { ExtensionMethodService } from '../../shared/extension-method.service';
@@ -13,6 +13,7 @@ import { Supplier } from 'src/app/shared/supplier.model';
   styleUrls: ['./catalogs.component.css']
 })
 export class CatalogsComponent implements OnInit {
+  @ViewChildren('linkOfCatalog') linksOfCatalogs: QueryList<ElementRef>;
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
@@ -29,9 +30,15 @@ export class CatalogsComponent implements OnInit {
   ngOnInit(): void {
     this.catalogs = this.catalogService.getCatalogs();
     this.suppliers = this.supplierService.getSuppliers();
-
-    console.log(this.catalogs);
-    console.log(this.suppliers);
   }
 
+  onCopyToClipboard(pdfUrl: string) {
+    const tempEl = document.createElement('input');
+    tempEl.value = 'http://scmcenter.ir/' + pdfUrl;
+    document.body.appendChild(tempEl);
+    tempEl.select();
+    document.execCommand("copy");
+    tempEl.remove();
+    // AutoClosingSuccessAlert("Url copied in clipboard", 2000);
+  }
 }
