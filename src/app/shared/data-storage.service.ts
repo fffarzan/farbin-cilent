@@ -12,7 +12,7 @@ import { CatalogsService } from '../header/catalogs/catalogs.service';
 import { Product } from './carousel/product-carousel/product.model';
 import { ProductCarouselService } from './carousel/product-carousel/product-carousel.service';
 import { SearchService } from '../header/search/search.service';
-import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident } from '../header/search/search.model';
+import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../header/search/search.model';
 
 @Injectable({
   providedIn: 'root'

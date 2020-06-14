@@ -48,12 +48,12 @@
 }
 
 .SearchModule-ClearTextSearch {
-  display: none;
+  /* display: none; */
   background-color: #2b2b2b;
   border-radius: 100%;
   position: absolute;
   cursor: pointer;
-  top: 5px;
+  top: 3px;
   right: 6px;
   /* width: 19px; */
   /* height: 19px; */
@@ -222,6 +222,10 @@
   background-color: #333;
   z-index: 10002;
   padding: 0;
+}
+
+.SearchModule-Template-open {
+  right: 0;
 }
 
 .SearchModule-Template-Inner {

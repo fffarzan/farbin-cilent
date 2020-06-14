@@ -44,6 +44,7 @@ import { CatalogPlaceholderDirective } from './shared/catalog-placeholder.direct
 import { CatalogsService } from './header/catalogs/catalogs.service';
 import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './shared/get-small-image.pipe';
+import { SearchService } from './header/search/search.service';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { GetSmallImagePipe } from './shared/get-small-image.pipe';
     FontAwesomeModule
   ],
   providers: [
-    CatalogsService
+    CatalogsService,
+    SearchService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
