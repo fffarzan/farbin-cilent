@@ -1,0 +1,14 @@
+#DarkBody {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 29999;
+}
+
+@media screen and (min-width: 768px) {
+  #DarkBody {
+    bottom: 50px;
+  }
+}

@@ -1,6 +1,11 @@
 <ng-template appCatalogPlaceholder></ng-template>
+<app-header (catalogSituation)="onToggleCatalog($event)"></app-header>
 <div id="MovableContainer" class="MovableContainer">
-  <app-header (catalogSituation)="onToggleCatalog($event)"></app-header>
-  <router-outlet></router-outlet>
-  <app-navbar></app-navbar>
+  <div class="MainSection" [style.height.px]="height">
+    <ng-template appDarkBodyPlaceholder></ng-template>
+    <div class="ViewContainer" [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
+<app-navbar (toggleDarkbody)="onToggleDarkbody($event)"></app-navbar>

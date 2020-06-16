@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { showTabMenu } from './navbar.animation';
 import { DataStorageService } from '../shared/data-storage.service';
@@ -12,6 +12,7 @@ import { DataStorageService } from '../shared/data-storage.service';
   ]
 })
 export class NavbarComponent implements OnInit {
+  @Output() toggleDarkbody = new EventEmitter<boolean>();
   toggleContactMenu: boolean = false;
   toggleProductMenu: boolean = false;
 
@@ -21,10 +22,12 @@ export class NavbarComponent implements OnInit {
 
   onToggleContactMenu() {
     this.toggleContactMenu = !this.toggleContactMenu;
+    this.toggleDarkbody.emit(true);
   }
 
   onToggleProductMenu() {
-    this.toggleProductMenu = !this.toggleProductMenu
+    this.toggleProductMenu = !this.toggleProductMenu;
+    this.toggleDarkbody.emit(true);
 
     this.dataStorageService.fetchSuppliers().subscribe();
   }

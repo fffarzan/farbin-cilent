@@ -45,6 +45,8 @@ import { CatalogsService } from './header/catalogs/catalogs.service';
 import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 import { SearchService } from './header/search/search.service';
+import { DarkBodyComponent } from './shared/dark-body/dark-body.component';
+import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { SearchService } from './header/search/search.service';
     ProductCarouselComponent,
     CatalogPlaceholderDirective,
     MobileTemplateDirective,
-    GetSmallImagePipe
+    GetSmallImagePipe,
+    DarkBodyComponent,
+    DarkBodyPlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -101,7 +105,8 @@ import { SearchService } from './header/search/search.service';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    CatalogsComponent
+    CatalogsComponent,
+    DarkBodyComponent
   ]
 })
 export class AppModule { }
