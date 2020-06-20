@@ -40,13 +40,15 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
-import { CatalogPlaceholderDirective } from './shared/catalog-placeholder.directive';
+import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
 import { CatalogsService } from './header/catalogs/catalogs.service';
 import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 import { SearchService } from './header/search/search.service';
 import { DarkBodyComponent } from './shared/dark-body/dark-body.component';
 import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-placeholder.directive';
+import { ContactMenuPlaceholderDirective } from './navbar/contact-us/contact-menu-placeholder.directive';
+import { ProductBrandsMenuPlaceholderDirective } from './navbar/product-brands/product-brands-menu-placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-place
     MobileTemplateDirective,
     GetSmallImagePipe,
     DarkBodyComponent,
-    DarkBodyPlaceholderDirective
+    DarkBodyPlaceholderDirective,
+    ContactMenuPlaceholderDirective,
+    ProductBrandsMenuPlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -106,7 +110,9 @@ import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-place
   bootstrap: [AppComponent],
   entryComponents: [
     CatalogsComponent,
-    DarkBodyComponent
+    DarkBodyComponent,
+    ContactUsComponent,
+    ProductBrandsComponent
   ]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 <ng-template appCatalogPlaceholder></ng-template>
+<ng-template appContactMenuPlaceholder></ng-template>
+<ng-template appProductBrandsMenuPlaceholder></ng-template>
 <app-header (catalogSituation)="onToggleCatalog($event)"></app-header>
 <div id="MovableContainer" class="MovableContainer">
   <div class="MainSection" [style.height.px]="height">
@@ -8,4 +10,5 @@
     </div>
   </div>
 </div>
-<app-navbar (toggleDarkbody)="onToggleDarkbody($event)"></app-navbar>
+<app-navbar (toggleDarkbody)="onToggleDarkbody($event)" (toggleContactMenu)="onToggleContactMenu($event)"
+  (toggleProductBrandsMenu)="onToggleProductBrandsMenu($event)"></app-navbar>

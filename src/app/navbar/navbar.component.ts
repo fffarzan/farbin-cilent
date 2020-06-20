@@ -13,20 +13,22 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class NavbarComponent implements OnInit {
   @Output() toggleDarkbody = new EventEmitter<boolean>();
-  toggleContactMenu: boolean = false;
-  toggleProductMenu: boolean = false;
+  @Output() toggleContactMenu = new EventEmitter<boolean>();
+  @Output() toggleProductBrandsMenu = new EventEmitter<boolean>();
+  isContactMenuOpen: boolean = false;
 
   constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void { }
 
-  onToggleContactMenu() {
-    this.toggleContactMenu = !this.toggleContactMenu;
+  onToggleContactMenu(isOpen: boolean) {
+    this.toggleContactMenu.emit(isOpen);
+    this.isContactMenuOpen = !isOpen;
     this.toggleDarkbody.emit(true);
   }
 
   onToggleProductMenu() {
-    this.toggleProductMenu = !this.toggleProductMenu;
+    this.toggleProductBrandsMenu.emit(true);
     this.toggleDarkbody.emit(true);
 
     this.dataStorageService.fetchSuppliers().subscribe();

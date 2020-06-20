@@ -1,9 +1,8 @@
 <nav>
   <ul class="FooterMenu">
-
     <!-- Contanct us button -->
     <li class="FooteMenuItem">
-      <a (click)="onToggleContactMenu()">
+      <a (click)="onToggleContactMenu(isContactMenuOpen)">
         <img class="ContactIcon ContactMenuIconIMG FooterMenuIcon" src="../../assets/img/ContactUsIcon.png"
           alt="ارتباط با فربین" />
         <div class="Navbar-Item-Details">
@@ -61,9 +60,8 @@
         </div>
       </a>
     </li>
-
   </ul>
 </nav>
 
-<app-contact-us *ngIf="toggleContactMenu" [@showTabMenu]></app-contact-us>
-<app-product-brands *ngIf="toggleProductMenu" [@showTabMenu]></app-product-brands>
+<!-- <app-contact-us *ngIf="toggleContactMenu" [@showTabMenu]></app-contact-us> -->
+<!-- <app-product-brands *ngIf="toggleProductMenu" [@showTabMenu]></app-product-brands> -->

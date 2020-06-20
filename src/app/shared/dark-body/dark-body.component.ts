@@ -21,7 +21,7 @@ export class DarkBodyComponent implements OnInit {
 
   onClose() {
     this.closeDarkbody.emit();
-    this.closeCantactMenu.emit();
-    this.closeProductMenu.emit();
+    // this.closeCantactMenu.emit();
+    // this.closeProductMenu.emit();
   }
 }
