@@ -1,36 +1,47 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { showTabMenu } from './navbar.animation';
 import { DataStorageService } from '../shared/data-storage.service';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  animations: [
-    showTabMenu
-  ]
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   @Output() toggleDarkbody = new EventEmitter<boolean>();
-  @Output() toggleContactMenu = new EventEmitter<boolean>();
-  @Output() toggleProductBrandsMenu = new EventEmitter<boolean>();
+  isDarkbodyAdded: boolean = false;
   isContactMenuOpen: boolean = false;
+  isSupplierMenuOpen: boolean = false;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(
+    private dataStorageService: DataStorageService,
+    private navbarService: NavbarService
+  ) { }
 
   ngOnInit(): void { }
 
-  onToggleContactMenu(isOpen: boolean) {
-    this.toggleContactMenu.emit(isOpen);
-    this.isContactMenuOpen = !isOpen;
-    this.toggleDarkbody.emit(true);
+  onToggleContactMenu() {
+    this.navbarService.contactMenuToggle();
+
+    if (!this.isSupplierMenuOpen) {
+      this.toggleDarkbody.emit(this.isDarkbodyAdded);
+      this.isDarkbodyAdded = !this.isDarkbodyAdded;
+    }
+    this.isContactMenuOpen = !this.isContactMenuOpen;
+    this.isSupplierMenuOpen = false;
   }
 
   onToggleProductMenu() {
-    this.toggleProductBrandsMenu.emit(true);
-    this.toggleDarkbody.emit(true);
+    this.navbarService.supplierMenuToggle();
 
+    if (!this.isContactMenuOpen) {
+      this.toggleDarkbody.emit(this.isDarkbodyAdded);
+      this.isDarkbodyAdded = !this.isDarkbodyAdded;
+    }
+    this.isSupplierMenuOpen = !this.isSupplierMenuOpen;
+    this.isContactMenuOpen = false;
+    
     this.dataStorageService.fetchSuppliers().subscribe();
   }
 }

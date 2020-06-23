@@ -9,14 +9,17 @@ export const switchTabFading = trigger('switchTabFading', [
   ])
 ]);
 
-export const showTabMenu = trigger('showTabMenu', [
+export const toggleMenu = trigger('toggleMenu', [
+  state('in', style({
+    'bottom': '-378px'
+  })),
   transition(':enter', [
     style({
       'bottom': '-378px'
     }),
     animate(300, style({
       'bottom': '60px'
-    }),)
+    }))
   ]),
   transition(':leave', [
     style({

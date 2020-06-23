@@ -1,3 +1,9 @@
+:host {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}
+
 .PopoverProductMenu {
   /* top: 938px; */
   /* width: 100%; */

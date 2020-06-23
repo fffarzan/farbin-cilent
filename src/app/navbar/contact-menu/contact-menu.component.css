@@ -1,5 +1,11 @@
 /* Mobile */
 
+:host {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}
+
 @media screen and (max-width: 767px) {
   .TabBtn {
     color: #ffb500;

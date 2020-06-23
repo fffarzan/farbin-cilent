@@ -30,8 +30,8 @@ import { IncidentArchiveComponent } from './about-us/news-and-events/incident-ar
 import { IncidentComponent } from './about-us/news-and-events/incident-archive/incident/incident.component';
 import { SearchComponent } from './header/search/search.component';
 import { CatalogsComponent } from './header/catalogs/catalogs.component';
-import { ProductBrandsComponent } from './navbar/product-brands/product-brands.component';
-import { ContactUsComponent } from './navbar/contact-us/contact-us.component';
+import { SupplierMenuComponent } from './navbar/supplier-menu/supplier-menu.component';
+import { ContactMenuComponent } from './navbar/contact-menu/contact-menu.component';
 import { CompareComponent } from './compare/compare.component';
 import { CompareDetailComponent } from './compare/compare-detail/compare-detail.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
@@ -47,8 +47,9 @@ import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 import { SearchService } from './header/search/search.service';
 import { DarkBodyComponent } from './shared/dark-body/dark-body.component';
 import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-placeholder.directive';
-import { ContactMenuPlaceholderDirective } from './navbar/contact-us/contact-menu-placeholder.directive';
-import { ProductBrandsMenuPlaceholderDirective } from './navbar/product-brands/product-brands-menu-placeholder.directive';
+import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
+import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
+import { NavbarService } from './navbar/navbar.service';
 
 @NgModule({
   declarations: [
@@ -77,8 +78,8 @@ import { ProductBrandsMenuPlaceholderDirective } from './navbar/product-brands/p
     IncidentComponent,
     SearchComponent,
     CatalogsComponent,
-    ProductBrandsComponent,
-    ContactUsComponent,
+    SupplierMenuComponent,
+    ContactMenuComponent,
     CompareComponent,
     CompareDetailComponent,
     UnsubscribeComponent,
@@ -91,7 +92,7 @@ import { ProductBrandsMenuPlaceholderDirective } from './navbar/product-brands/p
     DarkBodyComponent,
     DarkBodyPlaceholderDirective,
     ContactMenuPlaceholderDirective,
-    ProductBrandsMenuPlaceholderDirective
+    SupplierMenuPlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -105,14 +106,15 @@ import { ProductBrandsMenuPlaceholderDirective } from './navbar/product-brands/p
   ],
   providers: [
     CatalogsService,
-    SearchService
+    SearchService,
+    NavbarService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     CatalogsComponent,
     DarkBodyComponent,
-    ContactUsComponent,
-    ProductBrandsComponent
+    ContactMenuComponent,
+    SupplierMenuComponent
   ]
 })
 export class AppModule { }

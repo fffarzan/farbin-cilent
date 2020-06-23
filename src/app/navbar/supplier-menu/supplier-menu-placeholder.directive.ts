@@ -1,8 +1,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appProductBrandsMenuPlaceholder]'
+  selector: '[appSupplierMenuPlaceholder]'
 })
-export class ProductBrandsMenuPlaceholderDirective {
+export class SupplierMenuPlaceholderDirective {
   constructor(public viewContainerRef: ViewContainerRef) { }
 }

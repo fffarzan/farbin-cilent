@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
@@ -6,10 +6,11 @@ import { CatalogsComponent } from './header/catalogs/catalogs.component';
 import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-placeholder.directive';
 import { DarkBodyComponent } from './shared/dark-body/dark-body.component';
 import { init } from './app.animation';
-import { ContactMenuPlaceholderDirective } from './navbar/contact-us/contact-menu-placeholder.directive';
-import { ProductBrandsMenuPlaceholderDirective } from './navbar/product-brands/product-brands-menu-placeholder.directive';
-import { ContactUsComponent } from './navbar/contact-us/contact-us.component';
-import { ProductBrandsComponent } from './navbar/product-brands/product-brands.component';
+import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
+import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
+import { ContactMenuComponent } from './navbar/contact-menu/contact-menu.component';
+import { SupplierMenuComponent } from './navbar/supplier-menu/supplier-menu.component';
+import { NavbarService } from './navbar/navbar.service';
 
 @Component({
   selector: 'app-root',
@@ -23,49 +24,39 @@ export class AppComponent implements OnDestroy {
   @ViewChild(CatalogPlaceholderDirective, { static: false }) catalogHost: CatalogPlaceholderDirective;
   @ViewChild(DarkBodyPlaceholderDirective, { static: false }) darkbodyHost: DarkBodyPlaceholderDirective;
   @ViewChild(ContactMenuPlaceholderDirective, { static: false }) contactMenuHost: ContactMenuPlaceholderDirective;
-  @ViewChild(ProductBrandsMenuPlaceholderDirective, { static: false }) productBrandsMenuHost: ProductBrandsMenuPlaceholderDirective;
-  private closeSub: Subscription;
-  private closeDarkbodySub : Subscription;
-  private closeContactMenuSub: Subscription;
-  private closeProductBrandsMenuSub : Subscription;
+  @ViewChild(SupplierMenuPlaceholderDirective, { static: false }) supplierMenuHost: SupplierMenuPlaceholderDirective;
+  private closeCatalogSub: Subscription;
+  private closeDarkbodySub: Subscription;
+  closeContactMenuSub: Subscription;
+  closeSupplierMenuSub: Subscription;
   isDarkbodyShown: boolean = false;
   height: number = window.innerHeight - 75;
 
-  constructor(private componentFatoryResolver: ComponentFactoryResolver) { }
+  constructor(
+    private componentFatoryResolver: ComponentFactoryResolver,
+    navbarService: NavbarService
+  ) {
+    this.closeContactMenuSub = navbarService.contactMenuBtnClickedObs.subscribe(isOpen => {
+      this.showContactMenu(isOpen);
+    });
+    this.closeSupplierMenuSub = navbarService.supplierMenuBtnClickedObs.subscribe(isOpen => {
+      this.showSupplierMenu(isOpen);
+    });
+  }
 
   onToggleCatalog(isOpen: boolean) {
-    if(isOpen)
-      this.showCatalog();
+    if (isOpen) this.showCatalog();
   }
 
   onToggleDarkbody(isOpen: boolean) {
     this.isDarkbodyShown = !this.isDarkbodyShown;
-
-    if(isOpen)
-      this.showDarkbody();
-  }
-
-  onToggleContactMenu(isOpen: boolean) {
-    // if(!isOpen)
-      this.showContactMenu(isOpen);
-  }
-
-  onToggleProductBrandsMenu(isOpen: boolean) {
-    
-
-    if(isOpen)
-      this.showProductBrandsMenu();
+    this.showDarkbody(isOpen);
   }
 
   ngOnDestroy() {
-    // if (this.closeSub)
-    //   this.closeSub.unsubscribe();
-
-    if (this.closeDarkbodySub)
-      this.closeDarkbodySub.unsubscribe();
-
-    if(this.closeContactMenuSub)
-      this.closeContactMenuSub.unsubscribe();
+    if (this.closeCatalogSub) this.closeCatalogSub.unsubscribe();
+    if (this.closeContactMenuSub) this.closeContactMenuSub.unsubscribe();
+    if (this.closeSupplierMenuSub) this.closeSupplierMenuSub.unsubscribe();
   }
 
   private showCatalog() {
@@ -75,42 +66,45 @@ export class AppComponent implements OnDestroy {
     hostViewContainerRef.clear();
 
     const componentRef = hostViewContainerRef.createComponent(catalogCmpFactory);
-    this.closeSub = componentRef.instance.close.subscribe(() => {
-      this.closeSub.unsubscribe();
+    this.closeCatalogSub = componentRef.instance.close.subscribe(() => {
+      this.closeCatalogSub.unsubscribe();
       hostViewContainerRef.clear();
     })
   }
 
-  private showDarkbody() {
+  private showDarkbody(isOpen: boolean) {
     const darkbodyCmpFactory = this.componentFatoryResolver.resolveComponentFactory(DarkBodyComponent);
     const hostViewContainerRef = this.darkbodyHost.viewContainerRef;
     hostViewContainerRef.clear();
 
-    const componentRef = hostViewContainerRef.createComponent(darkbodyCmpFactory);
-    this.closeDarkbodySub = componentRef.instance.closeDarkbody.subscribe(() => {
+    const cmpRef = hostViewContainerRef.createComponent(darkbodyCmpFactory);
+
+    if (isOpen) hostViewContainerRef.clear();
+
+    this.closeDarkbodySub = cmpRef.instance.closeDarkbody.subscribe(() => {
       this.closeDarkbodySub.unsubscribe();
+      this.isDarkbodyShown = !this.isDarkbodyShown;
       hostViewContainerRef.clear();
-    })
+    });
   }
 
   private showContactMenu(isOpen: boolean) {
-    const contcatMenuCmpFactory = this.componentFatoryResolver.resolveComponentFactory(ContactUsComponent);
+    const contactMenuCmpFactory = this.componentFatoryResolver.resolveComponentFactory(ContactMenuComponent);
     const hostViewContainerRef = this.contactMenuHost.viewContainerRef;
     hostViewContainerRef.clear();
 
-    const componentRef = hostViewContainerRef.createComponent(contcatMenuCmpFactory);
-    if (isOpen) {
-      // this.closeContactMenuSub.unsubscribe();
-      hostViewContainerRef.clear();
-    }
+    hostViewContainerRef.createComponent(contactMenuCmpFactory);
+
+    if (isOpen) hostViewContainerRef.clear();
   }
 
-  private showProductBrandsMenu() {
-    const productBrandsMenuCmpFactory = this.componentFatoryResolver.resolveComponentFactory(ProductBrandsComponent);
-    const hostViewContainerRef = this.productBrandsMenuHost.viewContainerRef;
+  private showSupplierMenu(isOpen: boolean) {
+    const supplierMenuCmpFactory = this.componentFatoryResolver.resolveComponentFactory(SupplierMenuComponent);
+    const hostViewContainerRef = this.supplierMenuHost.viewContainerRef;
     hostViewContainerRef.clear();
 
-    const componentRef = hostViewContainerRef.createComponent(productBrandsMenuCmpFactory);
-    // this.closeProductBrandsMenuSub = componentRef.instance
+    hostViewContainerRef.createComponent(supplierMenuCmpFactory);
+
+    if (isOpen) hostViewContainerRef.clear();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { ExtensionMethodService } from '../extension-method.service';
+import { NavbarService } from 'src/app/navbar/navbar.service';
 
 @Component({
   selector: 'app-dark-body',
@@ -8,20 +9,20 @@ import { ExtensionMethodService } from '../extension-method.service';
   styleUrls: ['./dark-body.component.css']
 })
 export class DarkBodyComponent implements OnInit {
-  @Output() closeDarkbody = new EventEmitter<void>();
-  // @Output() closeCantactMenu = new EventEmitter<void>();
-  // @Output() closeProductMenu = new EventEmitter<void>();
+  @Output() closeDarkbody = new EventEmitter<boolean>();
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
 
-  constructor(private extensionMethodService: ExtensionMethodService) { }
+  constructor(
+    private extensionMethodService: ExtensionMethodService,
+    private navbarService: NavbarService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onClose() {
-    this.closeDarkbody.emit();
-    // this.closeCantactMenu.emit();
-    // this.closeProductMenu.emit();
+    this.closeDarkbody.emit(false);
+    this.navbarService.closeAll();
   }
 }
