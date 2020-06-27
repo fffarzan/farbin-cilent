@@ -21,7 +21,7 @@
     <img class="SearchModule-ImgLoaderSearch" src="assets/img/loader1.gif"
       alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
 
-    <section class="SearchModule-Template" [ngClass]="{'SearchModule-Template-open': isSearchTemplateOpen}">
+    <section class="SearchModule-Template" [ngClass]="{'SearchModule-Template-open': isSearchTemplateOpen}" [@searchTemplateState]="searchTemplateState">
 
       <div class="SearchModule-MobileSearchList" #mobileSearchList>
         <!-- onclick="ShowSearchResultTempalte('Product')" -->

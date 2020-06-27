@@ -1,10 +1,8 @@
-import { Component, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ComponentFactoryResolver, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
 import { CatalogsComponent } from './header/catalogs/catalogs.component';
-import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-placeholder.directive';
-import { DarkBodyComponent } from './shared/dark-body/dark-body.component';
 import { init } from './app.animation';
 import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
 import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
@@ -22,25 +20,24 @@ import { NavbarService } from './navbar/navbar.service';
 })
 export class AppComponent implements OnDestroy {
   @ViewChild(CatalogPlaceholderDirective, { static: false }) catalogHost: CatalogPlaceholderDirective;
-  @ViewChild(DarkBodyPlaceholderDirective, { static: false }) darkbodyHost: DarkBodyPlaceholderDirective;
   @ViewChild(ContactMenuPlaceholderDirective, { static: false }) contactMenuHost: ContactMenuPlaceholderDirective;
   @ViewChild(SupplierMenuPlaceholderDirective, { static: false }) supplierMenuHost: SupplierMenuPlaceholderDirective;
   private closeCatalogSub: Subscription;
-  private closeDarkbodySub: Subscription;
   closeContactMenuSub: Subscription;
   closeSupplierMenuSub: Subscription;
   isDarkbodyShown: boolean = false;
+  darkbodyRemoved: boolean = false;
   height: number = window.innerHeight - 75;
 
   constructor(
     private componentFatoryResolver: ComponentFactoryResolver,
-    navbarService: NavbarService
+    private navbarService: NavbarService
   ) {
     this.closeContactMenuSub = navbarService.contactMenuBtnClickedObs.subscribe(isOpen => {
-      this.showContactMenu(isOpen);
+      this.toggleContactMenu(isOpen);
     });
     this.closeSupplierMenuSub = navbarService.supplierMenuBtnClickedObs.subscribe(isOpen => {
-      this.showSupplierMenu(isOpen);
+      this.toggleSupplierMenu(isOpen);
     });
   }
 
@@ -48,9 +45,13 @@ export class AppComponent implements OnDestroy {
     if (isOpen) this.showCatalog();
   }
 
-  onToggleDarkbody(isOpen: boolean) {
-    this.isDarkbodyShown = !this.isDarkbodyShown;
-    this.showDarkbody(isOpen);
+  onCloseDarkbody() {
+    this.toggleContactMenu(true);
+    this.toggleSupplierMenu(true);
+    this.isDarkbodyShown = false;
+
+    // forcely close all
+    this.darkbodyRemoved = true;
   }
 
   ngOnDestroy() {
@@ -72,39 +73,45 @@ export class AppComponent implements OnDestroy {
     })
   }
 
-  private showDarkbody(isOpen: boolean) {
-    const darkbodyCmpFactory = this.componentFatoryResolver.resolveComponentFactory(DarkBodyComponent);
-    const hostViewContainerRef = this.darkbodyHost.viewContainerRef;
-    hostViewContainerRef.clear();
-
-    const cmpRef = hostViewContainerRef.createComponent(darkbodyCmpFactory);
-
-    if (isOpen) hostViewContainerRef.clear();
-
-    this.closeDarkbodySub = cmpRef.instance.closeDarkbody.subscribe(() => {
-      this.closeDarkbodySub.unsubscribe();
-      this.isDarkbodyShown = !this.isDarkbodyShown;
-      hostViewContainerRef.clear();
-    });
-  }
-
-  private showContactMenu(isOpen: boolean) {
+  private toggleContactMenu(isOpen: boolean) {
     const contactMenuCmpFactory = this.componentFatoryResolver.resolveComponentFactory(ContactMenuComponent);
     const hostViewContainerRef = this.contactMenuHost.viewContainerRef;
-    hostViewContainerRef.clear();
 
-    hostViewContainerRef.createComponent(contactMenuCmpFactory);
+    if (!isOpen) {
+      // add darkbody to the screen
+      this.isDarkbodyShown = true;
 
-    if (isOpen) hostViewContainerRef.clear();
+      // trun darkbodyRemoved to default
+      this.darkbodyRemoved = false;
+
+      hostViewContainerRef.clear();
+      hostViewContainerRef.createComponent(contactMenuCmpFactory);
+    }
+    // close the menu if it is open
+    else {
+      hostViewContainerRef.clear();
+      this.isDarkbodyShown = false;
+    }
   }
 
-  private showSupplierMenu(isOpen: boolean) {
+  private toggleSupplierMenu(isOpen: boolean) {
     const supplierMenuCmpFactory = this.componentFatoryResolver.resolveComponentFactory(SupplierMenuComponent);
     const hostViewContainerRef = this.supplierMenuHost.viewContainerRef;
-    hostViewContainerRef.clear();
 
-    hostViewContainerRef.createComponent(supplierMenuCmpFactory);
+    if (!isOpen) {
+      // add darkbody to the screen
+      this.isDarkbodyShown = true;
 
-    if (isOpen) hostViewContainerRef.clear();
+      // trun darkbodyRemoved to default
+      this.darkbodyRemoved = false;
+
+      hostViewContainerRef.clear();
+      hostViewContainerRef.createComponent(supplierMenuCmpFactory);
+    }
+    // close the menu if it is open
+    else {
+      hostViewContainerRef.clear();
+      this.isDarkbodyShown = false;
+    }
   }
 }

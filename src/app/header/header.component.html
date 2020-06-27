@@ -16,7 +16,7 @@
   <!-- onclick="ToggleSideUserMenu()" -->
   <!-- ng-if="Login" -->
   <!-- ng-click="ToggleSideMenu()" -->
-  <!-- <a id="UserMenuButton" class="CatalogMenuButton"  >
+  <!-- <a id="UserMenuButton" class="CatalogMenuButton">
     <img id="UserMenuIcon" src="assets/img/eq.png" class="CursorPointer btnMenu EqIcon"
       alt="نوآوران شبکه فربین - ورود به بخش کاربری" />
   </a> -->
@@ -38,5 +38,5 @@
     <img src="assets/img/header2.png" id="OpenCatalogMenu" class="CursorPointer" alt="نوآوران شبکه فربین - لوگو" />
   </a>
 
-  <app-search class="SearchModule-Container"></app-search>
+  <app-search class="SearchModule-Container" (openSearchMenuAnimations)="onOpenSearchMenuAnimations()"></app-search>
 </header>

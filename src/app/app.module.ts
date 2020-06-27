@@ -45,8 +45,6 @@ import { CatalogsService } from './header/catalogs/catalogs.service';
 import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 import { SearchService } from './header/search/search.service';
-import { DarkBodyComponent } from './shared/dark-body/dark-body.component';
-import { DarkBodyPlaceholderDirective } from './shared/dark-body/dark-body-placeholder.directive';
 import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
 import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
 import { NavbarService } from './navbar/navbar.service';
@@ -89,8 +87,6 @@ import { NavbarService } from './navbar/navbar.service';
     CatalogPlaceholderDirective,
     MobileTemplateDirective,
     GetSmallImagePipe,
-    DarkBodyComponent,
-    DarkBodyPlaceholderDirective,
     ContactMenuPlaceholderDirective,
     SupplierMenuPlaceholderDirective
   ],
@@ -112,7 +108,6 @@ import { NavbarService } from './navbar/navbar.service';
   bootstrap: [AppComponent],
   entryComponents: [
     CatalogsComponent,
-    DarkBodyComponent,
     ContactMenuComponent,
     SupplierMenuComponent
   ]

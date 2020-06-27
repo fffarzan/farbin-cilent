@@ -3,7 +3,8 @@
 
 <div id="MovableContainer" class="MovableContainer">
   <div class="MainSection" [style.height.px]="height">
-    <ng-template appDarkBodyPlaceholder></ng-template>
+    <!-- <ng-template appDarkBodyPlaceholder></ng-template> -->
+    <div id="DarkBody" *ngIf="isDarkbodyShown" (click)="onCloseDarkbody()"></div>
 
     <div class="ViewContainer" [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
       <router-outlet></router-outlet>
@@ -14,4 +15,4 @@
   </div>
 </div>
 
-<app-navbar (toggleDarkbody)="onToggleDarkbody($event)"></app-navbar>
+<app-navbar [darkbodyRemoved]="darkbodyRemoved"></app-navbar>

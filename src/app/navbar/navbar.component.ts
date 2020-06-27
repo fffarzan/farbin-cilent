@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { DataStorageService } from '../shared/data-storage.service';
 import { NavbarService } from './navbar.service';
@@ -9,10 +9,9 @@ import { NavbarService } from './navbar.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  @Output() toggleDarkbody = new EventEmitter<boolean>();
-  isDarkbodyAdded: boolean = false;
   isContactMenuOpen: boolean = false;
   isSupplierMenuOpen: boolean = false;
+  @Input() darkbodyRemoved: boolean;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -21,24 +20,21 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onToggleContactMenu() {
-    this.navbarService.contactMenuToggle();
+  onToggleContactMenu(isOpen: boolean) {
+    if (this.darkbodyRemoved) isOpen = true;
 
-    if (!this.isSupplierMenuOpen) {
-      this.toggleDarkbody.emit(this.isDarkbodyAdded);
-      this.isDarkbodyAdded = !this.isDarkbodyAdded;
-    }
+    this.navbarService.contactMenuToggle(isOpen);
+
     this.isContactMenuOpen = !this.isContactMenuOpen;
     this.isSupplierMenuOpen = false;
+    console.log(this.darkbodyRemoved)
   }
 
-  onToggleProductMenu() {
-    this.navbarService.supplierMenuToggle();
+  onToggleProductMenu(isOpen: boolean) {
+    if (this.darkbodyRemoved) isOpen = true;
+    
+    this.navbarService.supplierMenuToggle(isOpen);
 
-    if (!this.isContactMenuOpen) {
-      this.toggleDarkbody.emit(this.isDarkbodyAdded);
-      this.isDarkbodyAdded = !this.isDarkbodyAdded;
-    }
     this.isSupplierMenuOpen = !this.isSupplierMenuOpen;
     this.isContactMenuOpen = false;
     

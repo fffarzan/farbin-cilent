@@ -19,4 +19,8 @@ export class HeaderComponent implements OnInit {
   openCatalog() {
     this.catalogSituation.emit(true);
   }
+
+  onOpenSearchMenuAnimations() {
+    
+  }
 }
