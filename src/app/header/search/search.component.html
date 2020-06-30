@@ -1,15 +1,5 @@
 <article class="SearchModule-Wrapper">
-
-  <!-- <div id="SearchBackWard1" class="SearchModule-Backward"> -->
-    <!-- onclick="CloseSearchMenuBackward1()" -->
-    <!-- ng-click="ClearTextSearch()" -->
-    <!-- <img src="assets/img/backward.png" alt="جستجو - نوآوران شبکه فربین - Farbin Co" /> -->
-  <!-- </div> -->
-  <!-- onclick="CloseSearchMenuBackward2()" -->
-  <!-- <div id="SearchBackWard2" class="SearchModule-Backward"> -->
-    <!-- <img src="assets/img/backward.png" alt="جستجو - نوآوران شبکه فربین - Farbin Co" /> -->
-  <!-- </div> -->
-
+  
   <div class="SearchModule-Inner">
 
     <i class="fa fa-search SearchModule-Icon"></i>
@@ -23,7 +13,7 @@
 
     <section class="SearchModule-Template" [ngClass]="{'SearchModule-Template-open': isSearchTemplateOpen}" [@searchTemplateState]="searchTemplateState">
 
-      <div class="SearchModule-MobileSearchList" #mobileSearchList>
+      <div class="SearchModule-MobileSearchList" *ngIf="isMobileSearchListShown">
         <!-- onclick="ShowSearchResultTempalte('Product')" -->
         <section class="SearchModule-MobileSearchList-Item">
           <div class="SearchModule-MobileSearchList-Title">

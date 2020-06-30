@@ -1,6 +1,6 @@
 <header class="SideMenu">
   <!-- Open catalog menu button -->
-  <a class="CatalogMenuButton">
+  <a class="CatalogMenuButton" *ngIf="!hideIconsWhenSearchOpen">
     <img id="OpenCatalogMenu" src="assets/img/Catalog.png" class="CursorPointer btnMenu"
       alt="نوآوران شبکه فربین - کاتالوگها" (click)="openCatalog()" />
   </a>
@@ -8,7 +8,7 @@
   <!-- SignIn button -->
   <!-- href="/SignIn"  -->
   <!-- ng-if="!Login" -->
-  <a id="SignInIcon" class="CatalogMenuButton" href="#">
+  <a id="SignInIcon" class="CatalogMenuButton" href="#" *ngIf="!hideIconsWhenSearchOpen">
     <img src="assets/img/UserIcon.png" class="CursorPointer btnMenu" alt="نوآوران شبکه فربین - ورود به بخش کاربری" />
   </a>
 
@@ -23,7 +23,7 @@
 
   <!-- Compare button -->
   <!-- href="/Compare" -->
-  <a class="CatalogMenuButton" href="#">
+  <a class="CatalogMenuButton" href="#" *ngIf="!hideIconsWhenSearchOpen">
     <img src="assets/img/Compare.png" class="CursorPointer btnMenu imgCompareTopButton"
       alt="نوآوران شبکه فربین - مقایسه محصولات" />
     <!-- <h3 class="ComareCount" ng-show="CompareList.length">{{CompareList.length}}</h3> -->
@@ -33,10 +33,21 @@
   <!-- Logo in header -->
   <!-- href="/Default" -->
   <!-- onclick="ClickDarkBody()" -->
-  <a href="#" class="LogoInHeader">
+  <a href="#" class="LogoInHeader" *ngIf="!hideIconsWhenSearchOpen">
     <!-- onclick="UnBlueFooterIcons()" -->
     <img src="assets/img/header2.png" id="OpenCatalogMenu" class="CursorPointer" alt="نوآوران شبکه فربین - لوگو" />
   </a>
 
-  <app-search class="SearchModule-Container" (openSearchMenuAnimations)="onOpenSearchMenuAnimations()"></app-search>
+  <!-- onclick="CloseSearchMenuBackward1()" -->
+  <!-- ng-click="ClearTextSearch()" -->
+  <div id="SearchBackWard1" class="SearchModule-Backward" *ngIf="hideIconsWhenSearchOpen" (click)="onCloseSearchMenu()">
+    <img src="assets/img/backward.png" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+  </div>
+  <!-- onclick="CloseSearchMenuBackward2()" -->
+  <!-- <div id="SearchBackWard2" class="SearchModule-Backward">
+    <img src="assets/img/backward.png" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+  </div> -->
+
+  <app-search class="SearchModule-Container" (hideOtherIcons)="onHideOtherIcons()" [searchClosing]="closeSearch">
+  </app-search>
 </header>

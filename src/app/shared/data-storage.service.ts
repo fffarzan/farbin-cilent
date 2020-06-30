@@ -24,7 +24,7 @@ export class DataStorageService {
     private supplierService: SupplierService,
     private catalogService: CatalogsService,
     private productCarouselService: ProductCarouselService,
-    private searchService: SearchService,
+    private searchService: SearchService
   ) { }
 
   fetchBanners() {
@@ -174,7 +174,7 @@ export class DataStorageService {
   fetchSearchIncindent(param: object) {
     return this.http
       .post<SearchIncident[]>(
-        environment.baseUrl + '/api/Search/SearchIncindent/',
+        environment.baseUrl + '/api/Search/SearchIncindet/',
         param,
         {
           headers: new HttpHeaders({ 'Content-Type': 'application/json' })

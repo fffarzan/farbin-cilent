@@ -3,7 +3,7 @@
 
 <div id="MovableContainer" class="MovableContainer">
   <div class="MainSection" [style.height.px]="height">
-    <!-- <ng-template appDarkBodyPlaceholder></ng-template> -->
+    
     <div id="DarkBody" *ngIf="isDarkbodyShown" (click)="onCloseDarkbody()"></div>
 
     <div class="ViewContainer" [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">

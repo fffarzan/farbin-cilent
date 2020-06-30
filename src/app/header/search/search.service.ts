@@ -19,12 +19,20 @@ export class SearchService {
     return this.defineDetailProducts.slice();
   }
 
+  getDefineDetailProductsLength() {
+    return this.defineDetailProducts.length;
+  }
+
   setIncidents(incidents: SearchIncident[]) {
     this.incidents = incidents;
   }
 
   getIncidents() {
     return this.incidents.slice();
+  }
+
+  getIncidentsLength() {
+    return this.incidents.length;
   }
 
   setTrainingCourses(trainingCourses: SearchTrainingCourse[]) {
@@ -35,12 +43,20 @@ export class SearchService {
     return this.trainingCourses.slice();
   }
 
+  getTrainingCoursesLength() {
+    return this.trainingCourses.length;
+  }
+
   setContents(contents: SearchContent[]) {
     this.contents = contents;
   }
 
   getContents() {
     return this.contents.slice();
+  }
+
+  getContentsLength() {
+    return this.contents.length;
   }
 
   setTrainingCourseBatchs(trainingCourseBatches: SearchTrainingCourseBatch[]) {
@@ -51,11 +67,19 @@ export class SearchService {
     return this.trainingCourseBatches.slice();
   }
 
+  getTrainingCourseBatchsLength() {
+    return this.trainingCourseBatches.length;
+  }
+
   setTrainingCourseUsers(trainingCourseUsers: SearchTrainingCourseUser[]) {
     this.trainingCourseUsers = trainingCourseUsers;
   }
 
   getTrainingCourseUsers() {
     return this.trainingCourseUsers.slice();
+  }
+
+  getTrainingCourseUsersLength() {
+    return this.trainingCourseUsers.length;
   }
 }

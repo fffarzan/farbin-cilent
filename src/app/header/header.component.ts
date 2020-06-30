@@ -9,6 +9,8 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() catalogSituation = new EventEmitter<boolean>();
+  closeSearch: boolean = false;
+  hideIconsWhenSearchOpen: boolean = false;
 
   constructor(private dataStorageService: DataStorageService) { }
 
@@ -20,7 +22,13 @@ export class HeaderComponent implements OnInit {
     this.catalogSituation.emit(true);
   }
 
-  onOpenSearchMenuAnimations() {
-    
+  onHideOtherIcons() {
+    this.hideIconsWhenSearchOpen = true;
+    this.closeSearch = false;
+  }
+
+  onCloseSearchMenu() {
+    this.hideIconsWhenSearchOpen = false;
+    this.closeSearch = true;
   }
 }
