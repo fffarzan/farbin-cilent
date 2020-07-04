@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
 
     this.isContactMenuOpen = !this.isContactMenuOpen;
     this.isSupplierMenuOpen = false;
-    console.log(this.darkbodyRemoved)
   }
 
   onToggleProductMenu(isOpen: boolean) {
