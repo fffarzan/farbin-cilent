@@ -22,12 +22,6 @@ import { CourseAttendanceComponent } from './training-category/course-held/cours
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { MasterProductComponent } from './product-category/master-product/master-product.component';
 import { DefineDetailProductComponent } from './product-category/master-product/define-detail-product/define-detail-product.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { NewsAndEventsComponent } from './about-us/news-and-events/news-and-events.component';
-import { NewsLetterArchiveComponent } from './about-us/news-and-events/news-letter-archive/news-letter-archive.component';
-import { NewsLetterComponent } from './about-us/news-and-events/news-letter-archive/news-letter/news-letter.component';
-import { IncidentArchiveComponent } from './about-us/news-and-events/incident-archive/incident-archive.component';
-import { IncidentComponent } from './about-us/news-and-events/incident-archive/incident/incident.component';
 import { SearchComponent } from './header/search/search.component';
 import { CatalogsComponent } from './header/catalogs/catalogs.component';
 import { SupplierMenuComponent } from './navbar/supplier-menu/supplier-menu.component';
@@ -36,9 +30,7 @@ import { CompareComponent } from './compare/compare.component';
 import { CompareDetailComponent } from './compare/compare-detail/compare-detail.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { IncidentRegisterComponent } from './auth/incident-register/incident-register.component';
-import { OwlModule } from 'ngx-owl-carousel';
 import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
 import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
 import { CatalogsService } from './header/catalogs/catalogs.service';
@@ -48,6 +40,9 @@ import { SearchService } from './header/search/search.service';
 import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
 import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
 import { NavbarService } from './navbar/navbar.service';
+
+import { OwlModule } from 'ngx-owl-carousel';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -68,12 +63,6 @@ import { NavbarService } from './navbar/navbar.service';
     ProductCategoryComponent,
     MasterProductComponent,
     DefineDetailProductComponent,
-    AboutUsComponent,
-    NewsAndEventsComponent,
-    NewsLetterArchiveComponent,
-    NewsLetterComponent,
-    IncidentArchiveComponent,
-    IncidentComponent,
     SearchComponent,
     CatalogsComponent,
     SupplierMenuComponent,

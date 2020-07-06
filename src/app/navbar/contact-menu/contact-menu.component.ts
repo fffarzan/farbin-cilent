@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { switchTabFading, toggleMenu } from '../navbar.animation';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'app-contact-menu',
@@ -15,12 +16,16 @@ import { switchTabFading, toggleMenu } from '../navbar.animation';
 export class ContactMenuComponent implements OnInit {
   switchState: string = 'contact';
 
-  constructor() { }
+  constructor(private navbarService: NavbarService) { }
 
   ngOnInit(): void {
   }
 
   onSwitchTab(switchState: string) {
     this.switchState = switchState;
+  }
+
+  onCloseContactMenu() {
+    this.navbarService.contactMenuToggle(false);
   }
 }

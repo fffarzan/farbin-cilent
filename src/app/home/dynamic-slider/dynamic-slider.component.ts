@@ -41,8 +41,6 @@ export class DynamicSliderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchBanners().subscribe();
-
-    this.banners = this.sliderService.getBanners();
+    this.dataStorageService.fetchBanners().subscribe(() => this.banners = this.sliderService.getBanners());
   }
 }

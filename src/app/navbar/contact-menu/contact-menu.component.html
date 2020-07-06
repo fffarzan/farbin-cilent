@@ -68,11 +68,14 @@
     <!-- about -->
     <section *ngIf="switchState === 'about'" [@switchTabFading] class="ContainerAboutTab TabContainer">
       <div class="AboutInContact clearfix">
-        <a href="/AboutUsCategory" onclick="ClickDarkBody()">
+        <!-- onclick="ClickDarkBody()" -->
+        <a [routerLink]="['/about-us']" (click)="onCloseContactMenu()">
           <h3 class="AboutItem">درباره فربین</h3>
         </a>
+        <!-- href="/Form/1" -->
+        <!-- onclick="ClickDarkBody()" -->
         <div class="clearfix"></div>
-        <a href="/Form/1" onclick="ClickDarkBody()">
+        <a>
           <h3 class="AboutItem">فرم ثبت نام الکامپ</h3>
         </a>
       </div>
