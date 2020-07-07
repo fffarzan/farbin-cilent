@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Catalog } from './catalog.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CatalogsService {
   private catalogs: Catalog[] = [];
 

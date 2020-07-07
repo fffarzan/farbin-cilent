@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { SearchDefineDetail, SearchIncident, SearchTrainingCourse, SearchContent, SearchTrainingCourseBatch, SearchTrainingCourseUser } from './search.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SearchService {
   private defineDetailProducts: SearchDefineDetail[] = [];
   private incidents: SearchIncident[] = [];

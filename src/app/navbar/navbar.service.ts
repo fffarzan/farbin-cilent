@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NavbarService {
   private contactMenuBtnClicked = new Subject<boolean>();
   private suppllierMenuBtnClicked = new Subject<boolean>();
