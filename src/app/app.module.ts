@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -31,18 +32,15 @@ import { CompareDetailComponent } from './compare/compare-detail/compare-detail.
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { IncidentRegisterComponent } from './auth/incident-register/incident-register.component';
 import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.component';
-import { ProductCarouselComponent } from './shared/carousel/product-carousel/product-carousel.component';
 import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
 import { CatalogsService } from './header/catalogs/catalogs.service';
-import { MobileTemplateDirective } from './shared/carousel/mobile-template.directive';
-import { GetSmallImagePipe } from './shared/get-small-image.pipe';
 import { SearchService } from './header/search/search.service';
 import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
 import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
 import { NavbarService } from './navbar/navbar.service';
 
-import { OwlModule } from 'ngx-owl-carousel';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarouselModule } from 'ngx-owl-carousel-o'
 
 @NgModule({
   declarations: [
@@ -72,10 +70,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     UnsubscribeComponent,
     IncidentRegisterComponent,
     DynamicSliderComponent,
-    ProductCarouselComponent,
     CatalogPlaceholderDirective,
-    MobileTemplateDirective,
-    GetSmallImagePipe,
     ContactMenuPlaceholderDirective,
     SupplierMenuPlaceholderDirective
   ],
@@ -86,8 +81,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    OwlModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    CarouselModule,
+    SharedModule
   ],
   providers: [
     CatalogsService,

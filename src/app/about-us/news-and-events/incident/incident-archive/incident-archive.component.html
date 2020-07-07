@@ -56,15 +56,15 @@
           </section>
           <!-- All events -->
           <!-- ng-repeat="Incident in Incidents" -->
-          <section class="col-xs-12 IncidentCategory-content-AllEvents">
+          <section class="col-xs-12 IncidentCategory-content-AllEvents" *ngFor="let incidentPreview of incidentPreviews">
             <!-- href="/Incident/{{::Incident.IDX}}" -->
             <a>
-              <!-- <img ng-src="{{::ServerUrl + Incident.PicUrl | GetSmallImage}}" alt="{{::Incident.Name_Fa}}" /> -->
+              <img [src]="enviornment.baseUrl + incidentPreview.PicUrl | getSmallImage" alt="{{ incidentPreview.Name_Fa }}" />
             </a>
             <div class="IncidentCategory-content-Desc IncidentCategory-CenterSide-Desc">
               <!-- href="/Incident/{{::Incident.IDX}}" -->
               <a>
-                <!-- <h1>{{::Incident.Name_Fa}}</h1> -->
+                <h3>{{incidentPreview.Name_Fa}}</h3>
                 <!-- <p ng-if="Incident.EndDate || Incident.StartDate">
                   {{::Incident.StartDate == Incident.EndDate ? 'در تاریخ ' + Incident.StartDate : 'در تاریخ ' + Incident.StartDate + ' لغایت ' + Incident.EndDate}}
                 </p> -->

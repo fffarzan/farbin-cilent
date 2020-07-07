@@ -111,7 +111,7 @@ body {
 
 /* -------------------------------------------------------------------- */
 
-/** page specific animations */
+/* page specific animations */
 
 .disabled {
   display: none !important;
@@ -169,7 +169,7 @@ body {
 
 /* -------------------------------------------------------------------- */
 
-/** rotate and fall */
+/* rotate and fall */
 
 @-webkit-keyframes rotateFall {
   0% {
@@ -230,7 +230,7 @@ body {
 
 /* -------------------------------------------------------------------- */
 
-/** Scale up */
+/* Scale up */
 
 @keyframes scaleUp {
   from {
@@ -799,10 +799,13 @@ body {
 
 /* main slider */
 
-.defaultpage-MainSlider .owl-nav button i {
-  background: none;
+.defaultpage-MainSlider .owl-nav i {
   color: #ffb500;
   font-size: 40px;
+}
+
+.defaultpage-MainSlider .owl-theme .owl-nav [class*=owl-] {
+  background: none;
 }
 
 .defaultpage-MainSlider .owl-next, .defaultpage-MainSlider .owl-prev {
@@ -816,4 +819,28 @@ body {
 
 .defaultpage-MainSlider .owl-prev {
   left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .defaultpage-MainSlider .owl-next, .defaultpage-MainSlider .owl-prev {
+    top: 200px;
+  }
+  .IndexBanner {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .defaultpage-MainSlider .owl-next, .defaultpage-MainSlider .owl-prev {
+    top: 110px;
+  }
+  .IndexBanner {
+    background-size: 100% 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .defaultpage-MainSlider .owl-next, .defaultpage-MainSlider .owl-prev {
+    top: 125px;
+  }
 }

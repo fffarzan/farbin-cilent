@@ -20,13 +20,12 @@ import { CourseHeldComponent } from './training-category/course-held/course-held
 import { CourseAttendanceComponent } from './training-category/course-held/course-attendance/course-attendance.component';
 import { CoursesHeldComponent } from './training-category/courses-held/courses-held.component';
 import { SupplierResolver } from './shared/supplier.resolver';
-import { ProductCarouselResolver } from './shared/carousel/product-carousel/product-carousel.resolver';
 
 const routes: Routes = [
   {
     path: '', resolve: [SupplierResolver], children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, resolve: [ProductCarouselResolver] },
+      { path: 'home', component: HomeComponent },
       { path: 'about-us', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule) },
       {
         path: 'training', component: TrainingCategoryComponent, children: [

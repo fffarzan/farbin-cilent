@@ -5,6 +5,7 @@ import { ExtensionMethodService } from '../../shared/extension-method.service';
 import { SliderService } from './slider.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Banner } from './banner.model';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-dynamic-slider',
@@ -12,28 +13,23 @@ import { Banner } from './banner.model';
   styleUrls: ['./dynamic-slider.component.css']
 })
 export class DynamicSliderComponent implements OnInit {
-  slideOptions = { 
-    items: 1, 
-    dots: false, 
-    nav: true, 
+  customSlideOptions: OwlOptions = {
+    items: 1,
+    dots: false,
+    nav: true,
     navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    responsive:{
-      992:{
+    responsive: {
+      992: {
         dots: true
       }
     }
   };
-  CarouselOptions = { 
-    items: 0, 
-    dots: false, 
-    nav: false
-  }; 
   banners: Banner[];
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   isLandscape: boolean = this.extensionMethodService.isLandscape();
-  
+
   constructor(
     private sliderService: SliderService,
     private dataStorageService: DataStorageService,
