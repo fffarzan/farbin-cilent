@@ -8,7 +8,7 @@ import { LeftSideComponent } from './shared/left-side/left-side.component';
 import { NewsAndEventsCategoriesComponent } from './news-and-events/news-and-events-categories/news-and-events-categories.component';
 import { NewsletterArchiveComponent } from './news-and-events/newsletter/newsletter-archive/newsletter-archive.component';
 import { NewsletterDetailComponent } from './news-and-events/newsletter/newsletter-detail/newsletter-detail.component';
-import { IncidentArchiveComponent } from './news-and-events/incident/incident-archive/incident-archive.component';
+import { IncidentListComponent } from './news-and-events/incident/incident-list/incident-list.component';
 import { IncidentDetailComponent } from './news-and-events/incident/incident-detail/incident-detail.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { IncidentDetailComponent } from './news-and-events/incident/incident-det
     NewsAndEventsCategoriesComponent,
     NewsletterArchiveComponent,
     NewsletterDetailComponent,
-    IncidentArchiveComponent,
+    IncidentListComponent,
     IncidentDetailComponent
   ],
   imports: [

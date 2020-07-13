@@ -8,11 +8,11 @@ import { environment } from '../../../../../environments/environment';
 import { ExtensionMethodService } from '../../../../shared/extension-method.service';
 
 @Component({
-  selector: 'app-incident-archive',
-  templateUrl: './incident-archive.component.html',
-  styleUrls: ['./incident-archive.component.css']
+  selector: 'app-incident-list',
+  templateUrl: './incident-list.component.html',
+  styleUrls: ['./incident-list.component.css']
 })
-export class IncidentArchiveComponent implements OnInit {
+export class IncidentListComponent implements OnInit {
   incidentCategories: IncidentCategory[];
   incidentPreviews: IncidentPreview[];
   enviornment: { production: boolean, baseUrl: string } = environment;

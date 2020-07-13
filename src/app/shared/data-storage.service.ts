@@ -14,9 +14,9 @@ import { ProductCarouselService } from './carousel/product-carousel/product-caro
 import { SearchService } from '../header/search/search.service';
 import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../header/search/search.model';
 import { Incident } from '../about-us/news-and-events/incident/incident-detail/incident.model';
-import { IncidentCategory } from '../about-us/news-and-events/incident/incident-archive/incident-category.model';
+import { IncidentCategory } from '../about-us/news-and-events/incident/incident-list/incident-category.model';
 import { IncidentService } from '../about-us/news-and-events/incident/incident.service';
-import { IncidentPreview } from '../about-us/news-and-events/incident/incident-archive/incident-preview.model';
+import { IncidentPreview } from '../about-us/news-and-events/incident/incident-list/incident-preview.model';
 
 @Injectable({
   providedIn: 'root'
