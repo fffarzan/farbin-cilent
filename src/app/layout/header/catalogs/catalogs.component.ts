@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
-import { ExtensionMethodService } from '../../shared/extension-method.service';
+import { environment } from '../../../../environments/environment';
+import { ExtensionMethodService } from '../../../shared/extension-method.service';
 import { CatalogsService } from './catalogs.service';
 import { Catalog } from './catalog.model';
 import { SupplierService } from 'src/app/shared/supplier.service';

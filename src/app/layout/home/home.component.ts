@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ProductCarouselParams } from '../shared/carousel/product-carousel/product-carousel-params.model';
+import { ProductCarouselParams } from '../../shared/carousel/product-carousel/product-carousel-params.model';
 
 @Component({
   selector: 'app-home',

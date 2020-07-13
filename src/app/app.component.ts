@@ -1,14 +1,14 @@
 import { Component, ViewChild, ComponentFactoryResolver, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
-import { CatalogsComponent } from './header/catalogs/catalogs.component';
+import { CatalogPlaceholderDirective } from './layout/header/catalogs/catalog-placeholder.directive';
+import { CatalogsComponent } from './layout/header/catalogs/catalogs.component';
 import { init } from './app.animation';
-import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
-import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
-import { ContactMenuComponent } from './navbar/contact-menu/contact-menu.component';
-import { SupplierMenuComponent } from './navbar/supplier-menu/supplier-menu.component';
-import { NavbarService } from './navbar/navbar.service';
+import { ContactMenuPlaceholderDirective } from './layout/navbar/contact-menu/contact-menu-placeholder.directive';
+import { SupplierMenuPlaceholderDirective } from './layout/navbar/supplier-menu/supplier-menu-placeholder.directive';
+import { ContactMenuComponent } from './layout/navbar/contact-menu/contact-menu.component';
+import { SupplierMenuComponent } from './layout/navbar/supplier-menu/supplier-menu.component';
+import { NavbarService } from './layout/navbar/navbar.service';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SupplierService } from '../../shared/supplier.service';
+import { SupplierService } from '../../../shared/supplier.service';
 import { Supplier } from 'src/app/shared/supplier.model';
 import { toggleMenu } from '../navbar.animation';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
-import { ExtensionMethodService } from '../../shared/extension-method.service';
+import { environment } from '../../../../environments/environment';
+import { ExtensionMethodService } from '../../../shared/extension-method.service';
 import { SliderService } from './slider.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Banner } from './banner.model';
