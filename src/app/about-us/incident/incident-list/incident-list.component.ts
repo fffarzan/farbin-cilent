@@ -21,6 +21,7 @@ export class IncidentListComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
+  isCategoryExist = true;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -30,6 +31,23 @@ export class IncidentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataStorageService.fetchIncidentCategory().subscribe(() => this.incidentCategories = this.incidentService.getIncidentCategories());
-    this.dataStorageService.fetchIncidentPreviews().subscribe(() => this.incidentPreviews = this.incidentService.getIncidentPreviews());
+    
+    this.dataStorageService.fetchIncidentPreviews().subscribe(() => {
+      this.incidentPreviews = this.incidentService.getIncidentPreviews();
+
+      const incidentsLength = this.incidentPreviews.length;
+      for (let i = 0; i < incidentsLength; i++) {
+        this.incidentPreviews[i].EndDate = this.changeDateFormat(this.incidentPreviews[i].EndDate);
+        this.incidentPreviews[i].StartDate = this.changeDateFormat(this.incidentPreviews[i].StartDate);
+      }
+    });
+  }
+
+  private changeDateFormat(date: string) {
+    if (date) return <string>this.extensionMethodService.ginj(date.split('T')[0].replace('-', '/').replace('-', '/'), true);
+  }
+
+  filterIncidents(id: number) {
+
   }
 }

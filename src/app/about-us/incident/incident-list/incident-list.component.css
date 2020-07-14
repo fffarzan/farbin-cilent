@@ -29,7 +29,7 @@
 .IncidentCategory-CenterSide-TreeWrapper {
   background-color: rgb(236, 227, 212);
   padding: 10px 0;
-  display: none;
+  /* display: none; */
 }
 
 .IncidentCategory-CenterSide-TreeWrapper ul {
@@ -49,6 +49,10 @@
   margin-right: 15px !important;
 }
 
+.TreeContainer {
+  margin-right: 30px;
+}
+
 .TreeContainer label {
   color: black !important;
   font-size: 14px;
@@ -58,7 +62,7 @@
 }
 
 .TreeContainer input {
-  display: inline-block;
+  /* display: inline-block; */
   font-family: FontAwesome;
 }
 

@@ -4,26 +4,21 @@
 
     <article class="col-xs-12 col-sm-8 AboutUsSubCategory-Sides AboutUsSubCategory-CenterSide">
       <div class="row AboutUsSubCategory-CenterSide-SubCatsDescWrapper">
-        <!-- Filter tree -->
+
         <div class="col-xs-12">
-          <!-- Title -->
           <!-- onclick="OpenFilter()" -->
           <button class="AboutUsSubCategory-CenterSide-TreeButton">
             <img src="assets/img/filter.png" alt="نوآوران شبکه فربین - Farbin Corporation - آرشیو رویدادهای فربین" />
             <p>فیلتر</p>
           </button>
-          <!-- Recursion -->
-          <section class="IncidentCategory-CenterSide-TreeWrapper">
-            <!-- root -->
+
+          <!-- <section class="IncidentCategory-CenterSide-TreeWrapper">
             <ul class="IncidentCategory-CenterSide-Tree">
-              <!-- <li ng-repeat="SubCat in SubCat.IncidentCategorys" data-ng-include="'tree-structure'"
-                  id="Cat{{::SubCat.IDX}}"></li> -->
+              <li ng-repeat="SubCat in SubCat.IncidentCategorys" data-ng-include="'tree-structure'"
+                id="Cat{{::SubCat.IDX}}"></li>
             </ul>
-            <!-- branches -->
             <div class="TreeContainer">
-              <!-- branchMaker -->
-              <!-- <script type="text/ng-template" 
-                  id="tree-structure">
+              <script type="text/ng-template" id="tree-structure">
                   <div class="TreeContainer-Body">
                     <input ng-if="!SubCat.IncidentCategorys" 
                       type="checkbox"
@@ -41,20 +36,38 @@
                         id="Cat{{::SubCat.IDX}}"></li>
                     </ul>
                   </div>
-                </script> -->
-              <!-- trunk -->
+                </script>
               <ul class="IncidentCategory-CenterSide-Tree" id="List0">
-                <!-- <li ng-repeat="SubCat in ExhibitionCatTree" 
-                    data-ng-include="'tree-structure'" 
-                    id="Cat{{::SubCat.IDX}}">
-                  </li> -->
+                <li ng-repeat="SubCat in ExhibitionCatTree" data-ng-include="'tree-structure'" id="Cat{{::SubCat.IDX}}">
+                </li>
               </ul>
             </div>
+          </section> -->
+
+
+          <section class="IncidentCategory-CenterSide-TreeWrapper">
+            <div class="TreeContainer">
+              <ng-template #recursiveList let-list="list">
+                <div class="TreeContainer-Body" *ngFor="let incidentCategory of list">
+                  <!-- ng-click="FilteringEvnetsAndCloseTree($event,SubCat.IDIncidentCategory)" -->
+                  <input *ngIf="!incidentCategory.IncidentCategorys" type="checkbox"
+                    id="TreeCheckbox{{ incidentCategory.IDX }}">
+                  <label for="TreeCheckbox{{ incidentCategory.IDX }}">
+                    {{ incidentCategory.Name_Fa }}
+                  </label>
+                  <ul class="IncidentCategory-CenterSide-Tree">
+                    <ng-container *ngTemplateOutlet="recursiveList; context:{ list: incidentCategory.IncidentCategorys }"></ng-container>
+                  </ul>
+                </div>
+              </ng-template>
+              <ng-container *ngTemplateOutlet="recursiveList; context:{ list: incidentCategories }"></ng-container>
+            </div>
           </section>
+          
+
           <hr class="AboutUsSubCategory-CenterSide-FilterLine" />
         </div>
-        <!-- All events -->
-        <!-- ng-repeat="Incident in Incidents" -->
+
         <section class="col-xs-12 IncidentCategory-content-AllEvents" *ngFor="let incidentPreview of incidentPreviews">
           <!-- href="/Incident/{{::Incident.IDX}}" -->
           <a>
@@ -65,12 +78,13 @@
             <!-- href="/Incident/{{::Incident.IDX}}" -->
             <a>
               <h3>{{ incidentPreview.Name_Fa }}</h3>
-              <!-- <p ng-if="Incident.EndDate || Incident.StartDate">
-                  {{::Incident.StartDate == Incident.EndDate ? 'در تاریخ ' + Incident.StartDate : 'در تاریخ ' + Incident.StartDate + ' لغایت ' + Incident.EndDate}}
-                </p> -->
+              <p *ngIf="incidentPreview.EndDate || incidentPreview.StartDate">
+                {{ incidentPreview.StartDate === incidentPreview.EndDate ? 'در تاریخ ' + incidentPreview.StartDate : 'در تاریخ ' + incidentPreview.StartDate + ' لغایت ' + incidentPreview.EndDate}}
+              </p>
             </a>
           </div>
         </section>
+
       </div>
     </article>
 
