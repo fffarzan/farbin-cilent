@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { AboutUsCategoriesComponent } from './about-us-categories/about-us-categories.component';
+import { AboutUsComponent } from './about-us.component';
 import { RightSideComponent } from './shared/right-side/right-side.component';
 import { LeftSideComponent } from './shared/left-side/left-side.component';
 import { NewsAndEventsCategoriesComponent } from './news-and-events/news-and-events-categories/news-and-events-categories.component';
@@ -11,7 +11,7 @@ import { IncidentDetailComponent } from './news-and-events/incident/incident-det
 
 @NgModule({
   declarations: [
-    AboutUsCategoriesComponent,
+    AboutUsComponent,
     RightSideComponent,
     LeftSideComponent,
     NewsAndEventsCategoriesComponent,
