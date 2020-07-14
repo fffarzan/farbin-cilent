@@ -18,7 +18,7 @@ export class ProductCarouselComponent implements OnInit {
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   dynamicId = Math.round(Math.random() * 100);
-  param: object = {}
+  param: object = {};
 
   @Input() productCarouselParams: ProductCarouselParams;
 
@@ -29,8 +29,6 @@ export class ProductCarouselComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchProducts(this.param).subscribe();
-
-    this.products = this.productCarouselService.getProducts();
+    this.dataStorageService.fetchProducts(this.param).subscribe(() => this.products = this.productCarouselService.getProducts());
   }
 }

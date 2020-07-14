@@ -1,0 +1,116 @@
+.AboutUsSubCategory-Wrapper {
+  background-color: #fff;
+  color: #000;
+  direction: rtl;
+  padding: 90px 10px 70px 10px;
+  height: 100vh;
+}
+
+.AboutUsSubCategory-Inner {
+  margin: 0 -10px;
+}
+
+.AboutUsSubCategory-Sides {
+  float: right !important;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutUsSubCategory-Wrapper {
+    padding: 70px 33px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .AboutUsSubCategory-Wrapper {
+    padding: 70px 65px 70px 40px;
+  }
+}
+
+/* main description */
+
+.AboutUsCategory-MainDesc h1 {
+  font-weight: bold !important;
+  font-size: 17px !important;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.AboutUsCategory-MainDesc p {
+  color: #333;
+  font-size: 14px;
+  line-height: 25px;
+  text-align: justify;
+}
+
+.AboutUsCategory-MainDesc p {
+  color: #333;
+  text-align: justify;
+  line-height: 23px;
+  font-size: 14px;
+}
+
+.AboutUsCategory-MainDesc span {
+  color: #610040 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutUsCategory-MainDesc h1 {
+    font-size: 17px !important;
+    margin-bottom: 10px;
+  }
+  .AboutUsCategory-MainDesc p {
+    font-size: 14px;
+  }
+}
+
+/* categories */
+
+.AboutUsCategory-CategoryWrapper {
+  margin-top: 50px;
+}
+
+.AboutUsCategory-Category {
+  padding-left: 130px;
+  margin-bottom: 45px;
+}
+
+.AboutUsCategory-Category h5 {
+  font-weight: bold !important;
+  font-size: 17px !important;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.AboutUsCategory-Category p {
+  color: #333;
+  font-size: 13px;
+  line-height: 23px;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.AboutUsCategory-Category a {
+  font-weight: bolder;
+  color: #610040 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutUsCategory-CategoryWrapper {
+    margin-top: 0;
+  }
+  .AboutUsCategory-Category {
+    float: right !important;
+    margin-top: 50px;
+    padding-left: 60px;
+    margin-bottom: 0;
+  }
+  .AboutUsCategory-Category h5 {
+    font-size: 17px !important;
+    margin-bottom: 10px;
+  }
+  .AboutUsCategory-Category p {
+    font-size: 14px;
+    line-height: 22px;
+    color: unset;
+  }
+}

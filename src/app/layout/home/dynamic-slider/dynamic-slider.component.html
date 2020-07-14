@@ -1,0 +1,12 @@
+<owl-carousel-o class="defaultpage-MainSlider clearfix"
+  [options]="customSlideOptions">
+  <ng-container *ngFor="let banner of banners">
+    <ng-template carouselSlide>
+      <a [href]="banner.ForeignLink" class="item">
+        <img
+          [src]="(isMobile || (isTablet && !isLandscape)) ? enviornment.baseUrl + banner.PicUrl_Mobile : enviornment.baseUrl + banner.PicUrl"
+          class="IndexBanner" alt="نوآوران شبکه فربین - Farbin Corporation" />
+      </a>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>

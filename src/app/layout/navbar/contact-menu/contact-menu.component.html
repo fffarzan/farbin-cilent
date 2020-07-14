@@ -1,0 +1,163 @@
+<div class="ContactUs">
+  <article class="MobileContactMenu ContactUs-Mobile">
+
+    <!-- tabs -->
+    <p class="ContactTab" id="ContactTab" [ngClass]="{TabBtn: switchState === 'contact'}"
+      (click)="onSwitchTab('contact')">ارتباط با ما</p>
+    <p class="AboutTab" id="AboutTab" [ngClass]="{TabBtn: switchState === 'about'}" (click)="onSwitchTab('about')">
+      نوآوران شبکه فربین</p>
+
+    <!-- contact -->
+    <section *ngIf="switchState === 'contact'" [@switchTabFading] class="ContainerContactTab TabContainer">
+      <div class="ContactInfoInFooter clearfix">
+        <div class="ContactUs-Mobile-IconsWrapper clearfix">
+          <section class="Item">
+            <a id="Call" href="tel:+982141548000">
+              <img class="clearfix" src="assets/img/Call.png" alt="نوآوران شبکه فربین - تماس با فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">تماس</h5>
+            </a>
+          </section>
+          <section class="Item">
+            <a id="Map"
+              href="https://www.google.com/maps/dir//35.7231495,51.4127882/@35.7231129,51.4127046,18.25z/data=!4m2!4m1!3e2">
+              <img class="clearfix" src="assets/img/Map.png" alt="نوآوران شبکه فربین - موقعیت فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">نقشه</h5>
+            </a>
+          </section>
+          <section class="Item">
+            <a href="https://www.instagram.com/farbin_company/" id="MenuInstagram" class="FooterMenuInstagram">
+              <img class="clearfix" src="assets/img/instagram.png" alt="نوآوران شبکه فربین - آدرس اینستاگرام فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">اینستاگرام</h5>
+            </a>
+          </section>
+          <section class="Item">
+            <a href="https://t.me/farbinme">
+              <img class="clearfix" src="assets/img/telegram.png" alt="نوآوران شبکه فربین - آدرس تلگرام فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">تلگرام</h5>
+            </a>
+          </section>
+          <section class="Item">
+            <a href="https://www.linkedin.com/company/farbincompany/">
+              <img class="clearfix" src="assets/img/linkedin.png" alt="نوآوران شبکه فربین - آدرس لینکدین فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">لنکدین</h5>
+            </a>
+          </section>
+          <section class="Item">
+            <a id="MenuEmail" href="mailto:info@farbin.ir?Subject=Contact%20us">
+              <img class="clearfix" src="assets/img/Email.png" alt="نوآوران شبکه فربین - آدرس ایمیل فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">ایمیل</h5>
+            </a>
+          </section>
+          <section class="Item">
+            <a>
+              <img class="clearfix" src="assets/img/job-icon.png" alt="نوآوران شبکه فربین - موقعیت های شغلی فربین" />
+              <h5 class="Footer-HeaderBox ContactIconText">موقعیت شغلی</h5>
+            </a>
+          </section>
+        </div>
+        <section class="ContactUs-Mobile-AddressWrapper">
+          <h2 class="Address-Fa">تهران، خیابان مطهری، لارستان، جهانسوز، پلاک 13</h2>
+          <h2 class="Address-En">
+            NO. 13 , Jahansooz St., Larestan St., Motahari ave., <br />
+            Tehran, Iran. P.O. Box: 1595846114
+          </h2>
+        </section>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section *ngIf="switchState === 'about'" [@switchTabFading] class="ContainerAboutTab TabContainer">
+      <div class="AboutInContact clearfix">
+        <!-- onclick="ClickDarkBody()" -->
+        <a [routerLink]="['/about-us']" (click)="onCloseContactMenu()">
+          <h3 class="AboutItem">درباره فربین</h3>
+        </a>
+        <!-- href="/Form/1" -->
+        <!-- onclick="ClickDarkBody()" -->
+        <div class="clearfix"></div>
+        <a>
+          <h3 class="AboutItem">فرم ثبت نام الکامپ</h3>
+        </a>
+      </div>
+    </section>
+
+  </article>
+
+  <article class="DescktopContactMenu ContactUs-Desktop">
+    <a href="tel:+982141548000">
+      <span class="FooterMenuTel">
+        <i class="fa fa-phone"></i>
+        +98 (21) 4154 8000
+      </span>
+    </a>
+    <div class="AboutInContact">
+      <a>
+        <h3 class="AboutHeaderTitle">نوآوران شبکه فربین</h3>
+      </a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="ContactInfoInFooter">
+      <h3 class="Address-Fa">تهران، خیابان مطهری، لارستان، جهانسوز، پلاک 13</h3>
+      <h3 class="Address-En">
+        NO. 13 , Jahansooz St., Larestan St., Motahari ave., Tehran,<br />
+        Iran. P.O. Box: 1595846114
+      </h3>
+      <section class="Item">
+        <a id="MenuMap"
+          href="https://www.google.com/maps/dir//35.7231495,51.4127882/@35.7231129,51.4127046,18.25z/data=!4m2!4m1!3e2">
+          <img src="assets/img/Map.png" alt="نوآوران شبکه فربین - موقعیت فربین" />
+          <div class="clearfix"></div>
+          <h5 class="Footer-HeaderBox ContactIconText">نقشه</h5>
+        </a>
+      </section>
+      <section class="Item">
+        <a href="https://www.instagram.com/farbin_company/" id="MenuInstagram" class="FooterMenuInstagram">
+          <img src="assets/img/instagram.png" alt="نوآوران شبکه فربین - آدرس اینستاگرام فربین" />
+          <div class="clearfix"></div>
+          <h5 class="Footer-HeaderBox ContactIconText">اینستاگرام</h5>
+        </a>
+      </section>
+      <section class="Item">
+        <a href="https://t.me/farbinme">
+          <img src="assets/img/telegram.png" alt="نوآوران شبکه فربین - آدرس تلگرام فربین" />
+          <div class="clearfix"></div>
+          <h5 class="Footer-HeaderBox ContactIconText">تلگرام</h5>
+        </a>
+      </section>
+      <section class="Item">
+        <a href="https://www.linkedin.com/company/farbincompany/">
+          <img src="assets/img/linkedin.png" alt="نوآوران شبکه فربین - آدرس لینکدین فربین" />
+          <div class="clearfix"></div>
+          <h5 class="Footer-HeaderBox ContactIconText">لنکدین</h5>
+        </a>
+      </section>
+      <section class="Item">
+        <a id="MenuEmail" href="mailto:info@farbin.ir?Subject=Contact%20us">
+          <img src="assets/img/Email.png" alt="نوآوران شبکه فربین - آدرس ایمیل فربین" />
+          <div class="clearfix"></div>
+          <h5 class="Footer-HeaderBox ContactIconText">ایمیل</h5>
+        </a>
+      </section>
+      <section class="Item">
+        <a>
+          <img src="assets/img/job-icon.png" alt="نوآوران شبکه فربین - موقعیت های شغلی فربین" />
+          <div class="clearfix"></div>
+          <h5 class="Footer-HeaderBox ContactIconText">موقعیت شغلی</h5>
+        </a>
+      </section>
+    </div>
+    <div class="AboutInContact">
+      <a href="/AboutUsCategory" onclick="ClickDarkBody()">
+        <h1 class="AboutItem">درباره فربین</h1>
+      </a>
+      <div class="clearfix"></div>
+      <!--<a> <h1 class="AboutItem">اخذ نمایندگی و همکاری در فروش تجهیزات فربین</h1></a>-->
+      <!-- <a><h1 class="AboutItem">همکاری در برگزاری دوره های آموزشی فربین</h1></a> -->
+      <div class="clearfix"></div>
+      <a href="/Form/1" onclick="ClickDarkBody()">
+        <h1 class="AboutItem">فرم ثبت نام الکامپ</h1>
+      </a>
+    </div>
+
+  </article>
+</div>

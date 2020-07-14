@@ -1,0 +1,12 @@
+
+
+.defaultpage-MainSlider a {
+  display: block;
+}
+
+.IndexBanner {
+  width: 100%;
+  background-color: #666695;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
