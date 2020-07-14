@@ -13,10 +13,10 @@ import { Product } from './carousel/product-carousel/product.model';
 import { ProductCarouselService } from './carousel/product-carousel/product-carousel.service';
 import { SearchService } from '../layout/header/search/search.service';
 import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../layout/header/search/search.model';
-import { Incident } from '../about-us/news-and-events/incident/incident-detail/incident.model';
-import { IncidentCategory } from '../about-us/news-and-events/incident/incident-list/incident-category.model';
-import { IncidentService } from '../about-us/news-and-events/incident/incident.service';
-import { IncidentPreview } from '../about-us/news-and-events/incident/incident-list/incident-preview.model';
+import { Incident } from '../about-us/incident/incident-detail/incident.model';
+import { IncidentCategory } from '../about-us/incident/incident-list/incident-category.model';
+import { IncidentService } from '../about-us/incident/incident.service';
+import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
 
 @Injectable({
   providedIn: 'root'

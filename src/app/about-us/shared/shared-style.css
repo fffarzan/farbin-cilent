@@ -1,0 +1,60 @@
+.AboutUsSubCategory-Wrapper {
+  background-color: #fff;
+  color: #000;
+  direction: rtl;
+  padding: 90px 10px 70px 10px;
+  height: 100vh;
+}
+
+.AboutUsSubCategory-Inner {
+  margin: 0 -10px;
+}
+
+.AboutUsSubCategory-Sides {
+  float: right !important;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutUsSubCategory-Wrapper {
+    padding: 70px 33px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .AboutUsSubCategory-Wrapper {
+    padding: 70px 65px 70px 40px;
+  }
+}
+
+/* --- */
+
+.AboutUsSubCategory-CenterSide {
+  padding: 0px 15px;
+}
+
+.AboutUsSubCategory-CenterSideWrapper h1 {
+  color: #333;
+  font-size: 17px !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.AboutUsSubCategory-CenterSideWrapper h5 {
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.AboutUsSubCategory-CenterSideWrapper img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .AboutUsSubCategory-CenterSide {
+    padding: 0px 40px;
+  }
+  .AboutUsSubCategory-CenterSideWrapper h1 {
+    margin-bottom: 17px;
+  }
+}

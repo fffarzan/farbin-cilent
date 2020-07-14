@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AboutUsComponent } from './about-us.component';
+import { NewsAndEventsComponent } from './news-and-events/news-and-events.component';
+import { IncidentListComponent } from './incident/incident-list/incident-list.component';
+import { IncidentDetailComponent } from './incident/incident-detail/incident-detail.component';
 
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
-  { path: 'news-and-events', loadChildren: () => import('./news-and-events/news-and-events.module').then(m => m.NewsAndEventsModule) }
+  { path: 'news-and-events', component: NewsAndEventsComponent },
+  { path: 'news-and-events/incident-list', component: IncidentListComponent },
+  { path: 'news-and-events/incident/:id', component: IncidentDetailComponent }
 ]
 
 @NgModule({

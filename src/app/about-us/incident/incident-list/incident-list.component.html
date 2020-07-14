@@ -1,0 +1,79 @@
+<div class="container-fluid AboutUsSubCategory-Wrapper">
+  <div class="row AboutUsSubCategory-Inner">
+    <app-left-side class="hidden-xs col-sm-2"></app-left-side>
+
+    <article class="col-xs-12 col-sm-8 AboutUsSubCategory-Sides AboutUsSubCategory-CenterSide">
+      <div class="row AboutUsSubCategory-CenterSide-SubCatsDescWrapper">
+        <!-- Filter tree -->
+        <div class="col-xs-12">
+          <!-- Title -->
+          <!-- onclick="OpenFilter()" -->
+          <button class="AboutUsSubCategory-CenterSide-TreeButton">
+            <img src="assets/img/filter.png" alt="نوآوران شبکه فربین - Farbin Corporation - آرشیو رویدادهای فربین" />
+            <p>فیلتر</p>
+          </button>
+          <!-- Recursion -->
+          <section class="IncidentCategory-CenterSide-TreeWrapper">
+            <!-- root -->
+            <ul class="IncidentCategory-CenterSide-Tree">
+              <!-- <li ng-repeat="SubCat in SubCat.IncidentCategorys" data-ng-include="'tree-structure'"
+                  id="Cat{{::SubCat.IDX}}"></li> -->
+            </ul>
+            <!-- branches -->
+            <div class="TreeContainer">
+              <!-- branchMaker -->
+              <!-- <script type="text/ng-template" 
+                  id="tree-structure">
+                  <div class="TreeContainer-Body">
+                    <input ng-if="!SubCat.IncidentCategorys" 
+                      type="checkbox"
+                      id="TreeCheckbox{{::SubCat.IDX}}"
+                      ng-click="FilteringEvnetsAndCloseTree($event,SubCat.IDIncidentCategory)"> 
+                    <label class="CursorPointer"
+                      for="TreeCheckbox{{::SubCat.IDX}}">
+                        {{::SubCat.Name_Fa}}
+                    </label>
+                  </div>
+                  <div id="List{{::SubCat.IDX}}">
+                    <ul class="IncidentCategory-CenterSide-Tree">
+                      <li ng-repeat="SubCat in SubCat.IncidentCategorys"
+                        data-ng-include="'tree-structure'"
+                        id="Cat{{::SubCat.IDX}}"></li>
+                    </ul>
+                  </div>
+                </script> -->
+              <!-- trunk -->
+              <ul class="IncidentCategory-CenterSide-Tree" id="List0">
+                <!-- <li ng-repeat="SubCat in ExhibitionCatTree" 
+                    data-ng-include="'tree-structure'" 
+                    id="Cat{{::SubCat.IDX}}">
+                  </li> -->
+              </ul>
+            </div>
+          </section>
+          <hr class="AboutUsSubCategory-CenterSide-FilterLine" />
+        </div>
+        <!-- All events -->
+        <!-- ng-repeat="Incident in Incidents" -->
+        <section class="col-xs-12 IncidentCategory-content-AllEvents" *ngFor="let incidentPreview of incidentPreviews">
+          <!-- href="/Incident/{{::Incident.IDX}}" -->
+          <a>
+            <img [src]="enviornment.baseUrl + incidentPreview.PicUrl | getSmallImage"
+              alt="{{ incidentPreview.Name_Fa }}" />
+          </a>
+          <div class="IncidentCategory-content-Desc IncidentCategory-CenterSide-Desc">
+            <!-- href="/Incident/{{::Incident.IDX}}" -->
+            <a>
+              <h3>{{ incidentPreview.Name_Fa }}</h3>
+              <!-- <p ng-if="Incident.EndDate || Incident.StartDate">
+                  {{::Incident.StartDate == Incident.EndDate ? 'در تاریخ ' + Incident.StartDate : 'در تاریخ ' + Incident.StartDate + ' لغایت ' + Incident.EndDate}}
+                </p> -->
+            </a>
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <app-right-side class="hidden-xs col-sm-2"></app-right-side>
+  </div>
+</div>

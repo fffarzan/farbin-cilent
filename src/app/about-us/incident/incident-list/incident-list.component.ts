@@ -4,13 +4,16 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { IncidentCategory } from './incident-category.model';
 import { IncidentService } from '../incident.service';
 import { IncidentPreview } from './incident-preview.model';
-import { environment } from '../../../../../environments/environment';
-import { ExtensionMethodService } from '../../../../shared/extension-method.service';
+import { environment } from '../../../../environments/environment';
+import { ExtensionMethodService } from '../../../shared/extension-method.service';
 
 @Component({
   selector: 'app-incident-list',
   templateUrl: './incident-list.component.html',
-  styleUrls: ['./incident-list.component.css']
+  styleUrls: [
+    './incident-list.component.css',
+    '../../shared/shared-style.css'
+  ]
 })
 export class IncidentListComponent implements OnInit {
   incidentCategories: IncidentCategory[];
@@ -29,6 +32,4 @@ export class IncidentListComponent implements OnInit {
     this.dataStorageService.fetchIncidentCategory().subscribe(() => this.incidentCategories = this.incidentService.getIncidentCategories());
     this.dataStorageService.fetchIncidentPreviews().subscribe(() => this.incidentPreviews = this.incidentService.getIncidentPreviews());
   }
-
-
 }

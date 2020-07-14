@@ -4,15 +4,23 @@ import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutUsComponent } from './about-us.component';
 import { RightSideComponent } from './shared/right-side/right-side.component';
 import { LeftSideComponent } from './shared/left-side/left-side.component';
+import { NewsAndEventsComponent } from './news-and-events/news-and-events.component';
+import { IncidentListComponent } from './incident/incident-list/incident-list.component';
+import { IncidentDetailComponent } from './incident/incident-detail/incident-detail.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     AboutUsComponent,
     RightSideComponent,
-    LeftSideComponent
+    LeftSideComponent,
+    NewsAndEventsComponent,
+    IncidentListComponent,
+    IncidentDetailComponent
   ],
   imports: [
     AboutUsRoutingModule,
+    SharedModule
   ],
   exports: [
     RightSideComponent,
