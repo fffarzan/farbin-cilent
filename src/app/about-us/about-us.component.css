@@ -78,7 +78,7 @@
   }
   .AboutUsCategory-Category h5 {
     font-size: 17px !important;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
   }
   .AboutUsCategory-Category p {
     font-size: 14px;

@@ -1,5 +1,10 @@
 .MovableContainer {
-  height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  box-shadow: #000 0 0 10px;
+  background-color: #000;
+  padding-bottom: 60px;
 }
 
 #DarkBody {
@@ -12,7 +17,26 @@
 }
 
 @media screen and (min-width: 768px) {
+  #MovableContainer {
+    width: 100% !important;
+    left: 0;
+    box-shadow: none;
+    background-color: none;
+  }
   #DarkBody {
     bottom: 50px;
   }
+}
+
+@media screen and (min-width: 992px) {
+  #MovableContainer {
+    width: 90% !important;
+    left: 5%;
+    box-shadow: #000 0 0 10px;
+    background-color: #000;
+  }
+  /* .MainSection {
+    width: unset !important;
+    height: unset !important;
+  } */
 }
