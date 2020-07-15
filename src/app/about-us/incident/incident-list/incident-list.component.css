@@ -29,7 +29,10 @@
 .IncidentCategory-CenterSide-TreeWrapper {
   background-color: rgb(236, 227, 212);
   padding: 10px 0;
-  /* display: none; */
+}
+
+.IncidentCategory-Toggle {
+  display: none;
 }
 
 .IncidentCategory-CenterSide-TreeWrapper ul {
@@ -40,25 +43,25 @@
   position: relative;
 }
 
-.TreeContainer-Body:hover label {
-  color: #610040 !important;
-  font-weight: bold;
+.TreeContainer-Label {
+  cursor: pointer;
 }
 
 .TreeWithoutCheckboxItem {
   margin-right: 15px !important;
 }
 
-.TreeContainer {
-  margin-right: 30px;
-}
-
-.TreeContainer label {
+.TreeContainer-Label {
   color: black !important;
   font-size: 14px;
   margin: 0 0 10px 0;
   display: inline-block;
   font-weight: normal;
+}
+
+.TreeContainer-Label:hover {
+  color: #610040 !important;
+  font-weight: bold;
 }
 
 .TreeContainer input {

@@ -6,6 +6,7 @@ import { IncidentService } from '../incident.service';
 import { IncidentPreview } from './incident-preview.model';
 import { environment } from '../../../../environments/environment';
 import { ExtensionMethodService } from '../../../shared/extension-method.service';
+import { AboutUsUtils } from '../../shared/about-us-utils';
 
 @Component({
   selector: 'app-incident-list',
@@ -19,9 +20,9 @@ export class IncidentListComponent implements OnInit {
   incidentCategories: IncidentCategory[];
   incidentPreviews: IncidentPreview[];
   enviornment: { production: boolean, baseUrl: string } = environment;
-  isMobile: boolean = this.extensionMethodService.DetectMobile();
-  isTablet: boolean = this.extensionMethodService.DetectTablet();
-  isCategoryExist = true;
+  filteredIncidents: IncidentPreview[] = [];
+  incidentCategoryIds: string[] = [];
+  isFilterOpen: boolean = false;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -31,9 +32,11 @@ export class IncidentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataStorageService.fetchIncidentCategory().subscribe(() => this.incidentCategories = this.incidentService.getIncidentCategories());
-    
+
     this.dataStorageService.fetchIncidentPreviews().subscribe(() => {
       this.incidentPreviews = this.incidentService.getIncidentPreviews();
+
+      this.onFilterIncidents();
 
       const incidentsLength = this.incidentPreviews.length;
       for (let i = 0; i < incidentsLength; i++) {
@@ -43,11 +46,15 @@ export class IncidentListComponent implements OnInit {
     });
   }
 
-  private changeDateFormat(date: string) {
-    if (date) return <string>this.extensionMethodService.ginj(date.split('T')[0].replace('-', '/').replace('-', '/'), true);
+  onToggleFilter() {
+    this.isFilterOpen = !this.isFilterOpen;
   }
 
-  filterIncidents(id: number) {
+  onFilterIncidents(incidentCategory?: IncidentCategory) {
+    this.filteredIncidents = AboutUsUtils.filterListByCategory(this.incidentPreviews, this.incidentCategoryIds, incidentCategory, 'IDIncidentCategory');
+  }
 
+  private changeDateFormat(date: string) {
+    if (date) return <string>this.extensionMethodService.ginj(date.split('T')[0].replace('-', '/').replace('-', '/'), true);
   }
 }
