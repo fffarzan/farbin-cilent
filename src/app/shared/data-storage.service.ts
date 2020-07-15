@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { Banner } from '../layout/home/dynamic-slider/banner.model';
@@ -17,6 +17,7 @@ import { Incident } from '../about-us/incident/incident-detail/incident.model';
 import { IncidentCategory } from '../about-us/incident/incident-list/incident-category.model';
 import { IncidentService } from '../about-us/incident/incident.service';
 import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
