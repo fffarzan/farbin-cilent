@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
-import { IncidentService } from '../incident.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+
 import { Incident } from './incident.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-incident-detail',
@@ -11,19 +10,12 @@ import { Incident } from './incident.model';
   styleUrls: ['./incident-detail.component.css']
 })
 export class IncidentDetailComponent implements OnInit {
-  incident: any = {};
+  incident: Incident;
+  enviornment: { production: boolean, baseUrl: string } = environment;
 
-  constructor(
-    private route: ActivatedRoute,
-    private incidentService: IncidentService,
-    private dataStorageService: DataStorageService
-  ) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(param => this.getIncident({ IDX: +param['id'] }));
-  }
-
-  private getIncident(param: object) {
-    this.dataStorageService.fetchIncident(param).subscribe(() => this.incident = this.incidentService.getIncident());
+    this.route.data.subscribe(data => this.incident = data.incident[0]);
   }
 }
