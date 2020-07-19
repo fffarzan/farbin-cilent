@@ -6,7 +6,7 @@ import { ProductCarouselParams } from './product-carousel/product-carousel-param
   selector: '[appMobileTemplate]'
 })
 export class MobileTemplateDirective implements OnInit {
-  @Input('appMobileTemplate') parameters: ProductCarouselParams;
+  @Input('appMobileTemplate') parameters: any;
   @HostBinding('style.width') itemWidth: string;
 
   constructor(
@@ -15,20 +15,19 @@ export class MobileTemplateDirective implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.setCarouselItems();
+    this.itemWidth = this.setCarouselItemsWidth(this.parameters);
   }
 
-  setCarouselItems() {
+  private setCarouselItemsWidth(param: any) : string {
     let screenWidth = window.innerWidth;
 
-    if (screenWidth < this.parameters.productCarouselOptions.itemsMobile.maxSize) {
-      this.itemWidth = screenWidth / this.parameters.productCarouselOptions.itemsMobile.items + 'px';
-    } else if (screenWidth > this.parameters.productCarouselOptions.itemsMobile.maxSize) {
-      if (screenWidth < this.parameters.productCarouselOptions.itemsTablet.maxSize) {
-        this.itemWidth = screenWidth / (2 * this.parameters.productCarouselOptions.itemsTablet.items) + 'px';
-      } else {
-        this.itemWidth = screenWidth / this.parameters.productCarouselOptions.itemsDesktop.items + 'px';
-      }
+    if (screenWidth < param.mobileOptions.mobileItems.maxSize)
+      return (screenWidth / param.mobileOptions.mobileItems.items) + 'px';
+    else if (screenWidth > param.mobileOptions.mobileItems.maxSize) {
+      if (screenWidth < param.mobileOptions.tabletItems.maxSize) 
+        return (screenWidth / (2 * param.mobileOptions.tabletItems.items)) + 'px';
+      else 
+        return (screenWidth / param.mobileOptions.desktopItems.items) + 'px';
     }
   }
 }

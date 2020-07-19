@@ -76,20 +76,20 @@
 
 /* main desc */
 
-.Incident-MainDesc p {
+::ng-deep .Incident-MainDesc p {
   text-align: justify;
   width: 100%;
   line-height: 29px;
   font-size: 15px;
 }
 
-.Incident-MainDesc a {
+::ng-deep .Incident-MainDesc a {
   color: #610040 !important;
   font-weight: bold;
 }
 
 @media screen and (min-width: 768px) {
-  .Incident-MainDesc p {
+  ::ng-deep .Incident-MainDesc p {
     line-height: 33px;
     font-size: 18px;
   }
@@ -114,9 +114,13 @@
   color: #000 !important;
 }
 
+.Incident-Carousel {
+  margin-bottom: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .Incident-Section {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding: unset;
   }
 }

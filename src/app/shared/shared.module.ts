@@ -7,12 +7,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCarouselComponent } from './carousel/product-carousel/product-carousel.component';
 import { MobileTemplateDirective } from './carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './get-small-image.pipe';
+import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-carousel.component';
 
 @NgModule({
   declarations: [
     GetSmallImagePipe,
     MobileTemplateDirective,
-    ProductCarouselComponent
+    ProductCarouselComponent,
+    GalleryCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { GetSmallImagePipe } from './get-small-image.pipe';
     FontAwesomeModule,
     GetSmallImagePipe,
     MobileTemplateDirective,
-    ProductCarouselComponent
+    ProductCarouselComponent,
+    GalleryCarouselComponent
   ]
 })
 export class SharedModule { }

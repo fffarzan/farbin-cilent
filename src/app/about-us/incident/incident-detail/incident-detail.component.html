@@ -1,7 +1,7 @@
 <article class="Incident">
   <div class="Incident-Inner">
 
-    <!-- head -->
+    <!-- header -->
     <section class="Incident-Header">
       <div class="Incident-Header-Title">
         <h1>{{ incident.Name_Fa }}</h1>
@@ -9,14 +9,14 @@
       <div class="Incident-Header-MainImage">
         <img [src]="enviornment.baseUrl + incident.PicUrl" alt="{{ incident.Name_Fa }}" />
       </div>
-      <hr />
     </section>
+    <hr>
 
     <!-- main description -->
     <section class="Incident-Section">
       <div class="Incident-MainDesc" [innerHtml]="incident.Description_Fa"></div>
-      <hr />
     </section>
+    <hr>
 
     <!-- image gallary -->
     <section *ngIf="incident.Images" class="Incident-Section">
@@ -24,20 +24,9 @@
         <h3>تصاویر</h3>
         <h3 class="Incident-Section-TitleEn">Images</h3>
       </div>
-      <!-- Carousel -->
-      <!-- <section gallerycarousel datasource="ExhibitionHeld.Images" staticurl="'/images/docx.png'"
-        dynamicfieldimage="'Url'" desktopcarouseloptions="{
-          stagePadding: 20,
-          items: 3,
-          responsive: { 1024: { items: 6 } }
-        }" mobilecarouseloptions="{
-          itemsMobile: [500,1.7],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,5]
-        }">
-      </section> -->
-      <hr />
+      <app-gallery-carousel class="Incident-Carousel" [carouselData]="imageGalleryData"></app-gallery-carousel>
     </section>
+    <hr>
 
     <!-- video gallery -->
     <section *ngIf="incident.Videos" class="Incident-Section">
@@ -45,20 +34,9 @@
         <h3>ویدیوها</h3>
         <h3 class="Incident-Section-TitleEn">Videos</h3>
       </div>
-      <!-- Carousel -->
-      <!-- <section gallerycarousel datasource="ExhibitionHeld.Videos" staticurl="'/images/docx.png'"
-        dynamicfieldimage="'Url'" desktopcarouseloptions="{
-          stagePadding: 20,
-          items: 3,
-          responsive: { 1024: { items: 6 } }
-        }" mobilecarouseloptions="{
-          itemsMobile: [500,1.7],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,5]
-        }">
-      </section> -->
-      <hr />
+      <app-gallery-carousel class="Incident-Carousel" [carouselData]="videoGalleryData"></app-gallery-carousel>
     </section>
+    <hr>
 
     <!-- greetings -->
     <section *ngIf="incident.Greetings" class="Incident-Section">
@@ -66,20 +44,9 @@
         <h3>تقدیرنامه ها</h3>
         <h3 class="Incident-Section-TitleEn">Greetings</h3>
       </div>
-      <!-- Caousel -->
-      <!-- <section gallerycarousel datasource="ExhibitionHeld.Greetings" staticurl="'/images/docx.png'"
-        dynamicfieldimage="'Url'" desktopcarouseloptions="{
-          stagePadding: 20,
-          items: 3,
-          responsive: { 1024: { items: 6 } }
-        }" mobilecarouseloptions="{
-          itemsMobile: [500,1.7],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,5]
-        }">
-      </section> -->
-      <hr />
+      <app-gallery-carousel class="Incident-Carousel" [carouselData]="greetingGalleryData"></app-gallery-carousel>
     </section>
+    <hr>
 
   </div>
 </article>
