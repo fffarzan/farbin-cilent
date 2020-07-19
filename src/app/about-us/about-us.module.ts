@@ -8,6 +8,7 @@ import { NewsAndEventsComponent } from './news-and-events/news-and-events.compon
 import { IncidentListComponent } from './incident/incident-list/incident-list.component';
 import { IncidentDetailComponent } from './incident/incident-detail/incident-detail.component';
 import { SharedModule } from '../shared/shared.module';
+import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     LeftSideComponent,
     NewsAndEventsComponent,
     IncidentListComponent,
-    IncidentDetailComponent
+    IncidentDetailComponent,
+    NewsletterListComponent
   ],
   imports: [
     AboutUsRoutingModule,
