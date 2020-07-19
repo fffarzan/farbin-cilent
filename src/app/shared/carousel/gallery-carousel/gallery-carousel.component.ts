@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { GalleryCarousel } from './gallery-carousel.model';
+import { GalleryCarousel, GalleryMedia } from './gallery-carousel.model';
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from '../../extension-method.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { GalleryModalService } from 'src/app/layout/gallery-modal/gallery-modal.service';
 
 @Component({
   selector: 'app-gallery-carousel',
@@ -18,8 +18,15 @@ export class GalleryCarouselComponent implements OnInit {
   dynamicId = Math.round(Math.random() * 100);
   carouselItemWidth: number = 160;
 
-  constructor(private extensionMethodService: ExtensionMethodService) { }
+  constructor(
+    private extensionMethodService: ExtensionMethodService,
+    private galleryModalService: GalleryModalService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onOpenGalleryModal(currentItem, allItmes) {
+    this.galleryModalService.setGalleryModalData(currentItem, allItmes);
   }
 }

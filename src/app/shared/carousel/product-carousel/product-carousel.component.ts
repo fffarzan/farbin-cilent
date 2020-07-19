@@ -13,11 +13,11 @@ import { ProductCarouselParams } from './product-carousel-params.model';
   styleUrls: ['./product-carousel.component.css']
 })
 export class ProductCarouselComponent implements OnInit {
-  products: Product[];
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   dynamicId = Math.round(Math.random() * 100);
+  products: Product[];
   param: object = {};
 
   @Input() productCarouselParams: ProductCarouselParams;

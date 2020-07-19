@@ -1,4 +1,4 @@
-import { Component, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ComponentFactoryResolver, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
@@ -9,6 +9,9 @@ import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplie
 import { ContactMenuComponent } from './navbar/contact-menu/contact-menu.component';
 import { SupplierMenuComponent } from './navbar/supplier-menu/supplier-menu.component';
 import { NavbarService } from './navbar/navbar.service';
+import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-placeholder.directive';
+import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
+import { GalleryModalService } from './gallery-modal/gallery-modal.service';
 
 @Component({
   selector: 'app-layout',
@@ -18,11 +21,13 @@ import { NavbarService } from './navbar/navbar.service';
     init
   ]
 })
-export class LayoutComponent implements OnDestroy {
+export class LayoutComponent implements OnInit, OnDestroy {
   @ViewChild(CatalogPlaceholderDirective, { static: false }) catalogHost: CatalogPlaceholderDirective;
   @ViewChild(ContactMenuPlaceholderDirective, { static: false }) contactMenuHost: ContactMenuPlaceholderDirective;
   @ViewChild(SupplierMenuPlaceholderDirective, { static: false }) supplierMenuHost: SupplierMenuPlaceholderDirective;
+  @ViewChild(GalleryModalPlaceholderDirective, { static: false }) galleryModalHost: GalleryModalPlaceholderDirective; 
   private closeCatalogSub: Subscription;
+  private closeGalleryModalSub: Subscription;
   closeContactMenuSub: Subscription;
   closeSupplierMenuSub: Subscription;
   isDarkbodyShown: boolean = false;
@@ -31,14 +36,14 @@ export class LayoutComponent implements OnDestroy {
 
   constructor(
     private componentFatoryResolver: ComponentFactoryResolver,
-    private navbarService: NavbarService
-  ) {
-    this.closeContactMenuSub = navbarService.contactMenuBtnClickedObs.subscribe(isOpen => {
-      this.toggleContactMenu(isOpen);
-    });
-    this.closeSupplierMenuSub = navbarService.supplierMenuBtnClickedObs.subscribe(isOpen => {
-      this.toggleSupplierMenu(isOpen);
-    });
+    private navbarService: NavbarService,
+    private galleryMoadalServeic: GalleryModalService
+  ) { }
+  
+  ngOnInit() {
+    this.closeContactMenuSub = this.navbarService.contactMenuBtnClickedObs.subscribe(isOpen => this.toggleContactMenu(isOpen));
+    this.closeSupplierMenuSub = this.navbarService.supplierMenuBtnClickedObs.subscribe(isOpen => this.toggleSupplierMenu(isOpen));
+    this.closeGalleryModalSub = this.galleryMoadalServeic.galleryModalOpenedObs.subscribe(() => this.showGalleryModal());
   }
 
   onToggleCatalog(isOpen: boolean) {
@@ -58,6 +63,7 @@ export class LayoutComponent implements OnDestroy {
     if (this.closeCatalogSub) this.closeCatalogSub.unsubscribe();
     if (this.closeContactMenuSub) this.closeContactMenuSub.unsubscribe();
     if (this.closeSupplierMenuSub) this.closeSupplierMenuSub.unsubscribe();
+    if(this.closeGalleryModalSub) this.closeGalleryModalSub.unsubscribe();
   }
 
   private showCatalog() {
@@ -113,5 +119,18 @@ export class LayoutComponent implements OnDestroy {
       hostViewContainerRef.clear();
       this.isDarkbodyShown = false;
     }
+  }
+
+  private showGalleryModal() {
+    const galleryModalCmpFactory = this.componentFatoryResolver.resolveComponentFactory(GalleryModalComponent);
+    const hostViewContainerRef = this.galleryModalHost.viewContainerRef;
+
+    hostViewContainerRef.clear();
+
+    const componentRef = hostViewContainerRef.createComponent(galleryModalCmpFactory);
+    // this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
+    //   this.closeGalleryModalSub.unsubscribe();
+    //   hostViewContainerRef.clear();
+    // })
   }
 }

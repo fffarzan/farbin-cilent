@@ -1,0 +1,60 @@
+<!-- ng-click="CallCloseModal($event, DataForCustomCarousel[0].FileType)" -->
+<article class="CustomModal">
+  <div class="CustomModal-Inner">
+    <div id="CustomModal">
+
+      <!-- Main item -->
+      <section class="CustomModal-Item">
+        <!-- ng-if="!(MainMediaDetails.FileType === 'mp4') && !(MainMediaDetails.target.currentSrc)" -->
+        <img [src]="enviornment.baseUrl + media.item.string" [alt]="media.item.Name_Fa" />
+        <!-- Dynamic video -->
+        <!-- ng-if="MainMediaDetails.FileType === 'mp4'" -->
+        <!-- <video controls class="ModalVideoItem">
+          <source ng-src="{{::ServerUrl + MainMediaDetails.Url}}#t=0.1" type="video/{{::MainMediaDetails.FileType}}" />
+        </video> -->
+
+        <!-- Static video -->
+        <!-- ng-if="MainMediaDetails.target.currentSrc" -->
+        <!-- <video controls class="ModalVideoItem">
+          <source ng-src="{{::MainMediaDetails.target.currentSrc}}">
+        </video> -->
+      </section>
+
+      <!-- Carousel -->
+      <!-- ng-mouseleave="DisableScrollingCarousel()" -->
+      <section class="CustomModal-Thumbnail-Carousel">
+        <!-- ng-repeat="DataDetails in DataForCustomCarousel" -->
+        <!-- ng-mousedown="StartDragOrClick($event)" -->
+        <!-- ng-mousemove="DraggingContent($event)" -->
+        <!-- ng-mouseup="FinishDragOrClick(DataDetails)" -->
+        <div class="CustomModal-ThumbnailInner">
+          <!-- ng-if="DataDetails.FileType === 'png' || DataDetails.FileType === 'jpg' || DataDetails.FileType === 'jpeg' || DataDetails.FileType === 'gif' || DataDetails.FileType === 'bmp'" -->
+          <a>
+            <!-- <img class="CustomCarousel-Image" ng-src="{{::ServerUrl + DataDetails.Url}}" ng-style="CarouselItemsStyle" alt="" /> -->
+          </a>
+          <!-- ng-if="DataDetails.FileType === 'pdf' || DataDetails.FileType === 'zip' || DataDetails.FileType === 'rar' || DataDetails.FileType === 'doc' || DataDetails.FileType === 'docx' || DataDetails.FileType === 'csv' || DataDetails.FileType === 'csvx'" -->
+          <a>
+            <!-- <img ng-src="/images/{{::DataDetails.FileType}}.png" alt="" /> -->
+          </a>
+          <!-- ng-if="DataDetails.FileType === 'mp4'" -->
+          <a>
+            <!-- ng-style="CarouselItemsStyle" -->
+            <!-- <video class="CunstomModal-VideoItem" >
+              <source ng-src="{{::ServerUrl + DataDetails.Url}}#t=0.1" type="video/{{::DataDetails.FileType}}" />
+            </video> -->
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Close button -->
+  <section class="CustomModal-CloseButton-Wrapper">
+    <!-- ng-click="CallCloseModal($event, DataForCustomCarousel[0].FileType)" -->
+    <div class="CustomModal-CloseButton">
+      <span class="CustomModal-CloseButton-Button">×</span>
+    </div>
+  </section>
+
+</article>
