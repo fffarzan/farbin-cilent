@@ -19,7 +19,7 @@ import { IncidentService } from '../about-us/incident/incident.service';
 import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
 import { of } from 'rxjs';
 import { NewsletterService } from '../about-us/newsletter/newsletter.service';
-import { NewsletterCategory } from '../about-us/newsletter/newsletter-list/newsletter-category.model';
+import { Newsletters } from '../about-us/newsletter/newsletter-list/newsletters.model';
 
 @Injectable({
   providedIn: 'root'
@@ -198,9 +198,9 @@ export class DataStorageService {
       );
   }
 
-  fetchNewsletterList() {
+  fetchNewsletters() {
     return this.http
-      .post<NewsletterCategory>(
+      .post<Newsletters>(
         environment.baseUrl + '/api/ContentCategoryType/FillNewsLetterCategoryComplete/',
         '',
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }

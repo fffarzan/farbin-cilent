@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { NewsletterCategory } from './newsletter-list/newsletter-category.model';
+import { Newsletters } from './newsletter-list/newsletters.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsletterService {
-  private newsletters: NewsletterCategory;
+  private newsletters: Newsletters;
 
-  setNewsletters(newsletters: NewsletterCategory) {
+  setNewsletters(newsletters: Newsletters) {
     this.newsletters = newsletters;
   }
 
