@@ -6,12 +6,14 @@ import { NewsAndEventsComponent } from './news-and-events/news-and-events.compon
 import { IncidentListComponent } from './incident/incident-list/incident-list.component';
 import { IncidentDetailComponent } from './incident/incident-detail/incident-detail.component';
 import { IncidentDetailResolver } from './incident/incident-detail/incident-detail.resolver';
+import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter-list.component';
 
 const routes: Routes = [
   { path: '', component: AboutUsComponent },
   { path: 'news-and-events', component: NewsAndEventsComponent },
   { path: 'news-and-events/incident-list', component: IncidentListComponent },
-  { path: 'news-and-events/incident/:id', component: IncidentDetailComponent , resolve: { incident: IncidentDetailResolver } }
+  { path: 'news-and-events/incident/:id', component: IncidentDetailComponent , resolve: { incident: IncidentDetailResolver } },
+  { path: 'news-and-events/newsletter-list', component: NewsletterListComponent }
 ]
 
 @NgModule({
