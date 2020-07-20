@@ -15,8 +15,9 @@ export class GalleryCarouselComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
-  dynamicId = Math.round(Math.random() * 100);
+  dynamicId: number = Math.round(Math.random() * 100);
   carouselItemWidth: number = 160;
+  mediaUrls: string[];
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
@@ -26,7 +27,10 @@ export class GalleryCarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onOpenGalleryModal(currentItem, allItmes) {
-    this.galleryModalService.setGalleryModalData(currentItem, allItmes);
+  onOpenGalleryModal(currentItem: GalleryMedia, allItems: any) {
+    this.galleryModalService.setGalleryModalData(currentItem, allItems);
+
+    // trigger model when data arrived
+    this.galleryModalService.galleryModalOpen();
   }
 }

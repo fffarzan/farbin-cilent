@@ -11,12 +11,9 @@ export class GalleryModalService {
   private currentData;
   private allData;
 
-  setGalleryModalData(currentData, allData) {
-    this.currentData = currentData;
-    this.allData = allData;
-
-    // trigger model when data arrived.
-    this.galleryModalOpen();
+  setGalleryModalData(currentItem: GalleryMedia, allItems: GalleryMedia[]) {
+    this.currentData = currentItem;
+    this.allData = allItems;
   }
   
   getGalleryModalData() {   

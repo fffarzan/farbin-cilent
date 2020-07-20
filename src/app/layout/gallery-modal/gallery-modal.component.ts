@@ -1,8 +1,9 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 import { GalleryModalService } from './gallery-modal.service';
+import { GalleryCarousel, GalleryMedia } from 'src/app/shared/carousel/gallery-carousel/gallery-carousel.model';
 
 @Component({
   selector: 'app-gallery-modal',
@@ -10,11 +11,40 @@ import { GalleryModalService } from './gallery-modal.service';
   styleUrls: ['./gallery-modal.component.css']
 })
 export class GalleryModalComponent implements OnInit {
+  @Output() close = new EventEmitter<void>();
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
-  dynamicId = Math.round(Math.random() * 100);
-  media;
+  dynamicId: number = Math.round(Math.random() * 100);
+  media: any;
+  carouselData: GalleryCarousel = {
+    media: null,
+    staticUrl: '/images/docx.png',
+    dynamicImagePropertyName: 'Url',
+    desktopOptions: {
+      stagePadding: 20,
+      items: 3,
+      dots: false,
+      nav: false,
+      autoWidth: true,
+      responsive: { 1024: { items: 6 } }
+    },
+    mobileOptions: {
+      mobileItems: {
+        maxSize: 500,
+        items: 1.7
+      },
+      tabletItems: {
+        maxSize: 768,
+        items: 0
+      },
+      desktopItems: {
+        maxSize: 1024,
+        items: 5
+      }
+    }
+  };
+  carouselItemWidth: number = 160;
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
@@ -23,6 +53,24 @@ export class GalleryModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.media = this.galleryModalService.getGalleryModalData();
-    console.log(this.media)
+    this.carouselData.media = this.media.items;
+    // this.media.items = this.editPicUrlToGetSmallImg(this.media.items)
+  }
+
+  onCloseModal() {
+    this.close.emit();
+  }
+
+  onSendDataToMain(item) {
+    this.media.item = item;
+  }
+
+  private editPicUrlToGetSmallImg(items) {
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].FileType !== 'mp4' && !items[i].Url.includes('\\Small\\') && !items[i].Url.includes('/Small/'))
+        items[i].Url = this.extensionMethodService.getSmallImage(items[i].Url);
+    }
+
+    return items;
   }
 }

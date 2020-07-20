@@ -128,9 +128,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
     hostViewContainerRef.clear();
 
     const componentRef = hostViewContainerRef.createComponent(galleryModalCmpFactory);
-    // this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
-    //   this.closeGalleryModalSub.unsubscribe();
-    //   hostViewContainerRef.clear();
-    // })
+    this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
+      this.closeGalleryModalSub.unsubscribe();
+      hostViewContainerRef.clear();
+    })
   }
 }
