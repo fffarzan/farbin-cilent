@@ -18,6 +18,8 @@ import { IncidentCategory } from '../about-us/incident/incident-list/incident-ca
 import { IncidentService } from '../about-us/incident/incident.service';
 import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
 import { of } from 'rxjs';
+import { NewsletterService } from '../about-us/newsletter/newsletter.service';
+import { NewsletterCategory } from '../about-us/newsletter/newsletter-list/newsletter-category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,8 @@ export class DataStorageService {
     private catalogService: CatalogsService,
     private productCarouselService: ProductCarouselService,
     private searchService: SearchService,
-    private incidentService: IncidentService
+    private incidentService: IncidentService,
+    private newsletterService: NewsletterService
   ) { }
 
   // homepage requests
@@ -192,6 +195,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(incidentCategories => this.incidentService.setIncidentCategories(incidentCategories))
+      );
+  }
+
+  fetchNewsletterList() {
+    return this.http
+      .post<NewsletterCategory>(
+        environment.baseUrl + '/api/ContentCategoryType/FillNewsLetterCategoryComplete/',
+        '',
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(newletters => this.newsletterService.setNewsletters(newletters))
       );
   }
 }
