@@ -222,4 +222,16 @@ export class DataStorageService {
         tap(newsletter => this.newsletterService.setNewsletter(newsletter))
       );
   }
+
+  fetchUnsubscribeData(param: object) {
+    return this.http
+    .post<{ Email: string }>(
+      environment.baseUrl + '/api/Content/FillContentByIDX/',
+      param,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    )
+    .pipe(
+      // tap(newsletter => this.newsletterService.setNewsletter(newsletter))
+    );
+  }
 }

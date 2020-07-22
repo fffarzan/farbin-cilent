@@ -10,6 +10,7 @@ import { IncidentDetailComponent } from './incident/incident-detail/incident-det
 import { SharedModule } from '../shared/shared.module';
 import { NewsletterDetailComponent } from './newsletter/newsletter-detail/newsletter-detail.component';
 import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter-list.component';
+import { UnsubscribeComponent } from './newsletter/unsubscribe/unsubscribe.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter
     IncidentListComponent,
     IncidentDetailComponent,
     NewsletterDetailComponent,
-    NewsletterListComponent
+    NewsletterListComponent,
+    UnsubscribeComponent
   ],
   imports: [
     AboutUsRoutingModule,
