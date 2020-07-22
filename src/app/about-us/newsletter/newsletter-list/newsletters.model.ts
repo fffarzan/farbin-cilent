@@ -7,7 +7,7 @@ export class Newsletters {
     public Sort: number,
     public Status: number,
     public BeforeEditedName_Fa?: string,
-    public ContentCaegory?: Newsletters,
+    public ContentCategory?: Newsletters,
     public IDContentCategory?: string,
     public IDParent?: string,
     public IDX?: number,

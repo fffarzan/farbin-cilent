@@ -43,25 +43,26 @@
 	background-color: rgb(236, 227, 212);
 }
 
-.AboutUsDetails-CenterSide-TabSwitchers a {
+.AboutUsDetails-CenterSide-TabSwitchers span {
 	color: #000 !important;
 	font-size: 17px;
+	line-height: 25px;
 }
 
 .nav-pills>li {
 	border-radius: 10px 10px 0px 0px;
 }
 
-.nav-pills>li>a {
+.nav-pills>li>span {
 	border-radius: 10px 10px 0px 0px;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li>a {
+.nav-pills>li.active>span, .nav-pills>li.active>span:focus, .nav-pills>li>span {
 	font-size: 14px;
 	padding: 5px 20px;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+.nav-pills>li.active>span, .nav-pills>li.active>span:focus, .nav-pills>li.active>span:hover {
 	background-color: #610040;
 	color: #fff !important;
 	padding: 5px 20px;
@@ -100,11 +101,11 @@
 	margin-bottom: 10px;
 }
 
-.NewsLetter-TabDesc-Recursion-Outer .NewsLetter-TabDesc-Recursion-Body li {
+.NewsLetter-TabDesc-Recursion-Outer .NewsLetter-TabDesc-Recursion-Body ul {
 	margin-bottom: 10px;
 }
 
-.NewsLetter-TabDesc-Recursion-Outer .NewsLetter-TabDesc-Recursion-Body li a {
+.NewsLetter-TabDesc-Recursion-Outer .NewsLetter-TabDesc-Recursion-Body ul a {
 	color: #610040 !important;
 	font-weight: bold;
 }
