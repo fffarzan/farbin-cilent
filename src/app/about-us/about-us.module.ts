@@ -8,6 +8,7 @@ import { NewsAndEventsComponent } from './news-and-events/news-and-events.compon
 import { IncidentListComponent } from './incident/incident-list/incident-list.component';
 import { IncidentDetailComponent } from './incident/incident-detail/incident-detail.component';
 import { SharedModule } from '../shared/shared.module';
+import { NewsletterDetailComponent } from './newsletter/newsletter-detail/newsletter-detail.component';
 import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter-list.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter
     NewsAndEventsComponent,
     IncidentListComponent,
     IncidentDetailComponent,
+    NewsletterDetailComponent
     NewsletterListComponent
   ],
   imports: [
