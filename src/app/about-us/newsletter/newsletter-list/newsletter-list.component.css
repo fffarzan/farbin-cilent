@@ -1,0 +1,133 @@
+/* mobile-first  */
+
+.AboutUsDetails-CenterSide {	
+	padding: 0px 15px;
+}
+
+.AboutUsDetails-CenterSide h1 {
+	color: #333;
+	font-weight: bold;
+	font-size: 17px !important;
+	margin-bottom: 15px;
+}
+
+.AboutUsDetails-CenterSide p {
+	font-size: 14px;
+	margin-bottom: 40px;
+	color: #333;
+}
+
+@media screen and (min-width: 768px) {
+	.AboutUsDetails-CenterSide {	
+		padding: 0px 30px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.AboutUsDetails-CenterSide {
+		padding: 0px 40px;
+	}
+	.AboutUsDetails-CenterSide p {
+		color: unset;
+	}
+}
+
+/* tabs */
+
+.AboutUsDetails-CenterSide-TabSwitchersWrapper {
+	float: right;
+	padding-right: 0px !important;
+}
+
+.AboutUsDetails-CenterSide-TabSwitchers {
+	background-color: rgb(236, 227, 212);
+}
+
+.AboutUsDetails-CenterSide-TabSwitchers span {
+	color: #000 !important;
+	font-size: 17px;
+	line-height: 25px;
+}
+
+.nav-pills>li {
+	border-radius: 10px 10px 0px 0px;
+}
+
+.nav-pills>li>span {
+	border-radius: 10px 10px 0px 0px;
+}
+
+.nav-pills>li.active>span, .nav-pills>li.active>span:focus, .nav-pills>li>span {
+	font-size: 14px;
+	padding: 5px 20px;
+}
+
+.nav-pills>li.active>span, .nav-pills>li.active>span:focus, .nav-pills>li.active>span:hover {
+	background-color: #610040;
+	color: #fff !important;
+	padding: 5px 20px;
+}
+
+@media screen and (min-width: 992px) {
+	.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li>a {
+		padding: 3px 20px;
+	}
+	.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+		padding: 3px 20px;
+	}
+}
+
+/* content */
+
+.AboutUsDetails-CenterSide-TabDescWrappper {
+	clear: both;
+	border: 1px solid #bbb;
+	padding: 20px;
+}
+
+.AboutUsDetails-CenterSide-TabDescWrappper a, .AboutUsDetails-CenterSide-TabDesc span {
+	color: #000 !important;
+}
+
+.NewsLetter-TabDesc-Recursion ul {
+	padding-right: 5px !important;
+}
+
+.NewsLetter-TabDesc-Recursion-Outer li {
+	margin-bottom: 25px;
+}
+
+.NewsLetter-TabDesc-Recursion-Outer p {
+	margin-bottom: 10px;
+}
+
+.NewsLetter-TabDesc-Recursion-Outer .NewsLetter-TabDesc-Recursion-Body ul {
+	margin-bottom: 10px;
+}
+
+.NewsLetter-TabDesc-Recursion-Outer .NewsLetter-TabDesc-Recursion-Body ul a {
+	color: #610040 !important;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 992px) {
+	.AboutUsDetails-CenterSide-TabDescWrappper {
+		padding: 13px;
+	}
+	.NewsLetter-TabDesc-Recursion ul {
+		padding-right: 10px !important;
+	}
+	
+
+}
+
+/* right side */
+
+.NewsLetter-RightSide-Link-OtherLink {
+	color: #000 !important;
+}
+
+.NewsLetter-RightSide-Link-NewsletterLink {
+	color: #610040 !important;
+	font-weight: bold;
+}

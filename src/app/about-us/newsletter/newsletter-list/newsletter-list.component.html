@@ -1,0 +1,54 @@
+<article class="container-fluid AboutUsPage AboutUsSubCategory-Wrapper"
+  ng-controller="AboutUsNewsLetterController">
+  <div class="row AboutUsSubCategory-Inner">
+    <app-left-side class="hidden-xs col-sm-2 about-us-sides"></app-left-side>
+
+    <!-- content -->
+    <section class="col-xs-12 col-sm-8 AboutUsSubCategory-Sides AboutUsDetails-CenterSide">
+      <h1>آرشیو خبرنامه</h1>
+      <p>اخبار ارسالی گذشته را از دست داده اید؟ آرشیو فربین را جستجو کنید.</p>
+
+      <!-- Tabs -->
+      <ul class="nav nav-pills AboutUsDetails-CenterSide-TabSwitchersWrapper">
+        <li class="AboutUsDetails-CenterSide-TabSwitchers"
+          *ngFor="let newsletter of newsletters?.ContentCategory; let i = index"
+          [ngClass]="{ 'active': titleIndex === i }">
+          <span (click)="onSetTab(i)">{{ newsletter.Name_Fa }}</span>
+        </li>
+      </ul>
+
+      <!-- Tab boxes -->
+      <div class="AboutUsDetails-CenterSide-TabDescWrappper">
+        <div class="AboutUsDetails-CenterSide-TabDesc">
+          <section class="NewsLetter-TabDesc-Recursion">
+
+            <ng-template #recursiveList
+              let-list="list">
+              <div *ngFor="let item of list">
+                <section class="NewsLetter-TabDesc-Recursion-Body"
+                  *ngIf="!item.BeforeEditedName_Fa">
+                  <p>{{ item.Name_Fa }}</p>
+                  <ul *ngFor="let subItem of item.Content">
+                    <a *ngIf="subItem.Active">{{ subItem.Name_Fa }}</a>
+                  </ul>
+                </section>
+                <ul class="NewsLetter-TabDesc-Recursion-Inner">
+                  <ng-container *ngTemplateOutlet="recursiveList; context:{ list: item.ContentCategory }">
+                  </ng-container>
+                </ul>
+              </div>
+            </ng-template>
+            <ul class="NewsLetter-TabDesc-Recursion-Outer"
+              id="List0">
+                <ng-container *ngTemplateOutlet="recursiveList; context:{ list: newsletters?.ContentCategory[titleIndex]?.ContentCategory }">
+                </ng-container>
+            </ul>
+
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <app-right-side class="hidden-xs col-sm-2 about-us-sides"></app-right-side>
+  </div>
+</article>

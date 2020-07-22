@@ -40,6 +40,11 @@ body {
   color: #fff;
 }
 
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .page {
   bottom: 0;
   padding-top: 0;
@@ -695,11 +700,7 @@ body {
 /* mobile-first */
 
 #MovableContainer {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  box-shadow: #000 0 0 10px;
-  background-color: #000;
+  
   /* padding-bottom: 60px; */
 }
 
@@ -736,16 +737,6 @@ body {
   outline: 1px solid slategrey;
 }
 
-#DarkBody {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 29999;
-  display: none;
-}
-
 .SideContentBox {
   top: 38px;
   height: 90%;
@@ -764,31 +755,6 @@ body {
   right: 0;
   left: 0;
 } */
-
-@media screen and (min-width: 768px) {
-  /* #DarkBody {
-    bottom: 50px;
-  } */
-  #MovableContainer {
-    width: 100% !important;
-    left: 0;
-    box-shadow: none;
-    background-color: none;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  #MovableContainer {
-    width: 90% !important;
-    left: 5%;
-    box-shadow: #000 0 0 10px;
-    background-color: #000;
-  }
-  /* .MainSection {
-    width: unset !important;
-    height: unset !important;
-  } */
-}
 
 /* @media screen and (min-width: 1200px) {
   .FixedMenu {

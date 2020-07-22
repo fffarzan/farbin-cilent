@@ -1,0 +1,72 @@
+<div class="container-fluid AboutUsSubCategory-Wrapper">
+  <div class="row AboutUsSubCategory-Inner">
+    <app-left-side class="hidden-xs col-sm-2 about-us-sides"></app-left-side>
+
+    <article class="col-xs-12 col-sm-8 AboutUsSubCategory-Sides AboutUsSubCategory-CenterSide">
+      <div class="row AboutUsSubCategory-CenterSide-SubCatsDescWrapper">
+
+        <!-- filter -->
+        <div class="col-xs-12">
+          <button class="AboutUsSubCategory-CenterSide-TreeButton"
+            (click)="onToggleFilter()">
+            <img src="assets/img/filter.png"
+              alt="نوآوران شبکه فربین - Farbin Corporation - آرشیو رویدادهای فربین" />
+            <p>فیلتر</p>
+          </button>
+
+          <section class="IncidentCategory-CenterSide-TreeWrapper"
+            [ngClass]="{ 'IncidentCategory-Toggle': !isFilterOpen }">
+            <div class="TreeContainer">
+              <ng-template #recursiveList
+                let-list="list">
+                <div class="TreeContainer-Body"
+                  *ngFor="let incidentCategory of list">
+                  <input *ngIf="!incidentCategory.IncidentCategorys"
+                    type="checkbox"
+                    id="TreeCheckbox{{ incidentCategory.IDX }}"
+                    (click)="onFilterIncidents(incidentCategory)">
+                  <label class="TreeContainer-Label"
+                    for="TreeCheckbox{{ incidentCategory.IDX }}">
+                    {{ incidentCategory.Name_Fa }}
+                  </label>
+                  <ul class="IncidentCategory-CenterSide-Tree">
+                    <ng-container
+                      *ngTemplateOutlet="recursiveList; context:{ list: incidentCategory.IncidentCategorys }">
+                    </ng-container>
+                  </ul>
+                </div>
+              </ng-template>
+              <ul class="IncidentCategory-CenterSide-Tree"
+                id="List0">
+                <ng-container *ngTemplateOutlet="recursiveList; context:{ list: incidentCategories }"></ng-container>
+              </ul>
+            </div>
+          </section>
+
+          <hr class="AboutUsSubCategory-CenterSide-FilterLine" />
+        </div>
+
+        <!-- list -->
+        <section class="col-xs-12 IncidentCategory-content-AllEvents"
+          *ngFor="let incidentPreview of filteredIncidents">
+          <a [routerLink]="['../incident', incidentPreview.IDX]"
+            routerLinkActive="router-link-active">
+            <img [src]="enviornment.baseUrl + incidentPreview.PicUrl | getSmallImage"
+              alt="{{ incidentPreview.Name_Fa }}" />
+          </a>
+          <div class="IncidentCategory-content-Desc IncidentCategory-CenterSide-Desc">
+            <a [routerLink]="['../incident', incidentPreview.IDX]">
+              <h3>{{ incidentPreview.Name_Fa }}</h3>
+              <p *ngIf="incidentPreview.EndDate || incidentPreview.StartDate">
+                {{ incidentPreview.StartDate === incidentPreview.EndDate ? 'در تاریخ ' + incidentPreview.StartDate : 'در تاریخ ' + incidentPreview.StartDate + ' لغایت ' + incidentPreview.EndDate}}
+              </p>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </article>
+
+    <app-right-side class="hidden-xs col-sm-2 about-us-sides"></app-right-side>
+  </div>
+</div>

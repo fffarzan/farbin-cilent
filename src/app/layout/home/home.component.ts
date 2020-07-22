@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductCarouselParams } from '../../shared/carousel/product-carousel/product-carousel-params.model';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
@@ -11,25 +12,24 @@ export class HomeComponent implements OnInit {
     staticUrl: '',
     dynamicFieldName: 'PicUrl',
     pageUrlDirection: 'DefineDetailProduct',
-    owlCarouselOptions: {
-      stagePadding: 20,
+    desktopOptions: {
+      stagePadding: 0,
       items: 3,
-      responsive: {
-        1024: {
-          items: 6
-        }
-      }
+      dots: false,
+      nav: false,
+      autoWidth: false,
+      responsive: { 1024: { items: 6 } }
     },
-    productCarouselOptions: {
-      itemsMobile: {
+    mobileOptions: {
+      mobileItems: {
         maxSize: 500,
         items: 2.1
       },
-      itemsTablet: {
+      tabletItems: {
         maxSize: 768,
         items: 0
       },
-      itemsDesktop: {
+      desktopItems: {
         maxSize: 1024,
         items: 4
       }

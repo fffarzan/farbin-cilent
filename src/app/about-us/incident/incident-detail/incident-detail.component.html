@@ -1,0 +1,52 @@
+<article class="Incident">
+  <div class="Incident-Inner">
+
+    <!-- header -->
+    <section class="Incident-Header">
+      <div class="Incident-Header-Title">
+        <h1>{{ incident.Name_Fa }}</h1>
+      </div>
+      <div class="Incident-Header-MainImage">
+        <img [src]="enviornment.baseUrl + incident.PicUrl" alt="{{ incident.Name_Fa }}" />
+      </div>
+    </section>
+    <hr>
+
+    <!-- main description -->
+    <section class="Incident-Section">
+      <div class="Incident-MainDesc" [innerHtml]="incident.Description_Fa"></div>
+    </section>
+    <hr>
+
+    <!-- image gallary -->
+    <section *ngIf="incident.Images" class="Incident-Section">
+      <div class="Incident-Section-Title">
+        <h3>تصاویر</h3>
+        <h3 class="Incident-Section-TitleEn">Images</h3>
+      </div>
+      <app-gallery-carousel class="Incident-Carousel" [carouselData]="imageGalleryData"></app-gallery-carousel>
+    </section>
+    <hr>
+
+    <!-- video gallery -->
+    <section *ngIf="incident.Videos" class="Incident-Section">
+      <div class="Incident-Section-Title">
+        <h3>ویدیوها</h3>
+        <h3 class="Incident-Section-TitleEn">Videos</h3>
+      </div>
+      <app-gallery-carousel class="Incident-Carousel" [carouselData]="videoGalleryData"></app-gallery-carousel>
+    </section>
+    <hr>
+
+    <!-- greetings -->
+    <section *ngIf="incident.Greetings" class="Incident-Section">
+      <div class="Incident-Section-Title">
+        <h3>تقدیرنامه ها</h3>
+        <h3 class="Incident-Section-TitleEn">Greetings</h3>
+      </div>
+      <app-gallery-carousel class="Incident-Carousel" [carouselData]="greetingGalleryData"></app-gallery-carousel>
+    </section>
+    <hr>
+
+  </div>
+</article>

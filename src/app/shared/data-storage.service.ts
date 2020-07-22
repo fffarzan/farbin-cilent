@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { Banner } from '../layout/home/dynamic-slider/banner.model';
@@ -13,10 +13,13 @@ import { Product } from './carousel/product-carousel/product.model';
 import { ProductCarouselService } from './carousel/product-carousel/product-carousel.service';
 import { SearchService } from '../layout/header/search/search.service';
 import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../layout/header/search/search.model';
-import { Incident } from '../about-us/news-and-events/incident/incident-detail/incident.model';
-import { IncidentCategory } from '../about-us/news-and-events/incident/incident-list/incident-category.model';
-import { IncidentService } from '../about-us/news-and-events/incident/incident.service';
-import { IncidentPreview } from '../about-us/news-and-events/incident/incident-list/incident-preview.model';
+import { Incident } from '../about-us/incident/incident-detail/incident.model';
+import { IncidentCategory } from '../about-us/incident/incident-list/incident-category.model';
+import { IncidentService } from '../about-us/incident/incident.service';
+import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
+import { of } from 'rxjs';
+import { NewsletterService } from '../about-us/newsletter/newsletter.service';
+import { Newsletters } from '../about-us/newsletter/newsletter-list/newsletters.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +32,8 @@ export class DataStorageService {
     private catalogService: CatalogsService,
     private productCarouselService: ProductCarouselService,
     private searchService: SearchService,
-    private incidentService: IncidentService
+    private incidentService: IncidentService,
+    private newsletterService: NewsletterService
   ) { }
 
   // homepage requests
@@ -191,6 +195,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(incidentCategories => this.incidentService.setIncidentCategories(incidentCategories))
+      );
+  }
+
+  fetchNewsletters() {
+    return this.http
+      .post<Newsletters>(
+        environment.baseUrl + '/api/ContentCategoryType/FillNewsLetterCategoryComplete/',
+        '',
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(newletters => this.newsletterService.setNewsletters(newletters))
       );
   }
 }

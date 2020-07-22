@@ -47,19 +47,21 @@
         [src]="(product[productCarouselParams.dynamicFieldName] ? enviornment.baseUrl + product[productCarouselParams.dynamicFieldName] : productCarouselParams.staticUrl) | getSmallImage" />
     </a>
 
-    <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}"  -->
     <section class="ProductCarousel-Mobile-Thumbnail">
+      <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}"  -->
       <a href="#" class="ProductCarousel-Mobile-Thumbnail-Desc">
         <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
         <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
       </a>
       <section class="ProductCarousel-Mobile-Thumbnail-Buttons">
         <!-- ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" -->
-        <!-- <img src="assets/img/AddToListWhite.png" class="AddToListButton clearfix" data-placement="left"
-          title="Add to List" alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" /> -->
+        <!-- data-placement="left" -->
+        <img src="assets/img/AddToListWhite.png" class="AddToListButton clearfix" title="Add to List"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
         <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)"  -->
-        <!-- <img src="assets/img/Compare.png" class="CompareButton" data-placement="left" title="Compare"
-          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" /> -->
+        <!-- data-placement="left" -->
+        <img src="assets/img/Compare.png" class="CompareButton" title="Compare"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
       </section>
       <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
         class="ProductCarousel-Mobile-Thumbnail-ItemColor" />

@@ -1,178 +1,107 @@
 /* mobile-first */
 
-.AboutUsCategory-MainDesc h1 {
-  margin-bottom: 20px;
+/* روی فیلترا وقت نمیذارم فعلا چون کلا قراره دیزانش عوض شه */
+
+/* tree */
+
+.AboutUsSubCategory-CenterSide-TreeButton {
+  background-color: rgb(236, 227, 212);
+  padding: 5px 10px 0 10px;
+  border: 1px solid rgb(236, 227, 212);
+  border-radius: 2px;
 }
 
-.AboutUsCategory-Category h5 {
-  margin-bottom: 15px;
+.AboutUsSubCategory-CenterSide-TreeButton p {
+  display: inline-block;
+  margin-right: 3px;
 }
 
-.AboutUsCategory-MainDesc h1, .AboutUsCategory-Category h5 {
-  font-weight: bold !important;
-  font-size: 17px !important;
-  color: #333;
+.AboutUsSubCategory-CenterSide-TreeButton img {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
 }
 
-.AboutUsCategory-CategoryWrapper {
-  margin-top: 50px;
+.AboutUsSubCategory-CenterSide-FilterLine {
+  border-color: #610040 !important;
+  margin: 0 0 20px 0;
 }
 
-.AboutUsCategory-MainDesc p {
-  color: #333;
+.IncidentCategory-CenterSide-TreeWrapper {
+  background-color: rgb(236, 227, 212);
+  padding: 10px 0;
+}
+
+.IncidentCategory-Toggle {
+  display: none;
+}
+
+.IncidentCategory-CenterSide-TreeWrapper ul {
+  padding-right: 30px;
+}
+
+.TreeContainer-Body {
+  position: relative;
+}
+
+.TreeContainer-Label {
+  cursor: pointer;
+}
+
+.TreeWithoutCheckboxItem {
+  margin-right: 15px !important;
+}
+
+.TreeContainer-Label {
+  color: black !important;
   font-size: 14px;
-  line-height: 25px;
-  text-align: justify;
+  margin: 0 0 10px 0;
+  display: inline-block;
+  font-weight: normal;
 }
 
-.AboutUsCategory-Category {
-  padding-left: 130px;
-  margin-bottom: 45px;
-}
-
-.AboutUsCategory-Category p {
-  color: #333;
-  font-size: 13px;
-  line-height: 23px;
-  text-align: justify;
-  margin-bottom: 15px;
-}
-
-.AboutUsCategory-Category a {
-  font-weight: bolder;
-}
-
-.AboutUsCategory-MainDesc p {
-  color: #333;
-  text-align: justify;
-  line-height: 23px;
-  font-size: 14px;
-}
-
-.AboutUsCategory-Content span {
-  color: #610040 !important;
-}
-
-.AboutUsCategory-Category a {
-  color: #610040 !important;
-  font-weight: bolder;
-}
-
-@media screen and (min-width: 768px) {
-  .AboutUsCategory-MainDesc h1, .AboutUsCategory-Category h5 {
-    font-size: 17px !important;
-    margin-bottom: 10px;
-  }
-  .AboutUsCategory-MainDesc p {
-    font-size: 14px;
-  }
-  .AboutUsCategory-Category p {
-    font-size: 14px;
-    line-height: 22px;
-    color: unset;
-  }
-  .AboutUsCategory-CategoryWrapper {
-    margin-top: 0;
-  }
-  .AboutUsCategory-Category {
-    float: right !important;
-    margin-top: 50px;
-    padding-left: 60px;
-    margin-bottom: 0;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* mobile-first  */
-
-.AboutUsSubCategory-Wrapper {
-  background-color: #fff;
-  color: #000;
-  direction: rtl;
-  padding: 90px 10px 70px 10px;
-  height: 100vh;
-}
-
-.AboutUsSubCategory-Inner {
-  margin: 0 -10px 0 -10px;
-}
-
-.AboutUsSubCategory-CenterSide {
-  padding: 0px 15px;
-}
-
-.AboutUsSubCategory-CenterSideWrapper h1 {
-  color: #333;
-  font-size: 17px !important;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.AboutUsSubCategory-CenterSideWrapper h5 {
-  color: #333;
-  font-size: 15px;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.AboutUsSubCategory-CenterSideWrapper img {
-  width: 100%;
-}
-
-.AboutUsSubCategory-CenterSide-SubCatDesc {
-  float: right !important;
-  padding-left: 60px;
-  margin: 20px 0px 30px 0px;
-}
-
-.AboutUsSubCategory-CenterSide-SubCatDesc h4 {
-  margin-bottom: 10px;
-}
-
-.AboutUsSubCategory-CenterSide-SubCatDesc p {
-  color: #000 !important;
-  font-size: 14px;
-  margin-bottom: 15px;
-  text-align: justify;
-  padding-left: 120px;
-}
-
-.AboutUsSubCategory-CenterSide-SubCatDesc span {
-  color: #610040;
-}
-
-.AboutUsSubCategory-CenterSide-SubCatDesc a {
+.TreeContainer-Label:hover {
   color: #610040 !important;
   font-weight: bold;
-  font-size: 16px;
 }
 
-.AboutUsSubCategory-CenterSide-AllEvents {
+.TreeContainer input {
+  /* display: inline-block; */
+  font-family: FontAwesome;
+}
+
+input[type="checkbox"] {
+  /* to hide the checkbox itself */
+  display: none;
+  margin: 0;
+}
+
+input[type="checkbox"]+label:before {
+  /* unchecked icon */
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f096";
+  position: absolute;
+  top: 2px;
+  right: -25px;
+  letter-spacing: 10px;
+}
+
+input[type="checkbox"]:checked+label:before {
+  /* checked icon */
+  content: "\f046";
+  letter-spacing: 5px;
+}
+
+/* all events */
+
+.IncidentCategory-content-AllEvents {
   display: flex;
   flex-flow: row wrap;
   margin: 10px 0;
 }
 
-.AboutUsSubCategory-CenterSide-AllEvents img {
+.IncidentCategory-content-AllEvents img {
   width: 120px;
   height: 83px;
   margin-left: 20px;
@@ -181,40 +110,32 @@
   background-size: 100% 100%;
 }
 
-.AboutUsSubCategory-CenterSide-Desc h1 {
+.IncidentCategory-content-Desc h3 {
   font-size: 16px;
   color: #000;
   font-weight: bold;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
-.AboutUsSubCategory-CenterSide-Desc p {
+.IncidentCategory-content-Desc p {
   margin: 15px 0 0 0;
 }
 
-@media screen and (min-width: 768px) {
-  .AboutUsSubCategory-Wrapper {
-    padding: 70px 33px 70px 33px;
-  }
-  .AboutUsSubCategory-CenterSide {
-    padding: 0px 40px;
-  }
-  .AboutUsSubCategory-CenterSideWrapper h1 {
-    margin-bottom: 17px;
-  }
-  .AboutUsSubCategory-CenterSide-SubCatDesc {
-    margin: 30px 0px;
-  }
-  .AboutUsSubCategory-CenterSide-SubCatDesc p {
-    padding-left: 0;
-  }
-  .AboutUsSubCategory-CenterSide-SubCatDesc a {
-    font-size: 14px;
-  }
+.IncidentCategory-CenterSide-Desc h1 {
+  font-size: 14px;
+  margin-top: 10px;
 }
 
-@media screen and (min-width: 992px) {
-  .AboutUsSubCategory-Wrapper {
-    padding: 70px 65px 70px 40px;
-  }
+.IncidentCategory-CenterSide-Desc p {
+  color: #777;
+}
+
+/* right side */
+
+.IncidentCategory-RightSide-Links h1 {
+  color: #610040 !important;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 0;
+  font-weight: bold;
 }

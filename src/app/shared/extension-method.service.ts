@@ -76,15 +76,11 @@ export class ExtensionMethodService {
 
     let $g_day_no = 365 * $gy + div($gy + 3, 4) - div($gy + 99, 100) + div($gy + 399, 400);
 
-    for (let $i = 0; $i < $gm; ++$i) {
+    for (let $i = 0; $i < $gm; ++$i)
       $g_day_no += $g_days_in_month[$i];
-    }
-
-    if ($gm > 1 && (($gy % 4 == 0 && $gy % 100 != 0) || ($gy % 400 == 0))) {
+    if ($gm > 1 && (($gy % 4 == 0 && $gy % 100 != 0) || ($gy % 400 == 0)))
       /* leap and after Feb */
       $g_day_no++;
-    }
-
     $g_day_no += $gd;
 
     let $j_day_no = $g_day_no - 79;
@@ -93,6 +89,8 @@ export class ExtensionMethodService {
     $j_day_no = $j_day_no % 12053;
 
     let $jy = 979 + 33 * $j_np + 4 * div($j_day_no, 1461); /* 1461 = 365*4 + 4/4 */
+    let $jm;
+    let $jd;
 
     $j_day_no %= 1461;
 
@@ -101,23 +99,25 @@ export class ExtensionMethodService {
       $j_day_no = ($j_day_no - 1) % 365;
     }
 
-    let $jm;
-    let $jd
-    for (let $i = 0; $i < 11 && $j_day_no >= $j_days_in_month[$i]; ++$i) {
+    for (var $i = 0; $i < 11 && $j_day_no >= $j_days_in_month[$i]; ++$i)
       $j_day_no -= $j_days_in_month[$i];
-      $jm = $i + 1;
-      $jd = $j_day_no + 1;
-    }
+    $jm = $i + 1;
+    $jd = $j_day_no + 1;
 
     function div(x, y) {
       return Math.floor(x / y);
-    }
 
-    if (!f || f == undefined) {
-      return { y: $jy, m: $jm, d: $jd }
-    } else {
-      return $jy + '/' + $jm + '/' + $jd;
+
     }
+    if (!f || f == undefined)
+      return { y: $jy, m: $jm, d: $jd }
+    else
+      return $jy + '/' + $jm + '/' + $jd;
+
+
+
+
+
   }
 
   jing(strDate, f) {

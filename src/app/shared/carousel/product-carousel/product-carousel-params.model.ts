@@ -1,24 +1,12 @@
-export interface ProductCarouselParams {
-  staticUrl: string;
-  dynamicFieldName: string;
-  pageUrlDirection: string;
-  owlCarouselOptions: {
-    stagePadding: number,
-    items: number,
-    responsive: object
-  },
-  productCarouselOptions: {
-    itemsMobile: {
-      maxSize: number,
-      items: number
-    },
-    itemsTablet: {
-      maxSize: number,
-      items: number
-    },
-    itemsDesktop: {
-      maxSize: number,
-      items: number
-    }
-  }
+import { DesktopOptions } from '../desktop-options-carousel.model';
+import { MobileOptions } from '../mobile-options-carousel.model';
+
+export class ProductCarouselParams {
+  constructor(
+    public staticUrl: string,
+    public dynamicFieldName: string,
+    public pageUrlDirection: string,
+    public desktopOptions: DesktopOptions,
+    public mobileOptions: MobileOptions
+  ) { }
 }
