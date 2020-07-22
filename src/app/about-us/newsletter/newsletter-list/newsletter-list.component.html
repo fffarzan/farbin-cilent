@@ -29,7 +29,8 @@
                   *ngIf="!item.BeforeEditedName_Fa">
                   <p>{{ item.Name_Fa }}</p>
                   <ul *ngFor="let subItem of item.Content">
-                    <a *ngIf="subItem.Active">{{ subItem.Name_Fa }}</a>
+                    <a *ngIf="subItem.Active"
+                      [routerLink]="['../newsletter', subItem.IDX]">{{ subItem.Name_Fa }}</a>
                   </ul>
                 </section>
                 <ul class="NewsLetter-TabDesc-Recursion-Inner">
@@ -40,8 +41,9 @@
             </ng-template>
             <ul class="NewsLetter-TabDesc-Recursion-Outer"
               id="List0">
-                <ng-container *ngTemplateOutlet="recursiveList; context:{ list: newsletters?.ContentCategory[titleIndex]?.ContentCategory }">
-                </ng-container>
+              <ng-container
+                *ngTemplateOutlet="recursiveList; context:{ list: newsletters?.ContentCategory[titleIndex]?.ContentCategory }">
+              </ng-container>
             </ul>
 
           </section>
