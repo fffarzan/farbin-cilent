@@ -19,7 +19,7 @@ import { NewsletterListComponent } from './newsletter/newsletter-list/newsletter
     NewsAndEventsComponent,
     IncidentListComponent,
     IncidentDetailComponent,
-    NewsletterDetailComponent
+    NewsletterDetailComponent,
     NewsletterListComponent
   ],
   imports: [
