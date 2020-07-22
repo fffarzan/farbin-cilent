@@ -20,6 +20,7 @@ import { IncidentPreview } from '../about-us/incident/incident-list/incident-pre
 import { of } from 'rxjs';
 import { NewsletterService } from '../about-us/newsletter/newsletter.service';
 import { Newsletters } from '../about-us/newsletter/newsletter-list/newsletters.model';
+import { Newsletter } from '../about-us/newsletter/newsletter-detail/newsletter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -207,6 +208,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(newletters => this.newsletterService.setNewsletters(newletters))
+      );
+  }
+
+  fetchNewsletter(param: object) {
+    return this.http
+      .post<Newsletter>(
+        environment.baseUrl + '/api/Content/FillContentByIDX/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(newsletter => this.newsletterService.setNewsletter(newsletter))
       );
   }
 }

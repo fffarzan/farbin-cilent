@@ -13,6 +13,7 @@
 .NewsLetterDetail-Content {
   max-width: 750px;
   width: 100%;
+  height: 100vh;
 }
 
 ::ng-deep .NewsLetterDetail-Content img {
