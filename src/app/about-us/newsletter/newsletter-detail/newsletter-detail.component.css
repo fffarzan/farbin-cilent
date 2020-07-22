@@ -1,0 +1,32 @@
+/* mobile-first */
+
+.NewsLetterDetail {
+  background-color: #fff;
+  color: #000;
+}
+
+.NewsLetterDetail-Content {
+  padding: 20px 15px 80px 15px;
+  margin: 0 auto;
+}
+
+.NewsLetterDetail-Content {
+  max-width: 750px;
+  width: 100%;
+}
+
+::ng-deep .NewsLetterDetail-Content img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .NewsLetterDetail-Content {
+    padding: 120px 20px 70px 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .NewsLetterDetail-Content {
+    padding: 100px 0 60px 0;
+  }
+}
