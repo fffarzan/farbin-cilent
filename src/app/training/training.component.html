@@ -1,1 +1,130 @@
-<p>training works!</p>
+<article id="TrainingModule-Wrapper"
+  class="TrainingMain">
+
+    <!-- main slider -->
+    <!-- <section class="StaticMainSlider TrainingMain-MainSlider">
+      <div id="TrainingOwlCarousel"
+        class="TrainingMainPage-OwlCarousel owl-carousel">
+        <section class="item">
+          <img class="hidden-sm hidden-md hidden-lg hidden-xl"
+            src="/images/TrainingMainSlideMobile3.jpg"
+            alt="نوآوران شبکه فربین - Farbin Corporation" />
+          <img class="hidden-xs"
+            src="/images/TrainingMainSlide3.jpg"
+            alt="دوره های آموزشی فربین" />
+        </section>
+        <section class="item">
+          <img class="hidden-sm hidden-md hidden-lg hidden-xl"
+            src="/images/TrainingMainSlideMobile1.jpg"
+            alt="دوره های آموزشی فربین" />
+          <img class="hidden-xs"
+            src="/images/TrainingMainSlide1.jpg"
+            alt="دوره های آموزشی فربین" />
+        </section>
+        <section class="item">
+          <img class="hidden-sm hidden-md hidden-lg hidden-xl"
+            src="/images/TrainingMainSlideMobile2.jpg"
+            alt="نوآوران شبکه فربین - Farbin Corporation" />
+          <img class="hidden-xs"
+            src="/images/TrainingMainSlide2.jpg"
+            alt="نوآوران شبکه فربین - Farbin Corporation" />
+        </section>
+      </div>
+    </section> -->
+
+    <!-- topics -->
+    <section class="TrainingModule-MainTopic-Wrapper">
+      <article class="row TrainingModule-MainTopic-Inner">
+
+        <!-- brand supporter -->
+        <section class="col-xs-12 col-sm-6 TrainingModule-MainTopic-ItemWrapper">
+          <!-- ng-click="OpenDynamicModal1($event, 1, undefined)" -->
+          <div class="TrainingModule-MainTopic TrainingModule-MainTopic-BrandSupporter">
+            <div class="MainTopic-Desc">
+              <h3>متولیان برند</h3>
+              <p>آیا به دنبال یک مجموعه تخصصی برای معرفی برند پسیو خود هستید؟</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- infrastructure -->
+        <section class="col-xs-12 col-sm-6 TrainingModule-MainTopic-ItemWrapper">
+          <!-- ng-click="OpenDynamicModal1($event, 2, undefined)" -->
+          <div class="TrainingModule-MainTopic TrainingModule-MainTopic-Infrastructure">
+            <div class="MainTopic-Desc">
+              <h3>زیرساخت</h3>
+              <p>با فربین صنعت زیرساخت شبکه را برای آینده حرفه ای خود انتخاب کنید</p>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </section>
+    <hr class="ColorLightGrayHr TrainingModuleHr">
+
+    <!-- courses -->
+    <section class="TrainingModule-TrainingCoursesReview-Wrapper">
+      <div class="TrainingModule-Title">
+        <h1>سرفصل های دوره آموزش پسیو</h1>
+      </div>
+      <div class="row TrainingModule-TrainingCoursesReview-Body">
+        <!-- ng-repeat="TrainingCourseCat in TrainingCoursesCat | orderBy:'$index':true" -->
+        <div class="col-xs-12 col-sm-4 FloatRight TrainingModule-TrainingCoursesReview-Inner">
+          <!-- href="/TrainingCourses/{{::TrainingCourseCat.TrainingCourseCategory[0].IDX}}" -->
+          <a class="TrainingModule-TrainingCoursesReview-ItemWrapper">
+            <!-- <img ng-src="{{::ServerUrl + TrainingCourseCat.TrainingCourseCategory[0].PicUrl | GetSmallImage}}"
+              alt="{{::TrainingCourseCat.TrainingCourseCategory[0].Name_Fa}}" /> -->
+            <div class="TrainingModule-TrainingCoursesReview-ItemDesc">
+              <h3 class="ColorBlue">
+                <!-- {{::TrainingCourseCat.TrainingCourseCategory[0].Name_Fa}} -->
+              </h3>
+              <p class="TextAlignLeft ColorBlue TrainingModule-TrainingCoursesReview-NameShort">
+                <!-- {{::TrainingCourseCat.TrainingCourseCategory[0].Caption}} -->
+              </p>
+              <p class="TextAlignLeft">
+                <!-- {{::TrainingCourseCat.TrainingCourseCategory[0].ShortDescription}} -->
+              </p>
+              <p class="ColorLightGray TrainingModule-TrainingCoursesReview-ItemDescFa">
+                <!-- {{::TrainingCourseCat.Name_Fa}} -->
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <hr class="ColorLightGrayHr TrainingModuleHr" />
+
+    <!-- courses gallery -->
+    <section class="TrainingModule-CoursesGallery-Wrapper">
+      <div class="TrainingModule-Title">
+        <p>دوره های برگزار شده</p>
+      </div>
+      <div class="row TrainingModule-CoursesGallery-Body">
+        <!-- ng-repeat="TrainingCourse in TrainingCourses | limitTo: 6 | orderBy: EndDate" -->
+        <!-- href="/TrainingCoursesHeld/{{::TrainingCourse.IDX}}" -->
+        <a class="col-xs-6 col-sm-4 TrainingModule-CoursesGallery-ItemOuter">
+          <div class="TrainingModule-CoursesGallery-ItemWrapper">
+            <!-- <img class="TrainingModule-CoursesGallery-ItemImage"
+              ng-src="{{::ServerUrl + TrainingCourse.PicUrl | GetSmallImage}}"
+              alt="{{::TrainingCourse.Name_Fa}}" /> -->
+            <div class="TrainingModule-CoursesGallery-ItemDesc">
+              <p class="TrainingModule-CoursesGallery-ItemDescLonger">
+                <!-- {{::TrainingCourse.Name_Fa}} -->
+              </p>
+              <p class="TextAlignLeft TrainingModule-CoursesGallery-ItemDescShorter">
+                <!-- {{::TrainingCourse.TrainingCourseCategoryName_Fa}} -->
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- all courses link -->
+    <!-- href="/TrainingCoursesCompanyCategory" -->
+    <a class="TrainingModule-AllCoursesLink">
+      <p>نمایش همه دوره ها</p>
+      <i class="fa fa-angle-left"></i>
+    </a>
+
+</article>
