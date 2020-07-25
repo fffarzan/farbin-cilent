@@ -77,13 +77,14 @@
     <div class="row TrainingModule-TrainingCoursesReview-Body">
       <div class="col-xs-12 col-sm-4 FloatRight TrainingModule-TrainingCoursesReview-Inner"
         *ngFor="let trainingCourse of trainingCourses | orderBy: '-'">
-        <!-- href="/TrainingCourses/{{::TrainingCourseCat.TrainingCourseCategory[0].IDX}}" -->
-        <a class="TrainingModule-TrainingCoursesReview-ItemWrapper">
+        <a class="TrainingModule-TrainingCoursesReview-ItemWrapper"
+          [routerLink]="['training-courses', trainingCourse.TrainingCourseCategory[0].IDX]">
           <img [src]="enviornment.baseUrl + trainingCourse.TrainingCourseCategory[0].PicUrl | getSmallImage"
             alt="{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}" />
           <div class="TrainingModule-TrainingCoursesReview-ItemDesc">
             <h3>{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}</h3>
-            <p class="TrainingModule-TrainingCoursesReview-NameShort">{{ trainingCourse.TrainingCourseCategory[0].Caption }}</p>
+            <p class="TrainingModule-TrainingCoursesReview-NameShort">
+              {{ trainingCourse.TrainingCourseCategory[0].Caption }}</p>
             <p>{{ trainingCourse.TrainingCourseCategory[0].ShortDescription }}</p>
             <p class="TrainingModule-TrainingCoursesReview-ItemDescFa">{{ trainingCourse.Name_Fa }}</p>
           </div>
@@ -101,14 +102,15 @@
     <div class="row TrainingModule-CoursesGallery-Body">
       <!-- href="/TrainingCoursesHeld/{{::TrainingCourse.IDX}}" -->
       <a class="col-xs-6 col-sm-4 TrainingModule-CoursesGallery-ItemOuter"
-      *ngFor="let trainingCourseHeld of trianingCoursesHeld | slice:0:6 | orderBy: '-EndDate'">
+        *ngFor="let trainingCourseHeld of trianingCoursesHeld | slice:0:6 | orderBy: '-EndDate'">
         <div class="TrainingModule-CoursesGallery-ItemWrapper">
           <img class="TrainingModule-CoursesGallery-ItemImage"
-              [src]="enviornment.baseUrl + trainingCourseHeld.PicUrl | getSmallImage"
-              alt="{{ trainingCourseHeld.Name_Fa }}" />
+            [src]="enviornment.baseUrl + trainingCourseHeld.PicUrl | getSmallImage"
+            alt="{{ trainingCourseHeld.Name_Fa }}" />
           <div class="TrainingModule-CoursesGallery-ItemDesc">
             <p class="TrainingModule-CoursesGallery-ItemDescLonger">{{ trainingCourseHeld.Name_Fa }}</p>
-            <p class="TextAlignLeft TrainingModule-CoursesGallery-ItemDescShorter">{{ trainingCourseHeld.TrainingCourseCategoryName_Fa }}</p>
+            <p class="TextAlignLeft TrainingModule-CoursesGallery-ItemDescShorter">
+              {{ trainingCourseHeld.TrainingCourseCategoryName_Fa }}</p>
           </div>
         </div>
       </a>
