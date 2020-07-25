@@ -21,6 +21,9 @@ import { of } from 'rxjs';
 import { NewsletterService } from '../about-us/newsletter/newsletter.service';
 import { Newsletters } from '../about-us/newsletter/newsletter-list/newsletters.model';
 import { Newsletter } from '../about-us/newsletter/newsletter-detail/newsletter.model';
+import { TrainingCourseHeldReview } from '../training/training-course-held-review.model';
+import { TrainingService } from '../training/training.service';
+import { TrainingCoursesReview } from '../training/training-course-review.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +37,8 @@ export class DataStorageService {
     private productCarouselService: ProductCarouselService,
     private searchService: SearchService,
     private incidentService: IncidentService,
-    private newsletterService: NewsletterService
+    private newsletterService: NewsletterService,
+    private trainingService: TrainingService
   ) { }
 
   // homepage requests
@@ -187,6 +191,8 @@ export class DataStorageService {
       );
   }
 
+  // newsletter requests
+
   fetchIncidentCategory() {
     return this.http
       .post<IncidentCategory[]>(
@@ -220,6 +226,32 @@ export class DataStorageService {
       )
       .pipe(
         tap(newsletter => this.newsletterService.setNewsletter(newsletter))
+      );
+  }
+
+  // training requests
+
+  fetchTrainigCoursesReview() {
+    return this.http
+      .post<TrainingCoursesReview[]>(
+        environment.baseUrl + '/api/TrainingCourseCategory/GetTrainingCourseCategory_Tree/',
+        '',
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(courses => this.trainingService.setTrainingCoursesReview(courses))
+      );
+  }
+
+  fetchTrainingCourseHeldReview() {
+    return this.http
+      .post<TrainingCourseHeldReview[]>(
+        environment.baseUrl + '/api/TrainingCourse/GetTrainingCourse/',
+        '',
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(coursesHeld => this.trainingService.setTrainingCoursesHeldReview(coursesHeld))
       );
   }
 }
