@@ -75,25 +75,17 @@
       <h1>سرفصل های دوره آموزش پسیو</h1>
     </div>
     <div class="row TrainingModule-TrainingCoursesReview-Body">
-      <!-- ng-repeat="TrainingCourseCat in TrainingCoursesCat | orderBy:'$index':true" -->
-      <div class="col-xs-12 col-sm-4 FloatRight TrainingModule-TrainingCoursesReview-Inner">
+      <div class="col-xs-12 col-sm-4 FloatRight TrainingModule-TrainingCoursesReview-Inner"
+        *ngFor="let trainingCourse of trainingCourses | orderBy: '-'">
         <!-- href="/TrainingCourses/{{::TrainingCourseCat.TrainingCourseCategory[0].IDX}}" -->
         <a class="TrainingModule-TrainingCoursesReview-ItemWrapper">
-          <!-- <img ng-src="{{::ServerUrl + TrainingCourseCat.TrainingCourseCategory[0].PicUrl | GetSmallImage}}"
-              alt="{{::TrainingCourseCat.TrainingCourseCategory[0].Name_Fa}}" /> -->
+          <img [src]="enviornment.baseUrl + trainingCourse.TrainingCourseCategory[0].PicUrl | getSmallImage"
+            alt="{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}" />
           <div class="TrainingModule-TrainingCoursesReview-ItemDesc">
-            <h3 class="ColorBlue">
-              <!-- {{::TrainingCourseCat.TrainingCourseCategory[0].Name_Fa}} -->
-            </h3>
-            <p class="TextAlignLeft ColorBlue TrainingModule-TrainingCoursesReview-NameShort">
-              <!-- {{::TrainingCourseCat.TrainingCourseCategory[0].Caption}} -->
-            </p>
-            <p class="TextAlignLeft">
-              <!-- {{::TrainingCourseCat.TrainingCourseCategory[0].ShortDescription}} -->
-            </p>
-            <p class="ColorLightGray TrainingModule-TrainingCoursesReview-ItemDescFa">
-              <!-- {{::TrainingCourseCat.Name_Fa}} -->
-            </p>
+            <h3 class="ColorBlue">{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}</h3>
+            <p class="TextAlignLeft ColorBlue TrainingModule-TrainingCoursesReview-NameShort">{{ trainingCourse.TrainingCourseCategory[0].Caption }}</p>
+            <p class="TextAlignLeft">{{ trainingCourse.TrainingCourseCategory[0].ShortDescription }}</p>
+            <p class="ColorLightGray TrainingModule-TrainingCoursesReview-ItemDescFa">{{ trainingCourse.Name_Fa }}</p>
           </div>
         </a>
       </div>
@@ -107,20 +99,16 @@
       <p>دوره های برگزار شده</p>
     </div>
     <div class="row TrainingModule-CoursesGallery-Body">
-      <!-- ng-repeat="TrainingCourse in TrainingCourses | limitTo: 6 | orderBy: EndDate" -->
       <!-- href="/TrainingCoursesHeld/{{::TrainingCourse.IDX}}" -->
-      <a class="col-xs-6 col-sm-4 TrainingModule-CoursesGallery-ItemOuter">
+      <a class="col-xs-6 col-sm-4 TrainingModule-CoursesGallery-ItemOuter"
+      *ngFor="let trainingCourseHeld of trianingCoursesHeld | slice:0:6 | orderBy: '-EndDate'">
         <div class="TrainingModule-CoursesGallery-ItemWrapper">
-          <!-- <img class="TrainingModule-CoursesGallery-ItemImage"
-              ng-src="{{::ServerUrl + TrainingCourse.PicUrl | GetSmallImage}}"
-              alt="{{::TrainingCourse.Name_Fa}}" /> -->
+          <img class="TrainingModule-CoursesGallery-ItemImage"
+              [src]="enviornment.baseUrl + trainingCourseHeld.PicUrl | getSmallImage"
+              alt="{{ trainingCourseHeld.Name_Fa }}" />
           <div class="TrainingModule-CoursesGallery-ItemDesc">
-            <p class="TrainingModule-CoursesGallery-ItemDescLonger">
-              <!-- {{::TrainingCourse.Name_Fa}} -->
-            </p>
-            <p class="TextAlignLeft TrainingModule-CoursesGallery-ItemDescShorter">
-              <!-- {{::TrainingCourse.TrainingCourseCategoryName_Fa}} -->
-            </p>
+            <p class="TrainingModule-CoursesGallery-ItemDescLonger">{{ trainingCourseHeld.Name_Fa }}</p>
+            <p class="TextAlignLeft TrainingModule-CoursesGallery-ItemDescShorter">{{ trainingCourseHeld.TrainingCourseCategoryName_Fa }}</p>
           </div>
         </div>
       </a>

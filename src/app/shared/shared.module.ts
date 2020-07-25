@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgPipesModule } from 'ngx-pipes';
 import { ProductCarouselComponent } from './carousel/product-carousel/product-carousel.component';
 import { MobileTemplateDirective } from './carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './get-small-image.pipe';
@@ -21,7 +22,8 @@ import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-ca
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgPipesModule
   ],
   exports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-ca
     ReactiveFormsModule,
     CarouselModule,
     FontAwesomeModule,
+    NgPipesModule,
     GetSmallImagePipe,
     MobileTemplateDirective,
     ProductCarouselComponent,
