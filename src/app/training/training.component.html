@@ -82,10 +82,10 @@
           <img [src]="enviornment.baseUrl + trainingCourse.TrainingCourseCategory[0].PicUrl | getSmallImage"
             alt="{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}" />
           <div class="TrainingModule-TrainingCoursesReview-ItemDesc">
-            <h3 class="ColorBlue">{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}</h3>
-            <p class="TextAlignLeft ColorBlue TrainingModule-TrainingCoursesReview-NameShort">{{ trainingCourse.TrainingCourseCategory[0].Caption }}</p>
-            <p class="TextAlignLeft">{{ trainingCourse.TrainingCourseCategory[0].ShortDescription }}</p>
-            <p class="ColorLightGray TrainingModule-TrainingCoursesReview-ItemDescFa">{{ trainingCourse.Name_Fa }}</p>
+            <h3>{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}</h3>
+            <p class="TrainingModule-TrainingCoursesReview-NameShort">{{ trainingCourse.TrainingCourseCategory[0].Caption }}</p>
+            <p>{{ trainingCourse.TrainingCourseCategory[0].ShortDescription }}</p>
+            <p class="TrainingModule-TrainingCoursesReview-ItemDescFa">{{ trainingCourse.Name_Fa }}</p>
           </div>
         </a>
       </div>
