@@ -78,7 +78,7 @@
       <div class="col-xs-12 col-sm-4 FloatRight TrainingModule-TrainingCoursesReview-Inner"
         *ngFor="let trainingCourse of trainingCourses | orderBy: '-'">
         <a class="TrainingModule-TrainingCoursesReview-ItemWrapper"
-          [routerLink]="['training-courses', trainingCourse.TrainingCourseCategory[0].IDX]">
+          [routerLink]="['training-course', trainingCourse.TrainingCourseCategory[0].IDX]">
           <img [src]="enviornment.baseUrl + trainingCourse.TrainingCourseCategory[0].PicUrl | getSmallImage"
             alt="{{ trainingCourse.TrainingCourseCategory[0].Name_Fa }}" />
           <div class="TrainingModule-TrainingCoursesReview-ItemDesc">

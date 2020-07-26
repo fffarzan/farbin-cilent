@@ -6,7 +6,7 @@ import { TrainingCourseComponent } from './training-course/training-course.compo
 
 const routes: Routes = [
   { path: '', component: TrainingComponent },
-  { path: 'training-courses/:id', component: TrainingCourseComponent }
+  { path: 'training-course/:id', component: TrainingCourseComponent }
 ]
 
 @NgModule({

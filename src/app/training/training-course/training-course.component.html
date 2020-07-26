@@ -74,10 +74,10 @@
         <section class="TrainingCoursesCategory-F101Cover-Wrapper">
           <div class="TrainingCoursesCategory-F101Cover-Outer">
             <div class="TrainingCoursesCategory-F101Cover">
-              <!-- ng-class="TrainingCoursesData[0].Name_Fa === 'F101' ? 'TrainingCoursesCategory-F101Cover-BackgroundColor' : (TrainingCoursesData[0].Name_Fa === 'F102' ? 'TrainingCoursesCategory-F102Cover-BackgroundColor' : '')" -->
-              <div class="TrainingCoursesCategory-F101Cover-Content">
-                <!-- ng-class="TrainingCoursesData[0].Name_Fa === 'F101' ? 'TrainingCoursesCategory-F101Cover-Color' : (TrainingCoursesData[0].Name_Fa === 'F102' ? 'TrainingCoursesCategory-F102Cover-Color' : '')" -->
-                <section class="TrainingCoursesCategory-F101Cover-ContentInner">
+              <div class="TrainingCoursesCategory-F101Cover-Content"
+                [ngClass]="{'TrainingCoursesCategory-F101Cover-BackgroundColor': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-BackgroundColor': course.Name_Fa === 'F102'}">
+                <section class="TrainingCoursesCategory-F101Cover-ContentInner"
+                  [ngClass]="{'TrainingCoursesCategory-F101Cover-Color': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-Color': course.Name_Fa === 'F102'}">
                   <p class="TrainingCoursesCategory-F101CoverContent-MainTitle">{{ course.Name_Fa}}</p>
                   <p class="TrainingCoursesCategory-F101CoverContent-Abbreviation">{{ course.Caption }}</p>
                   <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription">{{ course.ShortDescription }}</p>
@@ -85,8 +85,8 @@
                     اساس کابل های مسی</p>
                   <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">{{ course.ParentName }}</p>
                 </section>
-                <!-- ng-class="TrainingCoursesData[0].Name_Fa === 'F101' ? 'TrainingCoursesCategory-F101Cover-Color' : (TrainingCoursesData[0].Name_Fa === 'F102' ? 'TrainingCoursesCategory-F102Cover-Color' : '')" -->
-                <section class="TrainingCoursesCategory-F101Cover-QRCode">
+                <section class="TrainingCoursesCategory-F101Cover-QRCode"
+                  [ngClass]="{'TrainingCoursesCategory-F101Cover-Color': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-Color': course.Name_Fa === 'F102'}">
                   <!-- <div qrcode
                     class="QRCode TrainingCoursesCategory-QRCode"></div> -->
                   <span
