@@ -12,7 +12,7 @@
         <section class="col-xs-5 col-sm-4 col-lg-3 TrainingCoursesPage-Head-MainImageWrapper">
           <div class="TrainingCoursesPage-Head-MainImage">
             <img alt="نوآوران شبکه فربین - Farbin Corporation"
-                [src]="enviornment.baseUrl + course.PicUrl" />
+              [src]="enviornment.baseUrl + course.PicUrl" />
           </div>
         </section>
 
@@ -52,17 +52,19 @@
     <hr class="ColorLightGrayHr" />
   </section>
 
-  <!-- Description -->
-  <!-- ng-bind-html="TrainingCoursesData[0].Description" -->
-  <section class="TrainingCoursesPage-Section TrainingCoursesPage-Headline-Wrapper"></section>
+  <!-- content -->
+  <section class="TrainingCoursesPage-Section TrainingCoursesPage-Headline-Wrapper"
+    [innerHtml]="course.Description"></section>
 
 </article>
 
 <!-- F101 & F102 -->
-<!-- ng-if="routePaamsIDX != 2" -->
 <article *ngIf="courseId !== 2">
+
+  <!-- navbar -->
   <section class="TrainingCoursesCategory-Navigationbar"></section>
 
+  <!-- content -->
   <section class="TrainingCoursesCategory-wrapper">
     <!-- fixednavbarpagescroll -->
     <div class="TrainingCoursesCategory">
@@ -76,11 +78,12 @@
               <div class="TrainingCoursesCategory-F101Cover-Content">
                 <!-- ng-class="TrainingCoursesData[0].Name_Fa === 'F101' ? 'TrainingCoursesCategory-F101Cover-Color' : (TrainingCoursesData[0].Name_Fa === 'F102' ? 'TrainingCoursesCategory-F102Cover-Color' : '')" -->
                 <section class="TrainingCoursesCategory-F101Cover-ContentInner">
-                  <!-- <p class="TrainingCoursesCategory-F101CoverContent-MainTitle">{{::TrainingCoursesData[0].Name_Fa}}</p> -->
-                  <!-- <p class="TrainingCoursesCategory-F101CoverContent-Abbreviation">{{::TrainingCoursesData[0].Caption}}</p> -->
-                  <!-- <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription">{{::TrainingCoursesData[0].ShortDescription}}</p> -->
-                  <!-- <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">دوره کابل کشی ساختار یافته بر اساس کابل های مسی</p> -->
-                  <!-- <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">{{::TrainingCoursesData[0].ParentName}}</p> -->
+                  <p class="TrainingCoursesCategory-F101CoverContent-MainTitle">{{ course.Name_Fa}}</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-Abbreviation">{{ course.Caption }}</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription">{{ course.ShortDescription }}</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">دوره کابل کشی ساختار یافته بر
+                    اساس کابل های مسی</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">{{ course.ParentName }}</p>
                 </section>
                 <!-- ng-class="TrainingCoursesData[0].Name_Fa === 'F101' ? 'TrainingCoursesCategory-F101Cover-Color' : (TrainingCoursesData[0].Name_Fa === 'F102' ? 'TrainingCoursesCategory-F102Cover-Color' : '')" -->
                 <section class="TrainingCoursesCategory-F101Cover-QRCode">
@@ -99,8 +102,7 @@
         </section>
 
         <!-- body -->
-        <!-- ng-bind-html="TrainingCoursesData[0].Description" -->
-        <section></section>
+        <section [innerHtml]="course.Description"></section>
 
         <!-- carousel -->
         <!-- <section class="TrainingCoursesCategory-F101Course-CarouselOuter">
