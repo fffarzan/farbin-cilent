@@ -1,0 +1,76 @@
+/* mobile-first */
+
+.TrainingCoursesCarousel {
+  direction: ltr;
+}
+
+.TrainingCoursesCarousel-Mobile {
+  display: flex;
+  direction: ltr;
+  overflow: auto;
+}
+
+.TrainingCoursesCarousel-Mobile::-webkit-scrollbar {
+  height: 2px;
+}
+
+.TrainingCoursesCarousel-Mobile::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: transparent;
+}
+
+.TrainingCoursesCarousel-Mobile::-webkit-scrollbar-thumb {
+  background-color: #666695;
+  outline: 1px solid #666695;
+}
+
+.TrainingCoursesCarousel a {
+  color: white;
+}
+
+.TrainingCoursesCarousel-Mobile-Inner {
+  margin: 10px 15px;
+}
+
+.TrainingCoursesCarousel-Caption-Item {
+  margin: 5px 0 0 0;
+  line-height: 21px;
+  font-size: 13px;
+}
+
+.TrainingCoursesCarousel-Caption-FirstItem {
+  float: right !important;
+  direction: rtl;
+  text-align: right;
+}
+
+.TrainingCoursesCarousel-Caption-SecondItem {
+  float: right !important;
+  direction: ltr;
+  text-align: left;
+}
+
+.TrainingCoursesCarousel-OwlCarousel {
+  margin: 10px 0px 40px 0px;
+}
+
+.TrainingCoursesCarousel-OwlCarousel-Item {
+  display: block;
+  margin: 10px;
+}
+
+.TrainingCoursesCarousel-More {
+  display: block;
+  padding: 50px 10px 0 10px;
+}
+
+.TrainingCoursesCarousel-More img {
+  width: 75px !important;
+  height: 75px !important;
+}
+
+@media screen and (min-width: 992px) {
+  .TrainingCoursesCarousel-More {
+    padding-left: 50px;
+  }
+}

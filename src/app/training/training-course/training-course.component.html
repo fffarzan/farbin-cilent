@@ -105,26 +105,10 @@
         <section [innerHtml]="course.Description"></section>
 
         <!-- carousel -->
-        <!-- <section class="TrainingCoursesCategory-F101Course-CarouselOuter">
-            <div trainingcoursescarousel class="TrainingCoursesCategory-F101Course-Carousel"
-              datasource="TrainingCoursesForThisCategory[0].Items" imagestaticurl="''" dynamicfieldimage="'PicUrl'"
-              pageurldirection="'TrainingCoursesHeld'" morepageurl="'TrainingAllCourses'"
-              morepageurlidx="routeParamsIdx" dynamicfieldname1="'Name_Fa'" dynamicfieldname2="'ChildCategoryName_Fa'"
-              desktopcarouseloptions="{
-                items: 3,
-                stagePadding: 20,
-                responsive: { 
-                  1024: {
-                    items: 4
-                  }
-                }
-              }" mobilecarouseloptions="{
-                itemsMobile: [500,1.7],
-                itemsTablet: [768,0],
-                itemsDesktop: [1024,3]
-              }">
-            </div>
-          </section> -->
+        <section class="TrainingCoursesCategory-F101Course-CarouselOuter">
+          <app-training-courses-held-carousel [carouselData]="trainingCoursesHeldCarouselParams">
+          </app-training-courses-held-carousel>
+        </section>
 
         <!-- foot -->
         <section class="TrainingCoursesCategory-F101Course-ContentWrapper">

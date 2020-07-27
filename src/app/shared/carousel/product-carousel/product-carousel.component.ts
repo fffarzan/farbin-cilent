@@ -17,7 +17,7 @@ export class ProductCarouselComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
-  dynamicId = Math.round(Math.random() * 100);
+  dynamicId: number = Math.round(Math.random() * 100);
   param: object = {};
 
   @Input() productCarouselParams: ProductCarouselParams;

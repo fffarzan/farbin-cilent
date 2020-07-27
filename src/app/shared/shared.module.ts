@@ -9,13 +9,15 @@ import { ProductCarouselComponent } from './carousel/product-carousel/product-ca
 import { MobileTemplateDirective } from './carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './get-small-image.pipe';
 import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-carousel.component';
+import { TrainingCoursesHeldCarouselComponent } from './carousel/training-courses-held-carousel/training-courses-held-carousel.component';
 
 @NgModule({
   declarations: [
     GetSmallImagePipe,
     MobileTemplateDirective,
     ProductCarouselComponent,
-    GalleryCarouselComponent
+    GalleryCarouselComponent,
+    TrainingCoursesHeldCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-ca
     GetSmallImagePipe,
     MobileTemplateDirective,
     ProductCarouselComponent,
-    GalleryCarouselComponent
+    GalleryCarouselComponent,
+    TrainingCoursesHeldCarouselComponent
   ]
 })
 export class SharedModule { }

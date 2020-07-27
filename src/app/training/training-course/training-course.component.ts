@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TrainingCourse } from './training-course.model';
 import { TrainingCoursesHeldReviewForCourse } from './training-courses-held-review for-course.model';
 import { environment } from 'src/environments/environment';
+import { TrainingCoursesHeldCarouselParams } from 'src/app/shared/carousel/training-courses-held-carousel/training-courses-held-carousel-params.model';
 
 @Component({
   selector: 'app-training-course',
@@ -20,6 +21,38 @@ export class TrainingCourseComponent implements OnInit {
   courseId: number;
   course: TrainingCourse;
   coursesHeld: TrainingCoursesHeldReviewForCourse;
+  trainingCoursesHeldCarouselParams: TrainingCoursesHeldCarouselParams = {
+    imageStaticUrl: '',
+    dynamicFieldImage: 'PicUrl',
+    pageUrlDirection: 'TrainingCoursesHeld',
+    moreCoursesUrl: 'TrainingAllCourses',
+    moreCoursesUrlIdx: null,
+    dynamicFieldName1: 'Name_Fa',
+    dynamicFieldName2: 'ChildCategoryName_Fa',
+    desktopOptions: {
+      items: 3,
+      stagePadding: 20,
+      responsive: { 1024: { items: 4 } },
+      dots: false,
+      nav: false,
+      autoWidth: false
+    },
+    mobileOptions: {
+      mobileItems: { 
+        maxSize: 500,
+        items: 1.7
+       },
+       tabletItems: {
+        maxSize: 768,
+        items: 0
+       },
+       desktopItems: {
+        maxSize: 1024,
+        items: 3
+       }
+    },
+    data: null
+  };
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -30,7 +63,7 @@ export class TrainingCourseComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(param => {
       this.courseId = +param['id'];
-      this.getTrainingCourseData(+param['id']);    
+      this.getTrainingCourseData(+param['id']);
     });
   }
 
@@ -42,16 +75,20 @@ export class TrainingCourseComponent implements OnInit {
       this.getTrainingCoursesHeldData(this.course.Name_Fa);
     });
   }
-  
+
   private getTrainingCoursesHeldData(courseName: string) {
     this.dataStorageService.fetchTrainingCoursesHeldFromCourse({ UniqueName: courseName }).subscribe(() => {
       this.coursesHeld = this.trainingCourseService.getTrainingCoursesHeld();
 
       // split string and create an object.
       let coursesHeldLength = Object.keys(this.coursesHeld).length;
-      for(let i = 0; i < coursesHeldLength; i++) {
+      for (let i = 0; i < coursesHeldLength; i++) {
         if (this.coursesHeld[i].Items) this.coursesHeld[i].Items = JSON.parse(this.coursesHeld[i].Items);
       }
+      
+      // send data to training-courses-held-carousel component
+      this.trainingCoursesHeldCarouselParams.data = this.coursesHeld;
+      this.trainingCoursesHeldCarouselParams.moreCoursesUrlIdx = this.coursesHeld.IDX;
     });
 
   }
