@@ -35,7 +35,7 @@ export class TrainingCourseComponent implements OnInit {
       responsive: { 1024: { items: 4 } },
       dots: false,
       nav: false,
-      autoWidth: false
+      autoWidth: true
     },
     mobileOptions: {
       mobileItems: { 

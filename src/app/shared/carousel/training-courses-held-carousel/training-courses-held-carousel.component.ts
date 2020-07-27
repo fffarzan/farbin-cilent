@@ -15,13 +15,13 @@ export class TrainingCoursesHeldCarouselComponent implements OnInit {
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   dynamicId: number = Math.round(Math.random() * 100);
+  carouselItemWidth: number = 250;
 
   constructor(
     private extensionMethodService: ExtensionMethodService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.carouselData)
   }
 
 
