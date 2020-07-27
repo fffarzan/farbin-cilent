@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgPipesModule } from 'ngx-pipes';
+import { QRCodeModule } from 'angular2-qrcode'
 import { ProductCarouselComponent } from './carousel/product-carousel/product-carousel.component';
 import { MobileTemplateDirective } from './carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './get-small-image.pipe';
@@ -25,7 +26,8 @@ import { TrainingCoursesHeldCarouselComponent } from './carousel/training-course
     ReactiveFormsModule,
     CarouselModule,
     FontAwesomeModule,
-    NgPipesModule
+    NgPipesModule,
+    QRCodeModule
   ],
   exports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { TrainingCoursesHeldCarouselComponent } from './carousel/training-course
     CarouselModule,
     FontAwesomeModule,
     NgPipesModule,
+    QRCodeModule,
     GetSmallImagePipe,
     MobileTemplateDirective,
     ProductCarouselComponent,

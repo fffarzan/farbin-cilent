@@ -87,8 +87,9 @@
                 </section>
                 <section class="TrainingCoursesCategory-F101Cover-QRCode"
                   [ngClass]="{'TrainingCoursesCategory-F101Cover-Color': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-Color': course.Name_Fa === 'F102'}">
-                  <!-- <div qrcode
-                    class="QRCode TrainingCoursesCategory-QRCode"></div> -->
+                  <qr-code [value]="enviornment.baseUrl + 'training/training-course/' + courseId"
+                    [size]="130"
+                    class="QRCode TrainingCoursesCategory-QRCode"></qr-code>
                   <span
                     class="TrainingCoursesCategory-F101QRCode-Span TrainingCoursesCategory-F101QRCode-Span-Desktop">!در
                     موبایل یا تبلت دنبال کنید</span>

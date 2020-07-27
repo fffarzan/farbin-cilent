@@ -13,7 +13,8 @@ import { TrainingCoursesHeldCarouselParams } from 'src/app/shared/carousel/train
   templateUrl: './training-course.component.html',
   styleUrls: [
     './training-course.component.css',
-    './training-course-old.component.css'
+    './training-course-old.component.css',
+    '../../shared/qr-code.css'
   ]
 })
 export class TrainingCourseComponent implements OnInit {
