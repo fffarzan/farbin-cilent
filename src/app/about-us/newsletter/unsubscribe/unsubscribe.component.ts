@@ -9,6 +9,8 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 })
 export class UnsubscribeComponent implements OnInit {
   targetEmail: string;
+  isUnsubscribed: boolean = false;
+  isNotUnsubscribed: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,8 +22,10 @@ export class UnsubscribeComponent implements OnInit {
   }
 
   onUnsubscribe() {
-    console.log(this.targetEmail);
-    // this.dataStorageService.fetchUnsubscribeData({ Email: this.targetEmail }).subscribe()
+    this.dataStorageService.fetchUnsubscribeData({ Email: this.targetEmail }).subscribe(
+      result => this.isUnsubscribed = true,
+      err => this.isNotUnsubscribed = true
+    );
   }
 
 }

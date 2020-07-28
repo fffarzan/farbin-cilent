@@ -43,14 +43,12 @@
 }
 
 .NewsLetterUnsubscribe-Success {
-  display: none;
   text-align: center;
   margin: 20px;
   color: green;
 }
 
 .NewsLetterUnsubscribe-Error {
-  display: none;
   text-align: center;
   margin: 20px;
   color: red;

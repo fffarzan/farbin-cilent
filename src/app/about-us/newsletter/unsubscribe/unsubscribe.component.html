@@ -5,11 +5,13 @@
     <button (click)="onUnsubscribe()">لغو اشتراک</button>
   </section>
 
-  <section class="NewsLetterUnsubscribe-Success">
+  <section *ngIf="isUnsubscribed"
+    class="NewsLetterUnsubscribe-Success">
     <p>اشتراک شما با موفقیت لغو شد.</p>
   </section>
 
-  <section class="NewsLetterUnsubscribe-Error">
+  <section *ngIf="isNotUnsubscribed"
+    class="NewsLetterUnsubscribe-Error">
     <p>اشتراک شما لغو نشد!</p>
   </section>
 
