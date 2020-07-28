@@ -1,16 +1,23 @@
 <!-- desktop template -->
-<section class="GalleryCarousel" *ngIf="!isMobile && !isTablet">
-  <owl-carousel-o [options]="carouselData.desktopOptions" class="GalleryCarousel-OwlCarousel" id="Gallery{{ dynamicId }}">
+<section class="GalleryCarousel"
+  *ngIf="!isMobile && !isTablet">
+  <owl-carousel-o [options]="carouselData.desktopOptions"
+    class="GalleryCarousel-OwlCarousel"
+    id="Gallery{{ dynamicId }}">
     <!-- ng-click="OpenDynamicModal(DataDetails, datasource)" -->
     <ng-container *ngFor="let media of carouselData.media">
-      <ng-template class="item" carouselSlide [width]="carouselItemWidth"
+      <ng-template class="item"
+        carouselSlide
+        [width]="carouselItemWidth"
         *ngIf="media.FileType === 'png' || media.FileType === 'jpg' || media.FileType === 'jpeg' || media.FileType === 'gif' || media.FileType === 'bmp'">
         <div class="GalleryCarousel-OwlCarousel-Item">
           <img src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] | getSmallImage }}"
-          alt="{{ media.Name_Fa }}">
+            alt="{{ media.Name_Fa }}">
         </div>
       </ng-template>
-      <ng-template *ngIf="media.FileType === 'mp4'" carouselSlide [width]="carouselItemWidth">
+      <ng-template *ngIf="media.FileType === 'mp4'"
+        carouselSlide
+        [width]="carouselItemWidth">
         <div class="GalleryCarousel-OwlCarousel-Item">
           <video class="GalleryCarousel-VideoItem">
             <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.1" />
@@ -22,14 +29,19 @@
 </section>
 
 <!-- mobile template -->
-<section *ngIf="isMobile || isTablet" class="GalleryCarousel-Mobile">
+<section *ngIf="isMobile || isTablet"
+  class="GalleryCarousel-Mobile">
   <!-- ng-click="OpenDynamicModal(DataDetails, datasource)" -->
-  <div class="GalleryCarousel-Mobile-Inner" *ngFor="let media of carouselData.media">
+  <div class="GalleryCarousel-Mobile-Inner"
+    *ngFor="let media of carouselData.media">
     <img
       *ngIf="media.FileType === 'png' || media.FileType === 'jpg' || media.FileType === 'jpeg' || media.FileType === 'gif' || media.FileType === 'bmp'"
       src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] | getSmallImage }}"
-      alt="{{ media.Name_Fa }}" [appMobileTemplate]="carouselData" />
-    <video *ngIf="media.FileType === 'mp4'" class="GalleryCarousel-VideoItem" [appMobileTemplate]="carouselData">
+      alt="{{ media.Name_Fa }}"
+      [appMobileTemplate]="carouselData" />
+    <video *ngIf="media.FileType === 'mp4'"
+      class="GalleryCarousel-VideoItem"
+      [appMobileTemplate]="carouselData">
       <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.1" />
     </video>
   </div>

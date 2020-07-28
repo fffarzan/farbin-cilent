@@ -1,0 +1,133 @@
+<!-- F103-V1 -->
+<article *ngIf="courseId === 2"
+  class="TrainingCoursesPage-Wrapper">
+
+  <!-- head -->
+  <section class="TrainingCoursesPage-Section TrainingCoursesPage-Head-Wrapper">
+    <hr class="TrainingCoursesPage-FirstLineSeperrator ColorLightGrayHr" />
+    <div class="TrainingCoursesPage-Head-Outer">
+      <div class="row TrainingCoursesPage-Head-Inner">
+
+        <!-- image -->
+        <section class="col-xs-5 col-sm-4 col-lg-3 TrainingCoursesPage-Head-MainImageWrapper">
+          <div class="TrainingCoursesPage-Head-MainImage">
+            <img alt="نوآوران شبکه فربین - Farbin Corporation"
+              [src]="enviornment.baseUrl + course.PicUrl" />
+          </div>
+        </section>
+
+        <!-- description -->
+        <section class="col-xs-7 col-sm-8 TrainingCoursesPage-Head-TitleWrapper">
+          <div class="row TrainingCoursesPage-Head-TitleBolds">
+            <div class="col-xs-12 col-lg-8 TrainingCoursesPage-Head-TitleFa">
+              <h1>{{ course.ParentName }}</h1>
+            </div>
+            <div class="col-xs-12 col-lg-4 TrainingCoursesPage-Head-TitleEn">
+              <div class="TrainingCoursesPage-Head-TitleEnDesc">
+                <p class="TrainingCoursesPage-TitleEn-FirstLine IranSansWebFont">{{ course.Name_Fa }}</p><br>
+                <p class="TrainingCoursesPage-TitleEn-SecondLine IranSansWebFont">{{ course.Caption }}</p><br>
+                <p class="TrainingCoursesPage-TitleEn-ThirdLine IranSansWebFont">{{ course.ShortDescription }}</p><br>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+    <hr class="ColorLightGrayHr">
+  </section>
+
+  <!-- persons -->
+  <section class="TrainingCoursesPage-Section TrainingCoursesPage-Persons-Warpper">
+    <div class="TrainingCoursesPage-Persons-Inner">
+      <div class="TrainingCoursesPage-Persons-Title">
+        <h3>مخاطبین دوره</h3>
+      </div>
+      <div class="TrainingCoursesPage-Section TrainingCoursesPage-Persons-Descriptions">
+        <p>مهندسین کامپیوتر، کارشناسان شبکه، مدیران، مجریان پروژه های شبکه، ناظران، طراحان و مشاورین پروژه های
+          ساختمانی و زیرساخت.</p>
+        <p class="TrainingCoursesPage-Persons-Period">مدت زمان دوره: 15 ساعت</p>
+      </div>
+    </div>
+    <hr class="ColorLightGrayHr" />
+  </section>
+
+  <!-- content -->
+  <section class="TrainingCoursesPage-Section TrainingCoursesPage-Headline-Wrapper"
+    [innerHtml]="course.Description"></section>
+
+</article>
+
+<!-- F101 & F102 -->
+<article *ngIf="courseId !== 2">
+
+  <!-- navbar -->
+  <!-- <section class="TrainingCoursesCategory-Navigationbar"></section> -->
+
+  <!-- content -->
+  <section class="TrainingCoursesCategory-wrapper">
+    <!-- fixednavbarpagescroll -->
+    <div class="TrainingCoursesCategory">
+      <div class="TrainingCoursesCategory-F101Course">
+
+        <!-- head -->
+        <section class="TrainingCoursesCategory-F101Cover-Wrapper">
+          <div class="TrainingCoursesCategory-F101Cover-Outer">
+            <div class="TrainingCoursesCategory-F101Cover">
+              <div class="TrainingCoursesCategory-F101Cover-Content"
+                [ngClass]="{'TrainingCoursesCategory-F101Cover-BackgroundColor': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-BackgroundColor': course.Name_Fa === 'F102'}">
+                <section class="TrainingCoursesCategory-F101Cover-ContentInner"
+                  [ngClass]="{'TrainingCoursesCategory-F101Cover-Color': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-Color': course.Name_Fa === 'F102'}">
+                  <p class="TrainingCoursesCategory-F101CoverContent-MainTitle">{{ course.Name_Fa}}</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-Abbreviation">{{ course.Caption }}</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription">{{ course.ShortDescription }}</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">دوره کابل کشی ساختار یافته بر
+                    اساس کابل های مسی</p>
+                  <p class="TrainingCoursesCategory-F101CoverContent-ShortDescription_Fa">{{ course.ParentName }}</p>
+                </section>
+                <section class="TrainingCoursesCategory-F101Cover-QRCode"
+                  [ngClass]="{'TrainingCoursesCategory-F101Cover-Color': course.Name_Fa === 'F101', 'TrainingCoursesCategory-F102Cover-Color': course.Name_Fa === 'F102'}">
+                  <qr-code [value]="enviornment.baseUrl + 'training/training-course/' + courseId"
+                    [size]="130"
+                    class="QRCode TrainingCoursesCategory-QRCode"></qr-code>
+                  <span
+                    class="TrainingCoursesCategory-F101QRCode-Span TrainingCoursesCategory-F101QRCode-Span-Desktop">!در
+                    موبایل یا تبلت دنبال کنید</span>
+                  <span
+                    class="TrainingCoursesCategory-F101QRCode-Span TrainingCoursesCategory-F101QRCode-Span-Tablet">!در
+                    موبایل دنبال کنید</span>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- body -->
+        <section [innerHtml]="course.Description"></section>
+
+        <!-- carousel -->
+        <section class="TrainingCoursesCategory-F101Course-CarouselOuter">
+          <app-training-courses-held-carousel [carouselData]="trainingCoursesHeldCarouselParams">
+          </app-training-courses-held-carousel>
+        </section>
+
+        <!-- foot -->
+        <section class="TrainingCoursesCategory-F101Course-ContentWrapper">
+          <div class="TrainingCoursesCategory-F101Course-ContentOuter">
+            <div class="TrainingCoursesCategory-F101Course-Content">
+              <p>جهت دریافت اطلاعات بیشتر و ثبت نام با شماره مستقیم واحد آموزش فربین تماس حاصل نمایید.</p>
+              <div class="TrainingCoursesCategory-F101Course-MoreInfo">
+                <a href="tel:+982141548820">
+                  <span class="TrainingCoursesCategory-F101Course-PhoneNumber">021-41548820</span>
+                </a>
+                <p>مدت دوره : <span>15</span> ساعت</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+</article>
