@@ -64,15 +64,13 @@ export class TrainingCourseComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(param => {
       this.courseId = +param['id'];
-      this.getTrainingCourseData(+param['id']);
+      // this.getTrainingCourseData(+param['id']);
     });
-  }
 
-  private getTrainingCourseData(id: number) {
-    this.dataStorageService.fetchTrainingCourse({ IDX: id }).subscribe(() => {
-      this.course = this.trainingCourseService.getTrainingCourse()[0];
+    this.route.data.subscribe(data => {
+      this.course = data.course[0];
 
-      // get held courses from this course.
+      // get held courses from this course
       this.getTrainingCoursesHeldData(this.course.Name_Fa);
     });
   }
@@ -81,14 +79,14 @@ export class TrainingCourseComponent implements OnInit {
     this.dataStorageService.fetchTrainingCoursesHeldFromCourse({ UniqueName: courseName }).subscribe(() => {
       this.coursesHeld = this.trainingCourseService.getTrainingCoursesHeld();
 
-      // split string and create an object.
+      // split string and create an object
       let coursesHeldLength = Object.keys(this.coursesHeld).length;
       for (let i = 0; i < coursesHeldLength; i++) {
         if (this.coursesHeld[i].Items) this.coursesHeld[i].Items = JSON.parse(this.coursesHeld[i].Items);
       }
       
       // send data to training-courses-held-carousel component
-      this.trainingCoursesHeldCarouselParams.data = this.coursesHeld;
+      this.trainingCoursesHeldCarouselParams.data = this.coursesHeld[0];
       this.trainingCoursesHeldCarouselParams.moreCoursesUrlIdx = this.coursesHeld.IDX;
     });
 

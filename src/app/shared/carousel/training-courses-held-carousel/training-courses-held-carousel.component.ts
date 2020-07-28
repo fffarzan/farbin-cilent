@@ -23,6 +23,4 @@ export class TrainingCoursesHeldCarouselComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 }

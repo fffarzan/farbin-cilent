@@ -4,7 +4,7 @@
   <owl-carousel-o [options]="carouselData.desktopOptions"
     class="TrainingCoursesCarousel-OwlCarousel"
     id="TrainingCourses{{ dynamicId }}">
-    <ng-container *ngFor="let item of carouselData.data[0].Items | slice:0:5">
+    <ng-container *ngFor="let item of carouselData.data?.Items | slice:0:5">
       <ng-template class="item"
         carouselSlide
         [width]="carouselItemWidth">
@@ -37,7 +37,7 @@
 <article class="TrainingCoursesCarousel-Mobile"
   *ngIf="isMobile || isTablet">
   <div class="TrainingCoursesCarousel-Mobile-Inner"
-    *ngFor="let item of carouselData.data[0].Items | slice:0:4">
+    *ngFor="let item of carouselData.data?.Items | slice:0:4">
     <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" -->
     <a>
       <img [appMobileTemplate]="carouselData"
