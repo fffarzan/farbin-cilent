@@ -1,6 +1,9 @@
-<!-- ng-click="CallCloseModal($event, DataForCustomCarousel[0].FileType)" -->
-<article class="CustomModal">
-  <div class="CustomModal-Inner">
+<article class="CustomModal"
+  (click)="onCloseModalFromParnet($event)"
+  #parent>
+
+  <!-- modal -->
+  <section class="CustomModal-Inner">
     <div id="CustomModal">
 
       <!-- main item -->
@@ -24,33 +27,7 @@
         </video> -->
       </section>
 
-      <!-- carousel -->
-      <!-- ng-mouseleave="DisableScrollingCarousel()" -->
-      <section class="CustomModal-Thumbnail-Carousel">
-        <!-- ng-repeat="DataDetails in DataForCustomCarousel" -->
-        <!-- ng-mousedown="StartDragOrClick($event)" -->
-        <!-- ng-mousemove="DraggingContent($event)" -->
-        <!-- ng-mouseup="FinishDragOrClick(DataDetails)" -->
-        <div class="CustomModal-ThumbnailInner">
-          <!-- ng-if="DataDetails.FileType === 'png' || DataDetails.FileType === 'jpg' || DataDetails.FileType === 'jpeg' || DataDetails.FileType === 'gif' || DataDetails.FileType === 'bmp'" -->
-          <a>
-            <!-- <img class="CustomCarousel-Image" ng-src="{{::ServerUrl + DataDetails.Url}}" ng-style="CarouselItemsStyle" alt="" /> -->
-          </a>
-          <!-- ng-if="DataDetails.FileType === 'pdf' || DataDetails.FileType === 'zip' || DataDetails.FileType === 'rar' || DataDetails.FileType === 'doc' || DataDetails.FileType === 'docx' || DataDetails.FileType === 'csv' || DataDetails.FileType === 'csvx'" -->
-          <a>
-            <!-- <img ng-src="/images/{{::DataDetails.FileType}}.png" alt="" /> -->
-          </a>
-          <!-- ng-if="DataDetails.FileType === 'mp4'" -->
-          <a>
-            <!-- ng-style="CarouselItemsStyle" -->
-            <!-- <video class="CunstomModal-VideoItem" >
-              <source ng-src="{{::ServerUrl + DataDetails.Url}}#t=0.1" type="video/{{::DataDetails.FileType}}" />
-            </video> -->
-          </a>
-        </div>
-      </section>
-
-      <!-- desktop template -->
+      <!-- desktop carousel template -->
       <section class="GalleryCarousel"
         *ngIf="!isMobile && !isTablet">
         <owl-carousel-o [options]="carouselData.desktopOptions"
@@ -81,18 +58,19 @@
         </owl-carousel-o>
       </section>
 
-      <!-- mobile template -->
+      <!-- mobile carousel template -->
       <section *ngIf="isMobile || isTablet"
         class="GalleryCarousel-Mobile">
         <div class="GalleryCarousel-Mobile-Inner"
           *ngFor="let media of carouselData.media"
           (click)="onSendDataToMain(media)">
-          <img
+          <img [style.width.px]="carouselItemWidth"
             *ngIf="media.FileType === 'png' || media.FileType === 'jpg' || media.FileType === 'jpeg' || media.FileType === 'gif' || media.FileType === 'bmp'"
             src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] | getSmallImage }}"
             alt="{{ media.Name_Fa }}"
             [appMobileTemplate]="carouselData" />
           <video *ngIf="media.FileType === 'mp4'"
+            [style.width.px]="carouselItemWidth"
             class="GalleryCarousel-VideoItem"
             [appMobileTemplate]="carouselData">
             <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.1" />
@@ -101,7 +79,7 @@
       </section>
 
     </div>
-  </div>
+  </section>
 
   <!-- Close button -->
   <section class="CustomModal-CloseButton-Wrapper"

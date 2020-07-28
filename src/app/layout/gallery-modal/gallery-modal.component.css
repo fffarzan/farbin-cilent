@@ -6,7 +6,7 @@
   right: 2%;
   width: 96%;
   height: 779px;
-  z-index: 1000000;
+  z-index: 20000;
 }
 
 .CustomModal-Inner {
@@ -18,12 +18,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .CustomModal-Inner {
-    width: 66%;
-  }
   .CustomModal {
     width: 100%;
     right: 0;
+  }
+  .CustomModal-Inner {
+    width: 66%;
   }
 }
 
@@ -119,6 +119,7 @@
   font-size: 30px;
   color: white !important;
   display: block;
+  line-height: 16px;
 }
 
 @media screen and (min-width: 768px) {
@@ -177,7 +178,9 @@
 
 
 
-
+.GalleryCarousel {
+  margin-top: 12px;
+}
 
 .GalleryCarousel-OwlCarousel {
   margin: 10px 0px 40px 0px;
@@ -185,7 +188,7 @@
 }
 
 .GalleryCarousel-OwlCarousel-Item {
-  margin: 0 10px;
+  margin: 0 12px 0 0;
 }
 
 .GalleryCarousel-VideoItem {

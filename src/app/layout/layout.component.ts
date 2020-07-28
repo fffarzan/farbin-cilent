@@ -43,7 +43,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.closeContactMenuSub = this.navbarService.contactMenuBtnClickedObs.subscribe(isOpen => this.toggleContactMenu(isOpen));
     this.closeSupplierMenuSub = this.navbarService.supplierMenuBtnClickedObs.subscribe(isOpen => this.toggleSupplierMenu(isOpen));
-    this.closeGalleryModalSub = this.galleryMoadalServeic.galleryModalOpenedObs.subscribe(() => this.showGalleryModal());
+    this.closeGalleryModalSub = this.galleryMoadalServeic.galleryModalOpenedObs.subscribe(() => this.showGalleryModal(false));
   }
 
   onToggleCatalog(isOpen: boolean) {
@@ -53,6 +53,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   onCloseDarkbody() {
     this.toggleContactMenu(true);
     this.toggleSupplierMenu(true);
+    this.showGalleryModal(true);
     this.isDarkbodyShown = false;
 
     // forcely close all
@@ -63,7 +64,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (this.closeCatalogSub) this.closeCatalogSub.unsubscribe();
     if (this.closeContactMenuSub) this.closeContactMenuSub.unsubscribe();
     if (this.closeSupplierMenuSub) this.closeSupplierMenuSub.unsubscribe();
-    if(this.closeGalleryModalSub) this.closeGalleryModalSub.unsubscribe();
+    if (this.closeGalleryModalSub) this.closeGalleryModalSub.unsubscribe();
   }
 
   private showCatalog() {
@@ -87,7 +88,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       // add darkbody to the screen
       this.isDarkbodyShown = true;
 
-      // trun darkbodyRemoved to default
+      // trun darkbodyRemoved to default (delete it from dom)
       this.darkbodyRemoved = false;
 
       hostViewContainerRef.clear();
@@ -121,16 +122,24 @@ export class LayoutComponent implements OnInit, OnDestroy {
     }
   }
 
-  private showGalleryModal() {
+  private showGalleryModal(isOpen: boolean) {
     const galleryModalCmpFactory = this.componentFatoryResolver.resolveComponentFactory(GalleryModalComponent);
     const hostViewContainerRef = this.galleryModalHost.viewContainerRef;
-
     hostViewContainerRef.clear();
 
-    const componentRef = hostViewContainerRef.createComponent(galleryModalCmpFactory);
-    this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
-      this.closeGalleryModalSub.unsubscribe();
-      hostViewContainerRef.clear();
-    })
+    if(!isOpen) {
+      this.isDarkbodyShown = true;
+
+      const componentRef = hostViewContainerRef.createComponent(galleryModalCmpFactory);
+      this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
+        this.closeGalleryModalSub.unsubscribe();
+        hostViewContainerRef.clear();
+  
+        // delete darkbody from dom
+        this.isDarkbodyShown = false;
+      });
+    } else {
+      this.darkbodyRemoved = false;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
@@ -12,6 +12,7 @@ import { GalleryCarousel, GalleryMedia } from 'src/app/shared/carousel/gallery-c
 })
 export class GalleryModalComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
+  @ViewChild('parent', { static: false }) parentDiv: ElementRef;
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
@@ -44,7 +45,7 @@ export class GalleryModalComponent implements OnInit {
       }
     }
   };
-  carouselItemWidth: number = 160;
+  carouselItemWidth: number = 120;
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
@@ -59,6 +60,12 @@ export class GalleryModalComponent implements OnInit {
 
   onCloseModal() {
     this.close.emit();
+  }
+
+  onCloseModalFromParnet(event: Event) {
+    if (event.currentTarget === this.parentDiv.nativeElement) {
+      this.close.emit();
+    }
   }
 
   onSendDataToMain(item) {

@@ -7,6 +7,10 @@
   padding-bottom: 60px;
 }
 
+.MovableContainerFixedScreen {
+  overflow: hidden;
+}
+
 #DarkBody {
   position: fixed;
   top: 0;
@@ -14,6 +18,8 @@
   right: 0;
   bottom: 0;
   z-index: 10000;
+  height: 100%;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
