@@ -1,0 +1,65 @@
+/* mobile-first */
+
+.NewsLetterUnsubscribe {
+  background-color: #fff;
+  color: #000;
+  direction: rtl;
+  padding-top: 50px;
+}
+
+.NewsLetterUnsubscribe span {
+  color: #000;
+}
+
+.NewsLetterUnsubscribe-Warning {
+  margin: 0 15px;
+  padding: 20px 10px;
+  text-align: center;
+  border: 1px solid #eee;
+  max-width: 700px;
+  background-color: #fff;
+}
+
+.NewsLetterUnsubscribe-Warning p {
+  font-size: 15px;
+  line-height: 28px;
+}
+
+.NewsLetterUnsubscribe-Warning button {
+  line-height: 30px;
+  outline: none;
+  font-size: 13px;
+  margin-top: 20px;
+  background-color: #eee;
+  border: 1px solid #eee;
+  transition: .2s;
+  padding: 0 15px;
+}
+
+.NewsLetterUnsubscribe-Warning button:hover {
+  background-color: red;
+  color: #fff;
+  border: 1px solid red;
+}
+
+.NewsLetterUnsubscribe-Success {
+  text-align: center;
+  margin: 20px;
+  color: green;
+}
+
+.NewsLetterUnsubscribe-Error {
+  text-align: center;
+  margin: 20px;
+  color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .NewsLetterUnsubscribe {
+    padding-top: 70px;
+  }
+  .NewsLetterUnsubscribe-Warning {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+}

@@ -17,6 +17,7 @@ import { Incident } from '../about-us/incident/incident-detail/incident.model';
 import { IncidentCategory } from '../about-us/incident/incident-list/incident-category.model';
 import { IncidentService } from '../about-us/incident/incident.service';
 import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
+import { of, throwError } from 'rxjs';
 import { NewsletterService } from '../about-us/newsletter/newsletter.service';
 import { Newsletters } from '../about-us/newsletter/newsletter-list/newsletters.model';
 import { Newsletter } from '../about-us/newsletter/newsletter-detail/newsletter.model';
@@ -43,6 +44,12 @@ export class DataStorageService {
     private trainingService: TrainingService,
     private trainingCourseService: TrainingCourseService
   ) { }
+
+  handleError(err: object) {
+    console.error(err);
+
+    return throwError('An error occured' + err);
+  }
 
   // homepage requests
 
@@ -230,6 +237,18 @@ export class DataStorageService {
       .pipe(
         tap(newsletter => this.newsletterService.setNewsletter(newsletter))
       );
+  }
+
+  fetchUnsubscribeData(param: object) {
+    return this.http
+    .post<{ Email: string }>(
+      environment.baseUrl + '/api/NewsLetter/Unsubscribe/',
+      param,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    )
+    .pipe(
+      catchError(err => this.handleError(err))
+    );
   }
 
   // training requests

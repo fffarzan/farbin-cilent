@@ -1,0 +1,18 @@
+<article class="NewsLetterUnsubscribe">
+
+  <section class="NewsLetterUnsubscribe-Warning">
+    <p>آیا مایل به غیر فعال نمودن خبرنامه برای ایمیل <span>{{ targetEmail }}</span> هستید؟</p>
+    <button (click)="onUnsubscribe()">لغو اشتراک</button>
+  </section>
+
+  <section *ngIf="isUnsubscribed"
+    class="NewsLetterUnsubscribe-Success">
+    <p>اشتراک شما با موفقیت لغو شد.</p>
+  </section>
+
+  <section *ngIf="isNotUnsubscribed"
+    class="NewsLetterUnsubscribe-Error">
+    <p>اشتراک شما لغو نشد!</p>
+  </section>
+
+</article>
