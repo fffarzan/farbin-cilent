@@ -50,6 +50,8 @@
   display: flex;
   flex-flow: column wrap;
   margin: 10px 15px;
+  margin-top: 70px !important;
+  font-weight: lighter;
 }
 
 .TrainingCoursesCategory-F101Cover {
@@ -80,7 +82,8 @@
 }
 
 .TrainingCoursesCategory-F101Cover-ContentInner {
-  padding: 50px 45px 23px 45px;
+  width: 100%;
+  padding: 25px 20px 15px 20px;
 }
 
 .TrainingCoursesCategory-F101Cover-QRCode {
@@ -98,7 +101,7 @@
 
 .TrainingCoursesCategory-F101Cover-QRCode span {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   right: 15px;
 }
 
@@ -128,12 +131,14 @@
 
 .TrainingCoursesCategory-F101CoverContent-MainTitle {
   font-size: 25px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  line-height: 22px;
 }
 
 .TrainingCoursesCategory-F101CoverContent-Abbreviation {
   font-size: 25px;
-  margin: 0 0 5px;
+  margin: 0;
+  font-weight: lighter;
 }
 
 .TrainingCoursesCategory-F101CoverContent-ShortDescription {
@@ -152,15 +157,17 @@
     margin: 10px 25px;
   }
   .TrainingCoursesCategory-F101Cover-ContentInner {
+    width: unset;
     padding: 50px 50px 30px 50px;
   }
   .TrainingCoursesCategory-F101CoverContent-MainTitle {
     font-size: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .TrainingCoursesCategory-F101CoverContent-Abbreviation {
     font-size: 40px;
-    margin: 0 0 9px;
+    margin: 0;
+    line-height: 35px;
   }
   .TrainingCoursesCategory-F101CoverContent-ShortDescription {
     font-size: 16px;
@@ -171,7 +178,7 @@
   }
   @media screen and (min-width:768px) and (max-width:1024px) {
     .TrainingCoursesCategory-F101Cover-QRCode {
-      margin: 10px 30px 0 0;
+      margin: 23px 30px 0 0;
     }
     .TrainingCoursesCategory-F101QRCode-Span-Desktop {
       display: none;
@@ -185,6 +192,12 @@
 @media only screen and (min-width: 992px) {
   .TrainingCoursesCategory-F101Cover-Wrapper {
     margin: 10px 65px 10px 47px;
+  }
+  .TrainingCoursesCategory-F101Cover-QRCode {
+    margin: 15px 50px 0 0;
+  }
+  .TrainingCoursesCategory-F101Cover-QRCode span {
+    bottom: 25px;
   }
 }
 
@@ -204,7 +217,7 @@
 
 @media only screen and (min-width: 768px) {
   .TrainingCoursesCategory-F101Course-CarouselOuter {
-    margin: 5px 70px;
+    margin: 5px 65px 5px 47px;
   }
 }
 
@@ -227,18 +240,6 @@
 .TrainingCoursesCategory-F101Course-PhoneNumber {
   font-weight: bold;
   margin-bottom: 7px !important;
-}
-
-@media only screen and (min-width: 768px) {
-  .TrainingCoursesCategory-F101Course-ContentWrapper {
-    padding: 5px 25px 5px 25px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .TrainingCoursesCategory-F101Course-ContentWrapper {
-    padding: 5px 65px 5px 47px;
-  }
 }
 
 /* content - banner */
@@ -296,7 +297,7 @@
 
 @media only screen and (min-width: 992px) {
   ::ng-deep .TrainingCoursesCategory-F101Booster {
-    padding: 10px 30px;
+    padding: 10px 43px 10px 25px;
   }
 }
 
@@ -357,9 +358,6 @@
   ::ng-deep .TrainingCoursesCategory-F101Intro-ContentWrapper {
     margin: 10px 25px;
   }
-  ::ng-deep .TrainingCoursesCategory-F101Intro-ContentWrapper-Challenge h3 {
-    margin-bottom: 250px;
-  }
   ::ng-deep .TrainingCoursesCategory-F101Intro-ContentOuter img {
     max-width: 500px;
     height: 100%;
@@ -367,6 +365,9 @@
   ::ng-deep .TrainingCoursesCategory-F101Intro-Content h3 {
     text-align: right;
     margin-bottom: 80px;
+  }
+  ::ng-deep .TrainingCoursesCategory-F101Intro-ContentWrapper-Challenge h3 {
+    margin-bottom: 250px;
   }
   ::ng-deep .TrainingCoursesCategory-F101Intro-ContentOuter img {
     position: absolute;
@@ -597,9 +598,18 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  ::ng-deep .TrainingCoursesCategory-F101Course-ContentWrapper {
+    padding: 5px 25px 5px 25px;
+  }
+}
+
 @media screen and (min-width: 992px) {
   ::ng-deep .TrainingCoursesCategory-F101Course-CarouselOuter {
     margin: 5px 65px 5px 47px;
+  }
+  ::ng-deep .TrainingCoursesCategory-F101Course-ContentWrapper {
+    padding: 5px 65px 5px 47px;
   }
 }
 
