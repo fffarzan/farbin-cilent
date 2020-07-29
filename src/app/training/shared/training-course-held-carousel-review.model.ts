@@ -1,4 +1,4 @@
-export class TrainingCoursesHeldReviewForCourse {
+export class TrainingCourseHeldCarouselReview {
   constructor(
     public ID: string,
     public IDX: number,

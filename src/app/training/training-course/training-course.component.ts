@@ -4,7 +4,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { TrainingCourseService } from './training-course.service';
 import { ActivatedRoute } from '@angular/router';
 import { TrainingCourse } from './training-course.model';
-import { TrainingCoursesHeldReviewForCourse } from './training-courses-held-review for-course.model';
+import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model';
 import { environment } from 'src/environments/environment';
 import { TrainingCoursesHeldCarouselParams } from 'src/app/shared/carousel/training-courses-held-carousel/training-courses-held-carousel-params.model';
 
@@ -21,7 +21,7 @@ export class TrainingCourseComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   courseId: number;
   course: TrainingCourse;
-  coursesHeld: TrainingCoursesHeldReviewForCourse;
+  coursesHeld: TrainingCourseHeldCarouselReview;
   trainingCoursesHeldCarouselParams: TrainingCoursesHeldCarouselParams = {
     imageStaticUrl: '',
     dynamicFieldImage: 'PicUrl',
@@ -81,9 +81,8 @@ export class TrainingCourseComponent implements OnInit {
 
       // split string and create an object
       let coursesHeldLength = Object.keys(this.coursesHeld).length;
-      for (let i = 0; i < coursesHeldLength; i++) {
+      for (let i = 0; i < coursesHeldLength; i++)
         if (this.coursesHeld[i].Items) this.coursesHeld[i].Items = JSON.parse(this.coursesHeld[i].Items);
-      }
       
       // send data to training-courses-held-carousel component
       this.trainingCoursesHeldCarouselParams.data = this.coursesHeld[0];

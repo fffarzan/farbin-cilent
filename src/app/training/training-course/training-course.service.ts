@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { TrainingCourse } from './training-course.model';
-import { TrainingCoursesHeldReviewForCourse } from './training-courses-held-review for-course.model';
+import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainingCourseService {
   private trainingCourse: TrainingCourse;
-  private trainingCoursesHeld: TrainingCoursesHeldReviewForCourse;
+  private trainingCoursesHeld: TrainingCourseHeldCarouselReview;
 
   setTrainingCourse(trainingCourse: TrainingCourse) {
     this.trainingCourse = trainingCourse;
@@ -18,7 +18,7 @@ export class TrainingCourseService {
     return this.trainingCourse;
   }
 
-  setTrainingCoursesHeld(trainingCouresesHeld: TrainingCoursesHeldReviewForCourse) {
+  setTrainingCoursesHeld(trainingCouresesHeld: TrainingCourseHeldCarouselReview) {
     this.trainingCoursesHeld = trainingCouresesHeld;
   }
 

@@ -1,38 +1,20 @@
 <article class="TrainingGroupingCategory">
   <div class="TrainingGroupingCategory-Inner">
-    <!-- ng-repeat="TrainingCoursesForACompany in TrainingCoursesCompanyCat" -->
-    <div class="TrainingGroupingCategory-Sections">
+
+    <div class="TrainingGroupingCategory-Sections" *ngFor="let course of coursesHeldBatchList">
 
       <!-- header -->
       <section class="TrainingGroupingCategory-Header">
-        <!-- <h2 class="TrainingGroupingCategory-Title">{{::TrainingCoursesForACompany.Title}}</h2> -->
-        <!-- href="/TrainingCoursesCompanyDetail/{{::TrainingCoursesForACompany.IDX}}" -->
-        <a class="HoldingCourseAndExhibition-SliderHeader-Link">بیشتر</a>
+        <h2 class="TrainingGroupingCategory-Title">{{ course.Title }}</h2>
+        <a [routerLink]="['training-course-held-batch-detail', course.IDX]" class="HoldingCourseAndExhibition-SliderHeader-Link">بیشتر</a>
       </section>
       <hr class="ColorLightGrayHr TrainingGroupingCategory-Hr" />
       
       <!-- carousel -->
-      <!-- <section trainingcoursescarousel
-        datasource="TrainingCoursesForACompany.Items"
-        imagestaticurl="'/images/docx.png'"
-        dynamicfieldimage="'PicUrl'"
-        pageurldirection="'TrainingCoursesHeld'"
-        morepageurl="'TrainingCoursesCompanyDetail'"
-        morepageurlidx="TrainingCoursesForACompany.IDX"
-        dynamicfieldname1="'Name_Fa'"
-        dynamicfieldname2="'ChildCategoryTraningCourseName'"
-        desktopcarouseloptions="{
-          items: 3,
-          stagePadding: 20,
-          responsive: { 1024: { items: 4 } }
-        }"
-        mobilecarouseloptions="{
-          itemsMobile: [500,1.7],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,3]
-        }">
-      </section> -->
-   
+      <app-training-courses-held-carousel [carouselData]="trainingCoursesHeldCarouselParams">
+      </app-training-courses-held-carousel>
+    
     </div>
+
   </div>
 </article>
