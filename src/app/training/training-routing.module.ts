@@ -9,7 +9,7 @@ import { TrainingCourseHeldListComponent } from './training-course-held-list/tra
 const routes: Routes = [
   { path: '', component: TrainingComponent },
   { path: 'training-course/:id', component: TrainingCourseComponent, resolve: { course: TrainingCourseResolver } },
-  { path: 'training/:moreCoursesUrl/:id', component: TrainingCourseHeldListComponent }
+  { path: ':moreCoursesUrl/:id', component: TrainingCourseHeldListComponent }
 ]
 
 @NgModule({

@@ -24,8 +24,8 @@
       </ng-template>
     </ng-container>
     <ng-template carouselSlide>
-      <!-- href="/{{::morepageurl}}/{{::morepageurlidx}}" -->
-      <a class="TrainingCoursesCarousel-More">
+      <a class="TrainingCoursesCarousel-More"
+        [routerLink]="['/training', carouselData.moreCoursesUrl, +carouselData.moreCoursesUrlIdx]">
         <img src="assets/img/more-icon.png"
           alt="more - ادامه">
       </a>
@@ -55,7 +55,6 @@
       </div>
     </a>
   </div>
-  <!-- href="/{{::morepageurl}}/{{::morepageurlidx}}" -->
   <a class="TrainingCoursesCarousel-More"
     [routerLink]="['/training', carouselData.moreCoursesUrl, +carouselData.moreCoursesUrlIdx]">
     <img src="assets/img/more-icon.png"
