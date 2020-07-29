@@ -87,7 +87,7 @@ export class TrainingCourseComponent implements OnInit {
       
       // send data to training-courses-held-carousel component
       this.trainingCoursesHeldCarouselParams.data = this.coursesHeld[0];
-      this.trainingCoursesHeldCarouselParams.moreCoursesUrlIdx = this.coursesHeld.IDX;
+      this.trainingCoursesHeldCarouselParams.moreCoursesUrlIdx = this.coursesHeld[0].IDX;
     });
 
   }
