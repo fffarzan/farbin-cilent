@@ -1,0 +1,68 @@
+/* mobile-first */
+
+.TrainingGroupingCategory {
+  margin-top: 100px;
+}
+
+.TrainingGroupingCategory-Inner {
+  font-family: 'IRANSansWeb_UltraLight';
+  direction: rtl;
+  margin-bottom: 60px;
+}
+
+.TrainingGroupingCategory-Sections {
+  text-align: right;
+  margin-bottom: 25px;
+  padding: 0px 20px;
+}
+
+.TrainingGroupingCategory-Header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.TrainingGroupingCategory-Header h2 {
+  font-size: 15px !important;
+  margin-top: 0px;
+}
+
+.TrainingGroupingCategory-Header a {
+  color: #ffb500 !important;
+  font-size: 15px;
+}
+
+.TrainingGroupingCategory-Title {
+  margin-bottom: 2px;
+}
+
+.TrainingCoursesCompanyCategory-Thumbnail p {
+  font-size: 15px;
+  line-height: 25px;
+  direction: rtl;
+}
+
+.TrainingGroupingCategory hr {
+  order: 3;
+  width: 100%;
+  border-top-color: #777;
+}
+
+@media screen and (min-width: 768px) {
+  .TrainingGroupingCategory-Inner {
+    padding: 50px 25px 60px 25px;
+  }
+  .TrainingGroupingCategory-Sections {
+    margin-bottom: 30px;
+    padding: unset;
+  }
+  .TrainingGroupingCategory-Header h2 {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .TrainingGroupingCategory-Inner {
+    padding: 50px 70px 60px 50px;
+  }
+}
