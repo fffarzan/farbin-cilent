@@ -1,1 +1,28 @@
-<p>training-course-held-list works!</p>
+<article class="TrainingAllCourses"
+  ng-controller="TrainingAllCoursescontroller">
+  <div class="TrainingAllCourses-Inner">
+
+    <!-- header -->
+    <section class="TrainingAllCourses-Title">
+      <!-- <h1>{{::TrainingAllCourses[0].ChildTraininCourseCategoryName_Fa}} -
+        {{::TrainingAllCourses[0].ParentTraininCourseCategoryName_Fa}}</h1> -->
+    </section>
+    <hr>
+
+    <!-- body -->
+    <section class="row TrainingAllCourses-Body">
+      <!-- href="/TrainingCoursesHeld/{{::TrainingAllCourse.IDX}}" -->
+      <!-- ng-repeat="TrainingAllCourse in TrainingAllCourses" -->
+      <a class="col-xs-12 col-sm-4 TrainingAllCourses-Body-ItemOuter">
+        <div class="TrainingAllCourses-Body-Item">
+          <!-- <img ng-src="{{::ServerUrl + TrainingAllCourse.PicUrl | GetSmallImage}}"
+            alt="{{::TrainingAllCourse.Name_Fa}}" /> -->
+          <div class="TrainingAllCourses-Body-ItemThumb">
+            <!-- <p>{{::TrainingAllCourse.Name_Fa}}</p> -->
+          </div>
+        </div>
+      </a>
+    </section>
+
+  </div>
+</article>
