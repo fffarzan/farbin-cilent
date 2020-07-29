@@ -26,9 +26,10 @@ import { TrainingService } from '../training/training.service';
 import { TrainingCoursesReview } from '../training/training-course-review.model';
 import { TrainingCourseService } from '../training/training-course/training-course.service';
 import { TrainingCourse } from '../training/training-course/training-course.model';
-import { TrainingCoursesHeldReviewForCourse } from '../training/training-course/training-courses-held-review for-course.model';
 import { TrainingCourseHeldList } from '../training/training-course-held-list/training-course-held-list.model';
 import { TrainingCourseHeldListService } from '../training/training-course-held-list/training-course-held-list.service'
+import { TrainingCourseHeldCarouselReview } from '../training/shared/training-course-held-carousel-review.model';
+import { TrainingCourseHeldBatchListService } from '../training/training-course-held-batch-list/training-course-held-batch-list.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,7 @@ export class DataStorageService {
     private newsletterService: NewsletterService,
     private trainingService: TrainingService,
     private trainingCourseService: TrainingCourseService,
+    private trainingCourseHeldBatchListService: TrainingCourseHeldBatchListService
     private trainingCourseHeldListService: TrainingCourseHeldListService
   ) { }
 
@@ -296,7 +298,7 @@ export class DataStorageService {
 
   fetchTrainingCoursesHeldFromCourse(param: object) {
     return this.http
-      .post<TrainingCoursesHeldReviewForCourse>(
+      .post<TrainingCourseHeldCarouselReview>(
         environment.baseUrl + '/api/ContentModuleRet/GetContentModuleByUniqueName/',
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
@@ -315,6 +317,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(coursesHeldList => this.trainingCourseHeldListService.setTrainingCourseHeldList(coursesHeldList))
+      )
+  }
+
+  fetchTrainingCourseHeldBatchList(param: object) {
+    return this.http
+      .post<TrainingCourseHeldCarouselReview[]>(
+        environment.baseUrl + '/api/ContentModuleRet/GetContentModuleByUniqueName/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(coursesHeld => this.trainingCourseHeldBatchListService.setTrainingCourseHeldBatchListService(coursesHeld))
       )
   }
 }

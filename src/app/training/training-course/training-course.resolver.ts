@@ -4,7 +4,6 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { TrainingCourseService } from './training-course.service';
 import { TrainingCourse } from './training-course.model';
-import { TrainingCoursesHeldReviewForCourse } from './training-courses-held-review for-course.model';
 
 @Injectable({
   providedIn: 'root'

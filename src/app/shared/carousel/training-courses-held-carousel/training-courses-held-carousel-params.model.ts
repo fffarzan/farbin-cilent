@@ -1,6 +1,6 @@
 import { DesktopOptions } from '../desktop-options-carousel.model';
 import { MobileOptions } from '../mobile-options-carousel.model';
-import { TrainingCoursesHeldReviewForCourse } from 'src/app/training/training-course/training-courses-held-review for-course.model';
+import { TrainingCourseHeldCarouselReview } from 'src/app/training/shared/training-course-held-carousel-review.model';
 
 export class TrainingCoursesHeldCarouselParams {
   constructor(
@@ -13,6 +13,6 @@ export class TrainingCoursesHeldCarouselParams {
     public dynamicFieldName2: string,
     public desktopOptions: DesktopOptions,
     public mobileOptions: MobileOptions,
-    public data: TrainingCoursesHeldReviewForCourse
+    public data: TrainingCourseHeldCarouselReview
   ) { }
 }
