@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -24,6 +25,7 @@ import { TrainingCoursesHeldCarouselComponent } from './carousel/training-course
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     CarouselModule,
     FontAwesomeModule,
     NgPipesModule,
