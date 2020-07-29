@@ -27,6 +27,8 @@ import { TrainingCoursesReview } from '../training/training-course-review.model'
 import { TrainingCourseService } from '../training/training-course/training-course.service';
 import { TrainingCourse } from '../training/training-course/training-course.model';
 import { TrainingCoursesHeldReviewForCourse } from '../training/training-course/training-courses-held-review for-course.model';
+import { TrainingCourseHeldList } from '../training/training-course-held-list/training-course-held-list.model';
+import { TrainingCourseHeldListService } from '../training/training-course-held-list/training-course-held-list.service'
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +44,8 @@ export class DataStorageService {
     private incidentService: IncidentService,
     private newsletterService: NewsletterService,
     private trainingService: TrainingService,
-    private trainingCourseService: TrainingCourseService
+    private trainingCourseService: TrainingCourseService,
+    private trainingCourseHeldListService: TrainingCourseHeldListService
   ) { }
 
   handleError(err: object) {
@@ -300,6 +303,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(trainingCoursesHeld => this.trainingCourseService.setTrainingCoursesHeld(trainingCoursesHeld))
+      )
+  }
+
+  fetchTrainingCourseHeldList(param: object) {
+    return this.http
+      .post<TrainingCourseHeldList[]>(
+        environment.baseUrl + '/api/TrainingCourse/GetDataForSiteByIDXTrainingCourseCategory/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(coursesHeldList => this.trainingCourseHeldListService.setTrainingCourseHeldList(coursesHeldList))
       )
   }
 }

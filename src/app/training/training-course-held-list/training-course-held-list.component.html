@@ -4,21 +4,21 @@
 
     <!-- header -->
     <section class="TrainingAllCourses-Title">
-      <!-- <h1>{{::TrainingAllCourses[0].ChildTraininCourseCategoryName_Fa}} -
-        {{::TrainingAllCourses[0].ParentTraininCourseCategoryName_Fa}}</h1> -->
+      <h1>{{ coursesHeldList[0].ChildTraininCourseCategoryName_Fa }} -
+        {{ coursesHeldList[0].ParentTraininCourseCategoryName_Fa }}</h1>
     </section>
     <hr>
 
     <!-- body -->
     <section class="row TrainingAllCourses-Body">
-      <!-- href="/TrainingCoursesHeld/{{::TrainingAllCourse.IDX}}" -->
-      <!-- ng-repeat="TrainingAllCourse in TrainingAllCourses" -->
-      <a class="col-xs-12 col-sm-4 TrainingAllCourses-Body-ItemOuter">
+      <a [routerLink]="['training-course-held', course.IDX]"
+        class="col-xs-12 col-sm-4 TrainingAllCourses-Body-ItemOuter"
+        *ngFor="let course of coursesHeldList">
         <div class="TrainingAllCourses-Body-Item">
-          <!-- <img ng-src="{{::ServerUrl + TrainingAllCourse.PicUrl | GetSmallImage}}"
-            alt="{{::TrainingAllCourse.Name_Fa}}" /> -->
+          <img [src]="enviornment.baseUrl + course.PicUrl | getSmallImage"
+            alt="{{ course.Name_Fa }}" />
           <div class="TrainingAllCourses-Body-ItemThumb">
-            <!-- <p>{{::TrainingAllCourse.Name_Fa}}</p> -->
+            <p>{{ course.Name_Fa }}</p>
           </div>
         </div>
       </a>
