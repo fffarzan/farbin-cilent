@@ -10,7 +10,7 @@ import { TrainingCourseHeldListResolver } from './training-course-held-list/trai
 
 const routes: Routes = [
   { path: '', component: TrainingComponent },
-  { path: ':moreCoursesUrl/:id', component: TrainingCourseHeldListComponent, resolve: { courses: TrainingCourseHeldListResolver } }
+  { path: ':moreCoursesUrl/:id', component: TrainingCourseHeldListComponent, resolve: { courses: TrainingCourseHeldListResolver } },
   { path: 'training-course/:id', component: TrainingCourseComponent, resolve: { course: TrainingCourseResolver } },
   { path: 'training-course-held-batch-list', component: TrainingCourseHeldBatchListComponent }
 ]

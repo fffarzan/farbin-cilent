@@ -46,7 +46,7 @@ export class DataStorageService {
     private newsletterService: NewsletterService,
     private trainingService: TrainingService,
     private trainingCourseService: TrainingCourseService,
-    private trainingCourseHeldBatchListService: TrainingCourseHeldBatchListService
+    private trainingCourseHeldBatchListService: TrainingCourseHeldBatchListService,
     private trainingCourseHeldListService: TrainingCourseHeldListService
   ) { }
 

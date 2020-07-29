@@ -11,7 +11,7 @@ import { TrainingCourseHeldBatchListComponent } from './training-course-held-bat
   declarations: [
     TrainingComponent,
     TrainingCourseComponent,
-    TrainingCourseHeldListComponent
+    TrainingCourseHeldListComponent,
     TrainingCourseHeldBatchListComponent
   ],
   imports: [
