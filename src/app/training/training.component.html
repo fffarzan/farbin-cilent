@@ -94,14 +94,14 @@
   </section>
   <hr class="ColorLightGrayHr TrainingModuleHr" />
 
-  <!-- courses gallery -->
+  <!-- courses held gallery -->
   <section class="TrainingModule-CoursesGallery-Wrapper">
     <div class="TrainingModule-Title">
       <p>دوره های برگزار شده</p>
     </div>
     <div class="row TrainingModule-CoursesGallery-Body">
-      <!-- href="/TrainingCoursesHeld/{{::TrainingCourse.IDX}}" -->
-      <a class="col-xs-6 col-sm-4 TrainingModule-CoursesGallery-ItemOuter"
+      <a [routerLink]="['training-course-held', trainingCourseHeld.IDX]"
+        class="col-xs-6 col-sm-4 TrainingModule-CoursesGallery-ItemOuter"
         *ngFor="let trainingCourseHeld of trianingCoursesHeld | slice:0:6 | orderBy: '-EndDate'">
         <div class="TrainingModule-CoursesGallery-ItemWrapper">
           <img class="TrainingModule-CoursesGallery-ItemImage"
@@ -117,8 +117,9 @@
     </div>
   </section>
 
-  <!-- all courses link -->
-  <a class="TrainingModule-AllCoursesLink" [routerLink]="['training-course-held-batch-list']">
+  <!-- all courses held link -->
+  <a class="TrainingModule-AllCoursesLink"
+    [routerLink]="['training-course-held-batch-list']">
     <p>نمایش همه دوره ها</p>
     <i class="fa fa-angle-left"></i>
   </a>

@@ -6,12 +6,14 @@ import { TrainingCourseComponent } from './training-course/training-course.compo
 import { TrainingCourseHeldBatchListComponent } from './training-course-held-batch-list/training-course-held-batch-list.component';
 import { TrainingCourseHeldListComponent } from './training-course-held-list/training-course-held-list.component';
 import { TrainingCourseHeldBatchDetailComponent } from './training-course-held-batch-detail/training-course-held-batch-detail.component';
+import { TrainingCourseHeldDetailComponent } from './training-course-held-detail/training-course-held-detail.component';
 
 const routes: Routes = [
   { path: '', component: TrainingComponent },
   { path: 'training-course/:id', component: TrainingCourseComponent },
   { path: 'training-course-held-batch/:id', component: TrainingCourseHeldBatchDetailComponent },
   { path: 'training-course-held-batch-list', component: TrainingCourseHeldBatchListComponent },
+  { path: 'training-course-held/:id', component: TrainingCourseHeldDetailComponent },
   { path: ':moreCoursesUrl/:id', component: TrainingCourseHeldListComponent }
 ]
 

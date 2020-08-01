@@ -1,0 +1,78 @@
+<article id="TrainingCoursesHeldPage-Wrapper"
+  *ngIf="course">
+  <div id="TrainingCoursesHeldPage-Inner"
+    class="TrainingCourseHeld-Inner">
+
+    <!-- header -->
+    <section class="TrainingCourseHeld-Header TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Header">
+        <div class="TrainingCourseHeld-Header-Inner">
+          <div class="TrainingCourseHeld-Header-Desc">
+            <h1>{{ course.Name_Fa }}</h1>
+            <p>در تاریخ <span>{{ course.EndDate }}</span></p>
+          </div>
+          <div class="TrainingCourseHeld-Header-MainImage">
+            <img [src]="enviornment.baseUrl + course.PicUrl"
+              alt="{{ course.Name_Fa }}" />
+          </div>
+        </div>
+      </div>
+      <hr class="TrainingCourseHeld-hr">
+    </section>
+
+    <!-- course -->
+    <section class="TrainingCourseHeld-Section">
+      <a [routerLink]="['../training-course', course.IDX]"
+        *ngFor="let course of course.TrainingCourseCategory"
+        class="TrainingCourseHeld-Course TrainingCourseHeld-Course-IncludingImage">
+        <img [src]="enviornment.baseUrl + course.PicUrl | getSmallImage"
+          alt="{{ course.Name_Fa }}" />
+        <p>{{ course.ParentName }}</p>
+        <span class="fa fa-angle-left"></span>
+      </a>
+      <hr>
+    </section>
+
+    <!-- images gallery -->
+    <section *ngIf="course.ImageGallery"
+      class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Carousel-Header">
+        <h3>تصاویر</h3>
+        <h3 class="IranSansWebFont">Images</h3>
+      </div>
+      <app-gallery-carousel [carouselData]="courseImageData"></app-gallery-carousel>
+      <hr>
+    </section>
+
+    <!-- teacher -->
+    <section class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Teacher">
+        <p>مدرس دوره: علی شاملو</p>
+      </div>
+      <hr>
+    </section>
+
+    <!-- attendances -->
+    <section *ngIf="course.TrainingCouseUser"
+      class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Carousel-Header">
+        <h3>شرکت کنندگان در دوره</h3>
+        <h3 class="IranSansWebFont">Attendances</h3>
+      </div>
+      <app-training-course-held-attendance-carousel [carouselData]="courseAttendanceData">
+      </app-training-course-held-attendance-carousel>
+      <hr class="HoldingCourseAndExhibition-LineSeperator ColorLightGrayHr" />
+    </section>
+
+    <!-- confirmations gallery -->
+    <section *ngIf="course.Confirmation"
+      class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Carousel-Header">
+        <h3>تاییدیه ها</h3>
+        <h3 class="IranSansWebFont">Conformations</h3>
+      </div>
+      <app-gallery-carousel [carouselData]="courseConfirmationsData"></app-gallery-carousel>
+    </section>
+
+  </div>
+</article>

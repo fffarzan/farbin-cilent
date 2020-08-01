@@ -8,8 +8,8 @@
       <ng-template class="item"
         carouselSlide
         [width]="carouselItemWidth">
-        <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" -->
-        <a class="TrainingCoursesCarousel-OwlCarousel-Item">
+        <a [routerLink]="['/training/training-course-held', item.IDX]"
+          class="TrainingCoursesCarousel-OwlCarousel-Item">
           <img
             [src]="item[carouselData.dynamicFieldImage] ? enviornment.baseUrl + item[carouselData.dynamicFieldImage] : carouselData.imageStaticUrl | getSmallImage"
             alt="{{ item[carouselData.dynamicFieldName1] - item[carouselData.dynamicFieldName2] }}"
@@ -38,8 +38,7 @@
   *ngIf="isMobile || isTablet">
   <div class="TrainingCoursesCarousel-Mobile-Inner"
     *ngFor="let item of carouselData.data?.Items | slice:0:4">
-    <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" -->
-    <a>
+    <a [routerLink]="['/training/training-course-held', item.IDX]">
       <img [appMobileTemplate]="carouselData"
         [src]="item[carouselData.dynamicFieldImage] ? enviornment.baseUrl + item[carouselData.dynamicFieldImage] : carouselData.imageStaticUrl | getSmallImage"
         alt="{{ item[carouselData.dynamicFieldName1] - item[carouselData.dynamicFieldName2] }}"

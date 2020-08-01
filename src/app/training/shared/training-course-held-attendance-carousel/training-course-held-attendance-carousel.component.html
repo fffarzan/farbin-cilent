@@ -1,0 +1,38 @@
+<!-- desktop carousel -->
+<article class="TrainingAttendancesCarousel"
+  *ngIf="!isMobile && !isTablet">
+  <owl-carousel-o [options]="carouselData.desktopOptions"
+    class="TrainingAttendancesCarousel-OwlCarousel"
+    id="TrainingCourses{{ dynamicId }}">
+    <ng-container *ngFor="let item of carouselData.data">
+      <ng-template class="item"
+        carouselSlide
+        [width]="carouselItemWidth">
+        <!-- [routerLink]="['/training/training-course-held', item.IDX]" -->
+        <a class="TrainingAttendancesCarousel-OwlCarousel-Item">
+          <img
+            [src]="item[carouselData.dynamicFieldImage] ? enviornment.baseUrl + item[carouselData.dynamicFieldImage] : carouselData.imageStaticUrl"
+            alt="{{ item[carouselData.dynamicFieldName] }}">
+          <p class="TrainingAttendancesCarousel-Caption-Item TrainingAttendancesCarousel-Caption-FirstItem">
+            {{ item[carouselData.dynamicFieldName] }}</p>
+        </a>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</article>
+
+<!-- mobile carousel -->
+<article class="TrainingAttendancesCarousel-Mobile"
+  *ngIf="isMobile || isTablet">
+  <div class="TrainingAttendancesCarousel-Mobile-Inner"
+    *ngFor="let item of carouselData.data">
+    <!-- [routerLink]="['/training/training-course-held', item.IDX]" -->
+    <a>
+      <img [appMobileTemplate]="carouselData"
+        [src]="item[carouselData.dynamicFieldImage] ? enviornment.baseUrl + item[carouselData.dynamicFieldImage] : carouselData.imageStaticUrl"
+        alt="{{ item[carouselData.dynamicFieldName] }}">
+      <p class="TrainingAttendancesCarousel-Caption-Item TrainingAttendancesCarousel-Caption-FirstItem">
+        {{ item[carouselData.dynamicFieldName] }}</p>
+    </a>
+  </div>
+</article>
