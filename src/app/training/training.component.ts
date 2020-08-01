@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { TrainingService } from './training.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { TrainingCoursesReview } from './training-course-review.model';
 import { TrainingCourseHeldReview } from './training-course-held-review.model';
 import { environment } from 'src/environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-training',
   templateUrl: './training.component.html',
   styleUrls: ['./training.component.css']
 })
-export class TrainingComponent implements OnInit {
+export class TrainingComponent implements OnInit, OnDestroy {
   trainingCourses: TrainingCoursesReview[];
   trianingCoursesHeld: TrainingCourseHeldReview[];
   enviornment: { production: boolean, baseUrl: string } = environment;
@@ -26,6 +27,8 @@ export class TrainingComponent implements OnInit {
     dots: false,
     navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
   };
+  trainingCoursesSub: Subscription;
+  trianingCoursesHeldSub: Subscription;
 
   constructor(
     private trainingService: TrainingService,
@@ -33,7 +36,14 @@ export class TrainingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchTrainigCoursesReview().subscribe(() => this.trainingCourses = this.trainingService.getTrainingCoursesReview());
-    this.dataStorageService.fetchTrainingCourseHeldReview().subscribe(() => this.trianingCoursesHeld = this.trainingService.getTrainingCoursesHeldReview());
+    this.trainingCoursesSub = this.dataStorageService.fetchTrainigCoursesReview()
+      .subscribe(() => this.trainingCourses = this.trainingService.getTrainingCoursesReview());
+    this.trianingCoursesHeldSub = this.dataStorageService.fetchTrainingCourseHeldReview()
+      .subscribe(() => this.trianingCoursesHeld = this.trainingService.getTrainingCoursesHeldReview());
+  }
+
+  ngOnDestroy() {
+    this.trainingCoursesSub.unsubscribe();
+    this.trianingCoursesHeldSub.unsubscribe();
   }
 }

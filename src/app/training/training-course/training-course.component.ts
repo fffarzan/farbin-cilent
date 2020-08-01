@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { TrainingCourseService } from './training-course.service';
@@ -7,6 +7,7 @@ import { TrainingCourse } from './training-course.model';
 import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model';
 import { environment } from 'src/environments/environment';
 import { TrainingCoursesHeldCarouselParams } from 'src/app/shared/carousel/training-courses-held-carousel/training-courses-held-carousel-params.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-training-course',
@@ -17,7 +18,7 @@ import { TrainingCoursesHeldCarouselParams } from 'src/app/shared/carousel/train
     '../../shared/qr-code.css'
   ]
 })
-export class TrainingCourseComponent implements OnInit {
+export class TrainingCourseComponent implements OnInit, OnDestroy {
   enviornment: { production: boolean, baseUrl: string } = environment;
   courseId: number;
   course: TrainingCourse;
@@ -39,21 +40,22 @@ export class TrainingCourseComponent implements OnInit {
       autoWidth: true
     },
     mobileOptions: {
-      mobileItems: { 
+      mobileItems: {
         maxSize: 500,
         items: 1.7
-       },
-       tabletItems: {
+      },
+      tabletItems: {
         maxSize: 768,
         items: 0
-       },
-       desktopItems: {
+      },
+      desktopItems: {
         maxSize: 1024,
         items: 3
-       }
+      }
     },
     data: null
   };
+  subscription: Subscription;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -62,15 +64,19 @@ export class TrainingCourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(param => {
+    this.subscription = this.route.params.subscribe(param => {
       this.courseId = +param['id'];
-      // this.getTrainingCourseData(+param['id']);
+      this.getTrainingCourseData({ IDX: +(param['id']) })
     });
+  }
 
-    this.route.data.subscribe(data => {
-      this.course = data.course[0];
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
-      // get held courses from this course
+  private getTrainingCourseData(idObject: object) {
+    this.dataStorageService.fetchTrainingCourse(idObject).subscribe(() => {
+      this.course = this.trainingCourseService.getTrainingCourse()[0];
       this.getTrainingCoursesHeldData(this.course.Name_Fa);
     });
   }
@@ -83,10 +89,10 @@ export class TrainingCourseComponent implements OnInit {
       let coursesHeldLength = Object.keys(this.coursesHeld).length;
       for (let i = 0; i < coursesHeldLength; i++)
         if (this.coursesHeld[i].Items) this.coursesHeld[i].Items = JSON.parse(this.coursesHeld[i].Items);
-      
+
       // send data to training-courses-held-carousel component
       this.trainingCoursesHeldCarouselParams.data = this.coursesHeld[0];
-      this.trainingCoursesHeldCarouselParams.moreCoursesUrlIdx = this.coursesHeld[0].IDX;
+      this.trainingCoursesHeldCarouselParams.moreCoursesUrlIdx = this.courseId;
     });
 
   }
