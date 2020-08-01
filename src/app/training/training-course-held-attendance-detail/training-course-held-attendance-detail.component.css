@@ -1,0 +1,72 @@
+/* mobile-first */
+
+.TrainingAttendance {
+  font-family: 'IRANSansWeb_UltraLight';
+  direction: rtl;
+  margin: 0px 10px;
+}
+
+.TrainingAttendance-Outer {
+  padding: 10px 5px 60px 5px;
+}
+
+.TrainingAttendance-Outer hr {
+  border-top: 1px solid #777 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .TrainingAttendance-Outer {
+    padding: 50px 15px 60px 15px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .TrainingAttendance {
+    margin: 0;
+  }
+  .TrainingAttendance-Outer {
+    padding: 50px 70px 60px 50px;
+  }
+}
+
+/* head */
+
+.TrainingAttendance-Head-Inner {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.TrainingAttendance-Head-ProfileInfo h1 {
+  font-size: 18px !important;
+  color: #81b7cc;
+  margin-top: 0px;
+  font-weight: bold;
+}
+
+.TrainingAttendance-Head-PorfileImage img {
+  max-width: 150px;
+  height: auto;
+  height: 120px !important;
+  background-image: url(/images/human.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 90px !important;
+}
+
+.TrainingAttendance-Head-BlankImage {
+  border: 1px solid #777;
+}
+
+/* certificate */
+
+.TrainingAttendance-Certificate-Carousel {
+  margin-top: 20px;
+}
+
+.TrainingAttendance-Certificate-Title h3 {
+  font-size: 16px !important;
+  color: #81b7cc;
+  margin-top: 15px;
+}

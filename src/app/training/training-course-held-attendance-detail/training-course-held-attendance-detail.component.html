@@ -1,0 +1,33 @@
+<article class="TrainingAttendance"
+  *ngIf="person">
+  <div class="TrainingAttendance-Outer">
+
+    <!-- head -->
+    <section class="TrainingAttendance-Head">
+      <div class="TrainingAttendance-Head-Inner">
+        <div class="TrainingAttendance-Head-ProfileInfo">
+          <h1>{{ person.FName_Fa }} {{ person.LName_Fa }}</h1>
+        </div>
+        <div class="TrainingAttendance-Head-PorfileImage">
+          <img [ngClass]="{'TrainingAttendance-Head-BlankImage': !person.PicUrl}"
+            [src]="person.PicUrl ? enviornment.baseUrl + person.PicUrl : 'assets/img/blank.png'"
+            alt="دوره های آموزشی پسیو شبکه - F101 - F102 - F103" />
+        </div>
+      </div>
+    </section>
+    <hr>
+
+    <!-- certificate -->
+    <section class="TrainingAttendance-Certificate"
+      *ngIf="person.Certifications">
+      <div class="TrainingAttendance-Certificate-Inner">
+        <div class="TrainingAttendance-Certificate-Title">
+          <h3>گواهینامه پایان دوره</h3>
+        </div>
+        <app-gallery-carousel class="TrainingAttendance-Certificate-Carousel"
+          [carouselData]="imageGalleryData"></app-gallery-carousel>
+      </div>
+    </section>
+
+  </div>
+</article>

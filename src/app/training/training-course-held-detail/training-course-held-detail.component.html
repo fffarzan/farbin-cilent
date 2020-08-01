@@ -22,7 +22,7 @@
 
     <!-- course -->
     <section class="TrainingCourseHeld-Section">
-      <a [routerLink]="['../training-course', course.IDX]"
+      <a [routerLink]="['../../training-course', course.IDX]"
         *ngFor="let course of course.TrainingCourseCategory"
         class="TrainingCourseHeld-Course TrainingCourseHeld-Course-IncludingImage">
         <img [src]="enviornment.baseUrl + course.PicUrl | getSmallImage"

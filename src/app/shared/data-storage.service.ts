@@ -34,6 +34,8 @@ import { TrainingCourseHeldBatchDetailService } from '../training/training-cours
 import { TrainingCourseHeldBatchDetail } from '../training/training-course-held-batch-detail/training-course-held-batch-detail.model';
 import { TrainingCourseHeldDetail } from '../training/training-course-held-detail/training-course-held-detail.model';
 import { TrainingCourseHeldDetailService } from '../training/training-course-held-detail/training-course-held-detail.service';
+import { TrainingCourseHeldAttendanceDetail } from '../training/training-course-held-attendance-detail/training-course-held-attendance-detail.model';
+import { TrainingCourseHeldAttendanceDetailService } from '../training/training-course-held-attendance-detail/training-course-held-attendance-detail.service';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +55,8 @@ export class DataStorageService {
     private trainingCourseHeldBatchListService: TrainingCourseHeldBatchListService,
     private trainingCourseHeldListService: TrainingCourseHeldListService,
     private trainingCourseHeldBatchDetailService: TrainingCourseHeldBatchDetailService,
-    private trainingCourseHeldDetailService: TrainingCourseHeldDetailService
+    private trainingCourseHeldDetailService: TrainingCourseHeldDetailService,
+    private trainingCourseHeldAttendanceDetailService: TrainingCourseHeldAttendanceDetailService
   ) { }
 
   handleError(err: object) {
@@ -359,6 +362,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(course => this.trainingCourseHeldDetailService.setTrainingCourseHeldDetail(course))
+      )
+  }
+
+  fetchTrainingCourseHeldAttendanceDetail(param: object) {
+    return this.http
+      .post<TrainingCourseHeldAttendanceDetail>(
+        environment.baseUrl + '/api/PersonelInCompany/GetCompletePersonelInCompanyByIDXForSite/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(person => this.trainingCourseHeldAttendanceDetailService.setTrainingCourseHeldAttendanceDetail(person))
       )
   }
 }

@@ -9,6 +9,7 @@ import { TrainingCourseHeldBatchListComponent } from './training-course-held-bat
 import { TrainingCourseHeldBatchDetailComponent } from './training-course-held-batch-detail/training-course-held-batch-detail.component';
 import { TrainingCourseHeldDetailComponent } from './training-course-held-detail/training-course-held-detail.component';
 import { TrainingCourseHeldAttendanceCarouselComponent } from './shared/training-course-held-attendance-carousel/training-course-held-attendance-carousel.component';
+import { TrainingCourseHeldAttendanceDetailComponent } from './training-course-held-attendance-detail/training-course-held-attendance-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TrainingCourseHeldAttendanceCarouselComponent } from './shared/training
     TrainingCourseHeldBatchListComponent,
     TrainingCourseHeldBatchDetailComponent,
     TrainingCourseHeldDetailComponent,
-    TrainingCourseHeldAttendanceCarouselComponent
+    TrainingCourseHeldAttendanceCarouselComponent,
+    TrainingCourseHeldAttendanceDetailComponent
   ],
   imports: [
     TrainingRoutingModule,
