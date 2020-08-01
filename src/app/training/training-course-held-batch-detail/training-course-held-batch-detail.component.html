@@ -10,8 +10,8 @@
 
     <!-- body -->
     <section class="row TrainingGroupingDetail-Body">
-      <!-- href="/TrainingCoursesHeld/{{::TrainingCoursesForCompany[0].IDX}}" -->
-      <a class="col-xs-12 col-sm-4 TrainingGroupingDetail-Item-Outer"
+      <a [routerLink]="['../../training-course-held', course.IDX]" 
+       class="col-xs-12 col-sm-4 TrainingGroupingDetail-Item-Outer"
         *ngFor="let course of batchDetail.TrainingCourse">
         <div class="TrainingGroupingDetail-Item">
           <img class="TrainingModule-CoursesGallery-ItemImage"

@@ -1,0 +1,120 @@
+<article id="TrainingCoursesHeldPage-Wrapper">
+  <div id="TrainingCoursesHeldPage-Inner"
+    class="TrainingCourseHeld-Inner">
+
+    <!-- header -->
+    <section class="TrainingCourseHeld-Header TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Header">
+        <div class="TrainingCourseHeld-Header-Inner">
+          <div class="TrainingCourseHeld-Header-Desc">
+            <!-- <h1>{{::TrainingCoursesForSite[0].Name_Fa}}</h1> -->
+            <!-- <p>در تاریخ <span>{{::TrainingCoursesForSite[0].EndDate}}</span></p> -->
+          </div>
+          <div class="TrainingCourseHeld-Header-MainImage">
+            <!-- <img ng-src="{{ServerUrl + TrainingCoursesForSite[0].PicUrl}}"
+              alt="{{::TrainingCoursesForSite[0].Name_Fa}}" /> -->
+          </div>
+        </div>
+      </div>
+      <hr class="TrainingCourseHeld-hr">
+    </section>
+
+    <!-- course -->
+    <section class="TrainingCourseHeld-Section">
+      <!-- href="/TrainingCourses/{{::TrainCourse.IDX}}" -->
+      <!-- ng-repeat="TrainCourse in TrainingCoursesForSite[0].TrainingCourseCategory" -->
+      <a class="TrainingCourseHeld-Course TrainingCourseHeld-Course-IncludingImage">
+        <!-- <img ng-src="{{::ServerUrl + TrainCourse.PicUrl | GetSmallImage}}"
+          alt="{{::TrainCourse.Name_Fa}}" /> -->
+        <!-- <p>{{::TrainCourse.ParentName}}</p> -->
+        <span class="fa fa-angle-left"></span>
+      </a>
+      <hr>
+    </section>
+
+    <!-- images -->
+    <!-- ng-if="TrainingCoursesForSite[0].ImageGallery" -->
+    <section class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Carousel-Header">
+        <h3>تصاویر</h3>
+        <h3 class="IranSansWebFont">Images</h3>
+      </div>
+      <!-- <div gallerycarousel
+        datasource="TrainingCoursesForSite[0].ImageGallery"
+        staticurl="'/images/docx.png'"
+        dynamicfieldimage="'Url'"
+        desktopcarouseloptions="{
+          stagePadding: 20,
+          items: 3,
+          responsive: { 1024: { items: 6 } }
+        }"
+        mobilecarouseloptions="{
+          itemsMobile: [500,1.7],
+          itemsTablet: [768,0],
+          itemsDesktop: [1024,4]
+        }">
+      </div> -->
+      <hr>
+    </section>
+
+    <!-- teacher -->
+    <section class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Teacher">
+        <p>مدرس دوره: علی شاملو</p>
+      </div>
+      <hr>
+    </section>
+
+    <!-- attendances -->
+    <!-- ng-if="TrainingCoursesForSite[0].TrainingCouseUser" -->
+    <section class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Carousel-Header">
+        <h3>شرکت کنندگان در دوره</h3>
+        <h3 class="IranSansWebFont">Attendances</h3>
+      </div>
+      <!-- <section trainingattendancescarousel
+        datasource="TrainingCoursesForSite[0].TrainingCouseUser"
+        imagestaticurl="'/images/human.png'"
+        dynamicfieldimage="'PicUrl'"
+        pageurldirection="'TrainingParticipantCV'"
+        dynamicfieldname="'Name_Fa'"
+        desktopcarouseloptions="{
+          items: 3,
+          stagePadding: 20,
+          responsive: { 1024: { items: 9 } }
+        }"
+        mobilecarouseloptions="{
+          itemsMobile: [500,4],
+          itemsTablet: [768,0],
+          itemsDesktop: [1024,9]
+        }">
+      </section> -->
+      <hr class="HoldingCourseAndExhibition-LineSeperator ColorLightGrayHr" />
+    </section>
+
+    <!-- conformations -->
+    <!-- ng-if="TrainingCoursesForSite[0].Confirmation" -->
+    <section class="TrainingCourseHeld-Section">
+      <div class="TrainingCourseHeld-Carousel-Header">
+        <h3>تاییدیه ها</h3>
+        <h3 class="IranSansWebFont">Conformations</h3>
+      </div>
+      <!-- <section gallerycarousel
+        datasource="TrainingCoursesForSite[0].Confirmation"
+        staticurl="'/images/docx.png'"
+        dynamicfieldimage="'Url'"
+        desktopcarouseloptions="{
+          stagePadding: 20,
+          items: 3,
+          responsive: { 1024: { items: 6 } }
+        }"
+        mobilecarouseloptions="{
+          itemsMobile: [500,1.7],
+          itemsTablet: [768,0],
+          itemsDesktop: [1024,4]
+        }">
+      </section> -->
+    </section>
+
+  </div>
+</article>
