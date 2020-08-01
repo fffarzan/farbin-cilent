@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class TrainingCourseHeldBatchListComponent implements OnInit, OnDestroy {
   coursesHeldBatchList: TrainingCourseHeldCarouselReview[];
   trainingCoursesHeldCarouselParams: TrainingCoursesHeldCarouselParams = {
-    imageStaticUrl: '/images/docx.png',
+    imageStaticUrl: 'assets/img/docx.png',
     dynamicFieldImage: 'PicUrl',
     pageUrlDirection: 'TrainingCoursesHeld',
     moreCoursesUrl: 'TrainingCoursesCompanyDetail',

@@ -32,6 +32,8 @@ import { TrainingCourseHeldCarouselReview } from '../training/shared/training-co
 import { TrainingCourseHeldBatchListService } from '../training/training-course-held-batch-list/training-course-held-batch-list.service';
 import { TrainingCourseHeldBatchDetailService } from '../training/training-course-held-batch-detail/training-course-held-batch-detail.service';
 import { TrainingCourseHeldBatchDetail } from '../training/training-course-held-batch-detail/training-course-held-batch-detail.model';
+import { TrainingCourseHeldDetail } from '../training/training-course-held-detail/training-course-held-detail.model';
+import { TrainingCourseHeldDetailService } from '../training/training-course-held-detail/training-course-held-detail.service';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +52,8 @@ export class DataStorageService {
     private trainingCourseService: TrainingCourseService,
     private trainingCourseHeldBatchListService: TrainingCourseHeldBatchListService,
     private trainingCourseHeldListService: TrainingCourseHeldListService,
-    private trainingCourseHeldBatchDetailService: TrainingCourseHeldBatchDetailService
+    private trainingCourseHeldBatchDetailService: TrainingCourseHeldBatchDetailService,
+    private trainingCourseHeldDetailService: TrainingCourseHeldDetailService
   ) { }
 
   handleError(err: object) {
@@ -344,6 +347,18 @@ export class DataStorageService {
       )
       .pipe(
         tap(batchDetail => this.trainingCourseHeldBatchDetailService.setTrainingCourseHeldBatchDetail(batchDetail))
+      )
+  }
+
+  fetchTrainingCourseHeldDetail(param: object) {
+    return this.http
+      .post<TrainingCourseHeldDetail>(
+        environment.baseUrl + '/api/TrainingCourse/GetTrainingCourseDataForSiteByIDX/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(course => this.trainingCourseHeldDetailService.setTrainingCourseHeldDetail(course))
       )
   }
 }

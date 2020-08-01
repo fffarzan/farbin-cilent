@@ -1,0 +1,77 @@
+/* mobile-first */
+
+.TrainingAttendancesCarousel {
+  direction: ltr;
+}
+
+.TrainingAttendancesCarousel-Mobile {
+  display: flex;
+  direction: ltr;
+  overflow: auto;
+  margin-bottom: 25px;
+}
+
+.TrainingAttendancesCarousel-Mobile::-webkit-scrollbar {
+  height: 2px;
+}
+
+.TrainingAttendancesCarousel-Mobile::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: transparent;
+}
+
+.TrainingAttendancesCarousel-Mobile::-webkit-scrollbar-thumb {
+  background-color: #666695;
+  outline: 1px solid #666695;
+}
+
+.TrainingAttendancesCarousel a {
+  color: white;
+}
+
+.TrainingAttendancesCarousel-Mobile-Inner {
+  margin: 10px 15px;
+}
+
+.TrainingAttendancesCarousel-Caption-Item {
+  margin: 5px 0 0 0;
+  line-height: 21px;
+  font-size: 13px;
+}
+
+.TrainingAttendancesCarousel-Caption-FirstItem {
+  float: right !important;
+  direction: rtl;
+  text-align: right;
+}
+
+.TrainingAttendancesCarousel-Caption-SecondItem {
+  float: right !important;
+  direction: ltr;
+  text-align: left;
+}
+
+.TrainingAttendancesCarousel-OwlCarousel {
+  margin: 10px 0px 40px 0px;
+}
+
+.TrainingAttendancesCarousel-OwlCarousel-Item {
+  display: block;
+  margin: 10px;
+}
+
+.TrainingAttendancesCarousel-More {
+  display: block;
+  padding: 50px 10px 0 10px;
+}
+
+.TrainingAttendancesCarousel-More img {
+  width: 75px !important;
+  height: 75px !important;
+}
+
+@media screen and (min-width: 992px) {
+  .TrainingAttendancesCarousel-More {
+    padding-left: 50px;
+  }
+}
