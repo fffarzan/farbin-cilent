@@ -15,7 +15,7 @@ export class IncidentDetailComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   imageGalleryData: GalleryCarousel = {
     media: null,
-    staticUrl: '/images/docx.png',
+    staticUrl: 'assets/img/docx.png',
     dynamicImagePropertyName: 'Url',
     desktopOptions: {
       stagePadding: 20,
@@ -42,7 +42,7 @@ export class IncidentDetailComponent implements OnInit {
   };
   videoGalleryData: GalleryCarousel = {
     media: null,
-    staticUrl: '/images/docx.png',
+    staticUrl: 'assets/img/docx.png',
     dynamicImagePropertyName: 'Url',
     desktopOptions: {
       stagePadding: 20,
@@ -69,7 +69,7 @@ export class IncidentDetailComponent implements OnInit {
   };
   greetingGalleryData: GalleryCarousel = {
     media: null,
-    staticUrl: '/images/docx.png',
+    staticUrl: 'assets/img/docx.png',
     dynamicImagePropertyName: 'Url',
     desktopOptions: {
       stagePadding: 20,
