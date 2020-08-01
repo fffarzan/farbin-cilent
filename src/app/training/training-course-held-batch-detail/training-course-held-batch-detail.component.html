@@ -1,23 +1,24 @@
-<article class="TrainingGroupingDetail">
+<article class="TrainingGroupingDetail"
+  *ngIf="batchDetail">
   <div class="TrainingGroupingDetail-Inner">
 
     <!-- header -->
     <section class="TrainingGroupingDetail-Header">
-      <!-- <h1>{{::TrainingCoursesForCompany[0].Name_Fa}}</h1> -->
+      <h1>{{ batchDetail.Name_Fa }}</h1>
     </section>
     <hr>
 
     <!-- body -->
     <section class="row TrainingGroupingDetail-Body">
       <!-- href="/TrainingCoursesHeld/{{::TrainingCoursesForCompany[0].IDX}}" -->
-      <!-- ng-repeat="TrainingCourseForCompany in TrainingCoursesForCompany[0].TrainingCourse" -->
-      <a class="col-xs-12 col-sm-4 TrainingGroupingDetail-Item-Outer">
+      <a class="col-xs-12 col-sm-4 TrainingGroupingDetail-Item-Outer"
+        *ngFor="let course of batchDetail.TrainingCourse">
         <div class="TrainingGroupingDetail-Item">
-          <!-- <img class="TrainingModule-CoursesGallery-ItemImage"
-            ng-src="{{::ServerUrl + TrainingCourseForCompany.PicUrl | GetSmallImage}}"
-            alt="{{::TrainingCourseForCompany.Name_Fa}}" /> -->
+          <img class="TrainingModule-CoursesGallery-ItemImage"
+            [src]="enviornment.baseUrl + course.PicUrl | getSmallImage"
+            alt="{{ course.Name_Fa }}" />
           <div class="TrainingGroupingDetail-Item-Desc">
-            <!-- <p class="TrainingGroupingDetail-Item-LongDesc TrainingCooursesBatchDetail-Name">{{::TrainingCourseForCompany.Name_Fa}}</p> -->
+            <p class="TrainingGroupingDetail-Item-LongDesc TrainingCooursesBatchDetail-Name">{{ course.Name_Fa }}</p>
           </div>
         </div>
       </a>
