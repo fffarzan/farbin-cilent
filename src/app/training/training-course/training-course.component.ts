@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TrainingCourse } from './training-course.model';
 import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model';
 import { environment } from 'src/environments/environment';
-import { TrainingCoursesHeldCarouselParams } from 'src/app/shared/carousel/training-courses-held-carousel/training-courses-held-carousel-params.model';
+import { TrainingCoursesHeldCarouselParams } from 'src/app/training/shared/training-courses-held-carousel/training-courses-held-carousel-params.model';
 import { Subscription } from 'rxjs';
 
 @Component({

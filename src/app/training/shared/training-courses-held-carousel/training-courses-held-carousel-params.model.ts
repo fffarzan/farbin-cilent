@@ -1,5 +1,5 @@
-import { DesktopOptions } from '../desktop-options-carousel.model';
-import { MobileOptions } from '../mobile-options-carousel.model';
+import { DesktopOptions } from '../../../shared/carousel/desktop-options-carousel.model';
+import { MobileOptions } from '../../../shared/carousel/mobile-options-carousel.model';
 import { TrainingCourseHeldCarouselReview } from 'src/app/training/shared/training-course-held-carousel-review.model';
 
 export class TrainingCoursesHeldCarouselParams {
