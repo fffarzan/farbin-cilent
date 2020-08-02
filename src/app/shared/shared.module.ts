@@ -11,6 +11,7 @@ import { ProductCarouselComponent } from './carousel/product-carousel/product-ca
 import { MobileTemplateDirective } from './carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './get-small-image.pipe';
 import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-carousel.component';
+import { StopPropagationDirective } from './stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-ca
     MobileTemplateDirective,
     ProductCarouselComponent,
     GalleryCarouselComponent,
+    StopPropagationDirective
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-ca
     MobileTemplateDirective,
     ProductCarouselComponent,
     GalleryCarouselComponent,
+    StopPropagationDirective
   ]
 })
 export class SharedModule { }

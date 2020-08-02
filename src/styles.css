@@ -28,14 +28,14 @@ a {
 }
 
 html, body {
-  height: 100%;
-  overflow-x: hidden;
+  /* height: 100%; */
+  /* overflow-x: hidden; */
   -webkit-overflow-scrolling: touch;
   background-color: #f3f3f3;
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: 'myriad-set-pro_text', IRANSansWeb_UltraLight;
   color: #fff;
 }
@@ -45,7 +45,7 @@ hr {
   margin-bottom: 5px;
 }
 
-.page {
+/* .page {
   bottom: 0;
   padding-top: 0;
   margin-top: 58px;
@@ -61,7 +61,7 @@ hr {
 
 .page.ng-enter {
   z-index: 8888;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 4px;
@@ -877,6 +877,6 @@ hr {
 
 @media screen and (min-width: 1200px) {
   .TrainingMain-MainSlider {
-    margin: 70px 70px 0 47px;
+    margin: 10px 70px 0 47px;
   }
 }

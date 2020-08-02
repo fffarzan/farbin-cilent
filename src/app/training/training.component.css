@@ -1,7 +1,7 @@
 /* mobile-first */
 
 .TrainingMain {
-  margin: 60px 0px;
+  /* margin: 60px 0px; */
   direction: rtl;
   -webkit-overflow-scrolling: touch;
 }
@@ -32,6 +32,12 @@
   margin-right: 10px;
   margin-top: -3px;
   color: #ffb700;
+  align-self: center;
+}
+
+.TrainingModule-AllCoursesLink p {
+  align-self: center;
+  margin: 0;
 }
 
 @media screen and (max-width: 767px) {
@@ -44,7 +50,7 @@
 
 @media screen and (min-width: 768px) {
   .TrainingMain {
-    margin: 35px 0px;
+    margin: 0;
   }
   .TrainingModuleHr {
     margin: 0px 20px;
@@ -151,7 +157,7 @@
 
 @media screen and (min-width: 992px) {
   .TrainingModule-MainTopic-Wrapper {
-    margin: 20px 70px 20px 47px;
+    margin: 30px 70px 30px 47px;
   }
   .TrainingModule-MainTopic {
     padding: 15px 30px;
@@ -321,6 +327,14 @@
 
 .TrainingModule-CoursesGallery-ItemDesc p {
   font-size: 13px;
+}
+
+.TrainingModule-CoursesGallery-ItemDesc p:first-child {
+  text-align: right;
+}
+
+.TrainingModule-CoursesGallery-ItemDesc p:last-child {
+  text-align: left;
 }
 
 .TrainingModule-CoursesGallery-ItemDescLonger {

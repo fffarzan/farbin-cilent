@@ -1,5 +1,5 @@
 :host {
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   width: 100%;
   z-index: 20000;

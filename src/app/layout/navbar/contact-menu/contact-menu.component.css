@@ -1,10 +1,14 @@
 /* Mobile */
 
 :host { /* add css to container tag of dynamic component */
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   width: 100%;
   z-index: 20000;
+}
+
+.ContactUs {
+  background-color: rgba(51, 51, 51, 0.5);
 }
 
 @media screen and (max-width: 767px) {
@@ -25,6 +29,7 @@
   }
   .ContactUs-Mobile-AddressWrapper {
     padding: 0 20px;
+    color: #fff;
   }
   .ContactInfoInFooter {
     width: 100%;
