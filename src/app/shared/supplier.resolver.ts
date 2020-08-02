@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Resolve } from '@angular/router';
 
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { LayoutDataStorageService } from 'src/app/layout/shared/layout-data-storage.service';
 import { Supplier } from './supplier.model';
 import { SupplierService } from './supplier.service';
 
@@ -10,15 +10,15 @@ import { SupplierService } from './supplier.service';
 })
 export class SupplierResolver implements Resolve<Supplier[]> {
   constructor(
-    private dataStorageService: DataStorageService,
+    private layoutDataStorageService: LayoutDataStorageService,
     private supplierService: SupplierService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve() {
     const suppliers = this.supplierService.getSuppliers();
 
     if (suppliers.length === 0)
-      return this.dataStorageService.fetchSuppliers();
+      return this.layoutDataStorageService.fetchSuppliers();
     else 
       return suppliers;
   }

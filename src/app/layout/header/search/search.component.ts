@@ -1,11 +1,11 @@
-import { Component, OnInit, Renderer2, ElementRef, ViewChild, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, Output, EventEmitter, Input, OnChanges, OnDestroy } from '@angular/core';
 
-import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 import { environment } from 'src/environments/environment';
+import { LayoutDataStorageService } from 'src/app/layout/shared/layout-data-storage.service';
+import { SearchService } from './search.service';
+import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 import { SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail, SearchContent } from './search.model';
 import { searchTemplateState } from './search.animation';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +15,7 @@ import { SearchService } from './search.service';
     searchTemplateState
   ]
 })
-export class SearchComponent implements OnInit, OnChanges {
+export class SearchComponent implements OnInit, OnChanges, OnDestroy {
   @Output() hideOtherIcons = new EventEmitter<void>();
   @Input() searchClosing: boolean;
   enviornment: { production: boolean, baseUrl: string } = environment;
@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit, OnChanges {
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
-    private dataStorageService: DataStorageService,
+    private layoutDataStorageService: LayoutDataStorageService,
     private searchService: SearchService,
     private renderer: Renderer2
   ) { }
@@ -71,12 +71,12 @@ export class SearchComponent implements OnInit, OnChanges {
       let param = {
         searchText: str
       }
-      this.dataStorageService.fetchSearchDefineDetailProducts(param).subscribe();
-      this.dataStorageService.fetchSearchContent(param).subscribe();
-      this.dataStorageService.fetchSearchTrainingCourse(param).subscribe();
-      this.dataStorageService.fetchSearchTrainingCourseUser(param).subscribe();
-      this.dataStorageService.fetchSearchTrainingCourseBatch(param).subscribe();
-      this.dataStorageService.fetchSearchIncindent(param).subscribe();
+      this.layoutDataStorageService.fetchSearchDefineDetailProducts(param).subscribe();
+      this.layoutDataStorageService.fetchSearchContent(param).subscribe();
+      this.layoutDataStorageService.fetchSearchTrainingCourse(param).subscribe();
+      this.layoutDataStorageService.fetchSearchTrainingCourseUser(param).subscribe();
+      this.layoutDataStorageService.fetchSearchTrainingCourseBatch(param).subscribe();
+      this.layoutDataStorageService.fetchSearchIncindent(param).subscribe();
 
       searchDefineDetail = this.searchService.getDefneDetailProducts();
       searchContent = this.searchService.getContents();
@@ -94,5 +94,9 @@ export class SearchComponent implements OnInit, OnChanges {
     } else if (str.length <= 2) {
 
     }
+  }
+
+  ngOnDestroy() {
+    
   }
 }
