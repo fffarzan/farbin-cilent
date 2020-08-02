@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { Subscription } from 'rxjs';
+
+import { AboutUsDataStorageService } from '../../shared/about-us-data-storage.service';
 
 @Component({
   selector: 'app-unsubscribe',
@@ -11,10 +13,11 @@ export class UnsubscribeComponent implements OnInit {
   targetEmail: string;
   isUnsubscribed: boolean = false;
   isNotUnsubscribed: boolean = false;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private dataStorageService: DataStorageService
+    private aboutUsDataStorageService: AboutUsDataStorageService
   ) { }
 
   ngOnInit(): void {
@@ -22,10 +25,11 @@ export class UnsubscribeComponent implements OnInit {
   }
 
   onUnsubscribe() {
-    this.dataStorageService.fetchUnsubscribeData({ Email: this.targetEmail }).subscribe(
-      result => this.isUnsubscribed = true,
-      err => this.isNotUnsubscribed = true
-    );
+    this.aboutUsDataStorageService.fetchUnsubscribeData({ Email: this.targetEmail })
+      .subscribe(
+        result => this.isUnsubscribed = true,
+        err => this.isNotUnsubscribed = true
+      );
   }
 
 }

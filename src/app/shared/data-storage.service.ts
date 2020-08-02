@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Banner } from '../layout/home/dynamic-slider/banner.model';
@@ -13,14 +14,6 @@ import { Product } from './carousel/product-carousel/product.model';
 import { ProductCarouselService } from './carousel/product-carousel/product-carousel.service';
 import { SearchService } from '../layout/header/search/search.service';
 import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../layout/header/search/search.model';
-import { Incident } from '../about-us/incident/incident-detail/incident.model';
-import { IncidentCategory } from '../about-us/incident/incident-list/incident-category.model';
-import { IncidentService } from '../about-us/incident/incident.service';
-import { IncidentPreview } from '../about-us/incident/incident-list/incident-preview.model';
-import { of, throwError } from 'rxjs';
-import { NewsletterService } from '../about-us/newsletter/newsletter.service';
-import { Newsletters } from '../about-us/newsletter/newsletter-list/newsletters.model';
-import { Newsletter } from '../about-us/newsletter/newsletter-detail/newsletter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +26,6 @@ export class DataStorageService {
     private catalogService: CatalogsService,
     private productCarouselService: ProductCarouselService,
     private searchService: SearchService,
-    private incidentService: IncidentService,
-    private newsletterService: NewsletterService,
-    
   ) { }
 
   handleError(err: object) {
@@ -43,8 +33,6 @@ export class DataStorageService {
 
     return throwError('An error occured' + err);
   }
-
-  // homepage requests
 
   fetchBanners() {
     return this.http
@@ -106,8 +94,6 @@ export class DataStorageService {
       );
   }
 
-  // search requests
-
   fetchSearchContent(param: object) {
     return this.http
       .post<SearchContent[]>(
@@ -166,81 +152,5 @@ export class DataStorageService {
       .pipe(
         tap(incidents => this.searchService.setIncidents(incidents))
       );
-  }
-  
-  // incident requests
-
-  fetchIncidentPreviews() {
-    return this.http
-      .post<IncidentPreview[]>(
-        environment.baseUrl + '/api/Incident/GetIncidentAll/',
-        '',
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-      )
-      .pipe(
-        tap(incidentPreviews => this.incidentService.setIncidentPreviews(incidentPreviews))
-      );
-  }
-
-  fetchIncident(param: object) {
-    return this.http
-      .post<Incident>(
-        environment.baseUrl + '/api/Incident/GetIncidentData_ByIDX/',
-        param,
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-      )
-      .pipe(
-        tap(incident => this.incidentService.setIncident(incident))
-      );
-  }
-
-  // newsletter requests
-
-  fetchIncidentCategory() {
-    return this.http
-      .post<IncidentCategory[]>(
-        environment.baseUrl + '/api/IncidentCategory/GetIncidentCategory/',
-        '',
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-      )
-      .pipe(
-        tap(incidentCategories => this.incidentService.setIncidentCategories(incidentCategories))
-      );
-  }
-
-  fetchNewsletters() {
-    return this.http
-      .post<Newsletters>(
-        environment.baseUrl + '/api/ContentCategoryType/FillNewsLetterCategoryComplete/',
-        '',
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-      )
-      .pipe(
-        tap(newletters => this.newsletterService.setNewsletters(newletters))
-      );
-  }
-
-  fetchNewsletter(param: object) {
-    return this.http
-      .post<Newsletter>(
-        environment.baseUrl + '/api/Content/FillContentByIDX/',
-        param,
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-      )
-      .pipe(
-        tap(newsletter => this.newsletterService.setNewsletter(newsletter))
-      );
-  }
-
-  fetchUnsubscribeData(param: object) {
-    return this.http
-    .post<{ Email: string }>(
-      environment.baseUrl + '/api/NewsLetter/Unsubscribe/',
-      param,
-      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-    )
-    .pipe(
-      catchError(err => this.handleError(err))
-    );
   }
 }

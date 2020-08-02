@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
-import { Incident } from './incident.model';
 import { environment } from 'src/environments/environment';
+import { AboutUsDataStorageService } from '../../shared/about-us-data-storage.service';
+import { IncidentService } from '../incident.service';
+import { Incident } from './incident.model';
 import { GalleryCarousel } from 'src/app/shared/carousel/gallery-carousel/gallery-carousel.model';
 
 @Component({
@@ -10,7 +13,7 @@ import { GalleryCarousel } from 'src/app/shared/carousel/gallery-carousel/galler
   templateUrl: './incident-detail.component.html',
   styleUrls: ['./incident-detail.component.css']
 })
-export class IncidentDetailComponent implements OnInit {
+export class IncidentDetailComponent implements OnInit, OnDestroy {
   incident: Incident;
   enviornment: { production: boolean, baseUrl: string } = environment;
   imageGalleryData: GalleryCarousel = {
@@ -50,7 +53,7 @@ export class IncidentDetailComponent implements OnInit {
       dots: false,
       nav: false,
       autoWidth: true,
-      responsive: { 1024: { items: 6 }}
+      responsive: { 1024: { items: 6 } }
     },
     mobileOptions: {
       mobileItems: {
@@ -77,7 +80,7 @@ export class IncidentDetailComponent implements OnInit {
       dots: false,
       nav: false,
       autoWidth: true,
-      responsive: { 1024: { items: 6 }}
+      responsive: { 1024: { items: 6 } }
     },
     mobileOptions: {
       mobileItems: {
@@ -94,16 +97,30 @@ export class IncidentDetailComponent implements OnInit {
       }
     }
   };
+  subscription: Subscription;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private aboutUsDataStorageSevice: AboutUsDataStorageService,
+    private incidentService: IncidentService
+  ) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => {
-      this.incident = data.incident[0];
-      
-      this.imageGalleryData.media = this.incident.Images;
-      this.videoGalleryData.media = this.incident.Videos;
-      this.greetingGalleryData.media = this.incident.Greetings;
-    });
+    this.route.params.subscribe(param => this.getIncidentDetailData(param['id']));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  private getIncidentDetailData(id: number) {
+    this.subscription = this.aboutUsDataStorageSevice.fetchIncident({ IDX: id })
+      .subscribe(() => {
+        this.incident = this.incidentService.getIncident()[0];
+
+        this.imageGalleryData.media = this.incident.Images;
+        this.videoGalleryData.media = this.incident.Videos;
+        this.greetingGalleryData.media = this.incident.Greetings;
+      });
   }
 }

@@ -1,5 +1,6 @@
-<article class="NewsLetterDetail">
+<article class="NewsLetterDetail"
+  *ngIf="newsletter">
   <div class="NewsLetterDetail-Content">
-    <section [innerHtml]="newsletter"></section>
+    <section [innerHtml]="newsletter[0].Description_Fa"></section>
   </div>
 </article>

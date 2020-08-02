@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { IncidentCategory } from './incident-category.model';
-import { IncidentService } from '../incident.service';
-import { IncidentPreview } from './incident-preview.model';
 import { environment } from '../../../../environments/environment';
 import { ExtensionMethodService } from '../../../shared/extension-method.service';
+import { AboutUsDataStorageService } from '../../shared/about-us-data-storage.service';
+import { IncidentService } from '../incident.service';
+import { IncidentCategory } from './incident-category.model';
+import { IncidentPreview } from './incident-preview.model';
 import { AboutUsUtils } from '../../shared/about-us-utils';
 
 @Component({
@@ -16,34 +17,43 @@ import { AboutUsUtils } from '../../shared/about-us-utils';
     '../../shared/shared-style.css'
   ]
 })
-export class IncidentListComponent implements OnInit {
+export class IncidentListComponent implements OnInit, OnDestroy {
   incidentCategories: IncidentCategory[];
   incidentPreviews: IncidentPreview[];
   enviornment: { production: boolean, baseUrl: string } = environment;
   filteredIncidents: IncidentPreview[] = [];
   incidentCategoryIds: string[] = [];
   isFilterOpen: boolean = false;
+  incidentCategoriesSub: Subscription;
+  incidentPreviewsSub: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
+    private aboutUsDataStorageService: AboutUsDataStorageService,
     private incidentService: IncidentService,
     private extensionMethodService: ExtensionMethodService
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchIncidentCategory().subscribe(() => this.incidentCategories = this.incidentService.getIncidentCategories());
+    this.incidentCategoriesSub = this.aboutUsDataStorageService.fetchIncidentCategory()
+      .subscribe(() => this.incidentCategories = this.incidentService.getIncidentCategories());
 
-    this.dataStorageService.fetchIncidentPreviews().subscribe(() => {
-      this.incidentPreviews = this.incidentService.getIncidentPreviews();
+    this.incidentPreviewsSub = this.aboutUsDataStorageService.fetchIncidentPreviews()
+      .subscribe(() => {
+        this.incidentPreviews = this.incidentService.getIncidentPreviews();
 
-      this.onFilterIncidents();
+        this.onFilterIncidents();
 
-      const incidentsLength = this.incidentPreviews.length;
-      for (let i = 0; i < incidentsLength; i++) {
-        this.incidentPreviews[i].EndDate = this.changeDateFormat(this.incidentPreviews[i].EndDate);
-        this.incidentPreviews[i].StartDate = this.changeDateFormat(this.incidentPreviews[i].StartDate);
-      }
-    });
+        const incidentsLength = this.incidentPreviews.length;
+        for (let i = 0; i < incidentsLength; i++) {
+          this.incidentPreviews[i].EndDate = this.changeDateFormat(this.incidentPreviews[i].EndDate);
+          this.incidentPreviews[i].StartDate = this.changeDateFormat(this.incidentPreviews[i].StartDate);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.incidentPreviewsSub.unsubscribe();
+    this.incidentPreviewsSub.unsubscribe();
   }
 
   onToggleFilter() {

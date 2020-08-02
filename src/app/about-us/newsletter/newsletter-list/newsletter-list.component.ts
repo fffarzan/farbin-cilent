@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { AboutUsDataStorageService } from '../../shared/about-us-data-storage.service';
 import { NewsletterService } from '../newsletter.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Newsletters } from './newsletters.model';
 
 @Component({
@@ -12,20 +13,25 @@ import { Newsletters } from './newsletters.model';
     '../../shared/shared-style.css'
   ]
 })
-export class NewsletterListComponent implements OnInit {
+export class NewsletterListComponent implements OnInit, OnDestroy {
   newsletters: Newsletters;
   titleIndex: number;
+  subscription: Subscription;
 
   constructor(
     private newsletterService: NewsletterService,
-    private dataStorageService: DataStorageService
+    private aboutUsDataStorageService: AboutUsDataStorageService
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchNewsletters().subscribe(() => {
+    this.subscription = this.aboutUsDataStorageService.fetchNewsletters().subscribe(() => {
       this.newsletters = this.newsletterService.getNewsletters()[0];
       this.onSetTab(Object.keys(this.newsletters.ContentCategory).length - 1);
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onSetTab(itemIndex: number) {
