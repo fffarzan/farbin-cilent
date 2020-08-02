@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { TrainingCourseHeldDetailService } from './training-course-held-detail.service';
 import { environment } from 'src/environments/environment';
-import { TrainingCourseHeldDetail } from './training-course-held-detail.model';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
+import { TrainingDataStorageService } from '../shared/training-data-storage.service';
+import { TrainingCourseHeldDetailService } from './training-course-held-detail.service';
+import { TrainingCourseHeldDetail } from './training-course-held-detail.model';
 import { GalleryCarousel } from 'src/app/shared/carousel/gallery-carousel/gallery-carousel.model';
 import { TrainingCourseHeldAttendanceCarouselParam } from '../shared/training-course-held-attendance-carousel/training-course-held-attendance-carousel-param.model';
 
@@ -14,7 +15,7 @@ import { TrainingCourseHeldAttendanceCarouselParam } from '../shared/training-co
   templateUrl: './training-course-held-detail.component.html',
   styleUrls: ['./training-course-held-detail.component.css']
 })
-export class TrainingCourseHeldDetailComponent implements OnInit {
+export class TrainingCourseHeldDetailComponent implements OnInit, OnDestroy {
   enviornment: { production: boolean, baseUrl: string } = environment;
   course: TrainingCourseHeldDetail;
   courseImageData: GalleryCarousel = {
@@ -100,11 +101,12 @@ export class TrainingCourseHeldDetailComponent implements OnInit {
       }
     }
   };
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private extensionMethodService: ExtensionMethodService,
-    private dataStorageService: DataStorageService,
+    private trainingDataStorageService: TrainingDataStorageService,
     private trainingCourseHeldDetailService: TrainingCourseHeldDetailService
   ) { }
 
@@ -112,8 +114,12 @@ export class TrainingCourseHeldDetailComponent implements OnInit {
     this.route.params.subscribe(param => this.getTrainingCourseHeldDetailData(param['id']))
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   private getTrainingCourseHeldDetailData(id: number) {
-    this.dataStorageService.fetchTrainingCourseHeldDetail({ IDX: id })
+    this.subscription = this.trainingDataStorageService.fetchTrainingCourseHeldDetail({ IDX: id })
       .subscribe(() => {
         this.course = this.trainingCourseHeldDetailService.getTrainingCourseHeldDetail()[0];
         this.course.EndDate = this.changeDateFormat(this.course.EndDate);

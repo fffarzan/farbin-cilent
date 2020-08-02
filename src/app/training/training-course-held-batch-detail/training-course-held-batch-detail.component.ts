@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { TrainingCourseHeldBatchDetailService } from './training-course-held-batch-detail.service';
 import { ActivatedRoute } from '@angular/router';
-import { TrainingCourseHeldBatchDetail } from './training-course-held-batch-detail.model';
-import { environment } from 'src/environments/environment';
 import { Subscription } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
+import { TrainingDataStorageService } from '../shared/training-data-storage.service';
+import { TrainingCourseHeldBatchDetailService } from './training-course-held-batch-detail.service';
+import { TrainingCourseHeldBatchDetail } from './training-course-held-batch-detail.model';
 
 @Component({
   selector: 'app-training-course-held-batch-detail',
@@ -15,10 +15,10 @@ import { Subscription } from 'rxjs';
 export class TrainingCourseHeldBatchDetailComponent implements OnInit, OnDestroy {
   enviornment: { production: boolean, baseUrl: string } = environment;
   batchDetail: TrainingCourseHeldBatchDetail;
-  bachDetailSub: Subscription;
+  batchDetailSub: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
+    private trainingDataStorageService: TrainingDataStorageService,
     private trainingCourseHeldBatchDetailService: TrainingCourseHeldBatchDetailService,
     private route: ActivatedRoute
   ) { }
@@ -28,11 +28,11 @@ export class TrainingCourseHeldBatchDetailComponent implements OnInit, OnDestroy
   }
 
   ngOnDestroy() {
-    this.bachDetailSub.unsubscribe();
+    this.batchDetailSub.unsubscribe();
   }
 
   private getTrainingCourseHeldBatchDetailData(objectId: number) {
-    this.bachDetailSub = this.dataStorageService.fetchTrainingCourseHeldBatchDetail({ IDX: objectId })
+    this.batchDetailSub = this.trainingDataStorageService.fetchTrainingCourseHeldBatchDetail({ IDX: objectId })
       .subscribe(() =>  this.batchDetail = this.trainingCourseHeldBatchDetailService.getTrainingCourseHeldBatchDetail()[0]);
   }
 }

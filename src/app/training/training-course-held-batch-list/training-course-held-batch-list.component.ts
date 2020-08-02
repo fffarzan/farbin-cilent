@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model'
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { TrainingCourseHeldBatchListService } from './training-course-held-batch-list.service';
-import { TrainingCoursesHeldCarouselParams } from 'src/app/training/shared/training-courses-held-carousel/training-courses-held-carousel-params.model';
 import { Subscription } from 'rxjs';
+
+import { TrainingDataStorageService } from '../shared/training-data-storage.service';
+import { TrainingCourseHeldBatchListService } from './training-course-held-batch-list.service';
+import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model'
+import { TrainingCoursesHeldCarouselParams } from 'src/app/training/shared/training-courses-held-carousel/training-courses-held-carousel-params.model';
 
 @Component({
   selector: 'app-training-course-held-batch-list',
@@ -48,12 +48,12 @@ export class TrainingCourseHeldBatchListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
+    private trainingDataStorageService: TrainingDataStorageService,
     private trainingCourseHeldBatchList: TrainingCourseHeldBatchListService
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.dataStorageService.fetchTrainingCourseHeldBatchList({ UniqueName: 'TrainingCoursesCompanyCategory' })
+    this.subscription = this.trainingDataStorageService.fetchTrainingCourseHeldBatchList({ UniqueName: 'TrainingCoursesCompanyCategory' })
       .subscribe(() => {
         this.coursesHeldBatchList = this.trainingCourseHeldBatchList.getTrainingCourseHeldBatchListService();
 

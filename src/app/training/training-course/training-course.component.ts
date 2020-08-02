@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { environment } from 'src/environments/environment';
+import { TrainingDataStorageService } from '../shared/training-data-storage.service';
 import { TrainingCourseService } from './training-course.service';
 import { ActivatedRoute } from '@angular/router';
 import { TrainingCourse } from './training-course.model';
 import { TrainingCourseHeldCarouselReview } from '../shared/training-course-held-carousel-review.model';
-import { environment } from 'src/environments/environment';
 import { TrainingCoursesHeldCarouselParams } from 'src/app/training/shared/training-courses-held-carousel/training-courses-held-carousel-params.model';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-training-course',
@@ -58,7 +58,7 @@ export class TrainingCourseComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
+    private trainingDataStorageService: TrainingDataStorageService,
     private trainingCourseService: TrainingCourseService,
     private route: ActivatedRoute
   ) { }
@@ -75,14 +75,14 @@ export class TrainingCourseComponent implements OnInit, OnDestroy {
   }
 
   private getTrainingCourseData(idObject: object) {
-    this.dataStorageService.fetchTrainingCourse(idObject).subscribe(() => {
+    this.trainingDataStorageService.fetchTrainingCourse(idObject).subscribe(() => {
       this.course = this.trainingCourseService.getTrainingCourse()[0];
       this.getTrainingCoursesHeldData(this.course.Name_Fa);
     });
   }
 
   private getTrainingCoursesHeldData(courseName: string) {
-    this.dataStorageService.fetchTrainingCoursesHeldFromCourse({ UniqueName: courseName }).subscribe(() => {
+    this.trainingDataStorageService.fetchTrainingCoursesHeldFromCourse({ UniqueName: courseName }).subscribe(() => {
       this.coursesHeld = this.trainingCourseService.getTrainingCoursesHeld();
 
       // split string and create an object

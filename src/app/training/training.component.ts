@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+import { TrainingDataStorageService } from './shared/training-data-storage.service';
 import { TrainingService } from './training.service';
-import { DataStorageService } from '../shared/data-storage.service';
 import { TrainingCoursesReview } from './training-course-review.model';
 import { TrainingCourseHeldReview } from './training-course-held-review.model';
-import { environment } from 'src/environments/environment';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-training',
@@ -32,13 +32,13 @@ export class TrainingComponent implements OnInit, OnDestroy {
 
   constructor(
     private trainingService: TrainingService,
-    private dataStorageService: DataStorageService
+    private trainingDataStorageService: TrainingDataStorageService
   ) { }
 
   ngOnInit(): void {
-    this.trainingCoursesSub = this.dataStorageService.fetchTrainigCoursesReview()
+    this.trainingCoursesSub = this.trainingDataStorageService.fetchTrainigCoursesReview()
       .subscribe(() => this.trainingCourses = this.trainingService.getTrainingCoursesReview());
-    this.trianingCoursesHeldSub = this.dataStorageService.fetchTrainingCourseHeldReview()
+    this.trianingCoursesHeldSub = this.trainingDataStorageService.fetchTrainingCourseHeldReview()
       .subscribe(() => this.trianingCoursesHeld = this.trainingService.getTrainingCoursesHeldReview());
   }
 

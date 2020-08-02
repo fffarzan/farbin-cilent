@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { environment } from 'src/environments/environment';
+import { TrainingDataStorageService } from '../shared/training-data-storage.service';
 import { TrainingCourseHeldAttendanceDetailService } from './training-course-held-attendance-detail.service';
 import { TrainingCourseHeldAttendanceDetail } from './training-course-held-attendance-detail.model';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-training-course-held-attendance-detail',
   templateUrl: './training-course-held-attendance-detail.component.html',
   styleUrls: ['./training-course-held-attendance-detail.component.css']
 })
-export class TrainingCourseHeldAttendanceDetailComponent implements OnInit {
+export class TrainingCourseHeldAttendanceDetailComponent implements OnInit, OnDestroy {
   enviornment: { production: boolean, baseUrl: string } = environment;
   person: TrainingCourseHeldAttendanceDetail;
   imageGalleryData = {
@@ -41,10 +42,11 @@ export class TrainingCourseHeldAttendanceDetailComponent implements OnInit {
       }
     }
   };
+  subsrcription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private dataStorageService: DataStorageService,
+    private trainingDataStorageService: TrainingDataStorageService,
     private trainingCourseHeldAttendanceDetailService: TrainingCourseHeldAttendanceDetailService
   ) { }
 
@@ -52,8 +54,12 @@ export class TrainingCourseHeldAttendanceDetailComponent implements OnInit {
     this.route.params.subscribe(param => this.getTrainingCourseHeldAttendanceDetailData(param['id']));
   }
 
+  ngOnDestroy() {
+    this.subsrcription.unsubscribe();
+  }
+
   getTrainingCourseHeldAttendanceDetailData(id: number) {
-    this.dataStorageService.fetchTrainingCourseHeldAttendanceDetail({ IDX: id })
+    this.subsrcription = this.trainingDataStorageService.fetchTrainingCourseHeldAttendanceDetail({ IDX: id })
       .subscribe(() => {
         this.person = this.trainingCourseHeldAttendanceDetailService.getTrainingCourseHeldAttendanceDetail()[0];
         
