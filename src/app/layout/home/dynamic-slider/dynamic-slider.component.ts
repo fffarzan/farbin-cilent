@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { environment } from '../../../../environments/environment';
+import { LayoutDataStorageService } from 'src/app/layout/shared/layout-data-storage.service';
 import { ExtensionMethodService } from '../../../shared/extension-method.service';
 import { SliderService } from './slider.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Banner } from './banner.model';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-dynamic-slider',
   templateUrl: './dynamic-slider.component.html',
   styleUrls: ['./dynamic-slider.component.css']
 })
-export class DynamicSliderComponent implements OnInit {
+export class DynamicSliderComponent implements OnInit, OnDestroy {
   customSlideOptions: OwlOptions = {
     items: 1,
     dots: false,
@@ -25,14 +26,20 @@ export class DynamicSliderComponent implements OnInit {
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   isLandscape: boolean = this.extensionMethodService.isLandscape();
+  subscription: Subscription;
 
   constructor(
     private sliderService: SliderService,
-    private dataStorageService: DataStorageService,
+    private layoutDataStorageService: LayoutDataStorageService,
     private extensionMethodService: ExtensionMethodService
   ) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchBanners().subscribe(() => this.banners = this.sliderService.getBanners());
+    this.subscription = this.layoutDataStorageService.fetchBanners()
+      .subscribe(() => this.banners = this.sliderService.getBanners());
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

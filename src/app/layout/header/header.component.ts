@@ -1,21 +1,24 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { DataStorageService } from '../../shared/data-storage.service';
+import { LayoutDataStorageService } from '../shared/layout-data-storage.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @Output() catalogSituation = new EventEmitter<boolean>();
   closeSearch: boolean = false;
   hideIconsWhenSearchOpen: boolean = false;
+  subscription: Subscription;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private layoutDataStorageService: LayoutDataStorageService) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchCatalogs().subscribe();
+    this.subscription = this.layoutDataStorageService.fetchCatalogs()
+      .subscribe();
   }
 
   openCatalog() {
@@ -30,5 +33,9 @@ export class HeaderComponent implements OnInit {
   onCloseSearchMenu() {
     this.hideIconsWhenSearchOpen = false;
     this.closeSearch = true;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

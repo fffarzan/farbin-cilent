@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { DataStorageService } from '../../shared/data-storage.service';
+import { LayoutDataStorageService } from '../shared/layout-data-storage.service';
 import { NavbarService } from './navbar.service';
 
 @Component({
@@ -8,13 +9,14 @@ import { NavbarService } from './navbar.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+  @Input() darkbodyRemoved: boolean;
   isContactMenuOpen: boolean = false;
   isSupplierMenuOpen: boolean = false;
-  @Input() darkbodyRemoved: boolean;
+  subscription: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
+    private layoutDataStorageService: LayoutDataStorageService,
     private navbarService: NavbarService
   ) { }
 
@@ -37,6 +39,11 @@ export class NavbarComponent implements OnInit {
     this.isSupplierMenuOpen = !this.isSupplierMenuOpen;
     this.isContactMenuOpen = false;
     
-    this.dataStorageService.fetchSuppliers().subscribe();
+    this.subscription = this.layoutDataStorageService.fetchSuppliers()
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

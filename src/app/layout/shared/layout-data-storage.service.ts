@@ -4,21 +4,21 @@ import { tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { Banner } from '../layout/home/dynamic-slider/banner.model';
-import { SliderService } from '../layout/home/dynamic-slider/slider.service';
-import { Supplier } from './supplier.model';
-import { SupplierService } from './supplier.service';
-import { Catalog } from '../layout/header/catalogs/catalog.model';
-import { CatalogsService } from '../layout/header/catalogs/catalogs.service';
-import { Product } from './carousel/product-carousel/product.model';
-import { ProductCarouselService } from './carousel/product-carousel/product-carousel.service';
-import { SearchService } from '../layout/header/search/search.service';
-import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../layout/header/search/search.model';
+import { Banner } from '../home/dynamic-slider/banner.model';
+import { SliderService } from '../home/dynamic-slider/slider.service';
+import { Supplier } from '../../shared/supplier.model';
+import { SupplierService } from '../../shared/supplier.service';
+import { Catalog } from '../header/catalogs/catalog.model';
+import { CatalogsService } from '../header/catalogs/catalogs.service';
+import { Product } from '../../shared/carousel/product-carousel/product.model';
+import { ProductCarouselService } from '../../shared/carousel/product-carousel/product-carousel.service';
+import { SearchService } from '../header/search/search.service';
+import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../header/search/search.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataStorageService {
+export class LayoutDataStorageService {
   constructor(
     private http: HttpClient,
     private sliderService: SliderService,
