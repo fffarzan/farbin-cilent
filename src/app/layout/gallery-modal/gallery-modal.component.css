@@ -5,8 +5,8 @@
   top: 0px;
   right: 2%;
   width: 96%;
-  height: 779px;
-  z-index: 20000;
+  height: 812px;
+  z-index: 100000;
 }
 
 .CustomModal-Inner {
