@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { GalleryCarousel } from './gallery-carousel.model';
+import { GalleryCarousel, GalleryMedia } from './gallery-carousel.model';
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from '../../extension-method.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { GalleryModalService } from 'src/app/layout/gallery-modal/gallery-modal.service';
 
 @Component({
   selector: 'app-gallery-carousel',
@@ -15,11 +15,22 @@ export class GalleryCarouselComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
-  dynamicId = Math.round(Math.random() * 100);
+  dynamicId: number = Math.round(Math.random() * 100);
   carouselItemWidth: number = 160;
+  mediaUrls: string[];
 
-  constructor(private extensionMethodService: ExtensionMethodService) { }
+  constructor(
+    private extensionMethodService: ExtensionMethodService,
+    private galleryModalService: GalleryModalService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onOpenGalleryModal(currentItem: GalleryMedia, allItems: any) {
+    this.galleryModalService.setGalleryModalData(currentItem, allItems);
+
+    // trigger model when data arrived
+    this.galleryModalService.galleryModalOpen();
   }
 }

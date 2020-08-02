@@ -6,12 +6,14 @@
   <div class="MainSection">
     <div id="DarkBody" *ngIf="isDarkbodyShown" (click)="onCloseDarkbody()"></div>
 
-    <div class="ViewContainer" [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
+    <div class="ViewContainer"
+      [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
       <router-outlet></router-outlet>
     </div>
 
     <ng-template appContactMenuPlaceholder></ng-template>
     <ng-template appSupplierMenuPlaceholder></ng-template>
+    <ng-template appGalleryModalPlaceholder></ng-template>
   </div>
 </div>
 

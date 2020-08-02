@@ -1,0 +1,221 @@
+/* mobile-first */
+
+.CustomModal {
+  position: absolute;
+  top: 0px;
+  right: 2%;
+  width: 96%;
+  height: 779px;
+  z-index: 20000;
+}
+
+.CustomModal-Inner {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  margin: 65px auto 0px auto;
+  z-index: 1000000;
+}
+
+@media screen and (min-width: 768px) {
+  .CustomModal {
+    width: 100%;
+    right: 0;
+  }
+  .CustomModal-Inner {
+    width: 66%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .CustomModal-Inner {
+    width: 50%;
+  }
+}
+
+/* Main item */
+
+.CustomModal-Item img {
+  width: 100%;
+}
+
+.ModalVideoItem {
+  /* width: 550px; */
+  /* height: 413px; */
+  width: 100%;
+  height: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  .ModalVideoItem {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .ModalVideoItem {
+    width: 640px;
+    height: 416px;
+  }
+}
+
+/* Carousel */
+
+.CustomModal-ThumbnailInner {
+  margin: 7px;
+}
+
+.CustomModal-ThumbnailInner img {
+  /* width: 200px !important; */
+  height: auto;
+}
+
+.CunstomModal-VideoItem {
+  height: 100%;
+}
+
+.CustomModal-Thumbnail-Carousel {
+  display: flex;
+  direction: ltr;
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.CustomModal-Thumbnail-Carousel::-webkit-scrollbar {
+  height: 2px;
+  margin-left: 5px;
+}
+
+.CustomModal-Thumbnail-Carousel::-webkit-scrollbar-track {
+  margin-right: 1px;
+}
+
+/* Close button */
+
+.CustomModal-CloseButton-Wrapper {
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  z-index: 1000000;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 75px;
+  display: block;
+}
+
+.CustomModal-CloseButton {
+  border: 1px solid white;
+  border-radius: 35px;
+  width: 35px;
+  cursor: pointer;
+  text-align: center;
+  padding: 9px 0;
+  background-color: #333;
+}
+
+.CustomModal-CloseButton-Button {
+  font-size: 30px;
+  color: white !important;
+  display: block;
+  line-height: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .CustomModal-CloseButton-Wrapper {
+    /* display: none; */
+  }
+}
+
+/* .CustomModal .owl-buttons {
+    position: relative;
+}
+
+.CustomModal .owl-buttons .owl-next, .CustomModal .owl-buttons .owl-prev {
+    position: absolute;
+    top: -280px;
+}
+
+.CustomModal .owl-buttons .owl-next {
+    right: -70px;
+}
+
+.CustomModal .owl-buttons .owl-prev {
+    left: -70px;
+}
+
+.CustomModal .owl-theme .owl-controls .owl-buttons div {
+    font-size: 100px;
+}
+
+@media screen and (max-width: 767px) {
+    .CustomModal .owl-buttons {
+        display: none;
+    }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.GalleryCarousel {
+  margin-top: 12px;
+}
+
+.GalleryCarousel-OwlCarousel {
+  margin: 10px 0px 40px 0px;
+  direction: ltr;
+}
+
+.GalleryCarousel-OwlCarousel-Item {
+  margin: 0 12px 0 0;
+}
+
+.GalleryCarousel-VideoItem {
+  width: 100%;
+}
+
+.GalleryCarousel-Mobile {
+  display: flex;
+  direction: ltr;
+  overflow: auto;
+  margin-bottom: 25px;
+}
+
+.GalleryCarousel-Mobile::-webkit-scrollbar {
+  height: 2px;
+}
+
+.GalleryCarousel-Mobile::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: transparent;
+}
+
+.GalleryCarousel-Mobile::-webkit-scrollbar-thumb {
+  background-color: #666695;
+  outline: 1px solid #666695;
+}
+
+.GalleryCarousel-Mobile-Inner {
+  margin: 10px 15px 10px 0;
+}

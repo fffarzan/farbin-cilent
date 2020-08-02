@@ -14,6 +14,8 @@ import { DynamicSliderComponent } from './home/dynamic-slider/dynamic-slider.com
 import { CatalogPlaceholderDirective } from './header/catalogs/catalog-placeholder.directive';
 import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-menu-placeholder.directive';
 import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
+import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
+import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplie
     DynamicSliderComponent,
     CatalogPlaceholderDirective,
     ContactMenuPlaceholderDirective,
-    SupplierMenuPlaceholderDirective
+    SupplierMenuPlaceholderDirective,
+    GalleryModalComponent,
+    GalleryModalPlaceholderDirective
   ],
   imports: [
     SharedModule,
@@ -37,7 +41,8 @@ import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplie
   entryComponents: [
     CatalogsComponent,
     ContactMenuComponent,
-    SupplierMenuComponent
+    SupplierMenuComponent,
+    GalleryModalComponent
   ],
   exports: [
     LayoutComponent

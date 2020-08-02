@@ -213,34 +213,22 @@ export class ExtensionMethodService {
       let temp = [];
 
       if (imageUrl.includes('/')) {
-        if (!imageUrl.includes('\\')) {
-          temp = imageUrl.split('/');
-        }
+        if (!imageUrl.includes('\\')) temp = imageUrl.split('/');
       } else if (imageUrl.includes('\\')) {
-        if (!imageUrl.includes('/')) {
-          temp = imageUrl.split('\\');
-        }
+        if (!imageUrl.includes('/')) temp = imageUrl.split('\\');
       } else if (imageUrl.includes('\\')) {
-        if (imageUrl.includes('/')) {
-          temp = imageUrl.split('\\');
-        }
+        if (imageUrl.includes('/')) temp = imageUrl.split('\\');
       }
 
       let tempLength = temp.length;
       temp.splice(tempLength - 1, 0, 'Small');
 
       if (imageUrl.includes('/')) {
-        if (!imageUrl.includes('\\')) {
-          imageUrl = temp.join('/');
-        }
+        if (!imageUrl.includes('\\')) imageUrl = temp.join('/');
       } else if (imageUrl.includes('\\')) {
-        if (!imageUrl.includes('/')) {
-          imageUrl = temp.join('\\');
-        }
+        if (!imageUrl.includes('/')) imageUrl = temp.join('\\');
       } else if (imageUrl.includes('\\')) {
-        if (imageUrl.includes('/')) {
-          imageUrl = temp.join('\\');
-        }
+        if (imageUrl.includes('/')) imageUrl = temp.join('\\');
       }
 
       return imageUrl;
