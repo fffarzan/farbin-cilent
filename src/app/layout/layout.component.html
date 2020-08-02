@@ -1,20 +1,22 @@
 <ng-template appCatalogPlaceholder></ng-template>
 <app-header (catalogSituation)="onToggleCatalog($event)"></app-header>
 
-<div id="MovableContainer" class="MovableContainer">
+<div class="MovableContainer">
   <!-- [style.height.px]="height" -->
-  <div class="MainSection">
-    <div id="DarkBody" *ngIf="isDarkbodyShown" (click)="onCloseDarkbody()"></div>
+  <!-- <div class="MainSection"> -->
+  <div id="DarkBody"
+    *ngIf="isDarkbodyShown"
+    (click)="onCloseDarkbody()"></div>
 
-    <div class="ViewContainer"
-      [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
-      <router-outlet></router-outlet>
-    </div>
-
-    <ng-template appContactMenuPlaceholder></ng-template>
-    <ng-template appSupplierMenuPlaceholder></ng-template>
-    <ng-template appGalleryModalPlaceholder></ng-template>
+  <div class="ViewContainer"
+    [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
+    <router-outlet></router-outlet>
   </div>
+
+  <ng-template appContactMenuPlaceholder></ng-template>
+  <ng-template appSupplierMenuPlaceholder></ng-template>
+  <ng-template appGalleryModalPlaceholder></ng-template>
+  <!-- </div> -->
 </div>
 
 <app-navbar [darkbodyRemoved]="darkbodyRemoved"></app-navbar>

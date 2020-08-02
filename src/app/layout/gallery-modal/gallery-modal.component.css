@@ -1,7 +1,7 @@
 /* mobile-first */
 
 .CustomModal {
-  position: absolute;
+  position: fixed;
   top: 0px;
   right: 2%;
   width: 96%;

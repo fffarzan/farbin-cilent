@@ -25,7 +25,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   @ViewChild(CatalogPlaceholderDirective, { static: false }) catalogHost: CatalogPlaceholderDirective;
   @ViewChild(ContactMenuPlaceholderDirective, { static: false }) contactMenuHost: ContactMenuPlaceholderDirective;
   @ViewChild(SupplierMenuPlaceholderDirective, { static: false }) supplierMenuHost: SupplierMenuPlaceholderDirective;
-  @ViewChild(GalleryModalPlaceholderDirective, { static: false }) galleryModalHost: GalleryModalPlaceholderDirective; 
+  @ViewChild(GalleryModalPlaceholderDirective, { static: false }) galleryModalHost: GalleryModalPlaceholderDirective;
   private closeCatalogSub: Subscription;
   private closeGalleryModalSub: Subscription;
   closeContactMenuSub: Subscription;
@@ -39,11 +39,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private navbarService: NavbarService,
     private galleryMoadalServeic: GalleryModalService
   ) { }
-  
+
   ngOnInit() {
-    this.closeContactMenuSub = this.navbarService.contactMenuBtnClickedObs.subscribe(isOpen => this.toggleContactMenu(isOpen));
-    this.closeSupplierMenuSub = this.navbarService.supplierMenuBtnClickedObs.subscribe(isOpen => this.toggleSupplierMenu(isOpen));
-    this.closeGalleryModalSub = this.galleryMoadalServeic.galleryModalOpenedObs.subscribe(() => this.showGalleryModal(false));
+    this.closeContactMenuSub = this.navbarService.contactMenuBtnClickedObs
+      .subscribe(isOpen => this.toggleContactMenu(isOpen));
+    this.closeSupplierMenuSub = this.navbarService.supplierMenuBtnClickedObs
+      .subscribe(isOpen => this.toggleSupplierMenu(isOpen));
+    this.closeGalleryModalSub = this.galleryMoadalServeic.galleryModalOpenedObs
+      .subscribe(() => this.showGalleryModal(false));
   }
 
   onToggleCatalog(isOpen: boolean) {
@@ -127,14 +130,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
     const hostViewContainerRef = this.galleryModalHost.viewContainerRef;
     hostViewContainerRef.clear();
 
-    if(!isOpen) {
+    if (!isOpen) {
       this.isDarkbodyShown = true;
 
       const componentRef = hostViewContainerRef.createComponent(galleryModalCmpFactory);
       this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
         this.closeGalleryModalSub.unsubscribe();
         hostViewContainerRef.clear();
-  
+
         // delete darkbody from dom
         this.isDarkbodyShown = false;
       });

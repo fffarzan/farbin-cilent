@@ -6,7 +6,7 @@
   background-color: #fff;
   color: #000;
   direction: rtl;
-  padding: 90px 10px 70px 10px;
+  padding: 30px 10px 70px 10px;
   min-height: 100vh;
 }
 
@@ -25,7 +25,7 @@
     padding: 0 15px;
   }
   .AboutUsSubCategory-Wrapper {
-    padding: 130px 65px 70px 40px;
+    padding: 70px 65px 70px 40px;
   }
 }
 

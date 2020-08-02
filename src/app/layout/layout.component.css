@@ -1,14 +1,19 @@
-.MovableContainer {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  box-shadow: #000 0 0 10px;
-  background-color: #000;
-  padding-bottom: 60px;
+:host {
+  display: block; 
 }
 
-.MovableContainerFixedScreen {
-  overflow: hidden;
+@media screen and (min-width: 992px) {
+  :host {
+    width: 90%;
+    margin: 0 auto;
+  } 
+}
+
+.MovableContainer {
+  min-height: 100vh;
+  box-shadow: #000 0 0 10px;
+  background-color: #000;
+  padding-top: 60px;
 }
 
 #DarkBody {
@@ -23,9 +28,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  #MovableContainer {
-    width: 100% !important;
-    left: 0;
+  .MovableContainer {
     box-shadow: none;
     background-color: none;
   }
@@ -35,9 +38,7 @@
 }
 
 @media screen and (min-width: 992px) {
-  #MovableContainer {
-    width: 90% !important;
-    left: 5%;
+  .MovableContainer {
     box-shadow: #000 0 0 10px;
     background-color: #000;
   }
