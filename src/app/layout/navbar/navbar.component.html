@@ -1,9 +1,11 @@
 <nav>
   <ul class="FooterMenu">
-    <!-- Contanct us button -->
+
+    <!-- contanct-us button -->
     <li class="FooteMenuItem">
       <a (click)="onToggleContactMenu(!isContactMenuOpen)">
-        <img class="ContactIcon ContactMenuIconIMG FooterMenuIcon" src="../../assets/img/ContactUsIcon.png"
+        <img class="ContactIcon ContactMenuIconIMG FooterMenuIcon"
+          src="../../assets/img/ContactUsIcon.png"
           alt="ارتباط با فربین" />
         <div class="Navbar-Item-Details">
           <p>ارتباط با فربین</p>
@@ -11,10 +13,12 @@
         </div>
       </a>
     </li>
-    <!-- Material list button -->
+
+    <!-- material-list button -->
     <li class="FooteMenuItem LeftBorder">
       <a>
-        <img class="MaterialIcon MaterialMenuIcon FooterMenuIcon" src="../../assets/img/MaterialListIcon.png"
+        <img class="MaterialIcon MaterialMenuIcon FooterMenuIcon"
+          src="../../assets/img/MaterialListIcon.png"
           alt="لیست تجهیزات" />
         <div class="Navbar-Item-Details">
           <p>لیست تجهیزات</p>
@@ -23,10 +27,12 @@
         </div>
       </a>
     </li>
-    <!-- Product button -->
+
+    <!-- product button -->
     <li class="FooteMenuItem ProductMenuIcon LeftBorder">
       <a (click)="onToggleProductMenu(!isSupplierMenuOpen)">
-        <img class="ProductIcon ProductMenuIconIMG FooterMenuIcon" src="../../assets/img/ProductsIcon.png"
+        <img class="ProductIcon ProductMenuIconIMG FooterMenuIcon"
+          src="../../assets/img/ProductsIcon.png"
           alt="محصولات شرکت فربین" />
         <div class="Navbar-Item-Details">
           <p>محصولات</p>
@@ -34,10 +40,13 @@
         </div>
       </a>
     </li>
-    <!-- Article button -->
+
+    <!-- article button -->
     <li class="FooteMenuItem LeftBorder">
-      <a onclick="ToggleFooterIcon(event)" routerLink="/articles">
-        <img class="ArticlesIcon ArticleMenuIcon FooterMenuIcon" src="../../assets/img/ArticleIcon.png"
+      <a onclick="ToggleFooterIcon(event)"
+        routerLink="/article">
+        <img class="ArticlesIcon ArticleMenuIcon FooterMenuIcon"
+          src="../../assets/img/ArticleIcon.png"
           alt="مقالات منتشر شده توسط فربین" />
         <div class="Navbar-Item-Details">
           <p>مقــالات</p>
@@ -45,10 +54,13 @@
         </div>
       </a>
     </li>
-    <!-- Training button -->
+
+    <!-- training button -->
     <li class="FooteMenuItem LeftBorder">
-      <a onclick="ToggleFooterIcon(event)" routerLink="/training">
-        <img class="TrainingIcon TrainingMenuIcon FooterMenuIcon" src="../../assets/img/TrainingIcon.png"
+      <a onclick="ToggleFooterIcon(event)"
+        routerLink="/training">
+        <img class="TrainingIcon TrainingMenuIcon FooterMenuIcon"
+          src="../../assets/img/TrainingIcon.png"
           alt="آموزش شرکت فربین" />
         <div class="Navbar-Item-Details">
           <p>آمـــوزش</p>
@@ -56,5 +68,6 @@
         </div>
       </a>
     </li>
+
   </ul>
 </nav>

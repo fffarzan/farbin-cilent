@@ -1,1 +1,197 @@
-<p>articles works!</p>
+<article class="ArticleContainer">
+
+  <!-- menubar (mobile) -->
+  <section class="Article-MenuBar-Wrapper">
+
+    <!-- navbar -->
+    <nav class="Article-MenuBar">
+      <!-- onclick="LeftButton()" -->
+      <img id="LeftButton"
+        class="Article-MenuBar-Button Article-MenuBar-LeftButton EqIcon"
+        src="assets/img/eq.png"
+        alt="نوآوران شبکه فربین - Farbin Corporation" />
+      <!-- onclick="DictionaryButton()" -->
+      <section class="DictionaryContainer Article-DictionaryContainer-MenuBar">
+        <div class="Article-MenuBar-DailySentence">
+          <span>اصطلاحات پسیو</span>
+          <img class="ArticleMenuBar-DailySentence-img"
+            src="assets/img/down.png"
+            alt="نوآوران شبکه فربین - Farbin Corporation" />
+        </div>
+      </section>
+      <!-- onclick="RightButton()" -->
+      <img id="RightButton"
+        class="Article-MenuBar-Button Article-MenuBar-RightButton EqIcon"
+        src="assets/img/eq.png" />
+    </nav>
+
+    <!-- dictionary page -->
+    <section class="DictionaryContainer-MobileMenu">
+      <!-- <p class="MobileMenu-DicTitle">{{::Dictionaries.Title}}</p> -->
+      <!-- <p class="MobileMenu-DicAbastract">{{::Dictionaries.Abstract}}</p> -->
+      <!-- onclick="ArticleCategoryDictionaryDescMobileButton()" -->
+      <span class="MobileMenu-DicDescButton">بیشتر</span>
+      <!-- ng-bind-html="Dictionaries.Value" -->
+      <p class="MobileMenu-DicDesc"></p>
+      <!-- onclick="MobileMenuMulCloseButton()" -->
+      <div class="CloseSearchBox MobileMenu-MulCloseButton">
+        <div class="times ArticleCategory-DictionaryContainer-times">×</div>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- dictionary section (desktop) -->
+  <!-- href="/DictionaryDescription/{{::Dictionaries.IDX}}" -->
+  <a class="DictionaryContainer">
+    <span class="DailySentence">اصطلاحات پسیو</span>
+    <div>
+      <!-- <p class="DicTitle">{{::Dictionaries.Title}}</p> -->
+      <!-- <p class="DicAbastract">{{::Dictionaries.Abstract}}</p> -->
+    </div>
+    <span class="DictionaryContainer-More">ادامه مطلب</span>
+  </a>
+
+  <!-- left side -->
+  <section class="LeftSideArticleList">
+
+    <section class="LeftSideArticleList-HeaderWrapper">
+      <div class="LeftSideArticleList-HeaderInner">
+        <a class="LeftSideArticleList-HeaderLink">
+          <img class="LeftSideArticleList-HeaderLink-icon"
+            src="assets/img/personaaa.png"
+            alt="نوآوران شبکه فربین - Farbin Corporation" />
+          <div class="LeftSideArticleList-HeaderLink-desc">
+            <span class="LeftSideArticleList-Header-LinkEn">For You</span>
+            <span class="LeftSideArticleList-Header-LinkFa">برای شما</span>
+          </div>
+        </a>
+        <a class="LeftSideArticleList-HeaderLink">
+          <img class="LeftSideArticleList-HeaderLink-icon"
+            src="assets/img/staraaa.png"
+            alt="نوآوران شبکه فربین - Farbin Corporation" />
+          <div class="LeftSideArticleList-HeaderLink-desc">
+            <span class="LeftSideArticleList-Header-LinkEn">Favorites</span>
+            <span class="LeftSideArticleList-Header-LinkFa">علاقه مندی ها</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- LeftSide Links -->
+    <section class="LeftSideArticleList-BodyWrapper">
+      <!-- href="/ArticleCategory" -->
+      <a class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle">
+        <img class="LeftSideArticleList-HeaderLink-icon"
+          src="assets/img/writingaaa.png"
+          alt="نوآوران شبکه فربین - Farbin Corporation" />
+        <div class="LeftSideArticleList-HeaderLink-desc">
+          <!-- ng-class="{'LeftSideArticleList-Header-LinkActive': !routeParamsIDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX}" -->
+          <span class="LeftSideArticleList-Header-LinkEn LeftSideArticleList-Header-LinkEnActive">LatestArticles</span>
+          <!-- ng-class="{'LeftSideArticleList-Header-LinkActive': !routeParamsIDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX}" -->
+          <span class="LeftSideArticleList-Header-LinkFa LeftSideArticleList-Header-LinkFaActive">آخرین مقالات</span>
+        </div>
+      </a>
+      <div class="LeftSideArticleList-BodyScrolling">
+        <div class="LeftSideArticleList-BodyInner">
+          <div ng-repeat="LeftArticleCatDetails in LeftContentCategories">
+            <!-- <a ng-click="FillMiddle(LeftArticleCatDetails, $event)"
+              ng-class="{'LeftSideArticleList-Header-LinkActive': routeParamsIDX == LeftArticleCatDetails.IDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX != LeftArticleCatDetails.IDX}"
+              class="LeftSideArticleList-Body-Link">{{::LeftArticleCatDetails.Title}}</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- content -->
+  <section class="MiddleContainer">
+
+    <!--  -->
+    <section class="ArticleListContainer">
+      
+      <!-- ng-repeat="LazyLoadingMiddleTitle in LazyLoadingMiddleTitles" -->
+      <div class="ArticleListContainer-Inner">
+        <!-- <h2 class="ArticleListContainer-Header Color-Black ContentTitle Font-Bold">{{::LazyLoadingMiddleTitle.Title}}
+        </h2> -->
+        <section ng-repeat="Article in LazyLoadingMiddleContent">
+          <!-- ng-if="LazyLoadingMiddleTitle.ID === Article.IDContentCategory" -->
+          <div class="TopArticleContent">
+
+            <!-- image -->
+            <section class="imgTopArticleContent">
+              <!-- href="/Article/{{::Article.IDX}}" -->
+              <a>
+                <!-- <img ng-src="{{::Article.PicUrl ? ServerUrl + Article.PicUrl : '' | GetSmallImage}}"
+                  alt="{{::Article.Name_Fa}}" /> -->
+              </a>
+            </section>
+
+            <!-- description -->
+            <section class="TitleTopArticleContent">
+              <!-- href="/Article/{{::Article.IDX}}" -->
+              <a class="clearfix">
+                <!-- <span dir="rtl">{{::Article.Name_Fa}}</span> -->
+              </a>
+              <!-- <p class="AbstractArticle clearfix">{{::Article.Abstract_Fa}}</p> -->
+              <div class="SocialFooter">
+                <div class="LiKeDisLike">
+                  <img src="assets/img/full color.png"
+                    class="LikeIcon"
+                    alt="نوآوران شبکه فربین - Farbin Corporation" />
+                  <!-- {{::Article.LikeCount}} Likes -->
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </section>
+        <!-- ng-if="LazyLoadingMiddleTitle.ErrorText" -->
+        <section class="ArticleListContainer-Error">
+          <!-- <p>{{::LazyLoadingMiddleTitle.ErrorText}}</p> -->
+        </section>
+      </div>
+
+      <!-- loading images -->
+      <img class="LazyLoadingMiddleGif"
+        src="assets/img/ArticleLazyLoadGif.gif"
+        alt="نوآوران شبکه فربین - Farbin Corporation" />
+      <img class="LazyLoadingMiddleGifMobile"
+        src="assets/img/ArticleLazyLoadGif.gif"
+        alt="نوآوران شبکه فربین - Farbin Corporation" />
+
+    </section>
+
+    <!-- onclick="ArticleCategoryCloseAllMenus()" -->
+    <div class="ArticleContainer-HinderClicking"></div>
+
+  </section>
+
+  <!-- right side -->
+  <section class="RightSideArticleList clearfix">
+    <div class="RightSideArticleContainer clearfix">
+      <!-- <h4 class="Float-Right Color-Black ContentTitle Font-Bold RightSideArticleContainer-ContentOuter-title">
+        {{::RightContentCategories[0].Title}}</h4> -->
+      <!-- ng-repeat="RightArticleCatDetails in LazyLoadingRight" -->
+      <div class="RightSideArticleContainer-ContentWrapper">
+        <div class="RightSideArticleContainer-ContentInner">
+          <div class="RightSideArticleContainer-ArticleImg">
+            <!-- href="/Article/{{::RightArticleCatDetails.IDX}}" -->
+            <a>
+              <!-- <img src="{{::ServerUrl + RightArticleCatDetails.PicUrl | GetSmallImage}}"
+                alt="{{::RightArticleCatDetails.Name_Fa}}" /> -->
+            </a>
+          </div>
+          <div class="RightSideArticleContainer-ArticleTitle">
+            <!-- href="/Article/{{::RightArticleCatDetails.IDX}}" -->
+            <a>
+              <!-- <h4>{{::RightArticleCatDetails.Abstract_Fa}}</h4> -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</article>
