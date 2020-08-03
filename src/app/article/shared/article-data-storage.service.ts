@@ -39,7 +39,7 @@ export class ArtcileDataStorageService {
     return this.http
       .post<Articles>(
         environment.baseUrl + '/api/ContentModuleRet/GetContentModuleByUniqueName/',
-        '',
+        param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
       )
       .pipe(

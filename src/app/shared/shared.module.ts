@@ -12,6 +12,7 @@ import { MobileTemplateDirective } from './carousel/mobile-template.directive';
 import { GetSmallImagePipe } from './get-small-image.pipe';
 import { GalleryCarouselComponent } from './carousel/gallery-carousel/gallery-carousel.component';
 import { StopPropagationDirective } from './stop-propagation.directive';
+import { GetScrollDataDirective } from './get-scroll-data.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StopPropagationDirective } from './stop-propagation.directive';
     MobileTemplateDirective,
     ProductCarouselComponent,
     GalleryCarouselComponent,
-    StopPropagationDirective
+    StopPropagationDirective,
+    GetScrollDataDirective
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { StopPropagationDirective } from './stop-propagation.directive';
     MobileTemplateDirective,
     ProductCarouselComponent,
     GalleryCarouselComponent,
-    StopPropagationDirective
+    StopPropagationDirective,
+    GetScrollDataDirective
   ]
 })
 export class SharedModule { }

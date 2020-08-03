@@ -26,35 +26,6 @@ export class ExtensionMethodService {
     return c_value;
   }
 
-  DetectMobile() {
-    if (navigator.userAgent.match(/Android/i) ||
-      navigator.userAgent.match(/webOS/i) ||
-      navigator.userAgent.match(/iPhone/i) ||
-      navigator.userAgent.match(/BlackBerry/i) ||
-      navigator.userAgent.match(/Windows Phone/i)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  isLandscape() {
-    if (window.innerWidth >= 812) {
-      if (window.innerWidth <= 1024) {
-        return true;
-      }
-    }
-  }
-
-  DetectTablet() {
-    if (navigator.userAgent.match(/iPad/i)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   isDate(val) {
     let d = new Date(val);
 
@@ -208,33 +179,6 @@ export class ExtensionMethodService {
     }
   }
 
-  getSmallImage(imageUrl) {
-    if (imageUrl) {
-      let temp = [];
-
-      if (imageUrl.includes('/')) {
-        if (!imageUrl.includes('\\')) temp = imageUrl.split('/');
-      } else if (imageUrl.includes('\\')) {
-        if (!imageUrl.includes('/')) temp = imageUrl.split('\\');
-      } else if (imageUrl.includes('\\')) {
-        if (imageUrl.includes('/')) temp = imageUrl.split('\\');
-      }
-
-      let tempLength = temp.length;
-      temp.splice(tempLength - 1, 0, 'Small');
-
-      if (imageUrl.includes('/')) {
-        if (!imageUrl.includes('\\')) imageUrl = temp.join('/');
-      } else if (imageUrl.includes('\\')) {
-        if (!imageUrl.includes('/')) imageUrl = temp.join('\\');
-      } else if (imageUrl.includes('\\')) {
-        if (imageUrl.includes('/')) imageUrl = temp.join('\\');
-      }
-
-      return imageUrl;
-    }
-  }
-
   // unfamilers!
   EmptyGuid() {
     return '00000000-0000-0000-0000-000000000000';
@@ -317,5 +261,62 @@ export class ExtensionMethodService {
     }
 
     return binArray;
+  }
+
+  // fffarzan-functions
+  DetectMobile() {
+    if (navigator.userAgent.match(/Android/i) ||
+      navigator.userAgent.match(/webOS/i) ||
+      navigator.userAgent.match(/iPhone/i) ||
+      navigator.userAgent.match(/BlackBerry/i) ||
+      navigator.userAgent.match(/Windows Phone/i)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isLandscape() {
+    if (window.innerWidth >= 812) {
+      if (window.innerWidth <= 1024) {
+        return true;
+      }
+    }
+  }
+
+  DetectTablet() {
+    if (navigator.userAgent.match(/iPad/i)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getSmallImage(imageUrl) {
+    if (imageUrl) {
+      let temp = [];
+
+      if (imageUrl.includes('/')) {
+        if (!imageUrl.includes('\\')) temp = imageUrl.split('/');
+      } else if (imageUrl.includes('\\')) {
+        if (!imageUrl.includes('/')) temp = imageUrl.split('\\');
+      } else if (imageUrl.includes('\\')) {
+        if (imageUrl.includes('/')) temp = imageUrl.split('\\');
+      }
+
+      let tempLength = temp.length;
+      temp.splice(tempLength - 1, 0, 'Small');
+
+      if (imageUrl.includes('/')) {
+        if (!imageUrl.includes('\\')) imageUrl = temp.join('/');
+      } else if (imageUrl.includes('\\')) {
+        if (!imageUrl.includes('/')) imageUrl = temp.join('\\');
+      } else if (imageUrl.includes('\\')) {
+        if (imageUrl.includes('/')) imageUrl = temp.join('\\');
+      }
+
+      return imageUrl;
+    }
   }
 }

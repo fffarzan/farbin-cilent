@@ -19,65 +19,58 @@
 
   <!-- content -->
   <section class="MiddleContainer">
+    <div class="ArticleListContainer" appGetScrollData>
+      <div class="ArticleListContainer-Inner"
+        *ngFor="let title of contentTitleLazyLoad">
+        
+        <!-- category title -->
+        <h2 class="ArticleListContainer-Header Color-Black ContentTitle Font-Bold">{{ title.Title }}</h2>
 
-    <!--  -->
-    <section class="ArticleListContainer">
-
-      <!-- ng-repeat="LazyLoadingMiddleTitle in LazyLoadingMiddleTitles" -->
-      <div class="ArticleListContainer-Inner">
-        <!-- <h2 class="ArticleListContainer-Header Color-Black ContentTitle Font-Bold">{{::LazyLoadingMiddleTitle.Title}}
-        </h2> -->
-        <section ng-repeat="Article in LazyLoadingMiddleContent">
-          <!-- ng-if="LazyLoadingMiddleTitle.ID === Article.IDContentCategory" -->
-          <div class="TopArticleContent">
-
-            <!-- image -->
-            <section class="imgTopArticleContent">
+        <!-- article previews -->
+        <div *ngFor="let article of contentArticleLazyLoad">
+          <div class="TopArticleContent"
+            *ngIf="title.ID === article.IDContentCategory">
+            <div class="imgTopArticleContent">
               <!-- href="/Article/{{::Article.IDX}}" -->
               <a>
-                <!-- <img ng-src="{{::Article.PicUrl ? ServerUrl + Article.PicUrl : '' | GetSmallImage}}"
-                  alt="{{::Article.Name_Fa}}" /> -->
+                <img [src]="article.PicUrl ? enviornment.baseUrl + article.PicUrl : '' | getSmallImage"
+                  [alt]="article.Name_Fa" />
               </a>
-            </section>
-
-            <!-- description -->
-            <section class="TitleTopArticleContent">
+            </div>
+            <div class="TitleTopArticleContent">
               <!-- href="/Article/{{::Article.IDX}}" -->
               <a class="clearfix">
-                <!-- <span dir="rtl">{{::Article.Name_Fa}}</span> -->
+                <span dir="rtl">{{ article.Name_Fa }}</span>
               </a>
-              <!-- <p class="AbstractArticle clearfix">{{::Article.Abstract_Fa}}</p> -->
+              <p class="AbstractArticle clearfix">{{ article.Abstract_Fa }}</p>
               <div class="SocialFooter">
                 <div class="LiKeDisLike">
                   <img src="assets/img/full color.png"
                     class="LikeIcon"
                     alt="نوآوران شبکه فربین - Farbin Corporation" />
-                  <!-- {{::Article.LikeCount}} Likes -->
+                  {{ article.LikeCount }} Likes
                 </div>
               </div>
-            </section>
-
+            </div>
           </div>
-        </section>
-        <!-- ng-if="LazyLoadingMiddleTitle.ErrorText" -->
-        <section class="ArticleListContainer-Error">
-          <!-- <p>{{::LazyLoadingMiddleTitle.ErrorText}}</p> -->
-        </section>
-      </div>
+        </div>
 
-      <!-- loading images -->
-      <img class="LazyLoadingMiddleGif"
+        <!-- not-found-message -->
+        <div class="ArticleListContainer-Error"
+          *ngIf="title.ErrorText">
+          <p>{{ title.ErrorText }}</p>
+        </div>
+
+      </div>
+      <!-- <img class="LazyLoadingMiddleGif"
         src="assets/img/ArticleLazyLoadGif.gif"
-        alt="نوآوران شبکه فربین - Farbin Corporation" />
+        alt="نوآوران شبکه فربین - Farbin Corporation">
       <img class="LazyLoadingMiddleGifMobile"
         src="assets/img/ArticleLazyLoadGif.gif"
-        alt="نوآوران شبکه فربین - Farbin Corporation" />
-
-    </section>
-
+        alt="نوآوران شبکه فربین - Farbin Corporation"> -->
+    </div>
     <!-- onclick="ArticleCategoryCloseAllMenus()" -->
     <div class="ArticleContainer-HinderClicking"></div>
-
   </section>
 
   <!-- right-side -->
