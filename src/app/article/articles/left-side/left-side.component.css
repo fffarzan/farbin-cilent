@@ -1,0 +1,189 @@
+.LeftSideArticleList {
+  color: #fff;
+  background-color: #333;
+  position: absolute;
+  top: 40px;
+  left: -415px;
+  bottom: 0px;
+  width: 80%;
+  z-index: 10000;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.LeftSideArticleList span, .LeftSideArticleList a {
+  color: #fff;
+}
+
+.LeftSideArticleList-HeaderWrapper {
+  text-align: left;
+  padding: 0 15px;
+  margin-top: 20px;
+}
+
+.LeftSideArticleList-HeaderInner {
+  border-bottom: 1px solid #777;
+  padding-bottom: 10px;
+}
+
+.LeftSideArticleList-HeaderLink {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 10px;
+}
+
+.LeftSideArticleList-HeaderLink-LatestArticle {
+  border-bottom: 1px solid #777;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.LeftSideArticleList-HeaderLink-desc {
+  display: flex;
+  flex-flow: column;
+}
+
+.LeftSideArticleList-HeaderLink-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.LeftSideArticleList-Header-LinkEn {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.LeftSideArticleList-Header-LinkFa {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+.LeftSideArticleList-Header-LinkEnActive, .LeftSideArticleList-Header-LinkFaActive {
+  color: #ffb700 !important;
+}
+
+.LeftSideArticleList-BodyWrapper {
+  padding: 30px 15px 0 15px;
+}
+
+.LeftSideArticleList-BodyScrolling {
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+.LeftSideArticleList-BodyScrolling::-webkit-scrollbar {
+  width: 5px;
+}
+
+.LeftSideArticleList-BodyScrolling::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: lightgray;
+  border-left: 2px solid #333;
+  border-right: 2px solid #333;
+  background-clip: content-box;
+  -webkit-background-clip: content-box;
+}
+
+.LeftSideArticleList-BodyScrolling::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  outline: none;
+  border-left: 2px solid #333;
+  border-right: 1px solid #333;
+  background-clip: content-box;
+  -webkit-background-clip: content-box;
+}
+
+.LeftSideArticleList-Body-Link {
+  display: block;
+  text-align: left;
+  direction: rtl;
+  margin-bottom: 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .LeftSideArticleList {
+    color: #000;
+    background-color: white;
+    width: 21%;
+    display: inline-block;
+    float: left;
+    margin-top: 90px;
+    position: unset;
+    z-index: unset;
+    overflow: unset;
+  }
+  .LeftSideArticleList span, .LeftSideArticleList a {
+    color: #000;
+  }
+  .LeftSideArticleList-HeaderWrapper {
+    padding: 0 10px 0 25px;
+    margin-top: 0;
+  }
+  .LeftSideArticleList-HeaderInner {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  .LeftSideArticleList-HeaderLink {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 20px;
+  }
+  .LeftSideArticleList-HeaderLink-LatestArticle {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .LeftSideArticleList-HeaderLink-desc {
+    display: flex;
+    flex-flow: column;
+  }
+  .LeftSideArticleList-HeaderLink-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  .LeftSideArticleList-Header-LinkEn {
+    font-size: 12px;
+    color: #aaa;
+  }
+  .LeftSideArticleList-Header-LinkFa {
+    margin-top: 2px;
+    font-size: 11px;
+    color: #aaa;
+  }
+  .LeftSideArticleList-Header-LinkActive {
+    color: #ffb700 !important;
+  }
+  .LeftSideArticleList-Header-LinkInactive {
+    color: #000 !important;
+  }
+  .LeftSideArticleList-BodyWrapper {
+    padding: 30px 5px 0 25px;
+  }
+  .LeftSideArticleList-BodyScrolling {
+    max-height: unset;
+  }
+  .LeftSideArticleList-BodyScrolling::-webkit-scrollbar-track {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+  }
+  .LeftSideArticleList-BodyScrolling::-webkit-scrollbar-thumb {
+    border-right: 1px solid white;
+    border-left: unset;
+  }
+  .LeftSideArticleList-Body-Link {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .LeftSideArticleList-HeaderWrapper {
+    padding: 0 10px 0 45px;
+  }
+  .LeftSideArticleList-BodyWrapper {
+    padding: 30px 10px 0 45px;
+  }
+}

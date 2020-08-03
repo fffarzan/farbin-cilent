@@ -1,0 +1,39 @@
+<section class="Article-MenuBar-Wrapper">
+
+  <!-- navbar -->
+  <nav class="Article-MenuBar">
+    <!-- onclick="LeftButton()" -->
+    <img id="LeftButton"
+      class="Article-MenuBar-Button Article-MenuBar-LeftButton EqIcon"
+      src="assets/img/eq.png"
+      alt="نوآوران شبکه فربین - Farbin Corporation" />
+    <!-- onclick="DictionaryButton()" -->
+    <section class="DictionaryContainer Article-DictionaryContainer-MenuBar">
+      <div class="Article-MenuBar-DailySentence">
+        <span>اصطلاحات پسیو</span>
+        <img class="ArticleMenuBar-DailySentence-img"
+          src="assets/img/down.png"
+          alt="نوآوران شبکه فربین - Farbin Corporation" />
+      </div>
+    </section>
+    <!-- onclick="RightButton()" -->
+    <img id="RightButton"
+      class="Article-MenuBar-Button Article-MenuBar-RightButton EqIcon"
+      src="assets/img/eq.png" />
+  </nav>
+
+  <!-- dictionary page -->
+  <section class="DictionaryContainer-MobileMenu">
+    <!-- <p class="MobileMenu-DicTitle">{{::Dictionaries.Title}}</p> -->
+    <!-- <p class="MobileMenu-DicAbastract">{{::Dictionaries.Abstract}}</p> -->
+    <!-- onclick="ArticleCategoryDictionaryDescMobileButton()" -->
+    <span class="MobileMenu-DicDescButton">بیشتر</span>
+    <!-- ng-bind-html="Dictionaries.Value" -->
+    <p class="MobileMenu-DicDesc"></p>
+    <!-- onclick="MobileMenuMulCloseButton()" -->
+    <div class="CloseSearchBox MobileMenu-MulCloseButton">
+      <div class="times ArticleCategory-DictionaryContainer-times">×</div>
+    </div>
+  </section>
+
+</section>

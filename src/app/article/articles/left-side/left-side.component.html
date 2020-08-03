@@ -1,0 +1,52 @@
+<section class="LeftSideArticleList">
+
+  <!--  -->
+  <section class="LeftSideArticleList-HeaderWrapper">
+    <div class="LeftSideArticleList-HeaderInner">
+      <a class="LeftSideArticleList-HeaderLink">
+        <img class="LeftSideArticleList-HeaderLink-icon"
+          src="assets/img/personaaa.png"
+          alt="نوآوران شبکه فربین - Farbin Corporation" />
+        <div class="LeftSideArticleList-HeaderLink-desc">
+          <span class="LeftSideArticleList-Header-LinkEn">For You</span>
+          <span class="LeftSideArticleList-Header-LinkFa">برای شما</span>
+        </div>
+      </a>
+      <a class="LeftSideArticleList-HeaderLink">
+        <img class="LeftSideArticleList-HeaderLink-icon"
+          src="assets/img/staraaa.png"
+          alt="نوآوران شبکه فربین - Farbin Corporation" />
+        <div class="LeftSideArticleList-HeaderLink-desc">
+          <span class="LeftSideArticleList-Header-LinkEn">Favorites</span>
+          <span class="LeftSideArticleList-Header-LinkFa">علاقه مندی ها</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- left side links -->
+  <section class="LeftSideArticleList-BodyWrapper">
+    <!-- href="/ArticleCategory" -->
+    <a class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle">
+      <img class="LeftSideArticleList-HeaderLink-icon"
+        src="assets/img/writingaaa.png"
+        alt="نوآوران شبکه فربین - Farbin Corporation" />
+      <div class="LeftSideArticleList-HeaderLink-desc">
+        <!-- ng-class="{'LeftSideArticleList-Header-LinkActive': !routeParamsIDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX}" -->
+        <span class="LeftSideArticleList-Header-LinkEn LeftSideArticleList-Header-LinkEnActive">LatestArticles</span>
+        <!-- ng-class="{'LeftSideArticleList-Header-LinkActive': !routeParamsIDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX}" -->
+        <span class="LeftSideArticleList-Header-LinkFa LeftSideArticleList-Header-LinkFaActive">آخرین مقالات</span>
+      </div>
+    </a>
+    <div class="LeftSideArticleList-BodyScrolling">
+      <div class="LeftSideArticleList-BodyInner">
+        <div ng-repeat="LeftArticleCatDetails in LeftContentCategories">
+          <!-- <a ng-click="FillMiddle(LeftArticleCatDetails, $event)"
+            ng-class="{'LeftSideArticleList-Header-LinkActive': routeParamsIDX == LeftArticleCatDetails.IDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX != LeftArticleCatDetails.IDX}"
+            class="LeftSideArticleList-Body-Link">{{::LeftArticleCatDetails.Title}}</a> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
