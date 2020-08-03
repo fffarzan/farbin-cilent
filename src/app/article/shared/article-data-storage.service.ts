@@ -15,5 +15,4 @@ export class ArtcileDataStorageService {
     return throwError('An error occured' + err);
   }
 
-  
 }
