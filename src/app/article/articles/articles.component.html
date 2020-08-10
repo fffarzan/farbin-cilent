@@ -1,4 +1,5 @@
-<article class="ArticleContainer">
+<article class="ArticleContainer"
+  *ngIf="rightSideAtricles">
 
   <!-- navbar (mobile) -->
   <app-navbar></app-navbar>
@@ -19,10 +20,12 @@
 
   <!-- content -->
   <section class="MiddleContainer">
-    <div class="ArticleListContainer" appGetScrollData>
+    <div class="ArticleListContainer"
+      appGetScrollData
+      (scrolled)="onScrollDiv($event)">
       <div class="ArticleListContainer-Inner"
         *ngFor="let title of contentTitleLazyLoad">
-        
+
         <!-- category title -->
         <h2 class="ArticleListContainer-Header Color-Black ContentTitle Font-Bold">{{ title.Title }}</h2>
 
@@ -74,6 +77,6 @@
   </section>
 
   <!-- right-side -->
-  <app-right-side></app-right-side>
+  <app-right-side [articles]="rightSideAtricles"></app-right-side>
 
 </article>

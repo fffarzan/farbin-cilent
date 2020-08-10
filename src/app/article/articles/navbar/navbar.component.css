@@ -118,3 +118,9 @@
 .MobileMenu-times {
   display: inline-block;
 }
+
+@media screen and (min-width: 768px) {
+  :host {
+    display: none;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
@@ -7,6 +7,7 @@ import { ArticlesService } from './articles.service';
 import { DictionaryWord } from '../dictionary-detail/dictionary-word.model';
 import { Articles } from './articles.model';
 import { ArticlePreview } from './article-preview.model';
+import { ArticleUtils } from '../shared/article-utils';
 
 @Component({
   selector: 'app-articles',
@@ -25,6 +26,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   leftSideArticlesSub: Subscription;
   contentArticleLazyLoad: ArticlePreview[];
   contentTitleLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[];
+  lazyLoadPageNumber: number = 0;
 
   constructor(
     private articleDataStorageService: ArtcileDataStorageService,
@@ -69,10 +71,16 @@ export class ArticlesComponent implements OnInit, OnDestroy {
             this.contentArticles[i].Items = JSON.parse(this.contentArticles[i].Items);
         }
 
-        // fill 
-        this.contentArticleLazyLoad = this.contentLazyLoad(this.contentArticles).articleLazyLoad;
-        this.contentTitleLazyLoad = this.contentLazyLoad(this.contentArticles).titleLazyLoad;
+        this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(this.contentArticles).articlesLazyLoad;
+        this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(this.contentArticles).articleCategoryTitlesLazyLoad;
       });
+  }
+
+  onScrollDiv(event: Event) {
+    let allArticles = ArticleUtils.getAllArticleCategoryTitlesAndItems(this.contentArticles).allArticles;
+    let articles = ArticleUtils.getArticleItemsForLazyLoading(allArticles, this.lazyLoadPageNumber++);
+
+    for (let i = 0; i < articles.length; i++) this.contentArticleLazyLoad.push(articles[i]);
   }
 
   ngOnDestroy() {
@@ -81,46 +89,4 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     this.leftSideArticlesSub.unsubscribe();
     this.contentArticlesSub.unsubscribe();
   }
-
-  private contentLazyLoad(dataArray: Articles)
-    : { 'articleLazyLoad': ArticlePreview[], 'titleLazyLoad': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {
-    let dataArrayLength = Object.keys(dataArray).length;
-    let titleLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
-    let titleTemp: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
-    let contentLazyLoad: ArticlePreview[] = [];
-    let contentTemp: ArticlePreview[] = [];
-
-    if (dataArrayLength) { // if data has loaded for first time
-      for (let i = 0; i < dataArrayLength; i++) {
-        titleTemp.push({ 'Title': dataArray[i].Title, 'ID': dataArray[i].ID });
-        titleLazyLoad.push({ 'Title': titleTemp[i].Title, 'ID': titleTemp[i].ID });
-
-        // loading first 5 items
-        if (dataArray[i].Items) {
-          for (let j = 0; j < dataArray[i].Items.length; j++) {
-            contentTemp.push(dataArray[i].Items[j]);
-            if (contentTemp.length <= 5) contentLazyLoad.push(dataArray[i].Items[j]);
-          }
-        }
-      }
-    } else if (!dataArrayLength && dataArray.Items) { // if data has loaded form one of left side links
-      titleTemp.push({ 'Title': dataArray.Title, 'ID': dataArray.ID });
-      titleLazyLoad.push({ 'Title': titleTemp[0].Title, 'ID': titleTemp[0].ID });
-
-      // loading first 5 items
-      for (let i = 0; i < dataArray.Items.length; i++) {
-        contentTemp.push(dataArray[0].Items[i]);
-        if (contentTemp.length <= 5) contentLazyLoad.push(dataArray[0].Items[i]);
-      }
-    } else if (!dataArrayLength) {  // if no article was existed in the category
-      titleLazyLoad.push({ 'Title': dataArray.Title, 'ID': dataArray.ID, 'ErrorText': 'مقاله ای یافت نشد!' });
-    }
-
-    if (contentTemp.length <= 5) {
-    } else {
-    }
-
-    return { 'articleLazyLoad': contentLazyLoad, 'titleLazyLoad': titleLazyLoad }
-  }
-
 }
