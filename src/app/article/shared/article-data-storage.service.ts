@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { DictionaryWord } from '../dictionary-detail/dictionary-word.model';
-import { tap } from 'rxjs/operators';
 import { ArticlesService } from '../articles/articles.service';
 import { Articles } from "../articles/articles.model";
+import { Article } from '../article-detail/article.model';
+import { ArticleDetailService } from '../article-detail/article-detail.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,8 @@ import { Articles } from "../articles/articles.model";
 export class ArtcileDataStorageService {
   constructor(
     private http: HttpClient,
-    private articlesService: ArticlesService
+    private articlesService: ArticlesService,
+    private articleDetailService: ArticleDetailService
   ) { }
 
   handleError(err: object) {
@@ -47,4 +50,15 @@ export class ArtcileDataStorageService {
       )
   }
 
+  fetchArticle(param: object) {
+    return this.http
+      .post<Article>(
+        environment.baseUrl + '/api/Content/FillContentByIDX/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(article => this.articleDetailService.setArticle(article))
+      )
+  }
 }
