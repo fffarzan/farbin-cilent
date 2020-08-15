@@ -1,8 +1,10 @@
-<section class="LeftSideArticleList">
+<article class="LeftSideArticleList"
+  [ngClass]="{'LeftSideArticleList-Active': isLeftSideMenuOpen}">
 
-  <!--  -->
+  <!-- panel links -->
   <section class="LeftSideArticleList-HeaderWrapper">
     <div class="LeftSideArticleList-HeaderInner">
+
       <a class="LeftSideArticleList-HeaderLink">
         <img class="LeftSideArticleList-HeaderLink-icon"
           src="assets/img/personaaa.png"
@@ -12,6 +14,7 @@
           <span class="LeftSideArticleList-Header-LinkFa">برای شما</span>
         </div>
       </a>
+
       <a class="LeftSideArticleList-HeaderLink">
         <img class="LeftSideArticleList-HeaderLink-icon"
           src="assets/img/staraaa.png"
@@ -21,13 +24,14 @@
           <span class="LeftSideArticleList-Header-LinkFa">علاقه مندی ها</span>
         </div>
       </a>
+
     </div>
   </section>
 
-  <!-- left side links -->
+  <!-- dynamic links -->
   <section class="LeftSideArticleList-BodyWrapper">
-    <!-- href="/ArticleCategory" -->
-    <a class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle">
+    <a [routerLink]="['/articles']"
+      class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle">
       <img class="LeftSideArticleList-HeaderLink-icon"
         src="assets/img/writingaaa.png"
         alt="نوآوران شبکه فربین - Farbin Corporation" />
@@ -40,13 +44,13 @@
     </a>
     <div class="LeftSideArticleList-BodyScrolling">
       <div class="LeftSideArticleList-BodyInner">
-        <div ng-repeat="LeftArticleCatDetails in LeftContentCategories">
-          <!-- <a ng-click="FillMiddle(LeftArticleCatDetails, $event)"
-            ng-class="{'LeftSideArticleList-Header-LinkActive': routeParamsIDX == LeftArticleCatDetails.IDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX != LeftArticleCatDetails.IDX}"
-            class="LeftSideArticleList-Body-Link">{{::LeftArticleCatDetails.Title}}</a> -->
+        <div *ngFor="let article of articles">
+          <!-- ng-class="{'LeftSideArticleList-Header-LinkActive': routeParamsIDX == LeftArticleCatDetails.IDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX != LeftArticleCatDetails.IDX}" -->
+          <a class="LeftSideArticleList-Body-Link"
+            (click)="onLoadLink(article)">{{ article.Title }}</a>
         </div>
       </div>
     </div>
   </section>
 
-</section>
+</article>

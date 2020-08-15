@@ -31,13 +31,24 @@ export class ArticleUtils {
     let articleCategoryTitles: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let allArticles: ArticlePreview[] = [];
 
-    for (let i = 0; i < dataArrayLength; i++) {
-      articleCategoryTitles.push({ 'Title': dataArray[i].Title, 'ID': dataArray[i].ID });
+    if (dataArray.Items) {
+      articleCategoryTitles.push({ 'Title': dataArray.Title, 'ID': dataArray.ID });
 
-      let items = dataArray[i].Items;
-      if (items) {
-        for (let j = 0; j < items.length; j++) {
-          allArticles.push(items[j]);
+      let items = dataArray.Items;
+        if (items) {
+          for (let i = 0; i < items.length; i++) {
+            allArticles.push(items[i]);
+          }
+        }
+    } else {
+      for (let i = 0; i < dataArrayLength; i++) {
+        articleCategoryTitles.push({ 'Title': dataArray[i].Title, 'ID': dataArray[i].ID });
+  
+        let items = dataArray[i].Items;
+        if (items) {
+          for (let j = 0; j < items.length; j++) {
+            allArticles.push(items[j]);
+          }
         }
       }
     }
@@ -56,15 +67,10 @@ export class ArticleUtils {
             if (articles[i]) lazyLoadArticles.push(articles[i]);
           }
         }
-        // else if (Object.keys(this.contentArticles).length) {  // If data has loaded from left side link
-        //   for (let i = (5 * this.pageNumber); i < ((5 * this.pageNumber) + 5); i++) {
-        //     if (articles[i]) {
-        //       this.contentLazyLoading.push(articles[i]);
-        //       itemIndex++;
-        //     }
+        // else if (articles.length) {  // If data has loaded from left side link
+        //   for (let i = (5 * pageNumber); i < ((5 * pageNumber) + 5); i++) {
+        //     if (articles[i]) lazyLoadArticles.push(articles[i]);
         //   }
-
-        //   this.middleGlobalIndex += itemIndex;
         // }
 
         pageNumber++;

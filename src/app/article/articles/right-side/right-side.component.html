@@ -1,5 +1,6 @@
 <section class="RightSideArticleList clearfix"
-  *ngIf="articles">
+  [ngClass]="{'RightSideArticleList-Active': isRightSideMenuOpen}"
+  *ngIf="(isMobile && isRightSideMenuOpen) || (!isMobile && articles)">
   <h4 class="Float-Right Color-Black ContentTitle Font-Bold RightSideArticleContainer-ContentOuter-title">
     {{ articles[0].Title }}</h4>
   <div class="RightSideArticleContainer clearfix"

@@ -164,6 +164,7 @@
   position: relative;
   -webkit-overflow-scrolling: touch;
   padding: 0 10px 0 15px;
+  height: calc(100vh - 160px);
 }
 
 .ArticleListContainer::-webkit-scrollbar {
@@ -289,6 +290,7 @@
     z-index: 0;
     -webkit-overflow-scrolling: touch;
     padding: 0 0 0 8px;
+    height: calc(100vh - 210px);
   }
   .ArticleListContainer::-webkit-scrollbar {
     width: 5px;
@@ -365,16 +367,7 @@
 
 @media screen and (min-width: 992px) {
   .ArticleListContainer {
-    width: 100%;
-    display: inline-block;
-    float: left;
-    overflow-y: scroll;
-    direction: rtl;
-    margin-top: 15px;
-    position: relative;
-    z-index: 0;
-    -webkit-overflow-scrolling: touch;
-    height: 70vh;
+    width: 100%;  
   }
   .TitleTopArticleContent {
     width: 63%;

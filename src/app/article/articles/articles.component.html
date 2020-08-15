@@ -1,22 +1,28 @@
 <article class="ArticleContainer"
-  *ngIf="rightSideAtricles">
+  *ngIf="rightSideAtricles"
+  appGetScrollData
+  (scrolled)="onScrollDiv($event)">
 
   <!-- navbar (mobile) -->
-  <app-navbar></app-navbar>
+  <app-navbar (leftSideMenuOpen)="onLeftSideMenuToggle($event)"
+    (rightSideMenuOpen)="onRightSideMenuToggle($event)"
+    [dictionary]="randomDictionaryWord"></app-navbar>
 
   <!-- dictionary (desktop) -->
   <!-- href="/DictionaryDescription/{{::Dictionaries.IDX}}" -->
-  <a class="DictionaryContainer">
+  <a class="DictionaryContainer"
+    *ngIf="!isMobile">
     <span class="DailySentence">اصطلاحات پسیو</span>
     <div>
-      <!-- <p class="DicTitle">{{::Dictionaries.Title}}</p> -->
-      <!-- <p class="DicAbastract">{{::Dictionaries.Abstract}}</p> -->
+      <p class="DicTitle">{{ randomDictionaryWord.Title }}</p>
+      <p class="DicAbastract">{{ randomDictionaryWord.Abstract }}</p>
     </div>
     <span class="DictionaryContainer-More">ادامه مطلب</span>
   </a>
 
   <!-- left-side -->
-  <app-left-side></app-left-side>
+  <app-left-side [articles]="leftSideArticles"
+    [isLeftSideMenuOpen]="isLeftSideMenuOpen"></app-left-side>
 
   <!-- content -->
   <section class="MiddleContainer">
@@ -77,6 +83,7 @@
   </section>
 
   <!-- right-side -->
-  <app-right-side [articles]="rightSideAtricles"></app-right-side>
+  <app-right-side [articles]="rightSideAtricles"
+    [isRightSideMenuOpen]="isRightSideMenuOpen"></app-right-side>
 
 </article>

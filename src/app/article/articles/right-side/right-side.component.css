@@ -8,15 +8,14 @@
   z-index: 10000;
   transition: 0.5s;
   top: 40px;
-  display: none;
 }
 
 .RightSideArticleList .RightSideArticleContainer {
   margin: 20px 0 0 15px;
   width: 90%;
   direction: rtl;
-  max-height: 300px;
   overflow-y: scroll;
+  height: calc(100vh - 260px);
 }
 
 .RightSideArticleContainer-ContentOuter {
@@ -100,6 +99,8 @@
   .RightSideArticleList .RightSideArticleContainer {
     margin: 15px 0 0 0;
     width: 100%;
+    height: calc(100vh - 260px);
+    max-height: none;
   }
   .RightSideArticleContainer-ContentInner {
     margin-bottom: 30px;
@@ -141,4 +142,8 @@
   .RightSideArticleContainer-ContentOuter-title {
     padding: 5px 70px 20px 0 !important;
   }
+}
+
+.RightSideArticleList-Active {
+  right: 0;
 }

@@ -5,6 +5,7 @@ import { Articles } from '../articles.model';
 import { environment } from 'src/environments/environment';
 import { ArticlePreview } from '../article-preview.model';
 import { ArticleUtils } from '../../shared/article-utils';
+import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 
 @Component({
   selector: 'app-right-side',
@@ -13,12 +14,14 @@ import { ArticleUtils } from '../../shared/article-utils';
 })
 export class RightSideComponent implements OnInit {
   @Input() articles: Articles;
+  @Input() isRightSideMenuOpen: boolean;
   enviornment: { production: boolean, baseUrl: string } = environment;
+  isMobile: boolean = this.extensionMethodService.DetectMobile();
   contentArticleLazyLoad: ArticlePreview[];
   contentTitleLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[];
   lazyLoadPageNumber: number = 0;
 
-  constructor() { }
+  constructor(private extensionMethodService: ExtensionMethodService) { }
 
   ngOnInit(): void {
     this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(this.articles).articlesLazyLoad;
