@@ -11,15 +11,13 @@
       *ngFor="let article of contentArticleLazyLoad">
       <div class="RightSideArticleContainer-ContentInner">
         <div class="RightSideArticleContainer-ArticleImg">
-          <!-- href="/Article/{{::RightArticleCatDetails.IDX}}" -->
-          <a>
+          <a [routerLink]="['article', article.IDX]">
             <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage"
               [alt]="article.Name_Fa" />
           </a>
         </div>
         <div class="RightSideArticleContainer-ArticleTitle">
-          <!-- href="/Article/{{::RightArticleCatDetails.IDX}}" -->
-          <a>
+          <a [routerLink]="['article', article.IDX]">
             <h4>{{ article.Abstract_Fa }}</h4>
           </a>
         </div>

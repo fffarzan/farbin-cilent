@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: ':id', component: ArticlesComponent }
   ] },
   { path: 'article/:id', component: ArticleDetailComponent },
-  { path: 'article/dictionary/:id', component: DictionaryDetailComponent },
+  { path: 'dictionary/:id', component: DictionaryDetailComponent },
 ]
 
 @NgModule({

@@ -9,8 +9,8 @@
     [dictionary]="randomDictionaryWord"></app-navbar>
 
   <!-- dictionary (desktop) -->
-  <!-- href="/DictionaryDescription/{{::Dictionaries.IDX}}" -->
   <a class="DictionaryContainer"
+    [routerLink]="['dictionary', randomDictionaryWord.IDX]"
     *ngIf="!isMobile">
     <span class="DailySentence">اصطلاحات پسیو</span>
     <div>
@@ -40,15 +40,14 @@
           <div class="TopArticleContent"
             *ngIf="title.ID === article.IDContentCategory">
             <div class="imgTopArticleContent">
-              <!-- href="/Article/{{::Article.IDX}}" -->
-              <a>
+              <a [routerLink]="['article', article.IDX]">
                 <img [src]="article.PicUrl ? enviornment.baseUrl + article.PicUrl : '' | getSmallImage"
                   [alt]="article.Name_Fa" />
               </a>
             </div>
             <div class="TitleTopArticleContent">
-              <!-- href="/Article/{{::Article.IDX}}" -->
-              <a class="clearfix">
+              <a class="clearfix"
+                [routerLink]="['article', article.IDX]">
                 <span dir="rtl">{{ article.Name_Fa }}</span>
               </a>
               <p class="AbstractArticle clearfix">{{ article.Abstract_Fa }}</p>

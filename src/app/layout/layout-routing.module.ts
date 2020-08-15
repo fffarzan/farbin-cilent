@@ -11,7 +11,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'about-us', loadChildren: () => import('../about-us/about-us.module').then(m => m.AboutUsModule) },
       { path: 'training', loadChildren: () => import('../training/training.module').then(m => m.TrainingModule) },
-      { path: 'articles', loadChildren: () => import('../article/article.module').then(m => m.ArticleModule) }
+      { path: 'article-category', loadChildren: () => import('../article/article.module').then(m => m.ArticleModule) }
     ]
   }
 ];

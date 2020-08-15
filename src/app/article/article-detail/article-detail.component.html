@@ -1,1 +1,197 @@
-<p>article-detail works!</p>
+<article class="ArticlePage">
+
+  <!-- header -->
+  <section>
+    <div>
+      <!-- <div>
+        <div qrcode
+          class="QRCode ArticlePage-QRCode"></div>
+        <span class="ArticlePage-QRCodeDesc ArticlePage-QRCodeDesc-Desktop">!در موبایل یا تبلت دنبال کنید</span>
+        <span class="ArticlePage-QRCodeDesc ArticlePage-QRCodeDesc-Tablet">!در موبایل دنبال کنید</span>
+      </div> -->
+      <div>
+        <!-- <img class="ArticleBigImage"
+          ng-src="{{ServerUrl + Article.PicUrl}}"
+          alt="{{::Article.Name_Fa}}" /> -->
+      </div>
+    </div>
+    <!-- Info -->
+    <div class="Article-Header-Information">
+      <!-- <section class="Article-Header-Title"><h1 class="ArticleTitle">{{::Article.Name_Fa}}</h1></section> -->
+      <div class="IconContainar Article-Header-Likes">
+        <!-- ng-click="LikeContent(Article.IDContent)" -->
+        <a class="LikeIcon">
+          <!-- <img id="HeartIcon"
+            src="/images/heart outline2.png"
+            class="RealationalIcon"
+            alt="{{::Article.Name_Fa}}" /> -->
+          <div class="clearfix"></div>
+          <!-- <b>{{::Article.LikeCount}}</b><br /> Likes -->
+        </a>
+        <!-- <a ng-click="GoToComment()" class="CommentIcon">
+          <img src="/images/comment2.png" class="RealationalIcon" alt="{{Article.Name_Fa}}" />
+          <div class="clearfix"></div>
+          <b>{{Comments.length}}</b><br /> Comments
+        </a> -->
+      </div>
+    </div>
+  </section>
+  <hr class="ArticlePage-Icon-LineSeperator" />
+
+  <!-- content -->
+  <!-- ng-bind-html="Article.Description_Fa" -->
+  <section class="ArticleDescription_Fa"></section>
+  <hr class="ArticlePage-Description-LineSeperator">
+
+  <!-- dictionary -->
+  <!-- ng-if="Article.Dictionary" -->
+  <section class="Article-Dictionary-Wrapper">
+    <h3 class="Article-Dictionary-Title">دانشنامه مقاله</h3>
+    <hr class="ArticlePage-Dictionary-LineSeperator" />
+    <!-- ng-repeat="Dictionary in Article.Dictionary" -->
+    <div class="Article-Dictionary-Outer">
+      <div class="Article-Dictionary-Inner">
+        <section class="Article-Dictionary-Head">
+          <!-- dynamicslidetogglingdirective -->
+          <p class="Article-Dictionary-Word">
+            <span class="fa fa-plus Article-Dictionary-Icon"></span>
+            <!-- {{::Dictionary.Title}} -->
+          </p>
+          <!-- <p class="Article-Dictionary-Abstract">{{::Dictionary.Abstract}}</p> -->
+        </section>
+        <!-- ng-bind-html="Dictionary.Value" -->
+        <section class="Article-Dictionary-Description"></section>
+        <!-- href="/DictionaryDescription/{{::Dictionary.IDX}}" -->
+        <a class="Article-Dictionary-Description-Link">
+          <!-- <img src="/images/ArticleDictionaryArrow.png"
+            alt="{{::Dictionary.Title}}" /> -->
+        </a>
+        <hr class="Article-Dictionary-Seperator">
+      </div>
+    </div>
+  </section>
+
+  <!-- ng-if="Article.Dictionary" -->
+  <hr class="ArticlePage-Icon-LineSeperator">
+
+  <!-- carousel -->
+  <!-- ng-if="Article.RelatedContent" -->
+  <section class="Article-Carousel">
+    <div><h3 class="Article-Dictionary-Title">:مقالات مرتبط</h3></div>
+    <hr class="ArticlePage-Dictionary-LineSeperator" />
+    <!-- Carousel -->
+    <!-- | filter: {IDX: '!' + routeParamsIDX} -> We have a filter to preventing current article in carousel -->
+    <!-- <section class="Article-Carousel"
+      articlecarousel
+      datasource="Article.RelatedContent"
+      imagestaticurl="'/images/docx.png'"
+      dynamicfieldimage="'PicUrl'"
+      pageurldirection="'Article'"
+      dynamicfieldname="'Name_Fa'"
+      desktopcarouseloptions="{
+        items: 3,
+        stagePadding: 20,
+        responsive: { 1024: { items: 6} } }"
+      mobilecarouseloptions="{
+        itemsMobile: [767,1.7],
+        itemsTablet: [768,3],
+        itemsDesktop: [1024,4.2]
+      }">
+    </section> -->
+  </section>
+
+  <!-- ng-if="Article.Dictionary" -->
+  <hr class="ArticlePage-Icon-LineSeperator">
+
+  <!-- comment and  comment form -->
+  <!-- <div id="CommentForm"
+    class="CommentForm">
+
+    <div class="article-comments-wrapper"
+      ng-repeat="Comment in Comments">
+      <div class="CommenyAuthor">
+        <img src="/images/user.png" />
+        {{Comment.FullName}}
+      </div>
+      <div class="CommentBox"> {{Comment.Comment}}</div>
+      <div class="clearfix"></div>
+    </div>
+
+    <form name="FormComment"
+      novalidate
+      id="FormComment">
+      <div class="form-group margin-bottom">
+        <label class="control-label">نام:</label><br />
+        <input id="txtContatctFName"
+          type="text"
+          class="form-control"
+          ng-model="CurrentComment.SenderFName"
+          placeholder="نام"
+          name="txtContatctFName"
+          required />
+        <span ng-hide="FormComment.txtContatctFName.$valid || FormComment.txtContatctFName.$pristine"
+          class="txtValidation"> نام را وارد کنید</span>
+      </div>
+      <div class="form-group margin-bottom">
+        <label class="control-label">نام خانوادگی:</label><br />
+        <input id="txtContatctLName"
+          type="text"
+          class="form-control"
+          ng-model="CurrentComment.SenderLName"
+          placeholder="نام خانوادگی"
+          name="txtContatctLName"
+          required />
+        <span ng-hide="FormComment.txtContatctLName.$valid || FormComment.txtContatctLName.$pristine"
+          class="txtValidation"> نام خانوادگی را وارد کنید</span>
+      </div>
+      <div class="form-group margin-bottom">
+        <label class="control-label">پست الکترونیک:</label><br />
+        <input id="txtContatctEmail"
+          type="email"
+          class="form-control Align-Left"
+          ng-model="CurrentComment.SenderEmail"
+          placeholder="Email"
+          name="txtContatctEmail"
+          required />
+        <span ng-hide="FormComment.txtContatctEmail.$valid || FormComment.txtContatctEmail.$pristine"
+          class="txtValidation"> پست الکترونیک را درفرمت صحیح وارد کنید</span>
+      </div>
+      <div class="form-group margin-bottom">
+        <label class="control-label">پیام:</label><br />
+        <textarea id="txtContatctComment"
+          type="text"
+          class="form-control"
+          ng-model="CurrentComment.Comment"
+          placeholder="متن کامنت"
+          name="txtContatctComment"
+          required></textarea>
+        <span ng-hide="FormComment.txtContatctComment.$valid || FormComment.txtContatctComment.$pristine"
+          class="txtValidation"> پیام را وارد کنید</span>
+      </div>
+      <div class="form-group margin-bottom">
+        <label class="control-label">لطفا متن روبرو را وارد کنید:</label>
+        <img id="imgCaptcha" /><i class="fa fa-refresh"
+          style="float:left;margin:10px 0 0 10px;"
+          ng-click="GetCaptcha()"></i>
+        <input type="text"
+          id="txtCamptcha"
+          class="form-control Align-Left"
+          ng-model="CurrentComment.CaptchaText"
+          name="txtCamptcha"
+          required />
+        <span ng-hide="FormComment.txtCamptcha.$valid || FormComment.txtCamptcha.$pristine"
+          class="txtValidation"> متن روبرو را وارد کنید</span>
+      </div>
+      <div class="form-group margin-bottom col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <input type="button"
+          class="btn btn-primary Align-Center Full-Width"
+          value="ثبت"
+          ng-click="AddComment()"
+          ng-disabled="FormComment.$invalid" />
+      </div>
+      <div class="clearfix"></div>
+    </form>
+
+  </div> -->
+
+</article>
