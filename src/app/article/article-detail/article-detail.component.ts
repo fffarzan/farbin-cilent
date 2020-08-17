@@ -79,7 +79,9 @@ export class ArticleDetailComponent implements OnInit {
     this.dataStorageService.fetchArticle({ IDX: id })
       .subscribe(() => {
         this.article = this.articleDetailService.getArticle()[0];
-        this.articleCarouselParams.data = this.article.RelatedContent;
+
+        // filter current article from article previews and setting data
+        this.articleCarouselParams.data = this.article.RelatedContent.filter(a => a.IDX !== +this.articleId);
       });
   }
 
