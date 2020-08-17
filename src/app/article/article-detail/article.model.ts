@@ -17,6 +17,18 @@ export class Article {
     public Name_Fa: string,
     public PicUrl: string,
     public Status: number,
-    public RelatedContent ,
+    public RelatedContent: ArticlePreview[],
+  ) { }
+}
+
+export class ArticlePreview {
+  constructor(
+    public Abstract_Fa: string,
+    public DisLikeCount: number,
+    public IDContent: string,
+    public IDX: number,
+    public LikeCount: number,
+    public Name_Fa: string,
+    public PicUrl: string
   ) { }
 }
