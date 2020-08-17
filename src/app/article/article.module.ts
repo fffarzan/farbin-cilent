@@ -8,6 +8,7 @@ import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail
 import { NavbarComponent } from './articles/navbar/navbar.component';
 import { RightSideComponent } from './articles/right-side/right-side.component';
 import { LeftSideComponent } from './articles/left-side/left-side.component';
+import { ArticleCarouselComponent } from './shared/article-carousel/article-carousel.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LeftSideComponent } from './articles/left-side/left-side.component';
     NavbarComponent,
     RightSideComponent,
     LeftSideComponent,
+    ArticleCarouselComponent,
   ],
   imports: [
     ArticleRoutingModule,

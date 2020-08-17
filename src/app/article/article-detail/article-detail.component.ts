@@ -8,6 +8,7 @@ import { ArticleDetailService } from './article-detail.service';
 import { environment } from 'src/environments/environment';
 import { ArticleUtils } from '../shared/article-utils';
 import { CookieUtils } from 'src/app/shared/cookie-utils';
+import { ArticleCarouselParams } from '../shared/article-carousel/article-carousel-params.model';
 
 @Component({
   selector: 'app-article-detail',
@@ -23,6 +24,26 @@ export class ArticleDetailComponent implements OnInit {
   article: Article;
   articleId: number;
   toggleDescription: object = {};
+  articleCarouselParams: ArticleCarouselParams = {
+    imageStaticUrl: 'assets/img/docx.png',
+    dynamicFieldImage: 'PicUrl',
+    pageUrlDirection: 'article',
+    dynamicFieldName: 'Name_Fa',
+    desktopOptions: {
+      items: 6,
+      stagePadding: 20,
+      responsive: { 1024: { items: 6 } },
+      dots: false,
+      nav: false,
+      autoWidth: true
+    },
+    mobileOptions: {
+      mobileItems: { maxSize: 500, items: 1.7 },
+      tabletItems: { maxSize: 768, items: 3 },
+      desktopItems: { maxSize: 1024, items: 4.2 }
+    },
+    data: null
+  };
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
@@ -58,6 +79,7 @@ export class ArticleDetailComponent implements OnInit {
     this.dataStorageService.fetchArticle({ IDX: id })
       .subscribe(() => {
         this.article = this.articleDetailService.getArticle()[0];
+        this.articleCarouselParams.data = this.article.RelatedContent;
       });
   }
 

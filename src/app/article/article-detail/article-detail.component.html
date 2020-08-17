@@ -23,7 +23,8 @@
         <h1 class="ArticleTitle">{{ article.Name_Fa }}</h1>
       </div>
       <div class="IconContainar Article-Header-Likes">
-        <a class="LikeIcon" (click)="onLikeArticle(article.IDContent)">
+        <a class="LikeIcon"
+          (click)="onLikeArticle(article.IDContent)">
           <img id="HeartIcon"
             #heartImage
             src="assets/img/heart outline2.png"
@@ -51,14 +52,17 @@
       *ngFor="let dictionary of article.Dictionary; let i=index">
       <div class="Article-Dictionary-Inner">
         <section class="Article-Dictionary-Head">
-          <p class="Article-Dictionary-Word" id="item{{i}}" (click)="toggleDescription[i] = !toggleDescription[i]">
+          <p class="Article-Dictionary-Word"
+            id="item{{i}}"
+            (click)="toggleDescription[i] = !toggleDescription[i]">
             <span class="fa fa-plus Article-Dictionary-Icon"></span>
             {{ dictionary.Title }}
           </p>
           <p class="Article-Dictionary-Abstract">{{ dictionary.Abstract }}</p>
         </section>
         <section class="Article-Dictionary-Description"
-          [innerHtml]="dictionary.Value" *ngIf="toggleDescription[i]"></section>
+          [innerHtml]="dictionary.Value"
+          *ngIf="toggleDescription[i]"></section>
         <a [routerLink]="['dictionary', dictionary.IDX]"
           class="Article-Dictionary-Description-Link">
           <img src="assets/img/ArticleDictionaryArrow.png"
@@ -79,23 +83,8 @@
     </div>
     <hr class="ArticlePage-Dictionary-LineSeperator">
     <!-- | filter: {IDX: '!' + routeParamsIDX} -> We have a filter to preventing current article in carousel -->
-    <!-- <section class="Article-Carousel"
-      articlecarousel
-      datasource="Article.RelatedContent"
-      imagestaticurl="'/images/docx.png'"
-      dynamicfieldimage="'PicUrl'"
-      pageurldirection="'Article'"
-      dynamicfieldname="'Name_Fa'"
-      desktopcarouseloptions="{
-        items: 3,
-        stagePadding: 20,
-        responsive: { 1024: { items: 6} } }"
-      mobilecarouseloptions="{
-        itemsMobile: [767,1.7],
-        itemsTablet: [768,3],
-        itemsDesktop: [1024,4.2]
-      }">
-    </section> -->
+    <app-article-carousel class="Article-Carousel"
+      [carouselData]="articleCarouselParams"></app-article-carousel>
   </section>
   <hr class="ArticlePage-Icon-LineSeperator"
     *ngIf="article.Dictionary">
