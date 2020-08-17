@@ -4,12 +4,14 @@
   <!-- header -->
   <section>
     <div>
-      <!-- <div>
-        <div qrcode
-          class="QRCode ArticlePage-QRCode"></div>
+      <div>
+        <qr-code *ngIf="!isMobile"
+          [value]="enviornment.baseUrl + 'article-category/article/' + articleId"
+          [size]="isTablet ? 140 : 197"
+          class="QRCode ArticlePage-QRCode"></qr-code>
         <span class="ArticlePage-QRCodeDesc ArticlePage-QRCodeDesc-Desktop">!در موبایل یا تبلت دنبال کنید</span>
         <span class="ArticlePage-QRCodeDesc ArticlePage-QRCodeDesc-Tablet">!در موبایل دنبال کنید</span>
-      </div> -->
+      </div>
       <div>
         <img class="ArticleBigImage"
           [src]="enviornment.baseUrl + article.PicUrl"
@@ -21,9 +23,9 @@
         <h1 class="ArticleTitle">{{ article.Name_Fa }}</h1>
       </div>
       <div class="IconContainar Article-Header-Likes">
-        <!-- ng-click="LikeContent(Article.IDContent)" -->
-        <a class="LikeIcon">
+        <a class="LikeIcon" (click)="onLikeArticle(article.IDContent)">
           <img id="HeartIcon"
+            #heartImage
             src="assets/img/heart outline2.png"
             class="RealationalIcon"
             [alt]="article.Name_Fa">
@@ -44,24 +46,23 @@
   <section class="Article-Dictionary-Wrapper"
     *ngIf="article.Dictionary">
     <h3 class="Article-Dictionary-Title">دانشنامه مقاله</h3>
-    <hr class="ArticlePage-Dictionary-LineSeperator" />
+    <hr class="ArticlePage-Dictionary-LineSeperator">
     <div class="Article-Dictionary-Outer"
-      *ngFor="let dictionary of article.Dictionary">
+      *ngFor="let dictionary of article.Dictionary; let i=index">
       <div class="Article-Dictionary-Inner">
         <section class="Article-Dictionary-Head">
-          <!-- dynamicslidetogglingdirective -->
-          <p class="Article-Dictionary-Word">
+          <p class="Article-Dictionary-Word" id="item{{i}}" (click)="toggleDescription[i] = !toggleDescription[i]">
             <span class="fa fa-plus Article-Dictionary-Icon"></span>
             {{ dictionary.Title }}
           </p>
           <p class="Article-Dictionary-Abstract">{{ dictionary.Abstract }}</p>
         </section>
         <section class="Article-Dictionary-Description"
-          [innerHtml]="dictionary.Value"></section>
+          [innerHtml]="dictionary.Value" *ngIf="toggleDescription[i]"></section>
         <a [routerLink]="['dictionary', dictionary.IDX]"
           class="Article-Dictionary-Description-Link">
           <img src="assets/img/ArticleDictionaryArrow.png"
-            alt="{{ dictionary.Title }}" />
+            alt="{{ dictionary.Title }}">
         </a>
         <hr class="Article-Dictionary-Seperator">
       </div>

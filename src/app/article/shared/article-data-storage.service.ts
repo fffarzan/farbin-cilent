@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, pipe } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
@@ -59,6 +59,15 @@ export class ArtcileDataStorageService {
       )
       .pipe(
         tap(article => this.articleDetailService.setArticle(article))
+      )
+  }
+
+  likeArticle(param: object) {
+    return this.http
+      .post<string>(
+        environment.baseUrl + '/api/Content/LikeContent/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
       )
   }
 }

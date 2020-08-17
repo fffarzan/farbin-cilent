@@ -16,7 +16,7 @@ import { LeftSideComponent } from './articles/left-side/left-side.component';
     DictionaryDetailComponent,
     NavbarComponent,
     RightSideComponent,
-    LeftSideComponent
+    LeftSideComponent,
   ],
   imports: [
     ArticleRoutingModule,

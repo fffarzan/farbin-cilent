@@ -189,11 +189,14 @@
   line-height: 32px;
   color: #000 !important;
   padding-top: 15px;
+  text-align: right;
 }
 
 .ArticleDescription_Fa img {
   max-width: 100%;
   margin: 10px 7%;
+  display: flex;
+  justify-content: center;
 }
 
 .ArticleDescription_Fa video {
@@ -292,7 +295,6 @@
 }
 
 .Article-Dictionary-Description {
-  display: none;
   margin: 10px 20px;
 }
 
