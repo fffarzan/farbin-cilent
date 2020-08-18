@@ -9,6 +9,7 @@ import { ArticlesService } from '../articles/articles.service';
 import { Articles } from "../articles/articles.model";
 import { Article } from '../article-detail/article.model';
 import { ArticleDetailService } from '../article-detail/article-detail.service';
+import { DictionaryDetailService } from '../dictionary-detail/dictionary-detial.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class ArtcileDataStorageService {
   constructor(
     private http: HttpClient,
     private articlesService: ArticlesService,
-    private articleDetailService: ArticleDetailService
+    private articleDetailService: ArticleDetailService,
+    private dictionayDetailService: DictionaryDetailService
   ) { }
 
   handleError(err: object) {
@@ -68,6 +70,18 @@ export class ArtcileDataStorageService {
         environment.baseUrl + '/api/Content/LikeContent/',
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+  }
+
+  fetchDictionaryWordDetail(param: object) {
+    return this.http
+      .post<DictionaryWord>(
+        environment.baseUrl + '/api/Dictionary/GetDictionaryByIDX/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(word => this.dictionayDetailService.setDictionaryWordDetail(word[0]))
       )
   }
 }

@@ -1,1 +1,38 @@
-<p>dictionary-detail works!</p>
+<article class="DictionaryDescPage-AllWrapper"
+  *ngIf="word">
+
+  <!-- back bar -->
+  <section class="DictionaryDescPage-BackBar"><span (click)="onGoBack()">Back ></span></section>
+
+  <!-- content -->
+  <section class="DictionaryDescPage-Wrapper">
+
+    <!-- qrcode -->
+    <div>
+      <qr-code *ngIf="!isMobile"
+        [value]="enviornment.baseUrl + 'article-category/dictionary/' + wordId"
+        [size]="isTablet ? 130 : 160"
+        class="QRCode DictionaryDescPage-QRCode"></qr-code>
+      <span class="DictionaryDescPage-QRCodeDesc DictionaryDescPage-QRCodeDesc-Desktop">!در موبایل یا تبلت دنبال
+        کنید</span>
+      <span class="DictionaryDescPage-QRCodeDesc DictionaryDescPage-QRCodeDesc-Tablet">!در موبایل دنبال کنید</span>
+    </div>
+
+    <!-- decription -->
+    <section class="DictionaryDescPage-Inner">
+      <h1 class="DictionaryDescPage-Title">{{ word.Title }}</h1>
+      <p class="DictionaryDescPage-Abstract">{{ word.Abstract }}</p>
+      <div [innerHTML]="word.Value"></div>
+    </section>
+
+  </section>
+
+  <!-- close button -->
+  <section id="DictionaryDescPage-CloseButtonWrapper"
+    class="DictionaryDescPage-CloseButtonWrapper">
+    <div class="DictionaryDescPage-MulCloseButton" (click)="onGoBack()">
+      <span class="times DictionaryDescPage-MulCloseButton-Times">×</span>
+    </div>
+  </section>
+
+</article>
