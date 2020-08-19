@@ -1,6 +1,6 @@
 import { Directive, OnInit, Input, HostBinding, Renderer2, ElementRef } from '@angular/core';
 
-import { ProductCarouselParams } from './product-carousel/product-carousel-params.model';
+import { ProductCarouselParams } from '../product-carousel/product-carousel-params.model';
 
 @Directive({
   selector: '[appMobileTemplate]'

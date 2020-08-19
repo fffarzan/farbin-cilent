@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
-import { environment } from '../../../../environments/environment';
-import { ExtensionMethodService } from '../../extension-method.service';
+import { environment } from '../../../environments/environment';
+import { ExtensionMethodService } from '../extension-method.service';
 import { Product } from './product.model';
-import { LayoutDataStorageService } from '../../../layout/shared/layout-data-storage.service';
+import { LayoutDataStorageService } from '../../layout/shared/layout-data-storage.service';
 import { ProductCarouselService } from './product-carousel.service';
 import { ProductCarouselParams } from './product-carousel-params.model';
 import { Subscription } from 'rxjs';

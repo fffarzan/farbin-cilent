@@ -15,7 +15,7 @@ import { TrainingCoursesHeldCarouselParams } from 'src/app/training/shared/train
   styleUrls: [
     './training-course.component.css',
     './training-course-old.component.css',
-    '../../shared/qr-code.css'
+    '../../shared/styles/qr-code.css'
   ]
 })
 export class TrainingCourseComponent implements OnInit, OnDestroy {
