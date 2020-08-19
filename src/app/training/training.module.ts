@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { TrainingRoutingModule } from './training-routing.module';
+import { TrainingRouting } from './training.routing';
 import { SharedModule } from '../shared/shared.module';
 import { TrainingComponent } from './training.component';
 import { TrainingCourseComponent } from './training-course/training-course.component';
@@ -25,7 +25,7 @@ import { TrainingCoursesHeldCarouselComponent } from './shared/training-courses-
     TrainingCoursesHeldCarouselComponent
   ],
   imports: [
-    TrainingRoutingModule,
+    TrainingRouting,
     SharedModule
   ]
 })

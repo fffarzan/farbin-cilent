@@ -1,6 +1,6 @@
 <article class="PopoverProductMenu">
   <div class="Item SupplierItemInMenu" *ngFor="let supplier of suppliers">
-    <a id="MenuIDX" href="#">
+    <a id="MenuIDX" [routerLink]="['product-category', supplier.IDX, '0']">
       <img class="clearfix" [src]="'http://192.168.10.15:2015/' + supplier.PicUrl" alt="{{ supplier.Name_En }}" />
     </a>
   </div>
@@ -8,4 +8,3 @@
 
 <!-- onclick="HidePopoverProductMenu()" -->
 <!-- ng-click="ResetLabProduct(Supplier.Name_En)" -->
-<!-- href="{{ '/ProductCategory/'+ Supplier.IDX +'/0' }}" -->
