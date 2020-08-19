@@ -4,8 +4,8 @@ import { environment } from '../../../../environments/environment';
 import { ExtensionMethodService } from '../../../shared/extension-method.service';
 import { CatalogsService } from './catalogs.service';
 import { Catalog } from './catalog.model';
-import { SupplierService } from 'src/app/shared/supplier.service';
-import { Supplier } from 'src/app/shared/supplier.model';
+import { SupplierService } from 'src/app/layout/navbar/supplier-menu/supplier.service';
+import { Supplier } from 'src/app/layout/navbar/supplier-menu/supplier.model';
 
 @Component({
   selector: 'app-catalogs',
