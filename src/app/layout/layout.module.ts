@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import { LayoutRoutingModule } from './layout-routing.module';
+import { LayoutRouting } from './layout.routing';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -36,7 +36,7 @@ import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-
   ],
   imports: [
     SharedModule,
-    LayoutRoutingModule
+    LayoutRouting
   ],
   entryComponents: [
     CatalogsComponent,

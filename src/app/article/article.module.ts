@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ArticleRoutingModule } from './article-routing.module';
+import { ArticleRouting } from './article.routing';
 import { SharedModule } from '../shared/shared.module';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
@@ -23,7 +23,7 @@ import { ArticlesContentsComponent } from './articles/articles-contents/articles
     ArticlesContentsComponent,
   ],
   imports: [
-    ArticleRoutingModule,
+    ArticleRouting,
     SharedModule
   ]
 })

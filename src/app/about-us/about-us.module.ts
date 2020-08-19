@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { AboutUsRoutingModule } from './about-us-routing.module';
+import { AboutUsRouting } from './about-us.routing';
 import { SharedModule } from '../shared/shared.module';
 import { AboutUsComponent } from './about-us.component';
 import { RightSideComponent } from './shared/right-side/right-side.component';
@@ -25,7 +25,7 @@ import { UnsubscribeComponent } from './newsletter/unsubscribe/unsubscribe.compo
     UnsubscribeComponent
   ],
   imports: [
-    AboutUsRoutingModule,
+    AboutUsRouting,
     SharedModule
   ],
   exports: [
