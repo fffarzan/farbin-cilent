@@ -1,11 +1,17 @@
+import { Params } from '@angular/router';
+
 import { ArticlePreview } from '../articles/article-preview.model';
 import { Articles } from '../articles/articles.model';
 
 export class ArticleUtils {
-  static contentLazyLoad(dataArray: Articles): { 'articlesLazyLoad': ArticlePreview[], 'articleCategoryTitlesLazyLoad': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {
-    let dataArrayLength = Object.keys(dataArray).length;
+  static contentLazyLoad(dataArray): { 'articlesLazyLoad': ArticlePreview[], 'articleCategoryTitlesLazyLoad': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {
+    let dataArrayLength: number;
     let articleCategoryTitlesLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let articlesLazyLoad: ArticlePreview[] = [];
+    let daLength: number = dataArray.length;
+
+    if (!dataArray.Items && !daLength) dataArrayLength = 0; 
+    else dataArrayLength = Object.keys(dataArray).length;
 
     if (dataArrayLength) { // if data has loaded for first time, loading titles and first five articles
       articleCategoryTitlesLazyLoad = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).articleCategoryTitles;
@@ -13,13 +19,6 @@ export class ArticleUtils {
       let allArticles = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).allArticles;
       articlesLazyLoad = ArticleUtils.getArticleItemsForLazyLoading(allArticles, 0);
     }
-    // else if (!dataArrayLength && dataArray.Items) { // if data has loaded form one of left side links
-    //   this.titleLazyLoad.push({ 'Title': dataArray.Title, 'ID': dataArray.ID });
-
-    //   // loading first 5 items
-    //   this.lazyLoadPageNumber = 0;
-    //   this.getArticleItemsForLazyLoading();
-    // }
     else if (!dataArrayLength)  // if no article was existed in the category
       articleCategoryTitlesLazyLoad.push({ 'Title': dataArray.Title, 'ID': dataArray.ID, 'ErrorText': 'مقاله ای یافت نشد!' });
 
@@ -27,23 +26,23 @@ export class ArticleUtils {
   }
 
   static getAllArticleCategoryTitlesAndItems(dataArray): { 'allArticles': ArticlePreview[], 'articleCategoryTitles': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {
-    let dataArrayLength = Object.keys(dataArray).length;
+    const dataArrayLength = Object.keys(dataArray).length;
     let articleCategoryTitles: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let allArticles: ArticlePreview[] = [];
 
     if (dataArray.Items) {
+      let items = dataArray.Items;
       articleCategoryTitles.push({ 'Title': dataArray.Title, 'ID': dataArray.ID });
 
-      let items = dataArray.Items;
-        if (items) {
-          for (let i = 0; i < items.length; i++) {
-            allArticles.push(items[i]);
-          }
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          allArticles.push(items[i]);
         }
+      }
     } else {
       for (let i = 0; i < dataArrayLength; i++) {
         articleCategoryTitles.push({ 'Title': dataArray[i].Title, 'ID': dataArray[i].ID });
-  
+
         let items = dataArray[i].Items;
         if (items) {
           for (let j = 0; j < items.length; j++) {
@@ -57,8 +56,8 @@ export class ArticleUtils {
   }
 
   static getArticleItemsForLazyLoading(articles, pageNumber: number): ArticlePreview[] {
+    const allPagesNumber = articles.length / 5;
     let lazyLoadArticles: ArticlePreview[] = [];
-    let allPagesNumber = articles.length / 5;
 
     if (pageNumber) {
       if (pageNumber < allPagesNumber) {
@@ -67,11 +66,6 @@ export class ArticleUtils {
             if (articles[i]) lazyLoadArticles.push(articles[i]);
           }
         }
-        // else if (articles.length) {  // If data has loaded from left side link
-        //   for (let i = (5 * pageNumber); i < ((5 * pageNumber) + 5); i++) {
-        //     if (articles[i]) lazyLoadArticles.push(articles[i]);
-        //   }
-        // }
 
         pageNumber++;
       }
@@ -83,5 +77,40 @@ export class ArticleUtils {
     }
 
     return lazyLoadArticles
+  }
+
+  static convertStringToJson(dataArray: any, key: string): any {
+    const dataArrayLength = Object.keys(dataArray).length;
+
+    for (let i = 0; i < dataArrayLength; i++) {
+      if (dataArray[i][key]) dataArray[i][key] = JSON.parse(dataArray[i][key]);
+    }
+
+    return dataArray;
+  }
+
+  static getIdFromUrlString(url: string): number {
+    let urlArray: string[] = [];
+
+    urlArray = url.split('/');
+    let isNumber = urlArray[urlArray.length - 1].match(/\d+/g);
+
+    if (isNumber) return +urlArray[urlArray.length - 1]
+  }
+
+  static extractDataAddressFromUrl(param, dataArray: any) {
+    let clonedArray = dataArray.concat();
+
+    if (param.url) {
+      const id = this.getIdFromUrlString(param.url);
+
+      // get the current category
+      if (id) clonedArray = clonedArray.find(obj => obj.IDX === id);
+    }
+
+    return {
+      contentTitleLazyLoad: ArticleUtils.contentLazyLoad(clonedArray).articleCategoryTitlesLazyLoad,
+      contentArticleLazyLoad: ArticleUtils.contentLazyLoad(clonedArray).articlesLazyLoad
+    }
   }
 }

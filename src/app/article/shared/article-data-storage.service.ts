@@ -40,6 +40,18 @@ export class ArtcileDataStorageService {
       )
   }
 
+  fetchDictionaryWordDetail(param: object) {
+    return this.http
+      .post<DictionaryWord>(
+        environment.baseUrl + '/api/Dictionary/GetDictionaryByIDX/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(word => this.dictionayDetailService.setDictionaryWordDetail(word[0]))
+      )
+  }
+
   fetchArticlesForSides(param: object) {
     return this.http
       .post<Articles>(
@@ -71,17 +83,5 @@ export class ArtcileDataStorageService {
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
       )
-  }
-
-  fetchDictionaryWordDetail(param: object) {
-    return this.http
-      .post<DictionaryWord>(
-        environment.baseUrl + '/api/Dictionary/GetDictionaryByIDX/',
-        param,
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-      )
-      .pipe(
-        tap(word => this.dictionayDetailService.setDictionaryWordDetail(word[0]))
-      )
-  }
+    }
 }

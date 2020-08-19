@@ -9,6 +9,7 @@ import { NavbarComponent } from './articles/navbar/navbar.component';
 import { RightSideComponent } from './articles/right-side/right-side.component';
 import { LeftSideComponent } from './articles/left-side/left-side.component';
 import { ArticleCarouselComponent } from './shared/article-carousel/article-carousel.component';
+import { ArticlesContentsComponent } from './articles/articles-contents/articles-contents.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ArticleCarouselComponent } from './shared/article-carousel/article-caro
     RightSideComponent,
     LeftSideComponent,
     ArticleCarouselComponent,
+    ArticlesContentsComponent,
   ],
   imports: [
     ArticleRoutingModule,

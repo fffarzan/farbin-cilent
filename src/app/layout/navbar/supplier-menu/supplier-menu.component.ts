@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SupplierService } from '../../../shared/supplier.service';
 import { Supplier } from 'src/app/shared/supplier.model';
 import { toggleMenu } from '../navbar.animation';
+import { LayoutDataStorageService } from '../../shared/layout-data-storage.service';
 
 @Component({
   selector: 'app-supplier-menu',
@@ -16,9 +17,13 @@ import { toggleMenu } from '../navbar.animation';
 export class SupplierMenuComponent implements OnInit {
   suppliers: Supplier[] = [];
 
-  constructor(private supplierService: SupplierService) { }
+  constructor(
+    private supplierService: SupplierService,
+    private layoutDataStorageService: LayoutDataStorageService
+  ) { }
 
   ngOnInit(): void {
-    this.suppliers = this.supplierService.getSuppliers();
+    this.layoutDataStorageService.fetchSuppliers()
+      .subscribe(() => this.suppliers = this.supplierService.getSuppliers());
   }
 }
