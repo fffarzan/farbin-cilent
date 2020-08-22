@@ -1,5 +1,5 @@
-import { DesktopOptions } from '../desktop-options-carousel.model';
-import { MobileOptions } from '../mobile-options-carousel.model';
+import { DesktopOptions } from '../models/desktop-options-carousel.model';
+import { MobileOptions } from '../models/mobile-options-carousel.model';
 
 export class GalleryCarousel {
   constructor(

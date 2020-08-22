@@ -1,15 +1,26 @@
-/* Mobile */
 
 :host { /* add css to container tag of dynamic component */
   position: fixed;
   bottom: 60px;
   width: 100%;
   z-index: 20000;
+  background-color: rgba(51, 51, 51, 0.5) !important;
 }
 
-.ContactUs {
-  background-color: rgba(51, 51, 51, 0.5);
+@media screen and (min-width: 768px) {
+  :host {
+    bottom: 50px;
+    /* height: 300px; */
+  }
 }
+
+@media screen and (min-width: 992px) {
+  :host {
+    width: 90%;
+  }
+}
+
+/* Mobile */
 
 @media screen and (max-width: 767px) {
   .TabBtn {
@@ -146,6 +157,7 @@
     width: 50%;
     padding-left: 5%;
     float: left;
+    margin-bottom: 30px;
   }
   .ContactInfoInFooter .Address-Fa {
     font-size: 15px;
@@ -188,6 +200,7 @@
     float: right;
   }
   .AboutInContact .AboutItem {
+    margin-top: 10px;
     color: #fff;
     font-size: 14px;
     float: right;
@@ -229,5 +242,15 @@
       padding-right: 20px;
       width: 100%;
     }
+  }
+  .FooterMenuTel {
+    margin-top: 20px;
+    font-size: 20px;
+    float: left;
+    color: #fff !important;
+    padding: 2px 5px 0 70px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #282829;
   }
 }

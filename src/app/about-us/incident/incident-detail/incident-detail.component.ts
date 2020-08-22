@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AboutUsDataStorageService } from '../../shared/about-us-data-storage.service';
 import { IncidentService } from '../incident.service';
 import { Incident } from './incident.model';
-import { GalleryCarousel } from 'src/app/shared/carousel/gallery-carousel/gallery-carousel.model';
+import { GalleryCarousel } from 'src/app/shared/gallery-carousel/gallery-carousel.model';
 
 @Component({
   selector: 'app-incident-detail',

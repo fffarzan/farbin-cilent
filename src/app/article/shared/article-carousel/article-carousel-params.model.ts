@@ -1,5 +1,5 @@
-import { DesktopOptions } from '../../../shared/carousel/desktop-options-carousel.model';
-import { MobileOptions } from '../../../shared/carousel/mobile-options-carousel.model';
+import { DesktopOptions } from '../../../shared/models/desktop-options-carousel.model';
+import { MobileOptions } from '../../../shared/models/mobile-options-carousel.model';
 import { ArticlePreview } from '../../article-detail/article.model';
 
 export class ArticleCarouselParams {

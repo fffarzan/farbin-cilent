@@ -1,5 +1,7 @@
-<div class="ContactUs">
-  <article class="MobileContactMenu ContactUs-Mobile">
+<article class="ContactUs">
+  
+  <!-- mobile menu -->
+  <section class="MobileContactMenu ContactUs-Mobile">
 
     <!-- tabs -->
     <p class="ContactTab" id="ContactTab" [ngClass]="{TabBtn: switchState === 'contact'}"
@@ -81,9 +83,10 @@
       </div>
     </section>
 
-  </article>
+  </section>
 
-  <article class="DescktopContactMenu ContactUs-Desktop">
+  <!-- desktop menu -->
+  <section class="DescktopContactMenu ContactUs-Desktop">
     <a href="tel:+982141548000">
       <span class="FooterMenuTel">
         <i class="fa fa-phone"></i>
@@ -159,5 +162,6 @@
       </a>
     </div>
 
-  </article>
-</div>
+  </section>
+
+</article>

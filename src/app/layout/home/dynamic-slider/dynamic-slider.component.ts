@@ -19,7 +19,7 @@ export class DynamicSliderComponent implements OnInit, OnDestroy {
     dots: false,
     nav: true,
     navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    responsive: { 992: { dots: true } }
+    responsive: { 992: { dots: false } }
   };
   banners: Banner[];
   enviornment: { production: boolean, baseUrl: string } = environment;

@@ -15,10 +15,17 @@
 
 .ProductCarousel-Desktop-MainCarousel-Item {
   margin: 5px 15px 5px 5px;
+  margin: 0 10px;
+}
+
+.ProductCarousel-OwlCarousel.owl-carousel.owl-drag .owl-item {
+  padding: 0 10px;
 }
 
 .ProductCarousel-Desktop-MainCarousel-ItemInner {
   width: 100%;
+  display: block;
+  padding: 0 10px;
 }
 
 .ProductCarousel-Desktop-MainCarousel-ItemMainImage {
@@ -35,6 +42,9 @@
   width: 30%;
   margin-top: 5px;
   float: left;
+  display: flex;
+  flex-flow: row-reverse;
+  padding-right: 5px;
 }
 
 .ProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage {
@@ -48,6 +58,10 @@
 .ProductCarousel-Desktop-MainCarousel-ThumbnailDesc {
   float: right;
 }
+
+
+
+
 
 /* mobile */
 
@@ -115,4 +129,46 @@
   width: 7px;
   height: 40px;
   border: 1px solid #333333;
+}
+
+
+
+
+/* AddToList button */
+
+.AddToListButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .AddToListButton {
+    width: 16px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .AddToListButton {
+    width: 20px;
+  }
+}
+
+/* Compare button */
+
+.CompareButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareButton {
+    width: 16px !important;
+    float: right;
+    margin: 3px 5px 5px 0;
+    cursor: pointer;
+  }
 }

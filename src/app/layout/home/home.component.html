@@ -1,14 +1,21 @@
-<article class="DefaultPage-Wrapper">
+<article class="DefaultPage-Wrapper" 
+  *ngIf="carouselData.data">
+  
   <app-dynamic-slider></app-dynamic-slider>
+  
   <div class="DefaultCarouselContainer">
+
     <section class="UnderSpotTitle">
       <h1 class="UnderSpotEn">Under Spot</h1>
       <div class="clearfix DefaultPage-UnderSpotEn-Clearfix"></div>
       <h2 class="UnderSpotFa DefaultPage-UnderSpotFa-Clearfix">زیر ذره بین</h2>
       <div class="clearfix"></div>
     </section>
+    
     <section class="DefaultPage-MainCarousel">
-      <app-product-carousel [productCarouselParams]="productCarouselParams"></app-product-carousel>
+      <app-product-carousel [carouselData]="carouselData"></app-product-carousel>
     </section>
+    
   </div>
+  
 </article>

@@ -7,7 +7,7 @@ import { ExtensionMethodService } from 'src/app/shared/extension-method.service'
 import { TrainingDataStorageService } from '../shared/training-data-storage.service';
 import { TrainingCourseHeldDetailService } from './training-course-held-detail.service';
 import { TrainingCourseHeldDetail } from './training-course-held-detail.model';
-import { GalleryCarousel } from 'src/app/shared/carousel/gallery-carousel/gallery-carousel.model';
+import { GalleryCarousel } from 'src/app/shared/gallery-carousel/gallery-carousel.model';
 import { TrainingCourseHeldAttendanceCarouselParam } from '../shared/training-course-held-attendance-carousel/training-course-held-attendance-carousel-param.model';
 
 @Component({

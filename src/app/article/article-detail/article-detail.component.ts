@@ -6,8 +6,7 @@ import { ArtcileDataStorageService } from '../shared/article-data-storage.servic
 import { Article } from './article.model';
 import { ArticleDetailService } from './article-detail.service';
 import { environment } from 'src/environments/environment';
-import { ArticleUtils } from '../shared/article-utils';
-import { CookieUtils } from 'src/app/shared/cookie-utils';
+import { CookieUtils } from 'src/app/shared/utils/cookie-utils';
 import { ArticleCarouselParams } from '../shared/article-carousel/article-carousel-params.model';
 
 @Component({

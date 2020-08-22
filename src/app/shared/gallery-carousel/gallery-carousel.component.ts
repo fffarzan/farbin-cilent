@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { GalleryCarousel, GalleryMedia } from './gallery-carousel.model';
 import { environment } from 'src/environments/environment';
-import { ExtensionMethodService } from '../../extension-method.service';
+import { ExtensionMethodService } from '../extension-method.service';
 import { GalleryModalService } from 'src/app/layout/gallery-modal/gallery-modal.service';
 
 @Component({
