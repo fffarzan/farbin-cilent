@@ -1,54 +1,63 @@
-<!-- desktop -->
-<!-- <article *ngIf="isMobile || isTablet" class="ProductCarousel">
-  <div id="Product{{::DynamicID}}" class="ProductCarousel-OwlCarousel owl-carousel" data-owl-carousel
-    data-options=owlcarouseloptions>
-    <article class="item ProductCarousel-Desktop-MainCarousel-Item" data-owl-carousel-item
-      data-ng-repeat="DataDetails in datasource">
+<!-- desktop template -->
+<article class="ProductCarousel" 
+  *ngIf="!isMobile && !isTablet">
+  <owl-carousel-o id="Product{{dynamicId}}" 
+    class="ProductCarousel-OwlCarousel" 
+    [options]="carouselData.desktopOptions">
+    <ng-container *ngFor="let product of carouselData.data">
+      <ng-template class="item ProductCarousel-Desktop-MainCarousel-Item"
+        carouselSlide
+        [width]="carouselItemWidth">
 
-      <a href="/{{::pageurldirection}}/{{::DataDetails.IDX}}" class="ProductCarousel-Desktop-MainCarousel-ItemInner">
-        <img
-          ng-src="{{::DataDetails[dynamicfieldname] ? ServerUrl + DataDetails[dynamicfieldname] : staticurl | GetSmallImage}}"
-          alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
-          class="DefineItemImage{{::DataDetails.IDX}} ProductCarousel-Desktop-MainCarousel-ItemMainImage" />
-        <section class="ProductCarousel-Desktop-MainCarousel-ItemDesc">
-          <span class="UnderSpotPartNumber">{{::DataDetails.PartNumber}}</span>
-          <div class="clearfix"></div>
-          <span class="UnderSpotPartIndex">{{::DataDetails.IndexDescriptionText}}</span>
+        <a [routerLink]="['/product/define-detail-product', product.IDX]" class="ProductCarousel-Desktop-MainCarousel-ItemInner">
+          <img
+            [src]="product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl | getSmallImage"
+            alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
+            class="DefineItemImage{{ product.IDX }} ProductCarousel-Desktop-MainCarousel-ItemMainImage" />
+          <div class="ProductCarousel-Desktop-MainCarousel-ItemDesc">
+            <span class="UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
+            <span class="UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
+          </div>
+        </a>
+
+        <section class="ProductCarousel-Desktop-MainCarousel-Thumbnail">
+          <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
+            class="ProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage">
+          <div class="ProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
+            <!-- data-placement="left" -->
+            <!-- tooltip -->
+            <!-- ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" -->
+            <img src="assets/img/AddToListWhite.png" 
+              class="AddToListButton clearfix" 
+              title="Add to List"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"/>
+              <!-- data-placement="left" -->
+              <!-- tooltip -->
+              <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" -->
+            <img src="assets/img/Compare.png" 
+              class="CompareButton" 
+              title="Compare"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
+          </div>
         </section>
-      </a>
 
-      <section class="ProductCarousel-Desktop-MainCarousel-Thumbnail">
-        <img ng-src="{{::ServerUrl + DataDetails.IndexDescriptionPicUrl}}"
-          class="ProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage" />
-        <section class="ProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
-          <img src="/images/AddToListWhite.png" class="AddToListButton" data-placement="left" title="Add to List"
-            tooltip
-            alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
-            ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" />
-          <div class="clearfix"></div>
-          <img src="/images/Compare.png" class="CompareButton" data-placement="left" title="Compare" tooltip
-            alt="{{::DataDetails.ProductName_En}} - {{::DataDetails.PartNumber}}"
-            ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" />
-        </section>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</article>
 
-      </section>
-    </article>
-  </div>
-</article> -->
-
-<!-- mobile -->
+<!-- mobile template -->
 <article *ngIf="isMobile || isTablet"
   class="ProductCarousel-Mobile">
-  <div *ngFor="let product of products"
+  <div *ngFor="let product of carouselData.data"
     class="ProductCarousel-Mobile-Inner">
 
-    <!-- href="/{{ pageurldirection }}/{{ DataDetails.IDX }}" -->
-    <a href="#"
+    <a [routerLink]="['/product/define-detail-product', product.IDX]"
       class="ProductCarousel-Mobile-MainIamge">
-      <img [appMobileTemplate]="productCarouselParams"
+      <img [appMobileTemplate]="carouselData"
         class="DefineItemImage{{ product.IDX }}"
         alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
-        [src]="(product[productCarouselParams.dynamicFieldName] ? enviornment.baseUrl + product[productCarouselParams.dynamicFieldName] : productCarouselParams.staticUrl) | getSmallImage" />
+        [src]="(product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl) | getSmallImage" />
     </a>
 
     <section class="ProductCarousel-Mobile-Thumbnail">

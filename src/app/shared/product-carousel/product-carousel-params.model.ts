@@ -7,6 +7,7 @@ export class ProductCarouselParams {
     public dynamicFieldName: string,
     public pageUrlDirection: string,
     public desktopOptions: DesktopOptions,
-    public mobileOptions: MobileOptions
+    public mobileOptions: MobileOptions,
+    public data,
   ) { }
 }
