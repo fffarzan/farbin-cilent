@@ -1,1 +1,80 @@
-<p>product-category works!</p>
+<article class="ProductCategoryHeader">
+
+  <!-- masterProduct carousel -->
+  <!-- <section class="ProductCategory-Carousel"
+    id="MasterProduct"
+    productcategorycarousel
+    datasource="SubCategories.CurrentCategory[0].MasterProducts"
+    imagestaticurl="''"
+    dynamicfieldimage="'ProductUrl'"
+    pageurldirection="'MasterProduct'"
+    dynamicfieldname="'Name_En'"
+    desktopcarouseloptions="{
+      items: 3,
+      stagePadding: 20,
+      responsive: { 1024: { items: 6 } }
+    }"
+    mobilecarouseloptions="{
+      itemsMobile: [500,2.5],
+      itemsTablet: [768,0],
+      itemsDesktop: [1024,5]
+    }">
+  </section> -->
+
+  <!-- ProductCategoryTree -->
+  <ul class="ProductCategoryTree">
+    <!-- <li ng-repeat="SubCat in SubCat.Children" 
+      data-ng-include="'tree-structure'" 
+      id="Cat{{::SubCat.IDX}}"></li> -->
+  </ul>
+
+  <!-- category container -->
+  <section class="CategoryContainer">
+
+    <!-- Recursion -->
+    <!-- <script type="text/ng-template" 
+      id="tree-structure">
+      <a data-ng-click="ToggleCollpase($event,SubCat.IDX)">
+        <i id="icon{{::SubCat.IDX}}" 
+          class="fa fa-sort-down Color-Yellow CursorPointer"></i>
+        <span class="CursorPointer Color-Withe">{{::SubCat.Name_En}}</span>
+        <div class="clearfix"></div>
+      </a>
+      <section id="List{{::SubCat.IDX}}">
+        <div class="ProductCategory-Carousel" 
+          id="MasterProduct"
+          productcategorycarousel 
+          datasource="SubCat.MasterProducts"
+          imagestaticurl="''"
+          dynamicfieldimage="'ProductUrl'"
+          pageurldirection="'MasterProduct'"
+          dynamicfieldname="'Name_En'"
+          desktopcarouseloptions="{
+            items: 3,
+            stagePadding: 20,
+            responsive: { 1024: { items: 6 } }
+          }" 
+          mobilecarouseloptions="{
+            itemsMobile: [500,2.5],
+            itemsTablet: [768,0],
+            itemsDesktop: [1024,5]
+          }">
+        </div>
+        <ul class="ProductCategoryTree">
+          <li ng-repeat="SubCat in SubCat.Children" 
+            data-ng-include="'tree-structure'" 
+            id="Cat{{::SubCat.IDX}}"></li>
+        </ul>
+      </section>
+    </script> -->
+    <ul class="ProductCategoryTree" 
+      id="List0">
+      <!-- <li ng-repeat="SubCat in SubCategories.ChildCategories" 
+        data-ng-include="'tree-structure'" 
+        id="Cat{{::SubCat.IDX}}">
+      </li> -->
+    </ul>
+    
+  </section>
+
+</article>
