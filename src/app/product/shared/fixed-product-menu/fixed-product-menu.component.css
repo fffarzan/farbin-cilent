@@ -1,0 +1,128 @@
+/* mobile-first */
+
+.FixedMenuProductCategory-Mobile {
+  overflow-x: scroll;
+  text-align: center;
+  background-color: #000;
+}
+
+.FixedMenuProductCategory-Mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.FixedMenuProductCategory-UpperMenu {
+  background-color: #000;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0 15px;
+  text-align: right;
+}
+
+.FixedMenuProductCategory-UpperMenu-Breadcrumb {
+  width: 80%;
+  align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .FixedMenuProductCategory-UpperMenu {
+    padding: 0 25px 0 25px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .FixedMenuProductCategory-UpperMenu {
+    padding: 0 70px 0 47px;
+  }
+}
+
+/* supplier */
+
+.FixedMenuProductCategory-UpperMenu-Supplier {
+  width: 20%;
+}
+
+.SupplierIcon {
+  /* padding: 8px 15px 8px 8px; */
+  padding: 8px 0 8px 0;
+  direction: rtl;
+  text-align: right;
+  width: 100%;
+  /* text-align: ; */
+}
+
+.SupplierIcon img {
+  width: 50%;
+  /* margin: 5px 15px 10px 0; */
+  margin: 5px 0 10px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .SupplierIcon {
+    padding: 0;
+    width: 20%;
+  }
+  .SupplierIcon img {
+    margin: 15px 0;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .SupplierIcon {
+    padding: 20px 0 0 0;
+  }
+  .SupplierIcon img {
+    margin-top: 0;
+  }
+}
+
+/* upper menu */
+
+/* menu */
+
+.FixedMenuProductCategory-Mobile-Items {
+  display: inline-flex;
+  list-style: none;
+  padding-left: 15px;
+}
+
+.FixedMenuProductCategory-Mobile-Item {
+  margin-right: 10px;
+  display: block;
+}
+
+.FixedMenuProductCategory-Mobile-Item:hover {
+  color: #fff;
+}
+
+.FixedMenuProductCategory-Mobile-Item img {
+  width: 90px;
+  margin: 0 auto;
+}
+
+.FixedMenuProductCategory-Mobile-Item p {
+  text-align: center;
+  margin: 10px 0 0 0;
+  width: 90px;
+  font-size: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .FixedMenuProductCategory-Mobile {
+    padding: 3px 25px 0 120px;
+  }
+  .FixedMenuProductCategory-Mobile-Item {
+    margin-right: 20px;
+  }
+  .FixedMenuProductCategory-Mobile-Item p {
+    font-size: 14px;
+    width: unset;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .FixedMenuProductCategory-Mobile {
+    padding: 3px 65px 0 120px;
+  }
+}

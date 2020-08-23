@@ -1,0 +1,30 @@
+<!-- upper menu -->
+<article class="FixedMenuProductCategory-UpperMenu">
+
+  <!-- breadcrumb -->
+  <!-- <section class="FixedMenuProductCategory-UpperMenu-Breadcrumb" 
+    breadcrumb
+    breadcrumbdata="BreadCrumbsData"></section> -->
+
+  <!-- supplier -->
+  <section class="FixedMenuProductCategory-UpperMenu-Supplier SupplierIcon">
+    <!-- <img ng-src="{{ServerUrl + datasource.Supplier[0].MenuPicUrl}}" 
+      alt="{{::datasource.Supplier[0].Name_En}}" /> -->
+  </section>
+
+</article>
+
+<!-- menu -->
+<article class="FixedMenuProductCategory-Mobile">
+  <ul class="FixedMenuProductCategory-Mobile-Items">
+    <li ng-repeat="Productcategory in datasource.ChildCategories">
+      <!-- href="/ProductCategory/{{::Productcategory.IDXSupplier}}/{{::Productcategory.IDX}}" -->
+      <a class="FixedMenuProductCategory-Mobile-Item">
+        <!-- <img ng-src="{{::ServerUrl + Productcategory.PicUrl | GetSmallImage}}" 
+          class="imgProductCategoryHeader"
+          alt="{{::Productcategory.Name_En}} - {{::Productcategory.Name_Fa}}" /> -->
+        <!-- <p>{{::Productcategory.Name_En}}</p> -->
+      </a>
+    </li>
+  </ul>
+</article>
