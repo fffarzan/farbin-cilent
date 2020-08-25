@@ -1,0 +1,35 @@
+.FixedMenuProductCategory-Mobile {
+  overflow-x: scroll;
+  text-align: center;
+  background-color: #000;
+}
+
+.FixedMenuProductCategory-Mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.FixedMenuProductCategory-UpperMenu {
+  background-color: #000;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0 15px;
+  text-align: right;
+}
+
+.FixedMenuProductCategory-UpperMenu-Breadcrumb {
+  width: 80%;
+  align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .FixedMenuProductCategory-UpperMenu {
+    padding: 0 25px 0 25px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .FixedMenuProductCategory-UpperMenu {
+    padding: 0 70px 0 47px;
+  }
+}

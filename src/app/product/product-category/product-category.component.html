@@ -1,80 +1,39 @@
-<article class="ProductCategoryHeader">
+<article class="ProductCategoryHeader"
+  *ngIf="productCategories">
 
-  <!-- masterProduct carousel -->
-  <!-- <section class="ProductCategory-Carousel"
-    id="MasterProduct"
-    productcategorycarousel
-    datasource="SubCategories.CurrentCategory[0].MasterProducts"
-    imagestaticurl="''"
-    dynamicfieldimage="'ProductUrl'"
-    pageurldirection="'MasterProduct'"
-    dynamicfieldname="'Name_En'"
-    desktopcarouseloptions="{
-      items: 3,
-      stagePadding: 20,
-      responsive: { 1024: { items: 6 } }
-    }"
-    mobilecarouseloptions="{
-      itemsMobile: [500,2.5],
-      itemsTablet: [768,0],
-      itemsDesktop: [1024,5]
-    }">
-  </section> -->
+  <app-fixed-menu [menuData]="fixedMenuData"></app-fixed-menu>
 
-  <!-- ProductCategoryTree -->
-  <ul class="ProductCategoryTree">
-    <!-- <li ng-repeat="SubCat in SubCat.Children" 
-      data-ng-include="'tree-structure'" 
-      id="Cat{{::SubCat.IDX}}"></li> -->
-  </ul>
+  <!-- product category carousel for data without child categories -->
+  <app-product-category-carousel class="ProductCategory-Carousel"
+    *ngIf="productCategories.CurrentCategory[0]"
+    [carouselData]="productCategoryCarouelParams"
+    [data]="productCategories.CurrentCategory[0].MasterProducts"></app-product-category-carousel>
 
-  <!-- category container -->
+  <!-- product categorries data with child categories -->
   <section class="CategoryContainer">
-
-    <!-- Recursion -->
-    <!-- <script type="text/ng-template" 
-      id="tree-structure">
-      <a data-ng-click="ToggleCollpase($event,SubCat.IDX)">
-        <i id="icon{{::SubCat.IDX}}" 
-          class="fa fa-sort-down Color-Yellow CursorPointer"></i>
-        <span class="CursorPointer Color-Withe">{{::SubCat.Name_En}}</span>
-        <div class="clearfix"></div>
-      </a>
-      <section id="List{{::SubCat.IDX}}">
-        <div class="ProductCategory-Carousel" 
-          id="MasterProduct"
-          productcategorycarousel 
-          datasource="SubCat.MasterProducts"
-          imagestaticurl="''"
-          dynamicfieldimage="'ProductUrl'"
-          pageurldirection="'MasterProduct'"
-          dynamicfieldname="'Name_En'"
-          desktopcarouseloptions="{
-            items: 3,
-            stagePadding: 20,
-            responsive: { 1024: { items: 6 } }
-          }" 
-          mobilecarouseloptions="{
-            itemsMobile: [500,2.5],
-            itemsTablet: [768,0],
-            itemsDesktop: [1024,5]
-          }">
-        </div>
+    <ng-template #recursiveList
+      let-list="list">
+      <div *ngFor="let childCategory of list">
+        <!-- data-ng-click="ToggleCollpase($event,SubCat.IDX)" -->
+        <a>
+          <i class="fa fa-sort-down Color-Yellow CursorPointer"
+            id="icon{{ childCategory.IDX }}"></i>
+          <span class="CursorPointer Color-Withe">{{ childCategory.Name_En }}</span>
+          <div class="clearfix"></div>
+        </a>
+        <app-product-category-carousel [carouselData]="productCategoryCarouelParams"
+          [data]="childCategory.MasterProducts"></app-product-category-carousel>
         <ul class="ProductCategoryTree">
-          <li ng-repeat="SubCat in SubCat.Children" 
-            data-ng-include="'tree-structure'" 
-            id="Cat{{::SubCat.IDX}}"></li>
+          <ng-container *ngTemplateOutlet="recursiveList; context: { list: childCategory.Children }">
+          </ng-container>
         </ul>
-      </section>
-    </script> -->
-    <ul class="ProductCategoryTree" 
+      </div>
+    </ng-template>
+    <ul class="ProductCategoryTree"
       id="List0">
-      <!-- <li ng-repeat="SubCat in SubCategories.ChildCategories" 
-        data-ng-include="'tree-structure'" 
-        id="Cat{{::SubCat.IDX}}">
-      </li> -->
+      <ng-container *ngTemplateOutlet="recursiveList; context: { list: productCategories.ChildCategories }">
+      </ng-container>
     </ul>
-    
   </section>
 
 </article>

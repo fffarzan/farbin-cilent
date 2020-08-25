@@ -1,16 +1,22 @@
 <ul class="breadcrumb">
+
   <li class="breadcrumb-default">Product Category</li>
-  <!-- ng-repeat="subCategory in breadcrumbdata | orderBy:'id':true" -->
-  <li class="breadcrumb-category">
-    <!-- href="/ProductCategory/{{subCategory.IDXSupplier}}/{{subCategory.IDX}}" -->
-    <!-- <a class="category-a">{{::subCategory.Name_En}}</a> -->
+
+  <!-- orderBy:'id':true" -->
+  <li class="breadcrumb-category"
+    *ngFor="let category of data">
+    <a class="category-a"
+      [routerLink]="['/product-category/', category.IDXSupplier, category.IDX]">{{ category.Name_En }}</a>
     <section class="category-samelevelcategories">
-      <!-- ng-repeat="sameLevels in subCategory.SameLevelCategories" -->
-      <div>
-        <!-- href="/ProductCategory/{{subCategory.IDXSupplier}}/{{sameLevels.IDX}}" -->
-        <!-- <a class="category-samelevelcategories-a" >{{::sameLevels.Name_En}}</a> -->
+
+      <div *ngFor="let subCategory of category.SameLevelCategories">
+        <a [routerLink]="['/product-category/', category.IDXSupplier, subCategory.IDX]"
+          class="category-samelevelcategories-a">{{ subCategory.Name_En }}</a>
       </div>
+
     </section>
   </li>
+
   <!-- <li ng-if="masterproductlevel">{{::masterproductlevel}}</li> -->
+
 </ul>

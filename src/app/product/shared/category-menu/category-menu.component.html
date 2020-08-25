@@ -1,0 +1,15 @@
+<section class="FixedMenuProductCategory-Mobile">
+  <ul class="FixedMenuProductCategory-Mobile-Items">
+
+    <li *ngFor="let item of data">
+      <a [routerLink]="['/product-category/', item.IDXSupplier, item.IDX]"
+        class="FixedMenuProductCategory-Mobile-Item">
+        <img class="imgProductCategoryHeader"
+          [src]="enviornment.baseUrl + item.PicUrl | getSmallImage"
+          alt="{{ item.Name_En }} - {{ item.Name_Fa }}" />
+        <p>{{ item.Name_En }}</p>
+      </a>
+    </li>
+
+  </ul>
+</section>

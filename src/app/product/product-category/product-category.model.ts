@@ -1,12 +1,12 @@
 export class ProductCategory {
   constructor(
     public ChildCategories: ProductChildCategory[],
-    public CurrentCategor: any[],
-    public Supplier: SupplierInProductCategory[],
-  ) {}
+    public CurrentCategory: ProductChildCategory[],
+    public Supplier: ProductCategorySupplier[],
+  ) { }
 }
 
-export class SupplierInProductCategory {
+export class ProductCategorySupplier {
   constructor(
     public ActiveMenuInSite: boolean,
     public Description_En: string,
@@ -22,7 +22,7 @@ export class SupplierInProductCategory {
     public RegistrationCode: string,
     public RegistrationNumber: number,
     public Sort: number
-  ) {}
+  ) { }
 }
 
 export class ProductChildCategory {
@@ -38,11 +38,11 @@ export class ProductChildCategory {
     public Name_Fa: string,
     public PicUrl: string,
     public Status: number
-  ) {}
+  ) { }
 }
 
 export class MasterProduct {
-  constructor (
+  constructor(
     public IDProduct: string,
     public IDProductCategory: string,
     public IDX: number,
@@ -51,5 +51,5 @@ export class MasterProduct {
     public Name_Fa: string,
     public ProductUrl: string,
     public Status: string
-  ) {}
+  ) { }
 }
