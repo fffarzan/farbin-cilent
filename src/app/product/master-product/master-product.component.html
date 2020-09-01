@@ -1,1 +1,66 @@
-<p>master-product works!</p>
+<article class="MasterProducts">
+
+  <!-- head -->
+  <section class="MasterProductHeader">
+    <!-- logo -->
+    <!-- <img ng-src="{{ServerUrl + DefineDetailProducts[0].MenuPicUrl}}" 
+      class="SupplierLogoImg"
+      alt="{{::DefineDetailProducts[0].SpplireName_En}}" /> -->
+
+    <!-- <section class="FixedMenuProductCategory-UpperMenu-Breadcrumb" 
+      breadcrumb
+      breadcrumbdata="BreadCrumbsData"
+      masterproductlevel="DefineDetailProducts[0].Name_En"></section> -->
+
+    <!-- title -->
+    <section class="TitleHeader">
+      <div class="MasterIcon">
+        <!-- <img ng-src="{{ServerUrl + DefineDetailProducts[0].ProductUrl | GetSmallImage}}"
+          alt="{{::DefineDetailProducts[0].Name_En}} - {{::DefineDetailProducts[0].Name_Fa}}" /> -->
+      </div>
+      <table class="HeaderTable">
+        <tr class="MasterProductHeader-HeaderTable-FirstRow">
+          <td class="MasterProductHeader-HeaderTable-FirstRowTd">
+            <!-- {{::DefineDetailProducts[0].Name_En}} -->
+          </td>
+        </tr>
+        <tr>
+          <td class="MasterProductHeader-HeaderTable-SecondRowTd">
+            <!-- {{::DefineDetailProducts[0].Name_Fa}} -->
+          </td>
+        </tr>
+      </table>
+    </section>
+    <div class="clearfix"></div>
+    <section class="MasterProduct-Header-Box"></section>
+  </section>
+  <div class="clearfix"></div>
+  <!-- body -->
+  <!-- data-ng-repeat="DefineDetailProduct in DefineDetailProducts[0].Property" -->
+  <section class="PropertyDefineDetails">
+    <!-- title -->
+    <section class="BasePropertyOfProduct">
+      <!-- <h1>{{::DefineDetailProduct.Name_En}}</h1> -->
+    </section>
+    <!-- carousel -->
+    <!-- <section class="MasterProduct-Carousel">
+      <section productcarousel 
+        id="MasterProduct" 
+        datasource="DefineDetailProduct.DefineDetails" 
+        staticurl="''"
+        dynamicfieldname="'PicUrl'" 
+        pageurldirection="'DefineDetailProduct'" 
+        owlcarouseloptions="{
+          items: 3,
+          stagePadding: 20,
+          responsive: { 1024: { items: 6 } }
+        }" 
+        productcarouseloptions="{
+          itemsMobile: [500,2.2],
+          itemsTablet: [768,0],
+          itemsDesktop: [1024,5.3]
+        }">
+      </section>
+    </section> -->
+  </section>
+</article>

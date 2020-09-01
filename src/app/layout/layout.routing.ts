@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'about-us', loadChildren: () => import('../about-us/about-us.module').then(m => m.AboutUsModule) },
   { path: 'training', loadChildren: () => import('../training/training.module').then(m => m.TrainingModule) },
   { path: 'article-category', loadChildren: () => import('../article/article.module').then(m => m.ArticleModule) },
-  { path: 'product-category/:supplierId/:parentCateoryId', loadChildren: () => import('../product/product.module').then(m => m.ProductModule) }
+  { path: 'product/product-category/:supplierId/:parentCateoryId', loadChildren: () => import('../product/product.module').then(m => m.ProductModule) }
 ];
 
 @NgModule({

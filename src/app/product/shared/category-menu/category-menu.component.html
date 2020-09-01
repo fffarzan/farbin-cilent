@@ -5,7 +5,7 @@
   <ul class="FixedMenuProductCategory-Mobile-Items">
 
     <li *ngFor="let item of data">
-      <a [routerLink]="['/product-category/', item.IDXSupplier, item.IDX]"
+      <a [routerLink]="['product/product-category/', item.IDXSupplier, item.IDX]"
         class="FixedMenuProductCategory-Mobile-Item">
         <img class="imgProductCategoryHeader"
           [src]="enviornment.baseUrl + item.PicUrl | getSmallImage"

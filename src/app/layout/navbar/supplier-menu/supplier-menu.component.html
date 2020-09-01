@@ -1,7 +1,11 @@
 <article class="PopoverProductMenu">
-  <div class="Item SupplierItemInMenu" *ngFor="let supplier of suppliers">
-    <a id="MenuIDX" [routerLink]="['product-category', supplier.IDX, '0']">
-      <img class="clearfix" [src]="'http://192.168.10.15:2015/' + supplier.PicUrl" alt="{{ supplier.Name_En }}" />
+  <div class="Item SupplierItemInMenu"
+    *ngFor="let supplier of suppliers">
+    <a id="MenuIDX"
+      [routerLink]="['product/product-category', supplier.IDX, '0']">
+      <img class="clearfix"
+        [src]="'http://192.168.10.15:2015/' + supplier.PicUrl"
+        alt="{{ supplier.Name_En }}" />
     </a>
   </div>
 </article>
