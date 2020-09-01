@@ -1,8 +1,6 @@
 <article class="ProductCategoryHeader"
   *ngIf="productCategories">
 
-  <app-fixed-menu [menuData]="fixedMenuData"></app-fixed-menu>
-
   <!-- product category carousel for data without child categories -->
   <app-product-category-carousel class="ProductCategory-Carousel"
     *ngIf="productCategories.CurrentCategory[0]"
@@ -15,11 +13,10 @@
       let-list="list">
       <div *ngFor="let childCategory of list">
         <!-- data-ng-click="ToggleCollpase($event,SubCat.IDX)" -->
-        <a>
+        <a class="clearfix">
           <i class="fa fa-sort-down Color-Yellow CursorPointer"
             id="icon{{ childCategory.IDX }}"></i>
           <span class="CursorPointer Color-Withe">{{ childCategory.Name_En }}</span>
-          <div class="clearfix"></div>
         </a>
         <app-product-category-carousel [carouselData]="productCategoryCarouelParams"
           [data]="childCategory.MasterProducts"></app-product-category-carousel>

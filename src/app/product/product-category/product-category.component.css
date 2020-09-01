@@ -1,4 +1,27 @@
-/* mobile-first */
+.ProductCategoryHeader {
+  padding: 0 15px;
+}
+
+/* product categories */
+
+.CategoryContainer {
+  margin-top: 250px;
+}
+
+.CategoryContainer i {
+  color: #ffb700;
+  cursor: pointer;
+}
+
+.CategoryContainer ul {
+  padding-left: 0;
+}
+
+.CategoryContainer a {
+  margin: 5px 0;
+  display: block;
+  cursor: pointer;
+}
 
 .ProductCategoryCarousel a {
   color: white;
@@ -42,6 +65,9 @@
 }
 
 @media screen and (min-width: 992px) {
+  .ProductCategoryHeader {
+    padding: 0 70px 60px 47px;
+  }
   .ProductCategoryCarousel-OwlCarousel {
     margin: 10px 0px;
   }

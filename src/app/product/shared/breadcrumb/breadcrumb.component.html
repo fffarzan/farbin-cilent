@@ -1,22 +1,27 @@
-<ul class="breadcrumb">
+<article class="FixedMenuProductCategory-UpperMenu-Breadcrumb"
+  appTriggerScroll
+  (scrollTriggered)="onScrollTriggered()"
+  (scrollReachedTop)="onScrollReachedTop()">
+  <ul class="breadcrumb"
+    *ngIf="isScrollReachedTop">
 
-  <li class="breadcrumb-default">Product Category</li>
+    <li class="breadcrumb-default">Product Category</li>
 
-  <!-- orderBy:'id':true" -->
-  <li class="breadcrumb-category"
-    *ngFor="let category of data">
-    <a class="category-a"
-      [routerLink]="['/product-category/', category.IDXSupplier, category.IDX]">{{ category.Name_En }}</a>
-    <section class="category-samelevelcategories">
+    <li class="breadcrumb-category"
+      *ngFor="let category of data | orderBy: '-'">
+      <a class="category-a"
+        [routerLink]="['/product-category/', category.IDXSupplier, category.IDX]">{{ category.Name_En }}</a>
+      <section class="category-samelevelcategories">
 
-      <div *ngFor="let subCategory of category.SameLevelCategories">
-        <a [routerLink]="['/product-category/', category.IDXSupplier, subCategory.IDX]"
-          class="category-samelevelcategories-a">{{ subCategory.Name_En }}</a>
-      </div>
+        <div *ngFor="let subCategory of category.SameLevelCategories">
+          <a [routerLink]="['/product-category/', category.IDXSupplier, subCategory.IDX]"
+            class="category-samelevelcategories-a">{{ subCategory.Name_En }}</a>
+        </div>
 
-    </section>
-  </li>
+      </section>
+    </li>
 
-  <!-- <li ng-if="masterproductlevel">{{::masterproductlevel}}</li> -->
+    <!-- <li ng-if="masterproductlevel">{{::masterproductlevel}}</li> -->
 
-</ul>
+  </ul>
+</article>

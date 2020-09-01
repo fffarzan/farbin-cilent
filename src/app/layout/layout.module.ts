@@ -16,6 +16,8 @@ import { ContactMenuPlaceholderDirective } from './navbar/contact-menu/contact-m
 import { SupplierMenuPlaceholderDirective } from './navbar/supplier-menu/supplier-menu-placeholder.directive';
 import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
 import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-placeholder.directive';
+import { FixedMenuComponent } from './fixed-menu/fixed-menu.component';
+import { ProductModule } from '../product/product.module';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-
     ContactMenuPlaceholderDirective,
     SupplierMenuPlaceholderDirective,
     GalleryModalComponent,
-    GalleryModalPlaceholderDirective
+    GalleryModalPlaceholderDirective,
+    FixedMenuComponent
   ],
   imports: [
     SharedModule,
-    LayoutRouting
+    LayoutRouting,
+    ProductModule
   ],
   entryComponents: [
     CatalogsComponent,

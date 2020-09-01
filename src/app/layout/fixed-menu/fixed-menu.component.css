@@ -1,0 +1,15 @@
+:host {
+  position: fixed;
+  width: 100%;
+  top: 60px;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+@media screen and (min-width: 992px) {
+  :host {
+    width: 90%;
+    left: 5%;
+  }
+}

@@ -1,3 +1,18 @@
+:host {
+  display: block;
+  background-color: #000;
+}
+
+.FixedMenuProductCategory-Mobile {
+  display: flex;
+  direction: ltr;
+  overflow: auto;
+}
+
+.FixedMenuProductCategory-Mobile::-webkit-scrollbar {
+  height: 0;
+}
+
 .FixedMenuProductCategory-Mobile-Items {
   display: inline-flex;
   list-style: none;
@@ -28,6 +43,7 @@
 @media screen and (min-width: 768px) {
   .FixedMenuProductCategory-Mobile {
     padding: 3px 25px 0 120px;
+    text-align: center;
   }
   .FixedMenuProductCategory-Mobile-Item {
     margin-right: 20px;

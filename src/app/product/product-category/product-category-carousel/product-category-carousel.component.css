@@ -1,4 +1,7 @@
-/* mobile-first */
+:host {
+  margin-bottom: 10px;
+  display: block;
+}
 
 .ProductCategoryCarousel a {
   color: white;

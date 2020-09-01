@@ -1,5 +1,10 @@
 /* mobile-first */
 
+:host {
+  width: 80%;
+  align-self: center;
+}
+
 .breadcrumb {
   letter-spacing: 1px;
   list-style: none;
@@ -32,12 +37,14 @@
   color: #ccc !important;
 }
 
-.breadcrumb li {  /* Display list items side by side */
+.breadcrumb li {
+  /* Display list items side by side */
   display: inline;
   font-size: 13px;
 }
 
-.breadcrumb li+li:before {  /* Add a (>) before/behind each list item */
+.breadcrumb li+li:before {
+  /* Add a (>) before/behind each list item */
   display: inline;
   padding: 5px;
   color: #f0f0f0;
@@ -54,7 +61,8 @@
   cursor: pointer;
 }
 
-.category-samelevelcategories {  /* Style same level categories in a block */
+.category-samelevelcategories {
+  /* Style same level categories in a block */
   display: none;
   position: absolute;
   text-align: left;
@@ -79,14 +87,15 @@
   color: #ccc !important;
 }
 
-.breadcrumb-category:hover .category-samelevelcategories {  /* Display same level categories in a block */
+.breadcrumb-category:hover .category-samelevelcategories {
+  /* Display same level categories in a block */
   display: block;
 }
 
 @media screen and (min-width: 992px) {
   .breadcrumb {
     display: block;
-    margin: 0 0 0 0; 
+    margin: 0 0 0 0;
     text-align: left;
     padding-left: 16%;
   }

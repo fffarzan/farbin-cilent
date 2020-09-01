@@ -7,7 +7,7 @@ import { MasterProductComponent } from './master-product/master-product.componen
 import { DefineDetailProductComponent } from './define-detail-product/define-detail-product.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { ProductCategoryCarouselComponent } from './product-category/product-category-carousel/product-category-carousel.component';
-import { FixedMenuComponent } from './product-category/fixed-menu/fixed-menu.component';
+import { ProductCategoryFixedMenuComponent } from './product-category/product-category-fixed-menu/product-category-fixed-menu.component';
 import { SupplierLogoComponent } from './shared/supplier-logo/supplier-logo.component';
 import { CategoryMenuComponent } from './shared/category-menu/category-menu.component';
 
@@ -18,13 +18,16 @@ import { CategoryMenuComponent } from './shared/category-menu/category-menu.comp
     DefineDetailProductComponent,
     BreadcrumbComponent,
     ProductCategoryCarouselComponent,
-    FixedMenuComponent,
+    ProductCategoryFixedMenuComponent,
     SupplierLogoComponent,
     CategoryMenuComponent
   ],
   imports: [
     ProductRouting,
     SharedModule
+  ],
+  exports: [
+    ProductCategoryFixedMenuComponent
   ]
 })
 export class ProductModule { }

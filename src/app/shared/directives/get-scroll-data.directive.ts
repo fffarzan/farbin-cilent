@@ -8,7 +8,7 @@ export class GetScrollDataDirective {
 
   @HostListener('scroll', ['$event'])
   public onScroll(event: Event) {
-    const element = (event.srcElement as HTMLElement)
+    const element = (event.srcElement as HTMLElement);
 
     if (element.scrollTop + element.clientHeight > element.scrollHeight - 1) {
       this.scrolled.emit();

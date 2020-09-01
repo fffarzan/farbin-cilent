@@ -8,6 +8,7 @@ import { BreadcrumbService } from './breadcrumb.service';
 })
 export class BreadcrumbComponent implements OnInit, DoCheck {
   data;
+  isScrollReachedTop: boolean = true;
 
   constructor(private breadcrumbService: BreadcrumbService) { }
 
@@ -17,5 +18,13 @@ export class BreadcrumbComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.data = this.breadcrumbService.getBreadcrumb();
+  }
+
+  onScrollTriggered() {
+    this.isScrollReachedTop = false;
+  }
+
+  onScrollReachedTop() {
+    this.isScrollReachedTop = true;
   }
 }

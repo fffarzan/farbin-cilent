@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { SupplierLogoService } from './supplier.logo.service';

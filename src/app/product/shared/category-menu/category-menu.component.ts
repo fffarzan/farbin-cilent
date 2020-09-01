@@ -11,6 +11,7 @@ import { CategoryMenuService } from './category-menu.service';
 export class CategoryMenuComponent implements OnInit, DoCheck {
   data;
   enviornment: { production: boolean, baseUrl: string } = environment;
+  isScrollReachedTop: boolean = true;
 
   constructor(private categoryMenuService: CategoryMenuService) { }
 
@@ -20,5 +21,13 @@ export class CategoryMenuComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.data = this.categoryMenuService.getCategoryMenu();
+  }
+
+  onScrollTriggered() {
+    this.isScrollReachedTop = false;
+  }
+
+  onScrollReachedTop() {
+    this.isScrollReachedTop = true;
   }
 }
