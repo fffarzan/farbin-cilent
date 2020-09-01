@@ -1,0 +1,102 @@
+/* mobile-first */
+
+:host {
+  width: 80%;
+  align-self: center;
+}
+
+.breadcrumb {
+  letter-spacing: 1px;
+  list-style: none;
+  background-color: unset;
+  margin: 10px 0;
+  display: none;
+  text-align: left;
+}
+
+.MasterProduct-breadCrumb {
+  margin-top: 10px;
+  margin-left: 11%;
+}
+
+.breadcrumb ul {
+  display: inline;
+}
+
+.breadcrumb-default h1 {
+  font-size: 13px;
+  margin: 0;
+}
+
+.breadcrumb-category {
+  position: relative;
+  display: inline-block;
+}
+
+.breadcrumb-category a:hover {
+  color: #ccc !important;
+}
+
+.breadcrumb li {
+  /* Display list items side by side */
+  display: inline;
+  font-size: 13px;
+}
+
+.breadcrumb li+li:before {
+  /* Add a (>) before/behind each list item */
+  display: inline;
+  padding: 5px;
+  color: #f0f0f0;
+  content: ">";
+}
+
+.category-a {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 20px;
+}
+
+.category-a:hover {
+  cursor: pointer;
+}
+
+.category-samelevelcategories {
+  /* Style same level categories in a block */
+  display: none;
+  position: absolute;
+  text-align: left;
+  top: 20px;
+  left: 25px;
+  z-index: 10;
+  width: 180px;
+  background-color: black;
+}
+
+.category-samelevelcategories-a {
+  display: block;
+  line-height: 120%;
+  border: 1px solid white;
+  width: 100%;
+  padding: 6px;
+  background-color: unset;
+  margin-top: 2px;
+}
+
+.category-samelevelcategories-a:hover {
+  color: #ccc !important;
+}
+
+.breadcrumb-category:hover .category-samelevelcategories {
+  /* Display same level categories in a block */
+  display: block;
+}
+
+@media screen and (min-width: 992px) {
+  .breadcrumb {
+    display: block;
+    margin: 0 0 0 0;
+    text-align: left;
+    padding-left: 16%;
+  }
+}

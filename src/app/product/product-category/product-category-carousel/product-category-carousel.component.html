@@ -1,0 +1,35 @@
+<!-- desktop -->
+<article class="ProductCategoryCarousel"
+  *ngIf="!isMobile && !isTablet">
+  <owl-carousel-o [options]="carouselData.desktopOptions"
+    class="ProductCategoryCarousel-OwlCarousel"
+    id="ProductCategory{{ dynamicId }}">
+    <ng-container *ngFor="let item of data">
+      <ng-template class="item"
+        carouselSlide
+        [width]="carouselItemWidth">
+        <a [routerLink]="['/product/master-product', item.IDX]"
+          class="ProductCategoryCarousel-OwlCarousel-Item">
+          <img
+            [src]="item[carouselData.dynamicFieldImage] ? enviornment.baseUrl + item[carouselData.dynamicFieldImage] : carouselData.staticUrl | getSmallImage"
+            [alt]="item[carouselData.dynamicFieldName]">
+          <p class="ProductCategoryCarousel-Name_En">{{ item[carouselData.dynamicFieldName] }}</p>
+        </a>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</article>
+
+<!-- mobile -->
+<article class="ProductCategoryCarousel ProductCategoryCarousel-Mobile"
+  *ngIf="isMobile || isTablet">
+  <section class="ProductCategoryCarousel-Mobile-Inner"
+    *ngFor="let item of data">
+    <a [routerLink]="['/product/master-product', item.IDX]">
+      <img [appMobileTemplate]="carouselData"
+        [src]="item[carouselData.dynamicFieldImage] ? enviornment.baseUrl + item[carouselData.dynamicFieldImage] : carouselData.staticUrl | getSmallImage"
+        [alt]="item[carouselData.dynamicFieldName]" />
+      <p class="ProductCategoryCarousel-Name_En">{{ item[carouselData.dynamicFieldName] }}</p>
+    </a>
+  </section>
+</article>

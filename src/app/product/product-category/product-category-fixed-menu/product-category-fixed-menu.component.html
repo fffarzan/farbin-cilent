@@ -1,0 +1,12 @@
+<section class="FixedMenuProductCategory-UpperMenu"
+  appTriggerScroll
+  (scrollTriggered)="onScrollTriggered()"
+  (scrollReachedTop)="onScrollReachedTop()">
+
+  <app-breadcrumb *ngIf="isScrollReachedTop"></app-breadcrumb>
+
+  <app-supplier-logo *ngIf="isScrollReachedTop"></app-supplier-logo>
+
+</section>
+
+<app-category-menu></app-category-menu>

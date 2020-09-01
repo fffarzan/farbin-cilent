@@ -1,1 +1,36 @@
-<p>product-category works!</p>
+<article class="ProductCategoryHeader"
+  *ngIf="productCategories">
+
+  <!-- product category carousel for data without child categories -->
+  <app-product-category-carousel class="ProductCategory-Carousel"
+    *ngIf="productCategories.CurrentCategory[0]"
+    [carouselData]="productCategoryCarouelParams"
+    [data]="productCategories.CurrentCategory[0].MasterProducts"></app-product-category-carousel>
+
+  <!-- product categorries data with child categories -->
+  <section class="CategoryContainer">
+    <ng-template #recursiveList
+      let-list="list">
+      <div *ngFor="let childCategory of list">
+        <!-- data-ng-click="ToggleCollpase($event,SubCat.IDX)" -->
+        <a class="clearfix">
+          <i class="fa fa-sort-down Color-Yellow CursorPointer"
+            id="icon{{ childCategory.IDX }}"></i>
+          <span class="CursorPointer Color-Withe">{{ childCategory.Name_En }}</span>
+        </a>
+        <app-product-category-carousel [carouselData]="productCategoryCarouelParams"
+          [data]="childCategory.MasterProducts"></app-product-category-carousel>
+        <ul class="ProductCategoryTree">
+          <ng-container *ngTemplateOutlet="recursiveList; context: { list: childCategory.Children }">
+          </ng-container>
+        </ul>
+      </div>
+    </ng-template>
+    <ul class="ProductCategoryTree"
+      id="List0">
+      <ng-container *ngTemplateOutlet="recursiveList; context: { list: productCategories.ChildCategories }">
+      </ng-container>
+    </ul>
+  </section>
+
+</article>

@@ -1,0 +1,32 @@
+:host {
+  width: 20%;
+  padding: 8px 0 8px 0;
+  direction: rtl;
+  text-align: right;
+  width: 100%;
+}
+
+img {
+  width: 50%;
+  margin: 5px 0 10px 0;
+}
+
+@media screen and (min-width: 768px) {
+  :host {
+    padding: 0;
+    width: 20%;
+  }
+  img {
+    margin: 15px 0;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  :host {
+    padding: 20px 0 0 0;
+  }
+  img {
+    margin-top: 0;
+  }
+}

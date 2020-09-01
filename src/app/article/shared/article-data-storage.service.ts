@@ -83,5 +83,5 @@ export class ArtcileDataStorageService {
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
       )
-    }
+  }
 }
