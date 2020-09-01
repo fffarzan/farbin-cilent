@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnChanges, DoCheck } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { SupplierLogoService } from './supplier.logo.service';
@@ -8,13 +8,17 @@ import { SupplierLogoService } from './supplier.logo.service';
   templateUrl: './supplier-logo.component.html',
   styleUrls: ['./supplier-logo.component.css']
 })
-export class SupplierLogoComponent implements OnInit {
+export class SupplierLogoComponent implements OnInit, DoCheck {
   data;
   enviornment: { production: boolean, baseUrl: string } = environment;
 
   constructor(private supplierLogoService: SupplierLogoService) { }
 
   ngOnInit(): void {
+    this.data = this.supplierLogoService.getSupplierLogo();
+  }
+
+  ngDoCheck() {
     this.data = this.supplierLogoService.getSupplierLogo();
   }
 }

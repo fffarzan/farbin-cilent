@@ -36,13 +36,8 @@ export class ProductCategoryFixedMenuComponent implements DoCheck {
   }
 
   private sendDataToComponents(data: any) {
-    const supplierLogoData = data.supplierLogoData;
-    const childCategoryData = data.childCategoryData;
-    const breadcrumbData = data.breadcrumbData;
-    if (data) {
-      this.supplierLogoService.setSupplierLogo(supplierLogoData);
-      this.categoryMenuService.setCategoryMenu(childCategoryData);
-      this.breadcrumbService.setBreadcrumb(breadcrumbData);
-    }
+    this.supplierLogoService.setSupplierLogo(data.supplierLogoData);
+    this.categoryMenuService.setCategoryMenu(data.childCategoryData);
+    this.breadcrumbService.setBreadcrumb(data.breadcrumbData);
   }
 }
