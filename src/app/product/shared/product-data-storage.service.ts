@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 import { ProductCategoryService } from '../product-category/product-category.service';
 import { ProductCategory } from '../product-category/product-category.model';
 import { ProductCategoryBreadcrumb } from '../product-category/product-category-breadcrumb.model';
+import { MasterProduct } from '../master-product/master-product.model';
+import { MasterProductService } from '../master-product/master-product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,8 @@ import { ProductCategoryBreadcrumb } from '../product-category/product-category-
 export class ProductDataStorageService {
   constructor(
     private http: HttpClient,
-    private productCategoryService: ProductCategoryService
+    private productCategoryService: ProductCategoryService,
+    private masterProductService: MasterProductService
   ) { }
 
   handleError(err: object) {
@@ -44,6 +47,18 @@ export class ProductDataStorageService {
       )
       .pipe(
         tap(breadcrumb => this.productCategoryService.setProductCategoryBreadcrumb(breadcrumb))
+      )
+  }
+
+  fetchDefineDetailProducts(param: object) {
+    return this.http
+      .post<MasterProduct>(
+        environment.baseUrl + '/api/DefineDetailProduct/FillDefineDetailProductByIDXProduct/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(masterProduct => this.masterProductService.setMasterProduct(masterProduct))
       )
   }
 }
