@@ -1,0 +1,799 @@
+/* mobile-first */
+
+.DefineDetailController {
+  padding: 10px 15px 60px 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .DefineDetailController {
+    padding: 15px 25px 60px 25px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .DefineDetailController {
+    padding: 15px 70px 60px 46px;
+  }
+}
+
+/* Product detail header */
+
+.DefineDetailProductPage-BrandLogoImage {
+  float: right;
+  width: 150px;
+}
+
+.ProductDetailHeader {
+  width: 100%;
+  padding: 10px 0 0 0;
+}
+
+.DefineDetailPartNumber {
+  margin: 0;
+  padding: 2px 25px 0 5px;
+  background-color: #282829;
+  border-radius: 0 5px 5px 0;
+  display: inline-block;
+  font-size: 19px !important;
+}
+
+.ShortTechnicalDescription {
+  display: block;
+}
+
+.ShortTechnicalDescription h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.ShortTechnicalDescription_Fa {
+  margin-left: 15px;
+  display: none;
+  direction: rtl;
+}
+
+.ShortTechnicalDescription_Fa h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.DefineImage {
+  width: 40%;
+  display: inline-block;
+  float: left;
+}
+
+.DefineImage .owl-carousel .item {
+  text-align: center;
+  padding: 5px 5px 5px 0;
+  font-size: 12px
+}
+
+.DefineImage .owl-carousel .item img {
+  width: 100%;
+}
+
+.MasterImageBig {
+  width: 100%;
+}
+
+.DefineButtons {
+  padding-left: 25px;
+  width: 60%;
+  float: left;
+}
+
+.DefineButtons .btnDefine {
+  display: block;
+  color: #81b7cc;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.DefineButtons .btnDefine img {
+  margin-bottom: 4px;
+  width: 25px;
+}
+
+.DefineDetails-QRCode {
+  background-color: white;
+}
+
+.DefineDetails-QRCode-Span {
+  font-size: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: none;
+}
+
+.DefineDetails-QRCode-Span-Desktop, .DefineDetails-QRCode-Span-Tablet {
+  display: none;
+}
+
+.TextDescription-Inner {
+  font-size: 12px;
+  color: white;
+  width: 100%;
+}
+
+.TextDescription-TitleH5 {
+  font-size: 12px;
+}
+
+.LangSituationContainer {
+  width: 80px;
+  display: inline-block;
+  float: right;
+  margin: 5px 15px 0 0;
+  padding: 0;
+}
+
+.LangSituationContainer label {
+  font-size: 10px;
+}
+
+.LangSituationContainer .btn-default.active, .btn-default:active {
+  background-color: #282829;
+  border-color: #282829;
+  color: #ffb500;
+  text-shadow: none;
+}
+
+.LangSituationContainer .btn-primary {
+  background-color: #282829 !important;
+  border-color: #ccc !important;
+  color: #ffb500 !important;
+  text-shadow: none !important;
+  background-image: none !important;
+}
+
+.Description {
+  margin: 10px 0 4px 0;
+  display: inline-block;
+  padding: 2px 25px 0px 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #81b7cc;
+  background-color: #282829;
+}
+
+.ShortDescription_Fa {
+  display: none;
+  direction: rtl;
+  text-align: right;
+}
+
+.CountryOrigin {
+  margin-top: 15px;
+  margin-bottom: 4px;
+  display: inline-block;
+  padding: 2px 25px 1px 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #81b7cc;
+  background-color: #282829;
+}
+
+.Summary {
+  margin-top: 15px;
+  margin-bottom: 4px;
+  display: inline-block;
+  padding: 2px 25px 1px 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #81b7cc;
+  background-color: #282829;
+}
+
+.DefineDescriptionEn {
+  color: white;
+  font-size: 12px;
+  direction: ltr;
+  display: block;
+}
+
+.DefineDescriptionFa {
+  color: white;
+  font-size: 12px;
+  direction: rtl;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .DetailBox {
+    float: right;
+    text-align: left;
+    direction: ltr;
+    width: 70%;
+  }
+  .DefineDetailProductPage-ProductDetailWrapper {
+    padding: 10px 0;
+  }
+  .ProductDetailHeader {
+    padding: 0;
+  }
+  .DefineDetailPartNumber {
+    margin: 0 0 10px 30px;
+    padding: 2px 60px 0 5px;
+  }
+  .ShortTechnicalDescription {
+    margin-left: 15px;
+  }
+  .DefineImage {
+    width: 30%;
+  }
+  .AllDescriptions {
+    width: 70%;
+    display: inline-block;
+    float: left;
+    padding-left: 30px;
+  }
+  .DefineButtons {
+    width: 22%;
+    float: right;
+    position: relative;
+    padding-left: 0;
+  }
+  .DefineDetails-QRCode {
+    padding: 5px !important;
+  }
+  .DefineDetails-QRCode-Span {
+    display: block;
+  }
+  .DefineDetails-QRCode-Span-Desktop {
+    display: none;
+  }
+  .DefineDetails-QRCode-Span-Tablet {
+    display: block;
+  }
+  .Description, .CountryOrigin, .Summary {
+    background-color: unset;
+  }
+  .Description {
+    display: block;
+  }
+  .TextDescription {
+    float: left;
+    width: 65%;
+  }
+  .TextDescription .Description {
+    color: #81b7cc;
+    margin-top: 15px;
+  }
+  .TextDescription .CountryOrigin {
+    color: #81b7cc;
+    margin-top: 15px;
+  }
+  .TextDescription .Summary {
+    color: #81b7cc;
+    margin-top: 15px;
+    display: inline-block;
+  }
+  .LangSituationContainer {
+    margin: 0 15px 0 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .DefineDetails-QRCode-Span-Desktop {
+    display: block;
+  }
+  .DefineDetails-QRCode-Span-Tablet {
+    display: none;
+  }
+}
+
+/* Question and answer */
+
+.DefineDetailProduct-TabContainer {
+  margin-top: 50px;
+}
+
+.CommonQuestions {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 2px 5px 5px 25px;
+  background-color: #282829;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #81b7cc;
+  float: right;
+}
+
+.list-group {
+  border-radius: 0;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, .075);
+}
+
+.list-group-item {
+  color: #000;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+}
+
+.list-group-item:hover {
+  color: #fff;
+  background-color: #81b7cc;
+}
+
+.list-group-item img {
+  width: 100%;
+}
+
+.QuestionAndAnswers-list-group {
+  direction: rtl;
+  text-align: right;
+  margin: 0;
+  padding: 0
+}
+
+.QuestionAndAnswers-list-group-item {
+  padding: 0;
+  overflow: hidden
+}
+
+.QuestionAndAnswers-Question {
+  padding: 9px 10px;
+  color: #fff;
+}
+
+.QuestionAndAnswers-Question span {
+  transform: rotate(0deg);
+}
+
+.QuestionAndAnswers-Question-QA {
+  width: 90%;
+  line-height: 20px;
+}
+
+.QuestionAndAnswers-panel-collapse-Answer {
+  background-color: #fff;
+  color: #000;
+  padding: 5px
+}
+
+.QuestionAnswerItem {
+  background-color: #282829;
+  min-width: 90%;
+  max-width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .CommonQuestionsBox {
+    font-size: 12px;
+    width: 50%;
+    float: right;
+    text-align: right;
+    margin-top: 20px;
+    padding: 10px 0 10px 10px;
+  }
+  .CommonQuestions {
+    background-color: unset;
+    padding-right: 0;
+  }
+  .list-group-item:first-child, .list-group-item:last-child {
+    border-radius: 0;
+  }
+  .list-group-item img {
+    max-width: 100%;
+  }
+}
+
+/* tabs */
+
+.TabDetails-TabBox-Header {
+  padding: 0;
+}
+
+.TabDetails-TabBox-Item {
+  padding-left: 15px;
+}
+
+.TabDetails-TabBox-Item-FirstItem {
+  padding-left: 5px;
+}
+
+.SpecificationsTab {
+  font-size: 13px;
+  text-align: left;
+  padding-left: 5px;
+  border-radius: 5px 0 0 5px;
+}
+
+.SubTitleTab {
+  text-align: center;
+  font-size: 9px;
+}
+
+.MiddleTab {
+  font-size: 13px;
+  text-align: left;
+}
+
+.RelatedProductTab {
+  font-size: 13px;
+  border-radius: 0 5px 5px 0;
+  text-align: left;
+}
+
+.panel-body {
+  margin-bottom: 50px;
+}
+
+.TabDetails-TabBox-Body {
+  padding: 0px;
+}
+
+.TableTitleInDefineDetail {
+  padding: 10px;
+  background-color: #5d5d5d;
+  color: #ffd800;
+  margin: 0;
+}
+
+.TableTitleInDefineDetail-Thead-FirstCell {
+  width: 15%;
+}
+
+.TableTitleInDefineDetail-Thead-SecondCell {
+  width: 20%;
+}
+
+.TableTitleInDefineDetail-Thead-ThirdCell {
+  width: 65%;
+}
+
+.TableTitleInDefineDetail-Tbody-SecondCell img {
+  width: 50px;
+}
+
+.table {
+  color: #81b7cc;
+}
+
+.FileTypeImage {
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
+
+.TabBoxBody-Properies-Inner {
+  margin-top: 15px;
+}
+
+.Accessories-DefineItemInRelated-Titles {
+  width: 70%;
+  display: inline-block;
+  float: left;
+  margin-top: 5px;
+}
+
+.Accessories-DefineItemInRelated-Desc {
+  width: 30%;
+  margin-top: 5px;
+  float: left;
+  display: inline-block;
+}
+
+.Accessories-DefineItemInRelated-DescInner {
+  float: right;
+}
+
+.DefineItemInRelated {
+  width: 50%;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 1%;
+}
+
+.IndexDescritionPicInRelated {
+  width: 7px;
+  height: 45px;
+  float: right;
+  display: inline-block;
+  border: 1px solid #333333;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-tabs .active img {
+    content: url("/images/TabIconSelected.png");
+  }
+  .SpecificationsTab {
+    font-size: 15px;
+    text-align: center;
+  }
+  .SubTitleTab {
+    text-align: right;
+    font-size: 10px;
+  }
+  .MiddleTab {
+    font-size: 15px;
+    text-align: center
+  }
+  .RelatedProductTab {
+    font-size: 15px;
+    text-align: center;
+  }
+  .panel-body {
+    margin-bottom: 0;
+  }
+  .DefineItemInRelated {
+    width: 25%;
+  }
+  .IndexDescritionPicInRelated {
+    height: 37px;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+
+.DefineDetailProduct-Modal .item {
+  width: 100%;
+}
+
+.DefineDetailProduct-Modal .item img {
+  width: 100%;
+}
+
+.DefineDetailProduct-Modal .owl-theme .owl-dots .owl-dot span {
+  width: 15px;
+  height: 3px;
+}
+
+.DefineDetailProduct-Modal .owl-theme .owl-dots .owl-dot.active span, .DefineDetailProduct-Modal .owl-theme .owl-dots .owl-dot:hover span {
+  background: rgb(46, 46, 46);
+}
+
+#UnderSpotDefineDetailProduct {
+  width: 99%;
+}
+
+#UnderSpotDefineDetailProduct .item {
+  cursor: pointer;
+}
+
+#UnderSpotDefineDetailProduct .owl-wrapper-outer {
+  width: 114% !important;
+  left: -8px;
+}
+
+#UnderSpotDefineDetailProduct .owl-wrapper {
+  left: 24px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .MasterImage {
+    cursor: pointer;
+    width: 100%;
+  }
+  .DefineDetailProduct-Modal .item {
+    width: 100%;
+  }
+  .Tab-Details {
+    width: 40%;
+    float: left;
+  }
+  /* #UnderSpotDefineDetailProduct .owl-next {
+  position: absolute;
+  top: -145px;
+  right: -40px;
+  font-size: 40px !important;
+  background-color: transparent !important;
+  color: #ffb500 !important;
+  opacity: 1 !important;
+} */
+  /* #UnderSpotDefineDetailProduct .owl-prev {
+  position: absolute;
+  top: -145px;
+  left: -40px;
+  font-size: 40px !important;
+  background-color: transparent !important;
+  color: #ffb500 !important;
+  opacity: 1 !important;
+} */
+  /* #StickyProductCategoryHeader .owl-next {
+  position: absolute;
+  top: -145px;
+  right: -40px;
+  font-size: 40px !important;
+  background-color: transparent !important;
+  color: #ffb500 !important;
+  opacity: 1 !important;
+} */
+  /* #StickyProductCategoryHeader .owl-prev {
+  position: absolute;
+  top: -145px;
+  left: -40px;
+  font-size: 40px !important;
+  background-color: transparent !important;
+  color: #ffb500 !important;
+  opacity: 1 !important;
+} */
+  /* .RecentlyViewedContainer .owl-next {
+  position: absolute;
+  top: -145px;
+  right: -40px;
+  font-size: 40px !important;
+  background-color: transparent !important;
+  color: #ffb500 !important;
+  opacity: 1 !important;
+} */
+  /* .RecentlyViewedContainer .owl-prev {
+  position: absolute;
+  top: -145px;
+  left: -40px;
+  font-size: 40px !important;
+  background-color: transparent !important;
+  color: #ffb500 !important;
+  opacity: 1 !important;
+} */
+  #ModalImageSlidShow {
+    z-index: 9999 !important;
+  }
+  .modal-content {
+    border: none;
+    margin-top: 60px;
+  }
+  .DefineDetailProductsInMasterPageRole img {
+    width: 100%;
+  }
+  .DefineDetailProductsInMasterPageRole-MasterDefineDescWrapper {
+    width: 70%;
+    margin-top: 5px;
+    float: left;
+  }
+  .DefineDetailProductsInMasterPageRole-LinksWrapper {
+    width: 30%;
+    margin-top: 5px;
+    float: left;
+  }
+  .DefineDetailProductsInMasterPageRole-LinksWrapper-RandomImage {
+    width: 7px !important;
+    height: 37px;
+    float: right;
+    display: inline-block;
+    border: 1px solid #333333;
+  }
+  .DefineDetailProductsInMasterPageRole-LinksInner {
+    float: right;
+  }
+  #UnderSpotDefineDetailProduct {
+    width: 95%;
+  }
+  #UnderSpotDefineDetailProduct .item {
+    cursor: pointer;
+  }
+  #UnderSpotDefineDetailProduct .owl-wrapper-outer {
+    width: 105% !important;
+  }
+  #UnderSpotDefineDetailProduct .owl-wrapper {
+    left: 24px !important;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    #UnderSpotDefineDetailProduct .owl-wrapper-outer .owl-wrapper {
+      left: 21px !important;
+    }
+    /* #UnderSpotDefineDetailProduct .owl-next, #UnderSpotDefineDetailProduct .owl-prev {
+            top: -120px;
+        } */
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .MasterImage {
+    cursor: pointer;
+    width: 100%;
+  }
+  .modal-content {
+    border: none;
+  }
+  .Tab-Details {
+    margin-top: 40px;
+  }
+  /* #GenerateLabProducts .owl-next {
+        position: absolute;
+        top: -62px;
+        right: 45%;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    }
+    #GenerateLabProducts .owl-prev {
+        position: absolute;
+        top: -62px;
+        left: 5%;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    } */
+  /* #UnderSpotDefineDetailProduct .owl-next {
+        position: absolute;
+        top: -110px;
+        right: -25px;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    }
+    #UnderSpotDefineDetailProduct .owl-prev {
+        position: absolute;
+        top: -110px;
+        left: -25px;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    } */
+  /* #StickyProductCategoryHeader .owl-next {
+        position: absolute;
+        top: -95px;
+        right: -25px;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    }
+    #StickyProductCategoryHeader .owl-prev {
+        position: absolute;
+        top: -95px;
+        left: -25px;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    } */
+  /* .RecentlyViewedContainer .owl-next {
+        position: absolute;
+        top: -110px;
+        right: -25px;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    }
+    .RecentlyViewedContainer .owl-prev {
+        position: absolute;
+        top: -78px;
+        left: -25px;
+        font-size: 25px !important;
+        background-color: transparent !important;
+        color: #ffb500 !important;
+        opacity: 1 !important;
+        padding: 5px !important;
+    } */
+  .DefineDetailProductsInMasterPageRole img {
+    width: 100%;
+  }
+  .DefineDetailProductsInMasterPageRole-MasterDefineDescWrapper {
+    width: 70%;
+    margin-top: 5px;
+    float: left;
+  }
+  .DefineDetailProductsInMasterPageRole-LinksWrapper {
+    width: 30%;
+    margin-top: 5px;
+    float: left;
+  }
+  .DefineDetailProductsInMasterPageRole-LinksWrapper-RandomImage {
+    width: 7px !important;
+    height: 37px;
+    float: right;
+    display: inline-block;
+    border: 1px solid #333333;
+  }
+  .DefineDetailProductsInMasterPageRole-LinksInner {
+    float: right;
+  }
+}

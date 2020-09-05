@@ -1,1 +1,394 @@
-<p>define-detail-product works!</p>
+<section ng-controller="DefineDetailProductController"
+  class="DefineDetailController">
+
+  <!-- <img class="DefineDetailProductPage-BrandLogoImage"
+    ng-src="{{ServerUrl + DefineDetailProducts.LegalMenuPicUrl}}"
+    alt="{{::DefineDetailProducts.ShortTechnicalDescription}}" /> -->
+  <div class="clearfix"></div>
+
+  <section class="DefineDetailProductPage-ProductDetailWrapper">
+
+    <!-- Product detail header -->
+    <div class="ProductDetailHeader">
+
+      <!-- Detail box -->
+      <section class="DetailBox">
+        <!-- <h1 class="Color-Yellow DefineDetailPartNumber">{{::DefineDetailProducts.PartNumber}}</h1> -->
+        <div class="clearfix"></div>
+        <section class="ShortTechnicalDescription">
+          <h4 class="Color-Yellow Title-En ShortTechnicalDescription">
+            <!-- {{::DefineDetailProducts.ShortTechnicalDescription}} -->
+          </h4>
+          <div class="clearfix"></div>
+        </section>
+        <section class="ShortTechnicalDescription_Fa">
+          <h4 class="Color-Yellow Title-En ShortTechnicalDescription_Fa">
+            <!-- {{::DefineDetailProducts.ShortTechnicalDescription_Fa !='' && DefineDetailProducts.ShortTechnicalDescription_Fa !=undefined && DefineDetailProducts.ShortTechnicalDescription_Fa !=0 ?DefineDetailProducts.ShortTechnicalDescription_Fa : DefineDetailProducts.ShortTechnicalDescription  }} -->
+          </h4>
+          <div class="clearfix"></div>
+        </section>
+      </section>
+
+      <!-- Main image and carousel -->
+      <section class="DefineImage">
+        <!-- <section class="MasterImageBig Float-Left">
+          <img id="MasterImage"
+            ng-src="{{ServerUrl + DefineDetailProducts.PicUrl}}"
+            alt="{{::DefineDetailProducts.PartNumber}}"
+            class="MasterImage"
+            ng-click="OpenDynamicModal(DefineDetailProducts, OtherImages)" />
+        </section> -->
+        <div class="clearfix"></div>
+        <!-- <section class="Div100 Float-Left">
+          <div gallerycarousel
+            datasource="OtherImages"
+            staticurl="'/images/docx.png'"
+            dynamicfieldimage="'Url'"
+            desktopcarouseloptions="{
+              stagePadding: 20,
+              items: 3,
+              responsive: { 1024: { items: 4 } } 
+            }"
+            mobilecarouseloptions="{
+              itemsMobile: [500, 9],
+              itemsTablet: [768, 8],
+              itemsDesktop: [1024, 8]
+            }">
+          </div>
+        </section> -->
+      </section>
+
+      <!-- All descriptions -->
+      <section class="AllDescriptions">
+
+        <!-- Right side -->
+        <section class="DefineButtons">
+          <!-- <div qrcode
+            class="QRCode DefineDetails-QRCode"></div> -->
+          <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Desktop">!در موبایل یا تبلت دنبال کنید</span>
+          <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Tablet">!در موبایل دنبال کنید</span>
+          <!-- <section class="btnDefine">
+            <img src="assets/img/AddToListWhite.png"
+              class="CursorPointer"
+              ng-click="AddToMaterialList(DefineDetailProducts.IDDefineDetailProduct)"
+              alt="{{::DefineDetailProducts.ShortTechnicalDescription}}" />
+            <div class="clearfix"></div>
+            Add to material list
+          </section> -->
+          <!-- <section class="btnDefine">
+            <img src="/images/Compare.png"
+              class="CursorPointer"
+              ng-click="AddToCompareList(DefineDetailProducts.IDDefineDetailProduct,'MasterImage')"
+              alt="{{::DefineDetailProducts.ShortTechnicalDescription}}" />
+            <div class="clearfix"></div>
+            Add to compare list
+          </section> -->
+        </section>
+
+        <!-- Text description -->
+        <section class="TextDescription">
+          <section class="TextDescription-Inner">
+            <div class="clearfix"></div>
+            <div class="LangSituationContainer">
+              <!-- <input id="chkLangSituation"
+                type="checkbox"
+                ng-click="ChangeDescriptionLang()"
+                data-on="برگردان فارسی"
+                data-off="Shift to EN"
+                ng-show="DefineDetailProducts.ShortTechnicalDescription_Fa 
+                || DefineDetailProducts.TechnicalDescription_Fa 
+                || DefineDetailProducts.DescriptionInSite_Fa"> -->
+            </div>
+            <h4 class="Description">Description</h4>
+            <!-- <h5 class="TextDescription-TitleH5 Title-En ShortDescription Float-Left"
+              ng-bind-html="DefineDetailProducts.TechnicalDescription"></h5> -->
+            <!-- <h5 class="TextDescription-TitleH5 Title-En ShortDescription_Fa Float-Left"
+              ng-bind-html="DefineDetailProducts.TechnicalDescription_Fa !='' && DefineDetailProducts.TechnicalDescription_Fa != undefined ? DefineDetailProducts.TechnicalDescription_Fa : DefineDetailProducts.TechnicalDescription"
+              ng-show="SiteSetting.FaLanguage"></h5> -->
+            <div class="clearfix"></div>
+          </section>
+          <div class="clearfix"></div>
+          <h4 class="Summary">Summary</h4>
+          <div class="clearfix"></div>
+          <!-- <section class="DefineDescriptionEN"
+            ng-bind-html="DefineDetailProducts.DescriptionInSite_En"></section> -->
+          <div class="clearfix"></div>
+          <!-- <section class="DefineDescriptionFa"
+            ng-bind-html="DefineDetailProducts.DescriptionInSite_Fa"></section> -->
+        </section>
+
+      </section>
+
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- Body desccription -->
+    <section class="DefineDetailProduct-TabContainer TabContainer">
+
+      <!-- Common questions -->
+      <section class="CommonQuestionsBox">
+        <h4 class="CommonQuestions Color-Yellow">سوالات متداول</h4>
+        <div class="clearfix"></div>
+        <ul id="QuestionAndAnswers"
+          class="QuestionAndAnswers-list-group list-group">
+          <!-- ng-repeat="QA in QuestionAndAnswers" -->
+          <li class="QuestionAndAnswers-list-group-item list-group-item">
+            <!-- <section class="QuestionAnswerItem"
+              id="Q{{::QA.IDQuestionAndAnswer}}"
+              data-toggle="collapse"
+              data-parent="#QuestionAndAnswers"
+              href="#P{{::QA.IDQuestionAndAnswer}}"
+              ng-click="ToggleIcon($event)">
+              <section id="Question"
+                class="QuestionAndAnswers-Question">
+                <span class="ico Color-Withe Plus show Float-Left">+</span>
+                <section class="QuestionAndAnswers-Question-QA"
+                  ng-bind-html="QA.Question">
+                </section>
+              </section>
+            </section> -->
+            <div class="clearfix"></div>
+            <!-- <section id="P{{::QA.IDQuestionAndAnswer}}"
+              class="QuestionAndAnswers-panel-collapse panel-collapse collapse">
+              <section class="QuestionAndAnswers-panel-collapse-Answer"
+                ng-bind-html="QA.Answer"></section>
+            </section> -->
+          </li>
+        </ul>
+      </section>
+
+      <!-- Tabs -->
+      <section class="Tab-Details">
+        <div class="clearfix"></div>
+
+        <!-- Header -->
+        <header class="TabDetails-TabBox-Header panel-heading tab-bg-dark-navy-blue">
+          <ul class="nav nav-tabs">
+            <!-- ng-show="RulePropertyProducts.length>0" -->
+            <li class="TabDetails-TabBox-Item-FirstItem active">
+              <a data-toggle="tab"
+                data-target="#Peroperies"
+                class="SpecificationsTab CursorPointer">
+                <img src="assets/img/TabIcon.png"
+                  alt="مشخصات فنی و ظاهری محصولات فربین" />
+                Specifications
+                <div class="clearfix"></div>
+                <div class="SubTitleTab">مشخصات فنی و ظاهری</div>
+              </a>
+            </li>
+            <!-- ng-show="FoldersFiles.length>0" -->
+            <li class="TabDetails-TabBox-Item">
+              <a data-toggle="tab"
+                data-target="#AttachFiles"
+                class="MiddleTab CursorPointer">
+                <img src="assets/img/TabIcon.png"
+                  alt="فایل های ضمیمه محصولات فربین" />
+                Attach Files
+                <div class="clearfix"></div>
+                <div class="SubTitleTab">فایلهای ضمیمه</div>
+              </a>
+            </li>
+            <!-- ng-show="AccessoryProducts.length>0" -->
+            <li class="TabDetails-TabBox-Item">
+              <a data-toggle="tab"
+                data-target="#Accessories"
+                class="MiddleTab CursorPointer">
+                <img src="assets/img/TabIcon.png" />
+                Accessories
+                <div class="clearfix"></div>
+                <div class="SubTitleTab">لوازم جانبی</div>
+              </a>
+            </li>
+            <!-- ng-show="RelatedDefineDetailProducts.length>0" -->
+            <li class="TabDetails-TabBox-Item">
+              <a data-toggle="tab"
+                data-target="#RelatedProduct"
+                class="RelatedProductTab CursorPointer">
+                <img src="assets/img/TabIcon.png" />
+                Related Products
+                <div class="clearfix"></div>
+                <div class="SubTitleTab">محصولات مرتبط</div>
+              </a>
+            </li>
+          </ul>
+        </header>
+
+        <!-- Body -->
+        <section class="panel-body TabDetails-TabBox-Body">
+          <div class="tab-content">
+
+            <!-- TabBox Body AttachFiles -->
+            <section id="AttachFiles"
+              class="tab-pane">
+              <br />
+              <div>
+                <section ng-repeat="FoldersFile in FoldersFiles">
+                  <p class="TableTitleInDefineDetail">
+                    <!-- {{::FoldersFile.Name_En}} -->
+                  </p>
+                  <table class="table table-bordered table-striped table-condensed table-hover">
+                    <thead>
+                      <tr>
+                        <th class="TableTitleInDefineDetail-Thead-FirstCell">Select</th>
+                        <th class="TableTitleInDefineDetail-Thead-SecondCell">Type</th>
+                        <th class="TableTitleInDefineDetail-Thead-ThirdCell">Title</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- ng-repeat="File in FoldersFile.AttachFiles" -->
+                      <tr>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td class="TableTitleInDefineDetail-Tbody-SecondCell">
+                          <!-- <a href="{{::(File.FileName != 'DataSheet' ? ServerUrl : '') + File.Url}}"
+                            target="_blank">
+                            <img ng-src="{{::File.IconUrl}}"
+                              class="FileTypeImage"
+                              alt="{{::File.FileName}}" />
+                          </a> -->
+                        </td>
+                        <td>
+                          <!-- <a href="{{::(File.FileName != 'DataSheet' ? ServerUrl : '') + File.Url}}"
+                            target="_blank">
+                            <span ng-bind-html="File.FileName"></span>
+                          </a> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </section>
+
+            <!-- Peroperies -->
+            <section id="Peroperies"
+              class="TabBoxBody-Properies tab-pane active">
+              <section class="TabBoxBody-Properies-Inner">
+                <p class="TableTitleInDefineDetail">Properties</p>
+                <table class="table table-bordered table-striped table-condensed table-hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <tr ng-repeat="RulePropertyProduct in RulePropertyProducts">
+                      <td><span ng-bind-html="RulePropertyProduct.ParentName_En"></span></td>
+                      <td><span ng-bind-html="RulePropertyProduct.PropertyName_En"></span></td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </section>
+              <div>
+                <div class="TableTitleInDefineDetail">Specifications</div>
+                <table class="table table-bordered table-striped table-condensed table-hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <tr ng-repeat="TechnicalPropertiy in TechnicalProperties">
+                      <td><span ng-bind-html="TechnicalPropertiy.TechnicalPropertyName_En"></span></td>
+                      <td><span ng-bind-html="TechnicalPropertiy.Value_En"></span></td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- Accessories -->
+            <section id="Accessories"
+              class="tab-pane ">
+              <div class="RelateProductBox">
+                <!-- ng-repeat="AccessoryProduct in AccessoryProducts" -->
+                <section class="DefineItemInRelated">
+                  <!-- href="/DefineDetailProduct/{{::AccessoryProduct.AccessoryIDX}}" -->
+                  <a>
+                    <!-- <img class="img-responsive Accessory{{::AccessoryProduct.AccessoryIDX}}"
+                      ng-src="{{ServerUrl + AccessoryProduct.AccessoryPicUrl | GetSmallImage}}"
+                      alt="{{::AccessoryProduct.PartNumber}}" /> -->
+                  </a>
+                  <section class="Accessories-DefineItemInRelated-Titles">
+                    <!-- <h6>{{::AccessoryProduct.AccessoryPartNumber}}</h6> -->
+                    <!-- <h6>{{::AccessoryProduct.IndexDescriptionText}}</h6> -->
+                  </section>
+                  <section class="Accessories-DefineItemInRelated-Desc">
+                    <div class="Accessories-DefineItemInRelated-DescInner">
+                      <!-- <img ng-src="{{ServerUrl + AccessoryProduct.IndexDescriptionPicUrl}}"
+                        class="IndexDescritionPicInRelated"
+                        alt="{{::AccessoryProduct.AccessoryTechnicalDescription}}" />
+                      <img src="/images/AddToListWhite.png"
+                        class="AddToListButton"
+                        data-placement="left"
+                        tooltip
+                        title="Add to List"
+                        ng-click="AddToMaterialList(AccessoryProduct.IDDefineDetailAccessory)"
+                        alt="{{::AccessoryProduct.AccessoryTechnicalDescription}}" />
+                      <img src="/images/Compare.png"
+                        class="CompareButton"
+                        data-placement="left"
+                        tooltip
+                        title="Compare"
+                        ng-click="AddToCompareList(AccessoryProduct.IDDefineDetailAccessory,'Accessory'+AccessoryProduct.AccessoryIDX)"
+                        alt="{{::AccessoryProduct.AccessoryTechnicalDescription}}" /> -->
+                    </div>
+                  </section>
+                </section>
+              </div>
+            </section>
+
+            <!-- RelatedProduct -->
+            <section id="RelatedProduct"
+              class="tab-pane">
+              <div class="RelateProductBox">
+                <!-- ng-repeat="RelatedDefineDetailProduct in RelatedDefineDetailProducts" -->
+                <section class="DefineItemInRelated">
+                  <!-- href="/DefineDetailProduct/{{::RelatedDefineDetailProduct.IDX}}" -->
+                  <a>
+                    <!-- <img class="img-responsive RelatedDefine{{::AccessoryProduct.AccessoryIDX}}"
+                      ng-src="{{ServerUrl + RelatedDefineDetailProduct.PicUrl | GetSmallImage}}"
+                      alt="{{::RelatedDefineDetailProduct.PartNumber}}" /> -->
+                  </a>
+                  <section class="Accessories-DefineItemInRelated-Titles">
+                    <!-- <h6>{{::RelatedDefineDetailProduct.PartNumber}}</h6> -->
+                    <!-- <h6>{{::RelatedDefineDetailProduct.IndexDescriptionText}}</h6> -->
+                  </section>
+                  <section class="Accessories-DefineItemInRelated-Desc">
+                    <div class="Accessories-DefineItemInRelated-DescInner">
+                      <!-- <img ng-src="{{ServerUrl + RelatedDefineDetailProduct.IndexDescriptionPicUrl}}"
+                        class="IndexDescritionPicInRelated"
+                        alt="{{::RelatedDefineDetailProduct.AccessoryTechnicalDescription}}" />
+                      <img src="/images/AddToListWhite.png" 
+                        class="AddToListButton" 
+                        data-placement="left" 
+                        tooltip
+                        title="Add to List"
+                        ng-click="AddToMaterialList(RelatedDefineDetailProduct.IDDefineDetailProduct)"
+                        alt="{{::RelatedDefineDetailProduct.AccessoryTechnicalDescription}}" />
+                      <img src="/images/Compare.png" 
+                        class="CompareButton" 
+                        data-placement="left" 
+                        tooltip 
+                        title="Compare"
+                        ng-click="AddToCompareList(RelatedDefineDetailProduct.IDDefineDetailProduct,'RelatedDefine'+AccessoryProduct.AccessoryIDX)"
+                        alt="{{::RelatedDefineDetailProduct.AccessoryTechnicalDescription}}" /> -->
+                    </div>
+                  </section>
+                </section>
+              </div>
+            </section>
+
+          </div>
+        </section>
+
+      </section>
+
+    </section>
+  </section>
+
+  <div class="clearfix"></div>
+</section>
