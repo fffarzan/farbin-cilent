@@ -1,4 +1,5 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { CategoryMenuService } from './category-menu.service';
@@ -8,19 +9,17 @@ import { CategoryMenuService } from './category-menu.service';
   templateUrl: './category-menu.component.html',
   styleUrls: ['./category-menu.component.css']
 })
-export class CategoryMenuComponent implements OnInit, DoCheck {
+export class CategoryMenuComponent implements OnInit, OnDestroy {
   data;
+  dataSub: Subscription;
   enviornment: { production: boolean, baseUrl: string } = environment;
   isScrollReachedTop: boolean = true;
 
   constructor(private categoryMenuService: CategoryMenuService) { }
 
   ngOnInit(): void {
-    this.data = this.categoryMenuService.getCategoryMenu();
-  }
-
-  ngDoCheck() {
-    this.data = this.categoryMenuService.getCategoryMenu();
+    this.dataSub = this.categoryMenuService.categoryMenuChange
+      .subscribe(menu => this.data = menu);
   }
 
   onScrollTriggered() {
@@ -29,5 +28,9 @@ export class CategoryMenuComponent implements OnInit, DoCheck {
 
   onScrollReachedTop() {
     this.isScrollReachedTop = true;
+  }
+
+  ngOnDestroy() {
+    this.dataSub.unsubscribe();
   }
 }

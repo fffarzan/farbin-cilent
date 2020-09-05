@@ -1,35 +1,28 @@
-<article class="MasterProducts">
+<article class="MasterProducts"
+  *ngIf="masterProduct">
 
   <!-- head -->
   <section class="MasterProductHeader">
 
     <!-- <app-supplier-logo></app-supplier-logo> -->
-    <!-- <img ng-src="{{ServerUrl + DefineDetailProducts[0].MenuPicUrl}}" 
-      class="SupplierLogoImg"
-      alt="{{::DefineDetailProducts[0].SpplireName_En}}" /> -->
+    <img class="SupplierLogoImg"
+      [src]="enviornment.baseUrl + masterProduct.MenuPicUrl"
+      [alt]="masterProduct.Name_En">
 
-    <!-- <app-breadcrumb></app-breadcrumb> -->
-    <!-- <section class="FixedMenuProductCategory-UpperMenu-Breadcrumb" 
-      breadcrumb
-      breadcrumbdata="BreadCrumbsData"
-      masterproductlevel="DefineDetailProducts[0].Name_En"></section> -->
+    <app-breadcrumb></app-breadcrumb>
 
     <!-- title -->
     <section class="TitleHeader">
       <div class="MasterIcon">
-        <!-- <img ng-src="{{ServerUrl + DefineDetailProducts[0].ProductUrl | GetSmallImage}}"
-          alt="{{::DefineDetailProducts[0].Name_En}} - {{::DefineDetailProducts[0].Name_Fa}}" /> -->
+        <img [src]="enviornment.baseUrl + masterProduct.ProductUrl | getSmallImage"
+          alt="{{ masterProduct.Name_En }} - {{ masterProduct.Name_Fa }}" />
       </div>
       <table class="HeaderTable">
         <tr class="MasterProductHeader-HeaderTable-FirstRow">
-          <td class="MasterProductHeader-HeaderTable-FirstRowTd">
-            <!-- {{::DefineDetailProducts[0].Name_En}} -->
-          </td>
+          <td class="MasterProductHeader-HeaderTable-FirstRowTd">{{ masterProduct.Name_En }}</td>
         </tr>
         <tr>
-          <td class="MasterProductHeader-HeaderTable-SecondRowTd">
-            <!-- {{::DefineDetailProducts[0].Name_Fa}} -->
-          </td>
+          <td class="MasterProductHeader-HeaderTable-SecondRowTd">{{ masterProduct.Name_Fa }}</td>
         </tr>
       </table>
     </section>
@@ -39,30 +32,21 @@
   <div class="clearfix"></div>
 
   <!-- body -->
-  <!-- data-ng-repeat="DefineDetailProduct in DefineDetailProducts[0].Property" -->
-  <section class="PropertyDefineDetails">
+  <!-- data-ng-repeat=" in " -->
+  <section class="PropertyDefineDetails"
+    *ngFor="let defineDetailProduct of masterProduct.Property">
     <div class="BasePropertyOfProduct">
-      <!-- <h1>{{::DefineDetailProduct.Name_En}}</h1> -->
+      <h1>{{ defineDetailProduct.Name_En }}</h1>
     </div>
-    <!-- <section class="MasterProduct-Carousel">
-      <section productcarousel 
+    <section class="MasterProduct-Carousel">
+      <!-- <section productcarousel 
         id="MasterProduct" 
-        datasource="DefineDetailProduct.DefineDetails" 
-        staticurl="''"
-        dynamicfieldname="'PicUrl'" 
-        pageurldirection="'DefineDetailProduct'" 
-        owlcarouseloptions="{
-          items: 3,
-          stagePadding: 20,
-          responsive: { 1024: { items: 6 } }
-        }" 
-        productcarouseloptions="{
-          itemsMobile: [500,2.2],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,5.3]
-        }">
-      </section>
-    </section> -->
+        datasource="DefineDetailProduct.DefineDetails" >
+      </section> -->
+      <app-product-carousel [carouselData]="carouselData"
+        [data]="defineDetailProduct.DefineDetails"></app-product-carousel>
+    </section>
+
   </section>
 
 </article>

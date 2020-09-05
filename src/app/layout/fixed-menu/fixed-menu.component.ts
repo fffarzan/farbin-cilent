@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { FixedMenuService } from './fixed-menu.service';
 import { Location } from '@angular/common';
+import { ProductCategoryFixedMenuService } from 'src/app/product/product-category/product-category-fixed-menu/product-category-fixed-menu.service';
 
 @Component({
   selector: 'app-fixed-menu',
@@ -11,7 +12,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./fixed-menu.component.css']
 })
 export class FixedMenuComponent implements OnInit, OnDestroy {
-  fixedMenuData: any;
   isProdutCategory = false;
   currentUrlSegment: string;
   fixedMenuDataSub: Subscription;
@@ -21,6 +21,7 @@ export class FixedMenuComponent implements OnInit, OnDestroy {
     private router: Router,
     private location: Location,
     private fixedMenuService: FixedMenuService,
+    private productCategoryFixedMenuService: ProductCategoryFixedMenuService
   ) {
 
   }
@@ -35,7 +36,7 @@ export class FixedMenuComponent implements OnInit, OnDestroy {
       } else {
         this.isProdutCategory = false;
       }
-    })
+    });
   }
 
   ngOnDestroy() {
@@ -45,6 +46,6 @@ export class FixedMenuComponent implements OnInit, OnDestroy {
 
   private getFixedMenuData() {
     this.fixedMenuDataSub = this.fixedMenuService.getFixedMenuEvent()
-      .subscribe(data => this.fixedMenuData = data);
+      .subscribe(data => this.productCategoryFixedMenuService.setProductCategoryFixedMenu(data));
   }
 }

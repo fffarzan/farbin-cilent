@@ -61,4 +61,16 @@ export class ProductDataStorageService {
         tap(masterProduct => this.masterProductService.setMasterProduct(masterProduct))
       )
   }
+
+  fetchMasterProductBreadcrumb(param: object) {
+    return this.http
+      .post<ProductCategoryBreadcrumb>(
+        environment.baseUrl + '/api/ProductCategory/GetProductCategoryFromChildToParentForSiteMapMenu/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(breadcrumb => this.masterProductService.setMasterProductBreadcrumb(breadcrumb))
+      )
+  }
 }
