@@ -1,0 +1,169 @@
+/* mobile-first */
+
+.MasterProducts {
+  padding: 0 15px 50px 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .MasterProducts {
+    padding: 0px 25px 50px 25px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .MasterProducts {
+    padding: 0 70px 50px 47px;
+  }
+}
+
+/* head */
+
+.MasterProductHeader {
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.MasterProductHeader .SupplierLogoImg {
+  width: 50%;
+  margin: 12px 0 10px 0;
+  float: right;
+}
+
+.MasterProductHeader .TitleHeader {
+  padding: 100px 0 45px 0;
+  width: 100%;
+}
+
+.MasterProductHeader .TitleHeader .MasterIcon {
+  width: 15%;
+  float: left;
+  /* display: inline-block; */
+}
+
+.MasterProductHeader .TitleHeader .MasterIcon img {
+  width: 100%;
+  float: left;
+}
+
+.MasterProductHeader .TitleHeader .HeaderTable {
+  width: 85%;
+  display: inline-block;
+  float: left;
+  padding-left: 15px;
+}
+
+.MasterProductHeader-HeaderTable-FirstRow {
+  border-bottom: solid 1px #d5d5d5;
+}
+
+.MasterProductHeader-HeaderTable-FirstRowTd {
+  padding: 2px 100px 2px 0px;
+}
+
+.MasterProductHeader-HeaderTable-FirstRowTd h1 {
+  color: #fff;
+  direction: ltr;
+  text-align: left;
+  font-size: 13px !important;
+}
+
+.MasterProductHeader-HeaderTable-SecondRowTd {
+  color: #fff;
+  direction: rtl;
+  text-align: right;
+  padding: 2px
+}
+
+.MasterProduct-Header-Box {
+  width: 65%;
+  min-height: 100px;
+  border: solid 1px #ccc;
+  display: inline-block;
+  margin: 20px 0 20px 0;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .MasterProductHeader {
+    padding: 0;
+  }
+  .MasterProductHeader .SupplierLogoImg {
+    width: 20%;
+    float: right;
+    margin: 15px 0;
+  }
+  .MasterProductHeader .TitleHeader {
+    padding: 60px 30px 30px 15px;
+    width: unset;
+  }
+  .MasterProductHeader .TitleHeader .MasterIcon {
+    width: 5%;
+    float: left;
+  }
+  .MasterProductHeader .TitleHeader .MasterIcon img {
+    width: 55px;
+    float: right;
+    height: 55px;
+    border-radius: 50%;
+  }
+  .MasterProductHeader .TitleHeader .HeaderTable {
+    width: 30%;
+    display: block;
+    float: unset;
+    padding-left: unset;
+    margin: 15px 0 0 6%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .MasterProductHeader {
+    padding-top: 20px;
+  }
+  .MasterProductHeader .TitleHeader {
+    padding: 60px 30px 30px 0;
+  }
+  .MasterProductHeader .SupplierLogoImg {
+    margin-top: 0;
+  }
+}
+
+/* body */
+
+.BasePropertyOfProduct {
+  display: inline-block;
+  padding: 5px 5px 5px 55px;
+  background-color: #282829;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.BasePropertyOfProduct h1 {
+  font-size: 14px !important;
+  color: #ffb700 !important;
+  margin: 0;
+}
+
+.BasePropertyOfProduct .imgProperty {
+  width: 30px;
+}
+
+.MasterProduct-Carousel {
+  padding: 0 0 30px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .MasterProducts .PropertyDefineDetails {
+    padding-left: 0;
+  }
+  .MasterProduct-Carousel {
+    padding: 0 0 30px 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .MasterProduct-Carousel {
+    padding: 0;
+  }
+}

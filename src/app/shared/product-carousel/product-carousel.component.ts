@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class ProductCarouselComponent {
   @Input() carouselData: ProductCarouselParams;
+  @Input() data;
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();

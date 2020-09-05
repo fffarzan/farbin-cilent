@@ -1,1 +1,52 @@
-<p>master-product works!</p>
+<article class="MasterProducts"
+  *ngIf="masterProduct">
+
+  <!-- head -->
+  <section class="MasterProductHeader">
+
+    <!-- <app-supplier-logo></app-supplier-logo> -->
+    <img class="SupplierLogoImg"
+      [src]="enviornment.baseUrl + masterProduct.MenuPicUrl"
+      [alt]="masterProduct.Name_En">
+
+    <app-breadcrumb></app-breadcrumb>
+
+    <!-- title -->
+    <section class="TitleHeader">
+      <div class="MasterIcon">
+        <img [src]="enviornment.baseUrl + masterProduct.ProductUrl | getSmallImage"
+          alt="{{ masterProduct.Name_En }} - {{ masterProduct.Name_Fa }}" />
+      </div>
+      <table class="HeaderTable">
+        <tr class="MasterProductHeader-HeaderTable-FirstRow">
+          <td class="MasterProductHeader-HeaderTable-FirstRowTd">{{ masterProduct.Name_En }}</td>
+        </tr>
+        <tr>
+          <td class="MasterProductHeader-HeaderTable-SecondRowTd">{{ masterProduct.Name_Fa }}</td>
+        </tr>
+      </table>
+    </section>
+    <div class="clearfix"></div>
+    <section class="MasterProduct-Header-Box"></section>
+  </section>
+  <div class="clearfix"></div>
+
+  <!-- body -->
+  <!-- data-ng-repeat=" in " -->
+  <section class="PropertyDefineDetails"
+    *ngFor="let defineDetailProduct of masterProduct.Property">
+    <div class="BasePropertyOfProduct">
+      <h1>{{ defineDetailProduct.Name_En }}</h1>
+    </div>
+    <section class="MasterProduct-Carousel">
+      <!-- <section productcarousel 
+        id="MasterProduct" 
+        datasource="DefineDetailProduct.DefineDetails" >
+      </section> -->
+      <app-product-carousel [carouselData]="carouselData"
+        [data]="defineDetailProduct.DefineDetails"></app-product-carousel>
+    </section>
+
+  </section>
+
+</article>

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { SupplierLogoService } from './supplier.logo.service';
@@ -8,13 +9,21 @@ import { SupplierLogoService } from './supplier.logo.service';
   templateUrl: './supplier-logo.component.html',
   styleUrls: ['./supplier-logo.component.css']
 })
-export class SupplierLogoComponent implements OnInit {
+export class SupplierLogoComponent implements OnInit, OnDestroy {
   data;
+  dataSub: Subscription;
   enviornment: { production: boolean, baseUrl: string } = environment;
 
   constructor(private supplierLogoService: SupplierLogoService) { }
 
   ngOnInit(): void {
-    this.data = this.supplierLogoService.getSupplierLogo();
+    this.dataSub = this.supplierLogoService.logoChange
+      .subscribe(logo => {
+        this.data = logo;
+      });
+  }
+
+  ngOnDestroy() {
+    this.dataSub.unsubscribe()
   }
 }

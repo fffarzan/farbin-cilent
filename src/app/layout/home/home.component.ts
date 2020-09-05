@@ -24,13 +24,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       responsive: { 1024: { items: 6 } }
     },
     mobileOptions: {
-      mobileItems: {maxSize: 500, items: 2.1},
-      tabletItems: {maxSize: 768,items: 0},
-      desktopItems: {maxSize: 1024,items: 4}
+      mobileItems: { maxSize: 500, items: 2.1 },
+      tabletItems: { maxSize: 768, items: 0 },
+      desktopItems: { maxSize: 1024, items: 4 }
     },
     data: null
   };
   subscription: Subscription;
+  products;
   param: object = {};
 
   constructor(
@@ -40,9 +41,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.layoutDataStorageService.fetchProducts(this.param)
-      .subscribe(() => this.carouselData.data = this.productCarouselService.getProducts());
+      .subscribe(() => this.products = this.productCarouselService.getProducts());
   }
-  
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

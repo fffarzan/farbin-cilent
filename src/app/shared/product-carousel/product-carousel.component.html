@@ -1,15 +1,16 @@
 <!-- desktop template -->
-<article class="ProductCarousel" 
+<article class="ProductCarousel"
   *ngIf="!isMobile && !isTablet">
-  <owl-carousel-o id="Product{{dynamicId}}" 
-    class="ProductCarousel-OwlCarousel" 
+  <owl-carousel-o id="Product{{dynamicId}}"
+    class="ProductCarousel-OwlCarousel"
     [options]="carouselData.desktopOptions">
-    <ng-container *ngFor="let product of carouselData.data">
+    <ng-container *ngFor="let product of data">
       <ng-template class="item ProductCarousel-Desktop-MainCarousel-Item"
         carouselSlide
         [width]="carouselItemWidth">
 
-        <a [routerLink]="['/product/define-detail-product', product.IDX]" class="ProductCarousel-Desktop-MainCarousel-ItemInner">
+        <a [routerLink]="['/product/define-detail-product', product.IDX]"
+          class="ProductCarousel-Desktop-MainCarousel-ItemInner">
           <img
             [src]="product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl | getSmallImage"
             alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
@@ -27,15 +28,15 @@
             <!-- data-placement="left" -->
             <!-- tooltip -->
             <!-- ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" -->
-            <img src="assets/img/AddToListWhite.png" 
-              class="AddToListButton clearfix" 
+            <img src="assets/img/AddToListWhite.png"
+              class="AddToListButton clearfix"
               title="Add to List"
-              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"/>
-              <!-- data-placement="left" -->
-              <!-- tooltip -->
-              <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" -->
-            <img src="assets/img/Compare.png" 
-              class="CompareButton" 
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+            <!-- data-placement="left" -->
+            <!-- tooltip -->
+            <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" -->
+            <img src="assets/img/Compare.png"
+              class="CompareButton"
               title="Compare"
               alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
           </div>
@@ -49,7 +50,7 @@
 <!-- mobile template -->
 <article *ngIf="isMobile || isTablet"
   class="ProductCarousel-Mobile">
-  <div *ngFor="let product of carouselData.data"
+  <div *ngFor="let product of data"
     class="ProductCarousel-Mobile-Inner">
 
     <a [routerLink]="['/product/define-detail-product', product.IDX]"
