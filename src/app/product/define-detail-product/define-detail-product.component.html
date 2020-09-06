@@ -1,43 +1,40 @@
-<section ng-controller="DefineDetailProductController"
-  class="DefineDetailController">
+<article class="DefineDetailController"
+  *ngIf="defineDetailProduct">
 
-  <!-- <img class="DefineDetailProductPage-BrandLogoImage"
-    ng-src="{{ServerUrl + DefineDetailProducts.LegalMenuPicUrl}}"
-    alt="{{::DefineDetailProducts.ShortTechnicalDescription}}" /> -->
+  <img class="DefineDetailProductPage-BrandLogoImage"
+    [src]="enviornment.baseUrl + defineDetailProduct.LegalMenuPicUrl"
+    [alt]="defineDetailProduct.ShortTechnicalDescription" />
   <div class="clearfix"></div>
 
   <section class="DefineDetailProductPage-ProductDetailWrapper">
 
-    <!-- Product detail header -->
     <div class="ProductDetailHeader">
 
       <!-- Detail box -->
       <section class="DetailBox">
-        <!-- <h1 class="Color-Yellow DefineDetailPartNumber">{{::DefineDetailProducts.PartNumber}}</h1> -->
+        <h1 class="DefineDetailPartNumber">{{ defineDetailProduct.PartNumber }}</h1>
         <div class="clearfix"></div>
-        <section class="ShortTechnicalDescription">
-          <h4 class="Color-Yellow Title-En ShortTechnicalDescription">
-            <!-- {{::DefineDetailProducts.ShortTechnicalDescription}} -->
+        <div class="ShortTechnicalDescription">
+          <h4 class="ShortTechnicalDescription">{{ defineDetailProduct.ShortTechnicalDescription }}</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="ShortTechnicalDescription_Fa">
+          <h4 class="ShortTechnicalDescription_Fa">
+            {{ defineDetailProduct.ShortTechnicalDescription_Fa != '' && defineDetailProduct.ShortTechnicalDescription_Fa != undefined && defineDetailProduct.ShortTechnicalDescription_Fa != 0 ? defineDetailProduct.ShortTechnicalDescription_Fa : defineDetailProduct.ShortTechnicalDescription  }}
           </h4>
           <div class="clearfix"></div>
-        </section>
-        <section class="ShortTechnicalDescription_Fa">
-          <h4 class="Color-Yellow Title-En ShortTechnicalDescription_Fa">
-            <!-- {{::DefineDetailProducts.ShortTechnicalDescription_Fa !='' && DefineDetailProducts.ShortTechnicalDescription_Fa !=undefined && DefineDetailProducts.ShortTechnicalDescription_Fa !=0 ?DefineDetailProducts.ShortTechnicalDescription_Fa : DefineDetailProducts.ShortTechnicalDescription  }} -->
-          </h4>
-          <div class="clearfix"></div>
-        </section>
+        </div>
       </section>
 
       <!-- Main image and carousel -->
       <section class="DefineImage">
-        <!-- <section class="MasterImageBig Float-Left">
+        <!-- ng-click="OpenDynamicModal(DefineDetailProducts, OtherImages)" -->
+        <section class="MasterImageBig">
           <img id="MasterImage"
-            ng-src="{{ServerUrl + DefineDetailProducts.PicUrl}}"
-            alt="{{::DefineDetailProducts.PartNumber}}"
             class="MasterImage"
-            ng-click="OpenDynamicModal(DefineDetailProducts, OtherImages)" />
-        </section> -->
+            [src]="enviornment.baseUrl + defineDetailProduct.PicUrl"
+            [alt]="defineDetailProduct.PartNumber" />
+        </section>
         <div class="clearfix"></div>
         <!-- <section class="Div100 Float-Left">
           <div gallerycarousel
@@ -63,58 +60,59 @@
 
         <!-- Right side -->
         <section class="DefineButtons">
-          <!-- <div qrcode
-            class="QRCode DefineDetails-QRCode"></div> -->
+          <qr-code *ngIf="!isMobile"
+            [value]="enviornment.baseUrl + 'product/define-detail-product/' + productId"
+            [size]="isTablet ? 140 : 197"
+            class="QRCode DefineDetails-QRCode"></qr-code>
           <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Desktop">!در موبایل یا تبلت دنبال کنید</span>
           <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Tablet">!در موبایل دنبال کنید</span>
-          <!-- <section class="btnDefine">
+          <div class="btnDefine">
+            <!-- ng-click="AddToMaterialList(DefineDetailProducts.IDDefineDetailProduct)" -->
             <img src="assets/img/AddToListWhite.png"
-              class="CursorPointer"
-              ng-click="AddToMaterialList(DefineDetailProducts.IDDefineDetailProduct)"
-              alt="{{::DefineDetailProducts.ShortTechnicalDescription}}" />
+              [alt]="defineDetailProduct.ShortTechnicalDescription" />
             <div class="clearfix"></div>
             Add to material list
-          </section> -->
-          <!-- <section class="btnDefine">
-            <img src="/images/Compare.png"
-              class="CursorPointer"
-              ng-click="AddToCompareList(DefineDetailProducts.IDDefineDetailProduct,'MasterImage')"
-              alt="{{::DefineDetailProducts.ShortTechnicalDescription}}" />
+          </div>
+          <div class="btnDefine">
+            <!-- ng-click="AddToCompareList(DefineDetailProducts.IDDefineDetailProduct,'MasterImage')" -->
+            <img src="assets/img/Compare.png"
+              [alt]="defineDetailProduct.ShortTechnicalDescription" />
             <div class="clearfix"></div>
             Add to compare list
-          </section> -->
+          </div>
         </section>
 
         <!-- Text description -->
         <section class="TextDescription">
-          <section class="TextDescription-Inner">
+          <div class="TextDescription-Inner">
             <div class="clearfix"></div>
             <div class="LangSituationContainer">
+              <!-- ng-click="ChangeDescriptionLang()" -->
               <!-- <input id="chkLangSituation"
                 type="checkbox"
-                ng-click="ChangeDescriptionLang()"
                 data-on="برگردان فارسی"
                 data-off="Shift to EN"
-                ng-show="DefineDetailProducts.ShortTechnicalDescription_Fa 
-                || DefineDetailProducts.TechnicalDescription_Fa 
-                || DefineDetailProducts.DescriptionInSite_Fa"> -->
+                ng-show="defineDetailProduct.ShortTechnicalDescription_Fa 
+                || defineDetailProduct.TechnicalDescription_Fa 
+                || defineDetailProduct.DescriptionInSite_Fa"> -->
             </div>
             <h4 class="Description">Description</h4>
-            <!-- <h5 class="TextDescription-TitleH5 Title-En ShortDescription Float-Left"
-              ng-bind-html="DefineDetailProducts.TechnicalDescription"></h5> -->
-            <!-- <h5 class="TextDescription-TitleH5 Title-En ShortDescription_Fa Float-Left"
-              ng-bind-html="DefineDetailProducts.TechnicalDescription_Fa !='' && DefineDetailProducts.TechnicalDescription_Fa != undefined ? DefineDetailProducts.TechnicalDescription_Fa : DefineDetailProducts.TechnicalDescription"
-              ng-show="SiteSetting.FaLanguage"></h5> -->
+            <h5 class="TextDescription-TitleH5 ShortDescription"
+              [innerHtml]="defineDetailProduct.TechnicalDescription"></h5>
+            <!-- ng-show="SiteSetting.FaLanguage" -->
+            <h5 class="TextDescription-TitleH5 ShortDescription_Fa"
+              [innerHtml]="defineDetailProduct.TechnicalDescription_Fa != '' && defineDetailProduct.TechnicalDescription_Fa != undefined ? defineDetailProduct.TechnicalDescription_Fa : defineDetailProduct.TechnicalDescription">
+            </h5>
             <div class="clearfix"></div>
-          </section>
+          </div>
           <div class="clearfix"></div>
           <h4 class="Summary">Summary</h4>
           <div class="clearfix"></div>
-          <!-- <section class="DefineDescriptionEN"
-            ng-bind-html="DefineDetailProducts.DescriptionInSite_En"></section> -->
+          <div class="DefineDescriptionEN"
+            [innerHtml]="defineDetailProduct.DescriptionInSite_En"></div>
           <div class="clearfix"></div>
-          <!-- <section class="DefineDescriptionFa"
-            ng-bind-html="DefineDetailProducts.DescriptionInSite_Fa"></section> -->
+          <div class="DefineDescriptionFa"
+            [innerHtml]="defineDetailProduct.DescriptionInSite_Fa"></div>
         </section>
 
       </section>
@@ -122,74 +120,73 @@
     </div>
     <div class="clearfix"></div>
 
-    <!-- Body desccription -->
-    <section class="DefineDetailProduct-TabContainer TabContainer">
+    <div class="DefineDetailProduct-TabContainer TabContainer">
 
-      <!-- Common questions -->
+      <!-- common questions -->
       <section class="CommonQuestionsBox">
         <h4 class="CommonQuestions Color-Yellow">سوالات متداول</h4>
         <div class="clearfix"></div>
         <ul id="QuestionAndAnswers"
           class="QuestionAndAnswers-list-group list-group">
-          <!-- ng-repeat="QA in QuestionAndAnswers" -->
-          <li class="QuestionAndAnswers-list-group-item list-group-item">
-            <!-- <section class="QuestionAnswerItem"
-              id="Q{{::QA.IDQuestionAndAnswer}}"
+          <li class="QuestionAndAnswers-list-group-item list-group-item"
+            *ngFor="let qAnda of questionsAndAnswers">
+            <!-- ng-click="ToggleIcon($event)" -->
+            <a class="QuestionAnswerItem"
+              id="Q{{ qAnda.IDQuestionAndAnswer }}"
               data-toggle="collapse"
               data-parent="#QuestionAndAnswers"
-              href="#P{{::QA.IDQuestionAndAnswer}}"
-              ng-click="ToggleIcon($event)">
-              <section id="Question"
+              href="#P{{ qAnda.IDQuestionAndAnswer }}">
+              <div id="Question"
                 class="QuestionAndAnswers-Question">
                 <span class="ico Color-Withe Plus show Float-Left">+</span>
-                <section class="QuestionAndAnswers-Question-QA"
-                  ng-bind-html="QA.Question">
-                </section>
-              </section>
-            </section> -->
+                <div class="QuestionAndAnswers-Question-QA"
+                  [innerHtml]="qAnda.Question">
+                </div>
+              </div>
+            </a>
             <div class="clearfix"></div>
-            <!-- <section id="P{{::QA.IDQuestionAndAnswer}}"
+            <div id="P{{qAnda.IDQuestionAndAnswer}}"
               class="QuestionAndAnswers-panel-collapse panel-collapse collapse">
-              <section class="QuestionAndAnswers-panel-collapse-Answer"
-                ng-bind-html="QA.Answer"></section>
-            </section> -->
+              <div class="QuestionAndAnswers-panel-collapse-Answer"
+                [innerHtml]="qAnda.Answer"></div>
+            </div>
           </li>
         </ul>
       </section>
 
-      <!-- Tabs -->
+      <!-- tabs -->
       <section class="Tab-Details">
         <div class="clearfix"></div>
 
-        <!-- Header -->
-        <header class="TabDetails-TabBox-Header panel-heading tab-bg-dark-navy-blue">
+        <!-- head -->
+        <div class="TabDetails-TabBox-Header panel-heading tab-bg-dark-navy-blue">
           <ul class="nav nav-tabs">
-            <!-- ng-show="RulePropertyProducts.length>0" -->
-            <li class="TabDetails-TabBox-Item-FirstItem active">
+            <li class="TabDetails-TabBox-Item-FirstItem active"
+              *ngIf="rulePropertiesLength">
               <a data-toggle="tab"
                 data-target="#Peroperies"
                 class="SpecificationsTab CursorPointer">
                 <img src="assets/img/TabIcon.png"
-                  alt="مشخصات فنی و ظاهری محصولات فربین" />
+                  alt="مشخصات فنی و ظاهری محصولات فربین">
                 Specifications
                 <div class="clearfix"></div>
                 <div class="SubTitleTab">مشخصات فنی و ظاهری</div>
               </a>
             </li>
-            <!-- ng-show="FoldersFiles.length>0" -->
-            <li class="TabDetails-TabBox-Item">
+            <li class="TabDetails-TabBox-Item"
+              *ngIf="listFoldersFilesLength">
               <a data-toggle="tab"
                 data-target="#AttachFiles"
                 class="MiddleTab CursorPointer">
                 <img src="assets/img/TabIcon.png"
-                  alt="فایل های ضمیمه محصولات فربین" />
+                  alt="فایل های ضمیمه محصولات فربین">
                 Attach Files
                 <div class="clearfix"></div>
                 <div class="SubTitleTab">فایلهای ضمیمه</div>
               </a>
             </li>
-            <!-- ng-show="AccessoryProducts.length>0" -->
-            <li class="TabDetails-TabBox-Item">
+            <li class="TabDetails-TabBox-Item"
+              *ngIf="accessoryProductsLength">
               <a data-toggle="tab"
                 data-target="#Accessories"
                 class="MiddleTab CursorPointer">
@@ -199,8 +196,8 @@
                 <div class="SubTitleTab">لوازم جانبی</div>
               </a>
             </li>
-            <!-- ng-show="RelatedDefineDetailProducts.length>0" -->
-            <li class="TabDetails-TabBox-Item">
+            <li class="TabDetails-TabBox-Item"
+              *ngIf="relatedDefineDetailProductsLength">
               <a data-toggle="tab"
                 data-target="#RelatedProduct"
                 class="RelatedProductTab CursorPointer">
@@ -211,21 +208,19 @@
               </a>
             </li>
           </ul>
-        </header>
+        </div>
 
-        <!-- Body -->
-        <section class="panel-body TabDetails-TabBox-Body">
+        <!-- body -->
+        <div class="panel-body TabDetails-TabBox-Body">
           <div class="tab-content">
 
-            <!-- TabBox Body AttachFiles -->
+            <!-- tabBox body attach-files -->
             <section id="AttachFiles"
               class="tab-pane">
-              <br />
+              <br>
               <div>
-                <section ng-repeat="FoldersFile in FoldersFiles">
-                  <p class="TableTitleInDefineDetail">
-                    <!-- {{::FoldersFile.Name_En}} -->
-                  </p>
+                <div *ngFor="let foldersFile of listFoldersFiles">
+                  <p class="TableTitleInDefineDetail">{{ foldersFile.Name_En }}</p>
                   <table class="table table-bordered table-striped table-condensed table-hover">
                     <thead>
                       <tr>
@@ -235,36 +230,35 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- ng-repeat="File in FoldersFile.AttachFiles" -->
-                      <tr>
+                      <tr *ngFor="let file of foldersFile.AttachFiles">
                         <td>
                           <input type="checkbox" />
                         </td>
                         <td class="TableTitleInDefineDetail-Tbody-SecondCell">
-                          <!-- <a href="{{::(File.FileName != 'DataSheet' ? ServerUrl : '') + File.Url}}"
-                            target="_blank">
-                            <img ng-src="{{::File.IconUrl}}"
-                              class="FileTypeImage"
-                              alt="{{::File.FileName}}" />
-                          </a> -->
+                          <!-- href="{{ (file.FileName != 'DataSheet' ? enviornment.baseUrl : '') + file.Url }}" -->
+                          <a target="_blank">
+                            <img class="FileTypeImage"
+                              [src]="file.IconUrl"
+                              [alt]="file.FileName">
+                          </a>
                         </td>
                         <td>
-                          <!-- <a href="{{::(File.FileName != 'DataSheet' ? ServerUrl : '') + File.Url}}"
-                            target="_blank">
-                            <span ng-bind-html="File.FileName"></span>
-                          </a> -->
+                          <!-- href="{{ (file.FileName != 'DataSheet' ? enviornment.baseUrl : '') + file.Url }}" -->
+                          <a target="_blank">
+                            <span [innerHtml]="file.FileName"></span>
+                          </a>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                </section>
+                </div>
               </div>
             </section>
 
-            <!-- Peroperies -->
+            <!-- peroperies -->
             <section id="Peroperies"
               class="TabBoxBody-Properies tab-pane active">
-              <section class="TabBoxBody-Properies-Inner">
+              <div class="TabBoxBody-Properies-Inner">
                 <p class="TableTitleInDefineDetail">Properties</p>
                 <table class="table table-bordered table-striped table-condensed table-hover">
                   <thead>
@@ -274,13 +268,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <tr ng-repeat="RulePropertyProduct in RulePropertyProducts">
-                      <td><span ng-bind-html="RulePropertyProduct.ParentName_En"></span></td>
-                      <td><span ng-bind-html="RulePropertyProduct.PropertyName_En"></span></td>
-                    </tr> -->
+                    <tr *ngFor="let ruleProperty of ruleProperties">
+                      <td><span [innerHtml]="ruleProperty.ParentName_En"></span></td>
+                      <td><span [innerHtml]="ruleProperty.PropertyName_En"></span></td>
+                    </tr>
                   </tbody>
                 </table>
-              </section>
+              </div>
               <div>
                 <div class="TableTitleInDefineDetail">Specifications</div>
                 <table class="table table-bordered table-striped table-condensed table-hover">
@@ -291,53 +285,52 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <tr ng-repeat="TechnicalPropertiy in TechnicalProperties">
-                      <td><span ng-bind-html="TechnicalPropertiy.TechnicalPropertyName_En"></span></td>
-                      <td><span ng-bind-html="TechnicalPropertiy.Value_En"></span></td>
-                    </tr> -->
+                    <tr *ngFor="let technicalProperty of technicalProperties">
+                      <td><span [innerHtml]="technicalProperty.TechnicalPropertyName_En"></span></td>
+                      <td><span [innerHtml]="technicalProperty.Value_En"></span></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </section>
 
-            <!-- Accessories -->
+            <!-- accessories -->
             <section id="Accessories"
               class="tab-pane ">
               <div class="RelateProductBox">
-                <!-- ng-repeat="AccessoryProduct in AccessoryProducts" -->
-                <section class="DefineItemInRelated">
-                  <!-- href="/DefineDetailProduct/{{::AccessoryProduct.AccessoryIDX}}" -->
-                  <a>
-                    <!-- <img class="img-responsive Accessory{{::AccessoryProduct.AccessoryIDX}}"
-                      ng-src="{{ServerUrl + AccessoryProduct.AccessoryPicUrl | GetSmallImage}}"
-                      alt="{{::AccessoryProduct.PartNumber}}" /> -->
+                <div class="DefineItemInRelated"
+                  *ngFor="let accessoryProduct of accessoryProducts">
+                  <a [routerLink]="['define-detail-product', accessoryProduct.AccessoryIDX]">
+                    <img class="img-responsive Accessory{{ accessoryProduct.AccessoryIDX }}"
+                      [src]="enviornment.baseUrl + accessoryProduct.AccessoryPicUrl | getSmallImage"
+                      [alt]="accessoryProduct.PartNumber">
                   </a>
-                  <section class="Accessories-DefineItemInRelated-Titles">
-                    <!-- <h6>{{::AccessoryProduct.AccessoryPartNumber}}</h6> -->
-                    <!-- <h6>{{::AccessoryProduct.IndexDescriptionText}}</h6> -->
-                  </section>
-                  <section class="Accessories-DefineItemInRelated-Desc">
+                  <div class="Accessories-DefineItemInRelated-Titles">
+                    <h6>{{ accessoryProduct.AccessoryPartNumber }}</h6>
+                    <h6>{{ accessoryProduct.IndexDescriptionText }}</h6>
+                  </div>
+                  <div class="Accessories-DefineItemInRelated-Desc">
                     <div class="Accessories-DefineItemInRelated-DescInner">
-                      <!-- <img ng-src="{{ServerUrl + AccessoryProduct.IndexDescriptionPicUrl}}"
+                      <img [src]="enviornment.baseUrl + accessoryProduct.IndexDescriptionPicUrl"
                         class="IndexDescritionPicInRelated"
-                        alt="{{::AccessoryProduct.AccessoryTechnicalDescription}}" />
-                      <img src="/images/AddToListWhite.png"
+                        [alt]="accessoryProduct.AccessoryTechnicalDescription" />
+                      <!-- tooltip -->
+                      <!-- ng-click="AddToMaterialList(AccessoryProduct.IDDefineDetailAccessory)" -->
+                      <img src="assets/img/AddToListWhite.png"
                         class="AddToListButton"
                         data-placement="left"
-                        tooltip
                         title="Add to List"
-                        ng-click="AddToMaterialList(AccessoryProduct.IDDefineDetailAccessory)"
-                        alt="{{::AccessoryProduct.AccessoryTechnicalDescription}}" />
-                      <img src="/images/Compare.png"
+                        [alt]="accessoryProduct.AccessoryTechnicalDescription" />
+                      <!-- tooltip -->
+                      <!-- ng-click="AddToCompareList(AccessoryProduct.IDDefineDetailAccessory,'Accessory'+AccessoryProduct.AccessoryIDX)" -->
+                      <img src="assets/img/Compare.png"
                         class="CompareButton"
                         data-placement="left"
-                        tooltip
                         title="Compare"
-                        ng-click="AddToCompareList(AccessoryProduct.IDDefineDetailAccessory,'Accessory'+AccessoryProduct.AccessoryIDX)"
-                        alt="{{::AccessoryProduct.AccessoryTechnicalDescription}}" /> -->
+                        [alt]="accessoryProduct.AccessoryTechnicalDescription" />
                     </div>
-                  </section>
-                </section>
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -345,50 +338,51 @@
             <section id="RelatedProduct"
               class="tab-pane">
               <div class="RelateProductBox">
-                <!-- ng-repeat="RelatedDefineDetailProduct in RelatedDefineDetailProducts" -->
-                <section class="DefineItemInRelated">
-                  <!-- href="/DefineDetailProduct/{{::RelatedDefineDetailProduct.IDX}}" -->
-                  <a>
-                    <!-- <img class="img-responsive RelatedDefine{{::AccessoryProduct.AccessoryIDX}}"
-                      ng-src="{{ServerUrl + RelatedDefineDetailProduct.PicUrl | GetSmallImage}}"
-                      alt="{{::RelatedDefineDetailProduct.PartNumber}}" /> -->
+                <div class="DefineItemInRelated"
+                  *ngFor="let relatedDefineDetailProduct of relatedDefineDetailProducts">
+                  <a [routerLink]="['define-detail-product', relatedDefineDetailProduct.IDX]">
+                    <!-- RelatedDefine{{ accessoryProduct.AccessoryIDX }} -->
+                    <img class="img-responsive"
+                      [src]="enviornment.baseUrl + relatedDefineDetailProduct.PicUrl | getSmallImage"
+                      [alt]="relatedDefineDetailProduct.PartNumber">
                   </a>
-                  <section class="Accessories-DefineItemInRelated-Titles">
-                    <!-- <h6>{{::RelatedDefineDetailProduct.PartNumber}}</h6> -->
-                    <!-- <h6>{{::RelatedDefineDetailProduct.IndexDescriptionText}}</h6> -->
-                  </section>
-                  <section class="Accessories-DefineItemInRelated-Desc">
+                  <div class="Accessories-DefineItemInRelated-Titles">
+                    <h6>{{ relatedDefineDetailProduct.PartNumber }}</h6>
+                    <h6>{{ relatedDefineDetailProduct.IndexDescriptionText }}</h6>
+                  </div>
+                  <div class="Accessories-DefineItemInRelated-Desc">
                     <div class="Accessories-DefineItemInRelated-DescInner">
-                      <!-- <img ng-src="{{ServerUrl + RelatedDefineDetailProduct.IndexDescriptionPicUrl}}"
-                        class="IndexDescritionPicInRelated"
-                        alt="{{::RelatedDefineDetailProduct.AccessoryTechnicalDescription}}" />
-                      <img src="/images/AddToListWhite.png" 
-                        class="AddToListButton" 
-                        data-placement="left" 
-                        tooltip
+                      <img class="IndexDescritionPicInRelated"
+                        [src]="enviornment.baseUrl + relatedDefineDetailProduct.IndexDescriptionPicUrl"
+                        [alt]="relatedDefineDetailProduct.AccessoryTechnicalDescription">
+                      <!-- tooltip -->
+                      <!-- ng-click="AddToMaterialList(RelatedDefineDetailProduct.IDDefineDetailProduct)" -->
+                      <img src="assets/img/AddToListWhite.png"
+                        class="AddToListButton"
+                        data-placement="left"
                         title="Add to List"
-                        ng-click="AddToMaterialList(RelatedDefineDetailProduct.IDDefineDetailProduct)"
-                        alt="{{::RelatedDefineDetailProduct.AccessoryTechnicalDescription}}" />
-                      <img src="/images/Compare.png" 
-                        class="CompareButton" 
-                        data-placement="left" 
-                        tooltip 
+                        [alt]="relatedDefineDetailProduct.AccessoryTechnicalDescription" />
+                      <!-- tooltip -->
+                      <!-- ng-click="AddToCompareList(RelatedDefineDetailProduct.IDDefineDetailProduct,'RelatedDefine'+AccessoryProduct.AccessoryIDX)" -->
+                      <img src="assets/img/Compare.png"
+                        class="CompareButton"
+                        data-placement="left"
                         title="Compare"
-                        ng-click="AddToCompareList(RelatedDefineDetailProduct.IDDefineDetailProduct,'RelatedDefine'+AccessoryProduct.AccessoryIDX)"
-                        alt="{{::RelatedDefineDetailProduct.AccessoryTechnicalDescription}}" /> -->
+                        [alt]="relatedDefineDetailProduct.AccessoryTechnicalDescription">
                     </div>
-                  </section>
-                </section>
+                  </div>
+                </div>
               </div>
             </section>
 
           </div>
-        </section>
+        </div>
 
       </section>
 
-    </section>
-  </section>
+    </div>
 
+  </section>
   <div class="clearfix"></div>
-</section>
+
+</article>

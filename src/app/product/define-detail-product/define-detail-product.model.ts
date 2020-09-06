@@ -26,6 +26,8 @@ export class DefineDetailProduct {
     public Sort: number,
     public SpecialDefine: boolean,
     public TechnicalDescription: string,
-    public UnderSpot: boolean
+    public UnderSpot: boolean,
+    public ShortTechnicalDescription_Fa: any,
+    public TechnicalDescription_Fa: string,
   ) { }
 }

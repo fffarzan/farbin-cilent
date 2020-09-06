@@ -35,10 +35,12 @@
   border-radius: 0 5px 5px 0;
   display: inline-block;
   font-size: 19px !important;
+  color: #ffb500;
 }
 
 .ShortTechnicalDescription {
   display: block;
+  color: #ffb500;
 }
 
 .ShortTechnicalDescription h4 {
@@ -55,6 +57,7 @@
 .ShortTechnicalDescription_Fa h4 {
   font-size: 16px;
   margin-bottom: 15px;
+  color: #ffb500;
 }
 
 .DefineImage {
@@ -75,6 +78,7 @@
 
 .MasterImageBig {
   width: 100%;
+  float: left;
 }
 
 .DefineButtons {
@@ -93,6 +97,7 @@
 .DefineButtons .btnDefine img {
   margin-bottom: 4px;
   width: 25px;
+  cursor: pointer;
 }
 
 .DefineDetails-QRCode {
@@ -118,6 +123,7 @@
 
 .TextDescription-TitleH5 {
   font-size: 12px;
+  float: left;
 }
 
 .LangSituationContainer {
@@ -499,7 +505,7 @@
 
 @media screen and (min-width: 768px) {
   .nav-tabs .active img {
-    content: url("/images/TabIconSelected.png");
+    content: url("/assets/img/TabIconSelected.png");
   }
   .SpecificationsTab {
     font-size: 15px;
