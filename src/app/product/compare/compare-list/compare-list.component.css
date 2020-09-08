@@ -1,0 +1,389 @@
+/* -first */
+
+.CompareContainer {
+  padding: 10px 15px 0 15px;
+}
+
+.UnderLineTitle {
+  width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.UnderLineTitleFa {
+  margin-top: 1px;
+}
+
+.UnderLineTitle .UnderLineTitleEn {
+  text-align: left;
+  display: inline-block;
+  font-size: 15px;
+  color: #ffb500;
+  float: left;
+}
+
+.UnderLineTitle .UnderLineTitleFa {
+  text-align: right;
+  display: inline-block;
+  font-size: 15px;
+  color: #ffb500;
+  float: right;
+}
+
+.ComparePage-UnderLineTitleEn-Clearfix {
+  border-bottom: solid 1px #bebebe;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareContainer {
+    padding: 50px 25px;
+  }
+  .UnderLineTitle {
+    width: 300px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .CompareContainer {
+    padding: 50px 70px 50px 47px;
+  }
+}
+
+.CompareList {
+  width: 100%;
+}
+
+.Copmare-btnCompare {
+  width: 100%;
+}
+
+.btnCompare {
+  background-color: #81b7cc;
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
+  border: none;
+  float: left;
+  margin: 0 55px 15px 0;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.CompareItems {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  clear: both;
+}
+
+.CompareItem {
+  width: 47%;
+  position: relative;
+}
+
+.CompareSupplierName {
+  height: 15px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.CompareItemPic-Image img {
+  width: 100%;
+  height: 100%;
+  margin-top: -10px;
+}
+
+.SearchPartNumberInCompare {
+  display: none;
+  position: absolute;
+  top: 49%;
+  left: 10%;
+  background-color: #000;
+  width: 80%;
+  height: 20%;
+}
+
+.SearchPartNumberInCompare i {
+  display: inline-block;
+}
+
+.CompareItemDetail {
+  width: 100%;
+}
+
+.CompareItemDetail-RandomColorImage {
+  width: 7px;
+  height: 35px;
+  float: right;
+  display: inline-block;
+  border: 1px solid #333333;
+}
+
+.ComparePartNumber {
+  font-size: 16px !important;
+  color: #81b7cc;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+.CompareMasterProduct {
+  font-size: 12px !important;
+  color: #ccc;
+  padding: 0;
+}
+
+.CompareItemPic {
+  border: 2px dashed #ccc;
+  width: 100%;
+  height: 118px;
+}
+
+.RemoveCompareItem {
+  position: relative;
+  margin: -10px -10px 0 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ffb500;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px 3px 6px 5.5px;
+  float: right;
+  cursor: pointer;
+}
+
+.RemoveCompareItem:hover {
+  background-color: #ff0000;
+}
+
+.SelectPartNumber {
+  position: relative;
+  left: 22.5%;
+  top: 40%;
+  border: 1px solid #81b7cc;
+  border-radius: 3px;
+  width: auto;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.txtSearchPartNumberInCompare {
+  width: 80%;
+  border-radius: 1px;
+  border: none;
+  padding: 5px;
+  color: #000;
+  border-bottom: 1px solid #c8c8c8;
+  display: inline-block;
+}
+
+.SearchPartNumberInCompareResult {
+  display: block;
+  background-color: #fff;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  color: #000;
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 79.5%;
+  margin-left: 13%;
+}
+
+.SearchPartNumberResulItem {
+  padding: 10px;
+}
+
+.SearchPartNumberResulItem:hover {
+  background-color: #81b7cc;
+  cursor: pointer;
+}
+
+.SearchBoxIconDouble {
+  margin-right: 5px;
+  padding-left: 15px;
+}
+
+.SerachBoxTitle {
+  margin-bottom: 10px;
+}
+
+.SearchBoxIconSingle {
+  margin-right: 5px;
+}
+
+.SearchBoxResultText {
+  display: inline-block;
+  margin: 10px 0 10px 0;
+}
+
+.Index-SearchButton {
+  margin-top: -30px;
+  float: left;
+  width: 10%;
+}
+
+.SearchClose {
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+  padding: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareList {
+    margin: 15px 0;
+  }
+  .CompareItems {
+    justify-content: flex-start;
+  }
+  .btnCompare {
+    float: right;
+    margin: 0 0 15px 0;
+  }
+  .CompareItem {
+    width: 17%;
+    float: left;
+    margin: 0 10px;
+  }
+  .CompareSupplierName {
+    height: 20px;
+    font-size: 14px;
+    margin: 0px;
+  }
+  .RemoveCompareItem {
+    margin: -15px -10px 0 0;
+    width: 25px;
+    height: 25px;
+    padding: 6px 3px 6px 8px;
+  }
+  .SelectPartNumber {
+    left: 14%;
+    margin: 0 0 40% 0;
+    padding: 5px;
+    height: 21%;
+    text-align: center;
+  }
+  .SearchPartNumberInCompareResult {
+    margin-left: 17.5%;
+  }
+  .SearchBoxIconDouble {
+    padding-left: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .CompareItem {
+    width: 18%;
+  }
+  .SelectPartNumber {
+    width: 73%;
+    padding: 7px;
+    margin-top: 7px;
+    height: 15%;
+  }
+  .SearchPartNumberInCompare {
+    top: 48.5%;
+  }
+  .CompareItemPic {
+    height: 190px;
+  }
+  .SearchPartNumberInCompareResult {
+    margin-left: 10.5%;
+    width: 80%;
+  }
+}
+
+.ComparePage-RecentlyViewed-Items {
+  width: 30%;
+  margin-top: 5px;
+  float: left;
+}
+
+.ComparePage-RecentlyViewed-ItemImage {
+  width: 7px !important;
+  height: 37px;
+  float: right;
+  display: inline-block;
+  border: 1px solid #333333;
+}
+
+.ComparePage-RecentlyViewed-ItemContext {
+  float: right;
+}
+
+.RecentlyViewedContainer {
+  padding: 50px 15px 100px 15px;
+  margin-bottom: 100px;
+}
+
+.RecentlyViewedList {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.RecentlyViewedItem {
+  width: 18%;
+  position: relative;
+  float: left;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.RecentlyViewedItemDetail {
+  width: 100%;
+}
+
+.RecentlyViewedItemPic {
+  border: 2px dashed #ccc;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .RecentlyViewedContainer {
+    padding: 50px 25px 100px 25px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .RecentlyViewedContainer {
+    padding: 50px 70px 100px 47px;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+
+@media screen and (max-width: 767px) {
+  .DefineDetailProductsInMasterPageRole {
+    padding: 15px 15px 0 0;
+    font-size: 12px;
+    background: none;
+  }
+  .DefineDetailProductsInMasterPageRole .imgProduct {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .DefineDetailProductsInMasterPageRole .titleProduct {
+    line-height: 10px;
+    color: #ccc;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .DefineDetailProductsInMasterPageRole {
+    padding: 5px 5px 5px 0px;
+    font-size: 12px;
+    background: none;
+    margin: 5px;
+  }
+  .DefineDetailProductsInMasterPageRole .imgProduct {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .DefineDetailProductsInMasterPageRole .titleProduct {
+    line-height: 10px;
+  }
+}

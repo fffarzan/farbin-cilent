@@ -1,0 +1,67 @@
+<article class="CompareDetail-Wrapper">
+  <!-- Table -->
+  <section class="container-fluid CompareDetailContainer">
+    <!-- Header table -->
+    <section class="row CompareTable"
+      id="StickyDefineHeader">
+      <!-- First cell -->
+      <section class="TitpePropertyInCompare grid-comparetable centering">
+        <img src="/images/Compare.png"
+          class="CompareLogo"
+          alt="نوآوران شبکه فربین - Farbin Corporation" />
+        <h1>Compare</h1>
+      </section>
+      <!-- Other cells -->
+      <!-- ng-repeat="DefineDetail in TechnicalPropertiesDetails[0].CompareDetail" -->
+      <!-- ng-class-odd="'TitpePropertyInCompare-BackColorOdd'" -->
+      <section class="grid-comparetable">
+        <!-- <p class="CompareSupplierName">{{::DefineDetail.SupplierName_En}}</p> -->
+        <!-- <a href="/DefineDetailProduct/{{::DefineDetail.IDX}}">
+          <img ng-src="{{::ServerUrl + DefineDetail.PicUrl | GetSmallImage}}"
+            class="CompareItemImage"
+            alt="{{::DefineDetail.PartNumber}}" />
+        </a> -->
+        <div class="clearfix"></div>
+        <section class="CompareItemButtonContainer">
+          <!-- <span>{{::DefineDetail.PartNumber}}</span> -->
+          <div class="btnInCompareHeader">
+            <!-- ng-src="{{::ServerUrl + DefineDetail.IndexDescriptionPicUrl}}" -->
+            <img class="IndexDescritionPicInCompare"
+              alt="نوآوران شبکه فربین - Farbin Corporation" />
+            <!-- tooltip -->
+            <!-- ng-click="AddToMaterialList(DefineDetail.IDDefineDetailProduct)" -->
+            <img src="assets/img/AddToListWhite.png"
+              class="AddToListButton"
+              data-placement="left"
+              title="Add to List"
+              alt="نوآوران شبکه فربین - Farbin Corporation" />
+          </div>
+        </section>
+      </section>
+    </section>
+    <!-- Body table -->
+    <section id="scrollable-body">
+      <!-- First column -->
+      <!-- ng-repeat="Property in PropertiesDetails" -->
+      <section class="row CompareTable">
+        <!-- <p class="TitpePropertyInCompare grid-comparetable">{{::Property.TitleProperty}}</p> -->
+        <!-- <p ng-class-odd="'TitpePropertyInCompare-BackColorOdd'"
+          class="grid-comparetable"
+          ng-repeat="Detail in Property.CompareDetail">
+          {{::Detail.ValuesProperty[0].Value !=udefined ? Detail.ValuesProperty[0].Value : '---'}}
+        </p> -->
+      </section>
+      <!-- Other columns -->
+      <!-- ng-repeat="Property in TechnicalPropertiesDetails" -->
+      <section class="row CompareTable">
+        <!-- <p class="TitpePropertyInCompare grid-comparetable">{{::Property.TitleProperty}}</p> -->
+        <!-- ng-class-odd="'TitpePropertyInCompare-BackColorOdd'" -->
+        <!-- ng-repeat="Detail in Property.CompareDetail" -->
+        <section class="grid-comparetable">
+          <!-- <div class="grid-comparetable-Inner"
+            ng-bind-html="Detail.ValuesProperty[0].Value !=udefined ? Detail.ValuesProperty[0].Value : '---'"></div> -->
+        </section>
+      </section>
+    </section>
+  </section>
+</article>

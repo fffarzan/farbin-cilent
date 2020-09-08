@@ -10,6 +10,8 @@ import { ProductCategoryCarouselComponent } from './product-category/product-cat
 import { ProductCategoryFixedMenuComponent } from './product-category/product-category-fixed-menu/product-category-fixed-menu.component';
 import { SupplierLogoComponent } from './shared/supplier-logo/supplier-logo.component';
 import { CategoryMenuComponent } from './shared/category-menu/category-menu.component';
+import { CompareListComponent } from './compare/compare-list/compare-list.component';
+import { CompareDetailComponent } from './compare/compare-detail/compare-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CategoryMenuComponent } from './shared/category-menu/category-menu.comp
     ProductCategoryCarouselComponent,
     ProductCategoryFixedMenuComponent,
     SupplierLogoComponent,
-    CategoryMenuComponent
+    CategoryMenuComponent,
+    CompareListComponent,
+    CompareDetailComponent
   ],
   imports: [
     ProductRouting,

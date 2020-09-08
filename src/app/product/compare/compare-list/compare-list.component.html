@@ -1,0 +1,131 @@
+<article>
+
+  <!-- Compare list -->
+  <div class="CompareContainer">
+
+    <!-- Title -->
+    <section class="UnderLineTitle">
+      <h1 class="UnderLineTitleEn">Compare List</h1>
+      <div class="clearfix ComparePage-UnderLineTitleEn-Clearfix">
+      </div>
+      <h2 class="UnderLineTitleFa">لیست مقایسه</h2>
+      <div class="clearfix">
+      </div>
+    </section>
+    <div class="clearfix"></div>
+
+    <!-- Body -->
+    <section class="CompareList">
+      <!-- ng-click="SendToCompare()" -->
+      <input type="button"
+        class="btnCompare"
+        value="Compare" />
+      <div class="CompareItems">
+        <!-- ng-repeat="Item in CountCompareList" -->
+        <section class="CompareItem">
+          <p class="CompareSupplierName">
+            <!-- {{CompareListDetails[Item].SupplierName_En}} -->
+          </p>
+          <!-- ng-show="CompareListDetails[Item]" -->
+          <!-- ng-click="RemoveFromCompareList(CompareListDetails[Item].IDDefineDetailProduct)" -->
+          <section class="CompareItemPic">
+            <div class="RemoveCompareItem"
+              data-placement="top"
+              title="Remove">
+              &times;
+            </div>
+            <!-- href="/DefineDetailProduct/{{CompareListDetails[Item].IDXDefineDetailProduct}}" -->
+            <a class="CompareItemPic-Image">
+              <!-- <img ng-src="{{ServerUrl + CompareListDetails[Item].DefineDetailProductPicUrl | GetSmallImage}}"
+                ng-show="CompareListDetails[Item]"
+                alt="{{::CompareListDetails[Item].ProductName_En}} - {{::CompareListDetails[Item].PartNumber}}" /> -->
+            </a>
+            <!-- ng-show="!CompareListDetails[Item]" -->
+            <!-- ng-click="ShowSearchPartNumberInCompare($event)" -->
+            <span class="SelectPartNumber">+
+              Add Quick
+            </span>
+            <section class="SearchPartNumberInCompare">
+              <i class="fa fa-search"></i>
+              <!-- ng-change="SearchPartNumber(SearchPartNumbers)" -->
+              <!-- ng-model="SearchPartNumbers" -->
+              <!-- ng-model-options="{debounce:500}" -->
+              <!-- autocomplete="off" -->
+              <input type="text"
+                id="txtSearchPartNumberInCompare"
+                class="txtSearchPartNumberInCompare" />
+              <!-- ng-repeat="Item in SearchesPartNumber.RuleDefine" -->
+              <!-- ng-click="AddToCompareListFromResult(Item.IDDefineDetailProduct, $event)" -->
+              <!-- ng-cloak="" -->
+              <section class="SearchPartNumberInCompareResult">
+                <div class="SearchPartNumberResulItem">
+                  <!-- {{Item.PartNumber}} -->
+                </div>
+              </section>
+            </section>
+          </section>
+          <!-- ng-show="CompareListDetails[Item]" -->
+          <section class="CompareItemDetail">
+            <!-- <img ng-if="CompareListDetails[Item].IndexDescriptionPicUrl"
+              ng-src="{{ServerUrl + CompareListDetails[Item].IndexDescriptionPicUrl}}"
+              class="CompareItemDetail-RandomColorImage"
+              alt="نوآوران شبکه فربین - Farbin Corporation" /> -->
+            <!-- <img src="/images/AddToListWhite.png"
+              class="AddToListButton"
+              data-placement="left"
+              title="Add to List"
+              ng-click="AddToMaterialList(CompareListDetails[Item].IDDefineDetailProduct)"
+              alt="نوآوران شبکه فربین - Farbin Corporation" /> -->
+            <h5 class="ComparePartNumber">
+              <!-- {{CompareListDetails[Item].PartNumber}} -->
+            </h5>
+            <h5 class="CompareMasterProduct">
+              <!-- {{CompareListDetails[Item].ProductName_En}} -->
+            </h5>
+          </section>
+        </section>
+      </div>
+    </section>
+
+  </div>
+  <div class="clearfix"></div>
+
+  <!-- Recently viewed -->
+  <section class="RecentlyViewedContainer">
+
+    <!-- Title -->
+    <section class="UnderLineTitle">
+      <h2 class="UnderLineTitleEn">Recently Viewed</h2>
+      <div class="clearfix ComparePage-UnderLineTitleEn-Clearfix">
+      </div>
+      <h2 class="UnderLineTitleFa"
+        style="margin-top:1px">بازدیدهای اخیر</h2>
+      <div class="clearfix">
+      </div>
+    </section>
+    <div class="clearfix">
+    </div>
+
+    <!-- Body -->
+    <section class="DefaultPage-MainCarousel">
+      <!-- <div recentlyviewedproductcarousel
+        datasource="RecentlyViewedDetails"
+        staticurl="''"
+        dynamicfieldname="'DefineDetailProductPicUrl'"
+        pageurldirection="'DefineDetailProduct'"
+        owlcarouseloptions="{
+          stagePadding: 20,
+          items: 3,
+          responsive: { 1024: { items: 6 } }
+        }"
+        recentlyviewedproductcarouseloptions="{
+          itemsMobile: [500,2.1],
+          itemsTablet: [768,0],
+          itemsDesktop: [1024,4]
+        }">
+      </div> -->
+    </section>
+
+  </section>
+
+</article>
