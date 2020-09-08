@@ -11,12 +11,12 @@ export class GalleryModalService {
   private currentData;
   private allData;
 
-  setGalleryModalData(currentItem: GalleryMedia, allItems: GalleryMedia[]) {
+  setGalleryModalData(currentItem, allItems) {
     this.currentData = currentItem;
     this.allData = allItems;
   }
-  
-  getGalleryModalData() {   
+
+  getGalleryModalData() {
     return { item: this.currentData, items: this.allData }
   }
 

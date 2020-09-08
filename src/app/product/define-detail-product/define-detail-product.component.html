@@ -1,10 +1,11 @@
 <article class="DefineDetailController"
   *ngIf="defineDetailProduct">
 
-  <img class="DefineDetailProductPage-BrandLogoImage"
-    [src]="enviornment.baseUrl + defineDetailProduct.LegalMenuPicUrl"
-    [alt]="defineDetailProduct.ShortTechnicalDescription" />
-  <div class="clearfix"></div>
+  <section class="DefineDetailProductPage-BrandLogoImage-wrapper">
+    <img class="DefineDetailProductPage-BrandLogoImage"
+      [src]="enviornment.baseUrl + defineDetailProduct.LegalMenuPicUrl"
+      [alt]="defineDetailProduct.ShortTechnicalDescription" />
+  </section>
 
   <section class="DefineDetailProductPage-ProductDetailWrapper">
 
@@ -12,53 +13,33 @@
 
       <!-- Detail box -->
       <section class="DetailBox">
-        <h1 class="DefineDetailPartNumber">{{ defineDetailProduct.PartNumber }}</h1>
-        <div class="clearfix"></div>
-        <div class="ShortTechnicalDescription">
-          <h4 class="ShortTechnicalDescription">{{ defineDetailProduct.ShortTechnicalDescription }}</h4>
-          <div class="clearfix"></div>
-        </div>
-        <div class="ShortTechnicalDescription_Fa">
-          <h4 class="ShortTechnicalDescription_Fa">
-            {{ defineDetailProduct.ShortTechnicalDescription_Fa != '' && defineDetailProduct.ShortTechnicalDescription_Fa != undefined && defineDetailProduct.ShortTechnicalDescription_Fa != 0 ? defineDetailProduct.ShortTechnicalDescription_Fa : defineDetailProduct.ShortTechnicalDescription  }}
+        <h1 class="DefineDetailPartNumber clearfix">{{ defineDetailProduct.PartNumber }}</h1>
+        <div [ngClass]="{'ShortTechnicalDescription': isEnglish, 'ShortTechnicalDescription_Fa': isEnglish}">
+          <h4 class="clearfix"
+            [ngClass]="{'ShortTechnicalDescription': isEnglish, 'ShortTechnicalDescription_Fa': isEnglish}">
+            {{ isEnglish ? defineDetailProduct.ShortTechnicalDescription : (defineDetailProduct.ShortTechnicalDescription_Fa != '' && defineDetailProduct.ShortTechnicalDescription_Fa != undefined && defineDetailProduct.ShortTechnicalDescription_Fa != 0 ? defineDetailProduct.ShortTechnicalDescription_Fa : defineDetailProduct.ShortTechnicalDescription) }}
           </h4>
-          <div class="clearfix"></div>
         </div>
       </section>
 
-      <!-- Main image and carousel -->
+      <!-- main image and carousel -->
       <section class="DefineImage">
-        <!-- ng-click="OpenDynamicModal(DefineDetailProducts, OtherImages)" -->
-        <section class="MasterImageBig">
+        <div class="MasterImageBig"
+          (click)="onOpenGalleryModal(defineDetailProduct, otherImages)">
           <img id="MasterImage"
             class="MasterImage"
             [src]="enviornment.baseUrl + defineDetailProduct.PicUrl"
-            [alt]="defineDetailProduct.PartNumber" />
-        </section>
+            [alt]="defineDetailProduct.PartNumber">
+        </div>
         <div class="clearfix"></div>
-        <!-- <section class="Div100 Float-Left">
-          <div gallerycarousel
-            datasource="OtherImages"
-            staticurl="'/images/docx.png'"
-            dynamicfieldimage="'Url'"
-            desktopcarouseloptions="{
-              stagePadding: 20,
-              items: 3,
-              responsive: { 1024: { items: 4 } } 
-            }"
-            mobilecarouseloptions="{
-              itemsMobile: [500, 9],
-              itemsTablet: [768, 8],
-              itemsDesktop: [1024, 8]
-            }">
-          </div>
-        </section> -->
+        <app-gallery-carousel class="Div100 Float-Left"
+          [carouselData]="imageGalleryData"></app-gallery-carousel>
       </section>
 
-      <!-- All descriptions -->
+      <!-- all descriptions -->
       <section class="AllDescriptions">
 
-        <!-- Right side -->
+        <!-- right side -->
         <section class="DefineButtons">
           <qr-code *ngIf="!isMobile"
             [value]="enviornment.baseUrl + 'product/define-detail-product/' + productId"
@@ -82,37 +63,36 @@
           </div>
         </section>
 
-        <!-- Text description -->
+        <!-- change language button -->
+        <section class="LangSituationContainer">
+          <!-- ng-click="ChangeDescriptionLang()" -->
+          <!-- ng-show="defineDetailProduct.ShortTechnicalDescription_Fa 
+            || defineDetailProduct.TechnicalDescription_Fa 
+            || defineDetailProduct.DescriptionInSite_Fa"> -->
+          <input id="chkLangSituation"
+            type="checkbox"
+            (change)="onToggleDescLanguage()"
+            data-on="برگردان فارسی"
+            data-off="Shift to EN">
+        </section>
+
+        <!-- text description -->
         <section class="TextDescription">
-          <div class="TextDescription-Inner">
-            <div class="clearfix"></div>
-            <div class="LangSituationContainer">
-              <!-- ng-click="ChangeDescriptionLang()" -->
-              <!-- <input id="chkLangSituation"
-                type="checkbox"
-                data-on="برگردان فارسی"
-                data-off="Shift to EN"
-                ng-show="defineDetailProduct.ShortTechnicalDescription_Fa 
-                || defineDetailProduct.TechnicalDescription_Fa 
-                || defineDetailProduct.DescriptionInSite_Fa"> -->
-            </div>
+          <div>
             <h4 class="Description">Description</h4>
-            <h5 class="TextDescription-TitleH5 ShortDescription"
-              [innerHtml]="defineDetailProduct.TechnicalDescription"></h5>
             <!-- ng-show="SiteSetting.FaLanguage" -->
-            <h5 class="TextDescription-TitleH5 ShortDescription_Fa"
-              [innerHtml]="defineDetailProduct.TechnicalDescription_Fa != '' && defineDetailProduct.TechnicalDescription_Fa != undefined ? defineDetailProduct.TechnicalDescription_Fa : defineDetailProduct.TechnicalDescription">
+            <h5 class="TextDescription-TitleH5 clearfix"
+              [ngClass]="{'ShortDescription': isEnglish, 'ShortDescription_Fa': isEnglish}"
+              [innerHtml]="isEnglish ? defineDetailProduct.TechnicalDescription : (defineDetailProduct.TechnicalDescription_Fa != '' && defineDetailProduct.TechnicalDescription_Fa != undefined ? defineDetailProduct.TechnicalDescription_Fa : defineDetailProduct.TechnicalDescription)">
             </h5>
-            <div class="clearfix"></div>
           </div>
-          <div class="clearfix"></div>
-          <h4 class="Summary">Summary</h4>
-          <div class="clearfix"></div>
-          <div class="DefineDescriptionEN"
-            [innerHtml]="defineDetailProduct.DescriptionInSite_En"></div>
-          <div class="clearfix"></div>
-          <div class="DefineDescriptionFa"
-            [innerHtml]="defineDetailProduct.DescriptionInSite_Fa"></div>
+          <div>
+            <h4 class="Summary clearfix">Summary</h4>
+            <div class="clearfix"
+              [ngClass]="{'DefineDescriptionEN': isEnglish, 'DefineDescriptionFa': isEnglish}"
+              [innerHtml]="isEnglish ?  defineDetailProduct.DescriptionInSite_En : defineDetailProduct.DescriptionInSite_Fa">
+            </div>
+          </div>
         </section>
 
       </section>
@@ -160,103 +140,72 @@
 
         <!-- head -->
         <div class="TabDetails-TabBox-Header panel-heading tab-bg-dark-navy-blue">
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs"
+            #tabsHead>
+
+            <!-- properties -->
             <li class="TabDetails-TabBox-Item-FirstItem active"
-              *ngIf="rulePropertiesLength">
-              <a data-toggle="tab"
-                data-target="#Peroperies"
-                class="SpecificationsTab CursorPointer">
-                <img src="assets/img/TabIcon.png"
+              *ngIf="rulePropertiesLength"
+              (click)="onToggleTab($event, properties)"
+              appStopPropagation>
+              <section class="SpecificationsTab">
+                <img class="clearfix"
+                  src="assets/img/TabIcon.png"
                   alt="مشخصات فنی و ظاهری محصولات فربین">
                 Specifications
-                <div class="clearfix"></div>
                 <div class="SubTitleTab">مشخصات فنی و ظاهری</div>
-              </a>
+              </section>
             </li>
+
+            <!-- list files -->
             <li class="TabDetails-TabBox-Item"
-              *ngIf="listFoldersFilesLength">
-              <a data-toggle="tab"
-                data-target="#AttachFiles"
-                class="MiddleTab CursorPointer">
-                <img src="assets/img/TabIcon.png"
+              *ngIf="listFoldersFilesLength"
+              (click)="onToggleTab($event, listFiles)">
+              <div class="MiddleTab">
+                <img class="clearfix"
+                  src="assets/img/TabIcon.png"
                   alt="فایل های ضمیمه محصولات فربین">
                 Attach Files
-                <div class="clearfix"></div>
                 <div class="SubTitleTab">فایلهای ضمیمه</div>
-              </a>
+              </div>
             </li>
+
+            <!-- accessories -->
             <li class="TabDetails-TabBox-Item"
-              *ngIf="accessoryProductsLength">
-              <a data-toggle="tab"
-                data-target="#Accessories"
-                class="MiddleTab CursorPointer">
-                <img src="assets/img/TabIcon.png" />
+              *ngIf="accessoryProductsLength"
+              (click)="onToggleTab($event, accessories)">
+              <div class="MiddleTab">
+                <img class="clearfix"
+                  src="assets/img/TabIcon.png"
+                  alt="لوازم جانبی محصولات فربین">
                 Accessories
-                <div class="clearfix"></div>
                 <div class="SubTitleTab">لوازم جانبی</div>
-              </a>
+              </div>
             </li>
+
+            <!-- related products -->
             <li class="TabDetails-TabBox-Item"
-              *ngIf="relatedDefineDetailProductsLength">
-              <a data-toggle="tab"
-                data-target="#RelatedProduct"
-                class="RelatedProductTab CursorPointer">
-                <img src="assets/img/TabIcon.png" />
+              *ngIf="relatedDefineDetailProductsLength"
+              (click)="onToggleTab($event, relatedProducts)">
+              <div class="RelatedProductTab">
+                <img class="clearfix"
+                  src="assets/img/TabIcon.png"
+                  alt="محصولات مرتبط">
                 Related Products
-                <div class="clearfix"></div>
                 <div class="SubTitleTab">محصولات مرتبط</div>
-              </a>
+              </div>
             </li>
+
           </ul>
         </div>
 
         <!-- body -->
         <div class="panel-body TabDetails-TabBox-Body">
-          <div class="tab-content">
-
-            <!-- tabBox body attach-files -->
-            <section id="AttachFiles"
-              class="tab-pane">
-              <br>
-              <div>
-                <div *ngFor="let foldersFile of listFoldersFiles">
-                  <p class="TableTitleInDefineDetail">{{ foldersFile.Name_En }}</p>
-                  <table class="table table-bordered table-striped table-condensed table-hover">
-                    <thead>
-                      <tr>
-                        <th class="TableTitleInDefineDetail-Thead-FirstCell">Select</th>
-                        <th class="TableTitleInDefineDetail-Thead-SecondCell">Type</th>
-                        <th class="TableTitleInDefineDetail-Thead-ThirdCell">Title</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let file of foldersFile.AttachFiles">
-                        <td>
-                          <input type="checkbox" />
-                        </td>
-                        <td class="TableTitleInDefineDetail-Tbody-SecondCell">
-                          <!-- href="{{ (file.FileName != 'DataSheet' ? enviornment.baseUrl : '') + file.Url }}" -->
-                          <a target="_blank">
-                            <img class="FileTypeImage"
-                              [src]="file.IconUrl"
-                              [alt]="file.FileName">
-                          </a>
-                        </td>
-                        <td>
-                          <!-- href="{{ (file.FileName != 'DataSheet' ? enviornment.baseUrl : '') + file.Url }}" -->
-                          <a target="_blank">
-                            <span [innerHtml]="file.FileName"></span>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </section>
+          <div class="tab-content"
+            #tabsBody>
 
             <!-- peroperies -->
-            <section id="Peroperies"
+            <section #properties
               class="TabBoxBody-Properies tab-pane active">
               <div class="TabBoxBody-Properies-Inner">
                 <p class="TableTitleInDefineDetail">Properties</p>
@@ -294,8 +243,49 @@
               </div>
             </section>
 
+            <!-- list files -->
+            <section #listFiles
+              class="tab-pane">
+              <br>
+              <div>
+                <div *ngFor="let foldersFile of listFoldersFiles">
+                  <p class="TableTitleInDefineDetail">{{ foldersFile.Name_En }}</p>
+                  <table class="table table-bordered table-striped table-condensed table-hover">
+                    <thead>
+                      <tr>
+                        <th class="TableTitleInDefineDetail-Thead-FirstCell">Select</th>
+                        <th class="TableTitleInDefineDetail-Thead-SecondCell">Type</th>
+                        <th class="TableTitleInDefineDetail-Thead-ThirdCell">Title</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let file of foldersFile.AttachFiles">
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td class="TableTitleInDefineDetail-Tbody-SecondCell">
+                          <!-- href="{{ (file.FileName != 'DataSheet' ? enviornment.baseUrl : '') + file.Url }}" -->
+                          <a target="_blank">
+                            <img class="FileTypeImage"
+                              src="assets/img/pdf.png"
+                              [alt]="file.FileName">
+                          </a>
+                        </td>
+                        <td>
+                          <!-- href="{{ (file.FileName != 'DataSheet' ? enviornment.baseUrl : '') + file.Url }}" -->
+                          <a target="_blank">
+                            <span [innerHtml]="file.FileName"></span>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
             <!-- accessories -->
-            <section id="Accessories"
+            <section #accessories
               class="tab-pane ">
               <div class="RelateProductBox">
                 <div class="DefineItemInRelated"
@@ -334,8 +324,8 @@
               </div>
             </section>
 
-            <!-- RelatedProduct -->
-            <section id="RelatedProduct"
+            <!-- related products -->
+            <section #relatedProducts
               class="tab-pane">
               <div class="RelateProductBox">
                 <div class="DefineItemInRelated"

@@ -11,6 +11,9 @@ export class OtherImage {
     public IDUser: string,
     public Order: number,
     public Title: string,
-    public Url: string
+    public Url: string,
+    public IDAttachCrm: string,
+    public CategoryName_En: string,
+    public CategoryName_Fa: string
   ) { }
 }
