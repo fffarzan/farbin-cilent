@@ -27,7 +27,7 @@ export class GalleryCarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onOpenGalleryModal(currentItem: GalleryMedia, allItems: any) {
+  onOpenGalleryModal(currentItem: any, allItems: any) {
     this.galleryModalService.setGalleryModalData(currentItem, allItems);
 
     // trigger model when data arrived

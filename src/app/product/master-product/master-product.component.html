@@ -32,17 +32,12 @@
   <div class="clearfix"></div>
 
   <!-- body -->
-  <!-- data-ng-repeat=" in " -->
   <section class="PropertyDefineDetails"
     *ngFor="let defineDetailProduct of masterProduct.Property">
     <div class="BasePropertyOfProduct">
       <h1>{{ defineDetailProduct.Name_En }}</h1>
     </div>
     <section class="MasterProduct-Carousel">
-      <!-- <section productcarousel 
-        id="MasterProduct" 
-        datasource="DefineDetailProduct.DefineDetails" >
-      </section> -->
       <app-product-carousel [carouselData]="carouselData"
         [data]="defineDetailProduct.DefineDetails"></app-product-carousel>
     </section>
