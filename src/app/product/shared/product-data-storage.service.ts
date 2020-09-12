@@ -18,6 +18,12 @@ import { RuleProperties } from '../define-detail-product/rule-properties.model';
 import { ListFolderFile } from '../define-detail-product/list-folder-file.model';
 import { OtherImage } from '../define-detail-product/other-image.model';
 import { QuestionAndAnswer } from '../define-detail-product/question-and-answer.model';
+import { CompareList } from '../compare/compare-list/compare-list.model';
+import { CompareListService } from '../compare/compare-list/compare-list.service';
+import { SearchProductComapare } from '../compare/compare-list/search-product-compare.model';
+import { ProductsCompareDetail } from '../compare/compare-list/products-compare-detail.model';
+import { ProductProperties } from '../compare/compare-detail/product-properties.model';
+import { CompareDetailService } from '../compare/compare-detail/compare-detail.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +33,9 @@ export class ProductDataStorageService {
     private http: HttpClient,
     private productCategoryService: ProductCategoryService,
     private masterProductService: MasterProductService,
-    private defineDetialProductService: DefineDetailProductService
+    private defineDetialProductService: DefineDetailProductService,
+    private compareListService: CompareListService,
+    private compareDetailService: CompareDetailService
   ) { }
 
   handleError(err: object) {
@@ -177,6 +185,66 @@ export class ProductDataStorageService {
       )
       .pipe(
         tap(qAnda => this.defineDetialProductService.setQuestionsAndAnswers(qAnda))
+      )
+  }
+
+  fetchComapareList(param: object) {
+    return this.http
+      .post<CompareList[]>(
+        environment.baseUrl + '/api/DefineDetailProduct/GetCompareListDetails/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(productList => this.compareListService.setCompareList(productList))
+      )
+  }
+
+  fetchProductsSearchResult(param: object) {
+    return this.http
+      .post<SearchProductComapare[]>(
+        environment.baseUrl + '/api/DefineDetailProduct/GetCompareListDetails/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(searchResult => this.compareListService.setProductSearchResult(searchResult))
+      )
+  }
+
+  fetchCompareListDetails(param: object) {
+    return this.http
+      .post<ProductsCompareDetail[]>(
+        environment.baseUrl + '/api/DefineDetailProduct/GetCompareListDetails/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(listDetails => this.compareListService.setProductCompareDetails(listDetails))
+      )
+  }
+
+  fetchCompareProductsProperties(param: object) {
+    return this.http
+      .post<ProductProperties[]>(
+        environment.baseUrl + '/api/DefineDetailProduct/GetPropertiesDetailForCompare/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(props => this.compareDetailService.setProductsProperties(props))
+      )
+  }
+
+  fetchCompareProductsTechnicalProperties(param: object) {
+    return this.http
+      .post<ProductProperties[]>(
+        environment.baseUrl + '/api/DefineDetailProduct/GetTechnicalPropertiesDetailForCompare/',
+        param,
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+      )
+      .pipe(
+        tap(props => this.compareDetailService.setProductsTechnicalProperties(props))
       )
   }
 }
