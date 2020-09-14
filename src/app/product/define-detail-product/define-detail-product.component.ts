@@ -147,6 +147,14 @@ export class DefineDetailProductComponent implements OnInit, OnDestroy {
     this.renderer.addClass(e.currentTarget, 'active');
   }
 
+  onAddToMaterialList(id: string) {
+    this.dataManagementService.addToMaterialList(id);
+  }
+
+  onAddToCompareList(id, imgClassName) {
+    this.dataManagementService.addToCompareList(id, imgClassName);
+  }
+
   ngOnDestroy() {
     this.relatedDefineDetailProductsSub.unsubscribe();
     this.accessoryProductsSub.unsubscribe();

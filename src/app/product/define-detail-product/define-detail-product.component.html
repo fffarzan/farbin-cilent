@@ -48,16 +48,16 @@
           <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Desktop">!در موبایل یا تبلت دنبال کنید</span>
           <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Tablet">!در موبایل دنبال کنید</span>
           <div class="btnDefine">
-            <!-- ng-click="AddToMaterialList(DefineDetailProducts.IDDefineDetailProduct)" -->
             <img src="assets/img/AddToListWhite.png"
-              [alt]="defineDetailProduct.ShortTechnicalDescription" />
+              [alt]="defineDetailProduct.ShortTechnicalDescription"
+              (click)="onAddToMaterialList(defineDetailProduct.IDDefineDetailProduct)">
             <div class="clearfix"></div>
             Add to material list
           </div>
           <div class="btnDefine">
-            <!-- ng-click="AddToCompareList(DefineDetailProducts.IDDefineDetailProduct,'MasterImage')" -->
             <img src="assets/img/Compare.png"
-              [alt]="defineDetailProduct.ShortTechnicalDescription" />
+              [alt]="defineDetailProduct.ShortTechnicalDescription"
+              (click)="onAddToCompareList(defineDetailProduct.IDDefineDetailProduct, 'MasterImage')">
             <div class="clearfix"></div>
             Add to compare list
           </div>

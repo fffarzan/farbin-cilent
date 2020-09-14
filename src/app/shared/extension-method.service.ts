@@ -179,11 +179,6 @@ export class ExtensionMethodService {
     }
   }
 
-  // unfamilers!
-  EmptyGuid() {
-    return '00000000-0000-0000-0000-000000000000';
-  }
-
   NewGuid() {
     function s4() {
       return Math.floor((1 + Math.random()) * 0x10000)
@@ -192,6 +187,11 @@ export class ExtensionMethodService {
     }
 
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
+
+  // unfamilers!
+  EmptyGuid() {
+    return '00000000-0000-0000-0000-000000000000';
   }
 
   GetParameterByName(Name, Url) {

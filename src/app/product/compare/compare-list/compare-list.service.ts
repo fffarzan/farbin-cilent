@@ -9,7 +9,7 @@ import { ProductsCompareDetail } from './products-compare-detail.model';
 })
 export class CompareListService {
   private productCompareList: CompareList[];
-  private productsSearchResult: SearchProductComapare[];
+  private productsSearchResult: SearchProductComapare;
   private productCompareDetails: ProductsCompareDetail[];
 
   setCompareList(productList: CompareList[]) {

@@ -63,8 +63,8 @@
   padding: 10px 15px 10px 15px;
   border-radius: 5px;
   border: none;
-  float: left;
-  margin: 0 55px 15px 0;
+  float: right;
+  margin: 0 0 15px 55px;
   color: #000;
   font-size: 18px;
   font-weight: bold;
@@ -95,7 +95,6 @@
 }
 
 .SearchPartNumberInCompare {
-  display: none;
   position: absolute;
   top: 49%;
   left: 10%;
