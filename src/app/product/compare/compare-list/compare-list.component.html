@@ -1,120 +1,32 @@
 <article *ngIf="productsCompareList">
 
-  <div class="CompareContainer">
-
-    <!-- title -->
-    <!-- <section class="UnderLineTitle">
-      <h1 class="UnderLineTitleEn">Compare List</h1>
-      <div class="clearfix ComparePage-UnderLineTitleEn-Clearfix"></div>
-      <h2 class="UnderLineTitleFa">لیست مقایسه</h2>
-      <div class="clearfix"></div>
-    </section>
-    <div class="clearfix"></div> -->
-
-    <!-- body -->
+  <!-- comapre list -->
+  <section class="CompareContainer clearfix">
+    <app-compare-title [title]="{ titleEn: 'Compare List', titleFa: 'لیست مقایسه' }"></app-compare-title>
     <section class="CompareList">
 
       <!-- compare button -->
-      <!-- <input type="button"
+      <input type="button"
         class="btnCompare"
         value="Compare"
-        (click)="onSendToCompareDetail()"> -->
+        (click)="onSendToCompareDetail()">
 
-      <!-- compare box -->
       <div class="CompareItems">
-        <section class="CompareItem"
+        <div class="CompareItem"
           *ngFor="let index of comapreProductListCount">
-          <!-- <p class="CompareSupplierName">{{ productsCompareList[index]?.SupplierName_En }}</p> -->
-
-          <!-- comapre picture -->
-          <section class="CompareItemPic">
-
-            <!-- remove button -->
-            <div class="RemoveCompareItem"
-              (click)="onRemoveFromCompareList(productsCompareList[index].IDDefineDetailProduct)"
-              *ngIf="productsCompareList[index]"
-              data-placement="top"
-              title="Remove">
-              &times;
-            </div>
-
-            <!-- product image -->
-            <a class="CompareItemPic-Image"
-              *ngIf="productsCompareList[index]"
-              [routerLink]="['/product/define-detail-product', productsCompareList[index].IDXDefineDetailProduct]">
-              <img [src]="enviornment.baseUrl + productsCompareList[index].DefineDetailProductPicUrl | getSmallImage"
-                *ngIf="productsCompareList[index]"
-                alt="{{ productsCompareList[index].ProductName_En }} - {{ productsCompareList[index].PartNumber }}" />
-            </a>
-
-            <!-- add quick button -->
-            <span class="SelectPartNumber"
-              (click)="onShowPartNumberSearchbox(index)"
-              *ngIf="visibleIndex !== index">+
-              Add Quick
-            </span>
-
-            <!-- search box -->
-            <div class="SearchPartNumberInCompare"
-              id="SearchPartNumberInCompare"
-              *ngIf="visibleIndex === index">
-              <i class="fa fa-search"></i>
-              <!-- ng-model-options="{debounce:500}" -->
-              <input type="text"
-                [(ngModel)]="partNumbersSearchText"
-                (ngModelChange)="onChangePartNumberSearchText(partNumbersSearchText)"
-                #partNumberSearchbox
-                class="txtSearchPartNumberInCompare"
-                autofocus
-                autocomplete="off">
-              <div class="SearchPartNumberInCompareResult"
-                *ngFor="let item of partNumberSearches.RuleDefine"
-                (click)="onAddToCompareListFromResult(item.IDDefineDetailProduct, $event)">
-                <div class="SearchPartNumberResulItem">
-                  {{ item.PartNumber }}
-                </div>
-              </div>
-            </div>
-
-          </section>
-
-          <!-- <section class="CompareItemDetail"
-            *ngIf="productsCompareList[index]">
-            <img *ngIf="productsCompareList[index].IndexDescriptionPicUrl"
-              [src]="enviornment.baseUrl + productsCompareList[index].IndexDescriptionPicUrl"
-              class="CompareItemDetail-RandomColorImage"
-              alt="نوآوران شبکه فربین - Farbin Corporation">
-            <img src="assets/img/AddToListWhite.png"
-              class="AddToListButton"
-              data-placement="left"
-              title="Add to List"
-              (click)="onAddToMaterialList(productsCompareList[index].IDDefineDetailProduct)"
-              alt="نوآوران شبکه فربین - Farbin Corporation">
-            <h5 class="ComparePartNumber">{{ productsCompareList[index].PartNumber }}</h5>
-            <h5 class="CompareMasterProduct"> {{ productsCompareList[index].ProductName_En }}</h5>
-          </section> -->
-
-        </section>
+          <app-compare-item [item]="productsCompareList[index]"
+            [index]="index"
+            (changedItem)="onRunGetComapreListData($event)"></app-compare-item>
+        </div>
       </div>
+
     </section>
+  </section>
 
-  </div>
-  <div class="clearfix"></div>
-
-  <!-- Recently viewed -->
-  <!-- <section class="RecentlyViewedContainer">
-    <section class="UnderLineTitle">
-      <h2 class="UnderLineTitleEn">Recently Viewed</h2>
-      <div class="clearfix ComparePage-UnderLineTitleEn-Clearfix">
-      </div>
-      <h2 class="UnderLineTitleFa"
-        style="margin-top:1px">بازدیدهای اخیر</h2>
-      <div class="clearfix">
-      </div>
-    </section>
-    <div class="clearfix">
-    </div>
-    <section class="DefaultPage-MainCarousel">
+  <!-- recently viewed -->
+  <section class="RecentlyViewedContainer">
+    <app-compare-title [title]="{ titleEn: 'Recently Viewed', titleFa: 'بازدیدهای اخیر' }"></app-compare-title>
+    <!-- <section class="DefaultPage-MainCarousel">
       <div recentlyviewedproductcarousel
         datasource="RecentlyViewedDetails"
         staticurl="''"
@@ -131,7 +43,7 @@
           itemsDesktop: [1024,4]
         }">
       </div>
-    </section>
-  </section> -->
+    </section> -->
+  </section>
 
 </article>

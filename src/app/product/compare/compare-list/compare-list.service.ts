@@ -20,7 +20,7 @@ export class CompareListService {
     return this.productCompareList;
   }
 
-  setProductSearchResult(searchResult: SearchProductComapare[]) {
+  setProductSearchResult(searchResult: SearchProductComapare) {
     this.productsSearchResult = searchResult;
   }
 

@@ -1,0 +1,227 @@
+.CompareList {
+  width: 100%;
+}
+
+.Copmare-btnCompare {
+  width: 100%;
+}
+
+.CompareSupplierName {
+  height: 15px;
+  font-size: 13px;
+  text-align: left;
+}
+
+.CompareItemPic-Image img {
+  width: 100%;
+  height: 100%;
+  margin-top: -10px;
+}
+
+.SearchPartNumberInCompare {
+  position: absolute;
+  top: 49%;
+  left: 10%;
+  background-color: #000;
+  width: 80%;
+  height: 20%;
+}
+
+.SearchPartNumberInCompare i {
+  display: inline-block;
+}
+
+.CompareItemPic {
+  border: 2px dashed #ccc;
+  width: 100%;
+  height: 118px;
+}
+
+.RemoveCompareItem {
+  position: relative;
+  margin: -10px -10px 0 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ffb500;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px 3px 6px 5.5px;
+  float: right;
+  cursor: pointer;
+}
+
+.RemoveCompareItem:hover {
+  background-color: #ff0000;
+}
+
+.SelectPartNumber {
+  position: relative;
+  left: 22.5%;
+  top: 40%;
+  border: 1px solid #81b7cc;
+  border-radius: 3px;
+  width: auto;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.txtSearchPartNumberInCompare {
+  width: 80%;
+  border-radius: 1px;
+  border: none;
+  padding: 5px;
+  color: #000;
+  border-bottom: 1px solid #c8c8c8;
+  display: inline-block;
+}
+
+.SearchPartNumberInCompareResult {
+  display: block;
+  background-color: #fff;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  color: #000;
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 79.5%;
+  margin-left: 13%;
+}
+
+.SearchPartNumberResulItem {
+  padding: 10px;
+}
+
+.SearchPartNumberResulItem:hover {
+  background-color: #81b7cc;
+  cursor: pointer;
+}
+
+.SearchBoxIconDouble {
+  margin-right: 5px;
+  padding-left: 15px;
+}
+
+.SerachBoxTitle {
+  margin-bottom: 10px;
+}
+
+.SearchBoxIconSingle {
+  margin-right: 5px;
+}
+
+.SearchBoxResultText {
+  display: inline-block;
+  margin: 10px 0 10px 0;
+}
+
+.Index-SearchButton {
+  margin-top: -30px;
+  float: left;
+  width: 10%;
+}
+
+.SearchClose {
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+  padding: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareList {
+    margin: 15px 0;
+  }
+  .btnCompare {
+    float: right;
+    margin: 0 0 15px 0;
+  }
+  .CompareSupplierName {
+    height: 20px;
+    font-size: 14px;
+    margin: 0px;
+  }
+  .RemoveCompareItem {
+    margin: -15px -10px 0 0;
+    width: 25px;
+    height: 25px;
+    padding: 6px 3px 6px 8px;
+  }
+  .SelectPartNumber {
+    left: 14%;
+    margin: 0 0 40% 0;
+    padding: 5px;
+    height: 21%;
+    text-align: center;
+  }
+  .SearchPartNumberInCompareResult {
+    margin-left: 17.5%;
+  }
+  .SearchBoxIconDouble {
+    padding-left: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .SelectPartNumber {
+    width: 73%;
+    padding: 7px;
+    margin-top: 7px;
+    height: 15%;
+  }
+  .SearchPartNumberInCompare {
+    top: 48.5%;
+  }
+  .CompareItemPic {
+    height: 190px;
+  }
+  .SearchPartNumberInCompareResult {
+    margin-left: 10.5%;
+    width: 80%;
+  }
+}
+
+/* item detail */
+
+.CompareItemDetail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CompareItemDetail-img {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 3px;
+}
+
+.CompareItemDetail-RandomColorImage {
+  width: 7px;
+  height: 35px;
+  border: 1px solid #333333;
+}
+
+.AddToListButton {
+  width: 15px !important;
+  height: 11px;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+.CompareMasterProduct {
+  font-size: 12px !important;
+  color: #ccc;
+  padding: 0;
+  margin: 5px 0;
+}
+
+.ComparePartNumber {
+  font-size: 16px !important;
+  color: #81b7cc;
+  padding: 0;
+  margin: 5px 0 0 0;
+}

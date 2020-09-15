@@ -12,6 +12,8 @@ import { SupplierLogoComponent } from './shared/supplier-logo/supplier-logo.comp
 import { CategoryMenuComponent } from './shared/category-menu/category-menu.component';
 import { CompareListComponent } from './compare/compare-list/compare-list.component';
 import { CompareDetailComponent } from './compare/compare-detail/compare-detail.component';
+import { CompareItemComponent } from './compare/compare-list/compare-item/compare-item.component';
+import { CompareTitleComponent } from './compare/compare-list/compare-title/compare-title.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CompareDetailComponent } from './compare/compare-detail/compare-detail.
     SupplierLogoComponent,
     CategoryMenuComponent,
     CompareListComponent,
-    CompareDetailComponent
+    CompareDetailComponent,
+    CompareItemComponent,
+    CompareTitleComponent
   ],
   imports: [
     ProductRouting,

@@ -188,7 +188,7 @@ export class ProductDataStorageService {
       )
   }
 
-  fetchComapareList(param: object) {
+  fetchCompareList(param: object) {
     return this.http
       .post<CompareList[]>(
         environment.baseUrl + '/api/DefineDetailProduct/GetCompareListDetails/',
@@ -196,13 +196,13 @@ export class ProductDataStorageService {
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
       )
       .pipe(
-        tap(productList => this.compareListService.setCompareList(productList))
+        tap(list => this.compareListService.setCompareList(list))
       )
   }
 
   fetchProductsSearchResult(param: object) {
     return this.http
-      .post<SearchProductComapare[]>(
+      .post<SearchProductComapare>(
         environment.baseUrl + '/api/Search/SearchRuleDefineProduct/',
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }

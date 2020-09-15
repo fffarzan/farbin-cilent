@@ -1,0 +1,73 @@
+<article>
+
+  <p class="CompareSupplierName">{{ item?.SupplierName_En }}</p>
+
+  <section class="CompareItemPic">
+
+    <!-- remove button -->
+    <div class="RemoveCompareItem"
+      (click)="onRemoveFromCompareList(item.IDDefineDetailProduct)"
+      *ngIf="item"
+      data-placement="top"
+      title="Remove">
+      &times;
+    </div>
+
+    <!-- product image -->
+    <a class="CompareItemPic-Image"
+      *ngIf="item"
+      [routerLink]="['/product/define-detail-product', item.IDXDefineDetailProduct]">
+      <img [src]="enviornment.baseUrl + item.DefineDetailProductPicUrl | getSmallImage"
+        *ngIf="item"
+        alt="{{ item.ProductName_En }} - {{ item.PartNumber }}" />
+    </a>
+
+    <!-- add quick button -->
+    <span class="SelectPartNumber"
+      (click)="onShowPartNumberSearchbox(index)"
+      *ngIf="visibleIndex !== index && !item">+
+      Add Quick
+    </span>
+
+    <!-- search box -->
+    <div class="SearchPartNumberInCompare"
+      *ngIf="visibleIndex === index && !item">
+      <i class="fa fa-search"></i>
+      <!-- ng-model-options="{debounce:500}" -->
+      <input type="text"
+        [(ngModel)]="partNumbersSearchText"
+        (ngModelChange)="onChangePartNumberSearchText(partNumbersSearchText)"
+        #partNumberSearchbox
+        class="txtSearchPartNumberInCompare"
+        autofocus
+        autocomplete="off">
+      <div class="SearchPartNumberInCompareResult"
+        *ngFor="let item of partNumberSearches.RuleDefine"
+        (click)="onAddToCompareListFromResult(item.IDDefineDetailProduct, $event)">
+        <div class="SearchPartNumberResulItem">{{ item.PartNumber }}</div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="CompareItemDetail"
+    *ngIf="item">
+    <div>
+      <h5 class="ComparePartNumber">{{ item.PartNumber }}</h5>
+      <h5 class="CompareMasterProduct"> {{ item.ProductName_En }}</h5>
+    </div>
+    <div class="CompareItemDetail-img">
+      <img src="assets/img/AddToListWhite.png"
+        class="AddToListButton"
+        data-placement="left"
+        title="Add to List"
+        (click)="onAddToMaterialList(item.IDDefineDetailProduct)"
+        alt="نوآوران شبکه فربین - Farbin Corporation">
+      <img *ngIf="item.IndexDescriptionPicUrl"
+        [src]="enviornment.baseUrl + item.IndexDescriptionPicUrl"
+        class="CompareItemDetail-RandomColorImage"
+        alt="نوآوران شبکه فربین - Farbin Corporation">
+    </div>
+  </section>
+
+</article>

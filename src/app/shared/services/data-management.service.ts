@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieUtils } from '../utils/cookie-utils';
-import { detectMobile, } from '../utils/common-utils';
+import * as commonUtils from '../utils/common-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,18 @@ export class DataManagementService {
   addToCompareList(id: string, imgClassName: string) {
     const cookie = CookieUtils.getCookie('CompareList');
 
-    if (detectMobile()) this.countCompareItems = 2;
+    if (commonUtils.detectMobile()) this.countCompareItems = 2;
     else this.countCompareItems = 5;
 
     if (cookie === undefined || !cookie.includes(id)) {
       if (cookie !== undefined) this.compareList = cookie.split(",");
 
-      if (this.compareList.length < this.countCompareItems) {
+      if (this.compareList.length <= this.countCompareItems) {
+
         this.compareList.push(id);
+
         CookieUtils.setCookie('CompareList', this.compareList.join());
+
         // $('.ComareCount').animate({ 'background-color': '#ff0000' }).animate({ 'background-color': '#ffb500' });
 
         if (imgClassName !== undefined) {
@@ -45,7 +48,7 @@ export class DataManagementService {
           // });
 
           let offsetTopComapre: number;
-          if (detectMobile()) offsetTopComapre = 0;
+          if (commonUtils.detectMobile()) offsetTopComapre = 0;
           else offsetTopComapre = 50;
 
           // $('#CompareImageDefineMovable').animate({
