@@ -1,0 +1,110 @@
+<!-- desktop template -->
+<article class="RecentlyViewedRecentlyViewedProductCarousel"
+  *ngIf="!isMobile && !isTablet">
+  <owl-carousel-o id="Product{{dynamicId}}"
+    class="RecentlyViewedProductCarousel-OwlCarousel"
+    [options]="carouselData.desktopOptions">
+    <ng-container *ngFor="let product of data">
+      <ng-template class="item RecentlyViewedProductCarousel-Desktop-MainCarousel-Item"
+        carouselSlide
+        [width]="carouselItemWidth">
+
+        <!-- ng-click="RemoveFromRecentlyViewedList(product.IDDefineDetailProduct, $event)" -->
+        <div class="RemoveRecentlyViewedItem"
+          data-placement="top"
+          title="Remove">
+          &times;
+        </div>
+
+        <a [routerLink]="['/product/define-detail-product', product.IDXDefineDetailProduct]"
+          class="RecentlyViewedProductCarousel-Desktop-MainCarousel-ItemInner">
+          <img
+            [src]="product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl | getSmallImage"
+            alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
+            class="ImageClass{{ product.IDXDefineDetailProduct }} RecentlyViewedProductCarousel-Desktop-MainCarousel-ItemMainImage">
+          <div class="RecentlyViewedProductCarousel-Desktop-MainCarousel-ItemDesc">
+            <span class="UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
+            <span class="UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
+          </div>
+        </a>
+
+        <section class="RecentlyViewedProductCarousel-Desktop-MainCarousel-Thumbnail">
+          <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
+            class="RecentlyViewedProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage">
+          <div class="RecentlyViewedProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
+            <!-- data-placement="left" -->
+            <!-- tooltip -->
+            <img src="assets/img/AddToListWhite.png"
+              class="AddToListButton clearfix"
+              title="Add to List"
+              (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+            <!-- data-placement="left" -->
+            <!-- tooltip -->
+            <img src="assets/img/Compare.png"
+              class="CompareButton"
+              title="Compare"
+              (click)="onAddToCompareList(product.IDDefineDetailProduct, 'DefineItemImage' + product.IDXDefineDetailProduct)"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
+          </div>
+        </section>
+
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</article>
+
+<!-- mobile template -->
+<article *ngIf="isMobile || isTablet"
+  class="RecentlyViewedProductCarousel-Mobile">
+  <div *ngFor="let product of data"
+    class="RecentlyViewedProductCarousel-Mobile-Inner">
+
+    <!-- delete button -->
+    <!-- data-placement="top" -->
+    <div class="RemoveRecentlyViewedItem"
+      title="Remove"
+      (click)="onRemoveItemFromCarousel(product, data)">
+      &times;
+    </div>
+
+    <!-- image -->
+    <a [routerLink]="['/product/define-detail-product', product.IDXDefineDetailProduct]"
+      class="RecentlyViewedProductCarousel-Mobile-MainIamge">
+      <img [appMobileTemplate]="carouselData"
+        class="ImageClass{{ product.IDXDefineDetailProduct }}"
+        alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
+        [src]="(product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl) | getSmallImage" />
+    </a>
+
+    <!-- description -->
+    <section class="RecentlyViewedProductCarousel-Mobile-Thumbnail">
+      <a [routerLink]="['/product/define-detail-product', product.IDXDefineDetailProduct]"
+        class="RecentlyViewedProductCarousel-Mobile-Thumbnail-Desc">
+        <span
+          class="RecentlyViewedProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
+        <span
+          class="RecentlyViewedProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
+      </a>
+      <div class="PRecentlyViewedProductCarousel-Mobile-Thumbnail-Buttons">
+        <!-- data-placement="left" -->
+        <!-- tooltip -->
+        <img src="assets/img/AddToListWhite.png"
+          class="AddToListButton"
+          title="Add to List"
+          (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+        <!-- data-placement="left" -->
+        <!-- tooltip -->
+        <img src="assets/img/Compare.png"
+          class="CompareButton"
+          title="Compare"
+          (click)="onAddToCompareList(product.IDDefineDetailProduct, 'DefineItemImage' + product.IDXDefineDetailProduct)"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
+      </div>
+      <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
+        class="RecentlyViewedProductCarousel-Mobile-Thumbnail-ItemColor">
+    </section>
+
+  </div>
+</article>

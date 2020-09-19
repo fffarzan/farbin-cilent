@@ -14,6 +14,7 @@ import { CompareListComponent } from './compare/compare-list/compare-list.compon
 import { CompareDetailComponent } from './compare/compare-detail/compare-detail.component';
 import { CompareItemComponent } from './compare/compare-list/compare-item/compare-item.component';
 import { CompareTitleComponent } from './compare/compare-list/compare-title/compare-title.component';
+import { RecentlyViewedProductCarouselComponent } from './compare/compare-list/recently-viewed-product-carousel/recently-viewed-product-carousel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CompareTitleComponent } from './compare/compare-list/compare-title/comp
     CompareListComponent,
     CompareDetailComponent,
     CompareItemComponent,
-    CompareTitleComponent
+    CompareTitleComponent,
+    RecentlyViewedProductCarouselComponent
   ],
   imports: [
     ProductRouting,

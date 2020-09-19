@@ -1,4 +1,5 @@
-<article *ngIf="productsCompareList">
+<article *ngIf="productsCompareList"
+  class="compare-list">
 
   <!-- comapre list -->
   <section class="CompareContainer clearfix">
@@ -25,25 +26,14 @@
 
   <!-- recently viewed -->
   <section class="RecentlyViewedContainer">
+
     <app-compare-title [title]="{ titleEn: 'Recently Viewed', titleFa: 'بازدیدهای اخیر' }"></app-compare-title>
-    <!-- <section class="DefaultPage-MainCarousel">
-      <div recentlyviewedproductcarousel
-        datasource="RecentlyViewedDetails"
-        staticurl="''"
-        dynamicfieldname="'DefineDetailProductPicUrl'"
-        pageurldirection="'DefineDetailProduct'"
-        owlcarouseloptions="{
-          stagePadding: 20,
-          items: 3,
-          responsive: { 1024: { items: 6 } }
-        }"
-        recentlyviewedproductcarouseloptions="{
-          itemsMobile: [500,2.1],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,4]
-        }">
-      </div>
-    </section> -->
+
+    <div class="DefaultPage-MainCarousel">
+      <app-recently-viewed-product-carousel [carouselData]="carouselData"
+        [data]="recentlyViewedProducts"></app-recently-viewed-product-carousel>
+    </div>
+
   </section>
 
 </article>

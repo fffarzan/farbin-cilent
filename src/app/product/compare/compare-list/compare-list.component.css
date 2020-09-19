@@ -1,3 +1,7 @@
+.compare-list {
+  min-height: calc(100vh - 40px);
+}
+
 .CompareContainer {
   padding: 10px 15px 0 15px;
 }
@@ -64,8 +68,7 @@
 }
 
 .RecentlyViewedContainer {
-  padding: 50px 15px 100px 15px;
-  margin-bottom: 100px;
+  padding: 50px 15px;
 }
 
 .RecentlyViewedList {
@@ -91,14 +94,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .RecentlyViewedContainer {
-    padding: 50px 25px 100px 25px;
+  .compare-list {
+    padding: 50px 10px;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .RecentlyViewedContainer {
-    padding: 50px 70px 100px 47px;
+  .compare-list {
+    padding: 50px 55px 50px 32px;
   }
 }
 

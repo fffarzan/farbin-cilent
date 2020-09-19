@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { ProductDataStorageService } from '../../shared/product-data-storage.service';
 import { CompareDetailService } from './compare-detail.service';
 import { ProductProperties } from './product-properties.model';
-import { Subscription } from 'rxjs';
 import { DataManagementService } from 'src/app/shared/services/data-management.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class CompareDetailComponent implements OnInit, OnDestroy {
   propsSub: Subscription;
   technicalPropsSub: Subscription;
   routeSub: Subscription;
+  isScrollReachedTop: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +38,12 @@ export class CompareDetailComponent implements OnInit, OnDestroy {
 
   onAddToMaterialList(id: string) {
     this.dataManagementService.addToMaterialList(id);
+  }
+
+  onScrollDiv(isReachedTop: boolean) {
+    console.log(isReachedTop)
+    if (isReachedTop) this.isScrollReachedTop = true;
+    else this.isScrollReachedTop = false;
   }
 
   ngOnDestroy() {

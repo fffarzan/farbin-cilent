@@ -1,7 +1,7 @@
 /* mobile-first */
 
 .CompareDetail-Wrapper {
-  height: 100%;
+  min-height: calc(100vh - 40px);
 }
 
 .grid-comparetable {
@@ -56,7 +56,8 @@
 #scrollable-body {
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 100px);
+  margin-bottom: 50px;
 }
 
 .IndexDescritionPicInCompare {
@@ -100,6 +101,13 @@
   .CompareDetailContainer {
     padding: 0 70px 0 45px;
   }
+}
+
+.AddToListButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
 }
 
 /* -------------------------------------------------------------------- */
