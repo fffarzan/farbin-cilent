@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import * as CommonUtils from '../utils/common-utils';
 import { environment } from '../../../environments/environment';
 import { ProductCarouselParams } from './product-carousel-params.model';
+import { DataManagementService } from '../services/data-management.service';
 
 @Component({
   selector: 'app-product-carousel',
@@ -18,5 +19,13 @@ export class ProductCarouselComponent {
   dynamicId: number = Math.round(Math.random() * 100);
   carouselItemWidth: number = 160;
 
-  constructor() { }
+  constructor(private dataManagementService: DataManagementService) { }
+
+  onAddToMaterialList(id: string) {
+    this.dataManagementService.addToMaterialList(id);
+  }
+
+  onAddToCompareList(id, imgClassName) {
+    this.dataManagementService.addToCompareList(id, imgClassName);
+  }
 }

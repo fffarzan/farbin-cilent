@@ -3,7 +3,9 @@
 
   <!-- comapre list -->
   <section class="CompareContainer clearfix">
+
     <app-compare-title [title]="{ titleEn: 'Compare List', titleFa: 'لیست مقایسه' }"></app-compare-title>
+
     <section class="CompareList">
 
       <!-- compare button -->
@@ -22,6 +24,7 @@
       </div>
 
     </section>
+
   </section>
 
   <!-- recently viewed -->
@@ -31,7 +34,8 @@
 
     <div class="DefaultPage-MainCarousel">
       <app-recently-viewed-product-carousel [carouselData]="carouselData"
-        [data]="recentlyViewedProducts"></app-recently-viewed-product-carousel>
+        [data]="recentlyViewedProducts"
+        (productAdded)="onProductAdded()"></app-recently-viewed-product-carousel>
     </div>
 
   </section>

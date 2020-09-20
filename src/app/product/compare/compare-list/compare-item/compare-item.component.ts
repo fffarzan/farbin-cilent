@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { CookieUtils } from 'src/app/shared/utils/cookie-utils';
@@ -7,6 +7,7 @@ import { SearchProductComapare } from '../search-product-compare.model';
 import { ProductDataStorageService } from 'src/app/product/shared/product-data-storage.service';
 import { ProductsCompareDetail } from '../products-compare-detail.model';
 import { CompareListService } from '../compare-list.service';
+import { CookiesService } from 'src/app/shared/services/cookies.service';
 
 @Component({
   selector: 'app-compare-item',
@@ -17,6 +18,7 @@ export class CompareItemComponent implements OnInit {
   enviornment: { production: boolean, baseUrl: string } = environment;
   @Input() item: ProductsCompareDetail;
   @Input() index: number;
+  @Input() isProductAdded = true;
   @Output() changedItem = new EventEmitter<string>();
   compareListCookie;
   partNumberSearches: SearchProductComapare;
@@ -26,11 +28,12 @@ export class CompareItemComponent implements OnInit {
   constructor(
     private dataManagementService: DataManagementService,
     private dataStorageService: ProductDataStorageService,
-    private compareListSevice: CompareListService
+    private compareListSevice: CompareListService,
+    private cookiesService: CookiesService
   ) { }
 
   ngOnInit(): void {
-    this.compareListCookie = CookieUtils.getCookie('CompareList') === undefined ? '' : CookieUtils.getCookie('CompareList');
+    // this.compareListCookie = CookieUtils.getCookie('CompareList') === undefined ? '' : CookieUtils.getCookie('CompareList');
   }
 
   onShowPartNumberSearchbox(index: number) {
@@ -42,18 +45,10 @@ export class CompareItemComponent implements OnInit {
   }
 
   onRemoveFromCompareList(id: string) {
-    const cookie: string = CookieUtils.getCookie('CompareList');
-    let cookieArray: string[];
-
-    cookieArray = cookie.split(',').filter(productId => productId !== id);
-
-    if (cookieArray.length === 0) CookieUtils.deleteCookie('CompareList');
-    else CookieUtils.setCookie('CompareList', cookieArray.join());
-
     // showing add quick button
     this.visibleIndex = -1
 
-    this.changedItem.emit(cookieArray.join());
+    this.changedItem.emit(this.dataManagementService.RemoveFromCompareList(id).join());
   }
 
   onAddToCompareListFromResult(id: string, e: Event) {
@@ -61,7 +56,7 @@ export class CompareItemComponent implements OnInit {
     this.partNumbersSearchText = '';
 
     this.dataManagementService.addToCompareList(id, '');
-    this.compareListCookie = CookieUtils.getCookie('CompareList') === undefined ? '' : CookieUtils.getCookie('CompareList');
+    this.compareListCookie = this.cookiesService.getCookie('CompareList');
     this.changedItem.emit(this.compareListCookie);
   }
 

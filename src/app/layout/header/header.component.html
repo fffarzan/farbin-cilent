@@ -1,4 +1,5 @@
 <header class="SideMenu">
+
   <!-- catalog menu button -->
   <a class="CatalogMenuButton"
     *ngIf="!hideIconsWhenSearchOpen">
@@ -9,7 +10,7 @@
       (click)="openCatalog()" />
   </a>
 
-  <!-- SignIn button -->
+  <!-- signin button -->
   <!-- href="/SignIn"  -->
   <!-- ng-if="!Login" -->
   <a id="SignInIcon"
@@ -37,7 +38,8 @@
     <img src="assets/img/Compare.png"
       class="CursorPointer btnMenu imgCompareTopButton"
       alt="نوآوران شبکه فربین - مقایسه محصولات">
-    <!-- <h3 class="ComareCount" ng-show="CompareList.length">{{CompareList.length}}</h3> -->
+    <h3 class="ComareCount"
+      *ngIf="compareListNumber">{{ compareListNumber }}</h3>
     <div id="CompareImageDefineMovable"></div>
   </a>
 

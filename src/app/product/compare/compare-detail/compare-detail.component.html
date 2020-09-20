@@ -10,7 +10,8 @@
       <section class="TitpePropertyInCompare grid-comparetable centering">
         <img src="assets/img/Compare.png"
           class="CompareLogo"
-          alt="نوآوران شبکه فربین - Farbin Corporation" />
+          *ngIf="isScrollReachedTop"
+          alt="نوآوران شبکه فربین - Farbin Corporation">
         <h1>Compare</h1>
       </section>
 
@@ -18,9 +19,11 @@
       <section class="grid-comparetable"
         *ngFor="let technicalProp of technicalProps[0].CompareDetail; let i = index"
         [ngClass]="{'TitpePropertyInCompare-BackColorOdd': 0 === i % 2}">
-        <p class="CompareSupplierName">{{ technicalProp.SupplierName_En }}</p>
+        <p class="CompareSupplierName"
+          *ngIf="isScrollReachedTop">{{ technicalProp.SupplierName_En }}</p>
         <a [routerLink]="['/product/define-detail-product', technicalProp.IDX]">
           <img [src]="enviornment.baseUrl + technicalProp.PicUrl | getSmallImage"
+            [ngClass]="{'compareDetail-img': !isScrollReachedTop}"
             class="CompareItemImage"
             [alt]="technicalProp.PartNumber">
         </a>

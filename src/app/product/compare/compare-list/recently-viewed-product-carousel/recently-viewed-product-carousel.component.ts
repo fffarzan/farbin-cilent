@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import * as CommonUtils from '../../../../shared/utils/common-utils';
 import { environment } from 'src/environments/environment';
@@ -14,6 +14,7 @@ import { CookieUtils } from 'src/app/shared/utils/cookie-utils';
 export class RecentlyViewedProductCarouselComponent implements OnInit {
   @Input() carouselData: ProductCarouselParams;
   @Input() data;
+  @Output() productAdded = new EventEmitter<void>();
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = CommonUtils.detectMobile();
   isTablet: boolean = CommonUtils.detectTablet();
@@ -31,6 +32,7 @@ export class RecentlyViewedProductCarouselComponent implements OnInit {
 
   onAddToCompareList(id, imgClassName) {
     this.dataManagementService.addToCompareList(id, imgClassName);
+    this.productAdded.emit();
   }
 
   onRemoveItemFromCarousel(item, data) {

@@ -9,10 +9,10 @@
         carouselSlide
         [width]="carouselItemWidth">
 
-        <!-- ng-click="RemoveFromRecentlyViewedList(product.IDDefineDetailProduct, $event)" -->
         <div class="RemoveRecentlyViewedItem"
           data-placement="top"
-          title="Remove">
+          title="Remove"
+          (click)="onRemoveItemFromCarousel(product, data)">
           &times;
         </div>
 
@@ -32,14 +32,12 @@
           <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
             class="RecentlyViewedProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage">
           <div class="RecentlyViewedProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
-            <!-- data-placement="left" -->
             <!-- tooltip -->
             <img src="assets/img/AddToListWhite.png"
               class="AddToListButton clearfix"
               title="Add to List"
               (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
               alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
-            <!-- data-placement="left" -->
             <!-- tooltip -->
             <img src="assets/img/Compare.png"
               class="CompareButton"
@@ -87,14 +85,12 @@
           class="RecentlyViewedProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
       </a>
       <div class="PRecentlyViewedProductCarousel-Mobile-Thumbnail-Buttons">
-        <!-- data-placement="left" -->
         <!-- tooltip -->
         <img src="assets/img/AddToListWhite.png"
           class="AddToListButton"
           title="Add to List"
           (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
           alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
-        <!-- data-placement="left" -->
         <!-- tooltip -->
         <img src="assets/img/Compare.png"
           class="CompareButton"

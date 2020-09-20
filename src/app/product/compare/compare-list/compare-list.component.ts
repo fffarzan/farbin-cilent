@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { ProductCarouselParams } from 'src/app/shared/product-carousel/product-c
   templateUrl: './compare-list.component.html',
   styleUrls: ['./compare-list.component.css']
 })
-export class CompareListComponent implements OnInit, OnDestroy {
+export class CompareListComponent implements OnInit, OnChanges, OnDestroy {
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   productsCompareList: ProductsCompareDetail[];
@@ -48,12 +48,17 @@ export class CompareListComponent implements OnInit, OnDestroy {
     private extensionMethodService: ExtensionMethodService,
     private dataStorageService: ProductDataStorageService,
     private compareListSevice: CompareListService,
-  ) { }
+  ) {
+    this.getCompareListData({ CompareList: CookieUtils.getCookie('CompareList') });
+  }
 
   ngOnInit(): void {
     this.setNumberOfCompareProducts();
-    this.getCompareListData({ CompareList: CookieUtils.getCookie('CompareList') });
     this.getRecentlyViewedProductsList();
+  }
+
+  ngOnChanges() {
+
   }
 
   onRunGetComapreListData(compareListStr: string) {
@@ -75,6 +80,10 @@ export class CompareListComponent implements OnInit, OnDestroy {
     }
   }
 
+  onProductAdded() {
+    this.getCompareListData({ CompareList: CookieUtils.getCookie('CompareList') });
+  }
+
   ngOnDestroy() {
     if (this.productsCompareList) this.productCompareListSub.unsubscribe();
     if (this.recentlyViewedProducts) this.recentlyViewedProductsSub.unsubscribe();
@@ -82,20 +91,7 @@ export class CompareListComponent implements OnInit, OnDestroy {
 
   private getCompareListData(compareListStr: { CompareList: string }) {
     this.productCompareListSub = this.dataStorageService.fetchCompareList(compareListStr)
-      .subscribe(() => {
-        this.productsCompareList = this.compareListSevice.getCompareList();
-
-        const cookie: string = CookieUtils.getCookie('CompareList');
-        if (cookie !== undefined) {
-          this.compareProductList = cookie.split(',');
-
-          if (cookie !== "") {
-            CookieUtils.deleteCookie('CompareList');
-            this.compareProductList.length = 0;
-          } else
-            this.compareProductList = undefined;
-        }
-      });
+      .subscribe(() => this.productsCompareList = this.compareListSevice.getCompareList());
   }
 
   private getRecentlyViewedProductsList() {

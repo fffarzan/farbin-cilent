@@ -1,15 +1,26 @@
-import { Injectable } from '@angular/core';
-import { CookieUtils } from '../utils/cookie-utils';
+import { Injectable, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import * as commonUtils from '../utils/common-utils';
+import { CookiesService } from './cookies.service';
+import { CookieUtils } from '../utils/cookie-utils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataManagementService {
-  compareList = [];
+  compareList: string[];
   recentlyViewedList = [];
   countCompareItems: number;
   currentDefineDetailProduct: string;
+  compareListCount: number;
+  compareProductList = new Subject<number>();
+
+  constructor(private cookiesService: CookiesService) {
+    this.compareList = CookieUtils.getCookie('CompareList').split(',');
+    if (this.compareList[0] === "") this.compareList.shift();
+    this.compareListCount = this.compareList.length;
+  }
 
   addToCompareList(id: string, imgClassName: string) {
     const cookie = CookieUtils.getCookie('CompareList');
@@ -18,13 +29,13 @@ export class DataManagementService {
     else this.countCompareItems = 5;
 
     if (cookie === undefined || !cookie.includes(id)) {
-      if (cookie !== undefined) this.compareList = cookie.split(",");
+      if (cookie !== undefined && cookie !== "") this.compareList = cookie.split(",");
 
       if (this.compareList.length <= this.countCompareItems) {
-
         this.compareList.push(id);
 
         CookieUtils.setCookie('CompareList', this.compareList.join());
+        this.compareProductList.next(this.compareList.length)
 
         // $('.ComareCount').animate({ 'background-color': '#ff0000' }).animate({ 'background-color': '#ffb500' });
 
@@ -68,7 +79,7 @@ export class DataManagementService {
       if (cookie !== undefined) this.recentlyViewedList = cookie.split(",");
 
       this.recentlyViewedList.push(id);
-      CookieUtils.setCookie('RecentlyViewedList', id);
+      CookieUtils.setCookie('RecentlyViewedList', this.recentlyViewedList.join());
     }
   }
 
@@ -81,5 +92,21 @@ export class DataManagementService {
     } else {
       // $('#ModalMaterialListCategory').modal('show');
     }
+  }
+
+  RemoveFromCompareList(id: string) {
+    const cookie: string = CookieUtils.getCookie('CompareList');
+    let cookieArray: string[];
+
+    cookieArray = cookie.split(',').filter(itemId => itemId !== id);
+    if (cookieArray[0] === "") cookieArray.shift();
+
+    if (cookieArray.length === 0) CookieUtils.setCookie('CompareList', '');
+    else CookieUtils.setCookie('CompareList', cookieArray.join());
+
+    this.compareList = this.compareList.filter(itemId => itemId !== id);
+    this.compareProductList.next(this.compareList.length);
+
+    return this.compareList;
   }
 }

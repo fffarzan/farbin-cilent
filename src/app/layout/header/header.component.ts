@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DataManagementService } from 'src/app/shared/services/data-management.service';
 
 import { LayoutDataStorageService } from '../shared/layout-data-storage.service';
 
@@ -12,13 +13,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output() catalogSituation = new EventEmitter<boolean>();
   closeSearch: boolean = false;
   hideIconsWhenSearchOpen: boolean = false;
+  compareListNumber: number;
   subscription: Subscription;
 
-  constructor(private layoutDataStorageService: LayoutDataStorageService) { }
+  constructor(
+    private layoutDataStorageService: LayoutDataStorageService,
+    private dataManagementService: DataManagementService
+  ) { }
 
   ngOnInit(): void {
     this.subscription = this.layoutDataStorageService.fetchCatalogs()
       .subscribe();
+    this.compareListNumber = this.dataManagementService.compareListCount;
+    this.compareProductsNumber();
   }
 
   openCatalog() {
@@ -37,5 +44,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  private compareProductsNumber() {
+    this.dataManagementService.compareProductList
+      .subscribe(num => this.compareListNumber = num);
   }
 }

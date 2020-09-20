@@ -41,7 +41,6 @@ export class CompareDetailComponent implements OnInit, OnDestroy {
   }
 
   onScrollDiv(isReachedTop: boolean) {
-    console.log(isReachedTop)
     if (isReachedTop) this.isScrollReachedTop = true;
     else this.isScrollReachedTop = false;
   }
