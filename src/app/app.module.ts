@@ -14,9 +14,9 @@ import { LayoutModule } from './layout/layout.module';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    LayoutModule
+    LayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
