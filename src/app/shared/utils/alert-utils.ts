@@ -1,7 +1,4 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({ providedIn: 'root' })
-export class AlertService {
+export class AlertUtils {
   AutoClosingSuccessAlert(text, Delay) {
     // $('.alert_placeholders').html('<div class="alert_placeholders_Content"><div class="alert alert-success fade in">' +
     //   '<button data-dismiss="alert" class="close close-sm closeAbsolute" type="button">' +

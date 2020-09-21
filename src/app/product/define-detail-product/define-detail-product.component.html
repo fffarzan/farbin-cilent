@@ -11,18 +11,18 @@
 
     <div class="ProductDetailHeader">
 
-      <!-- Detail box -->
+      <!-- title -->
       <section class="DetailBox">
         <h1 class="DefineDetailPartNumber clearfix">{{ defineDetailProduct.PartNumber }}</h1>
-        <div [ngClass]="{'ShortTechnicalDescription': isEnglish, 'ShortTechnicalDescription_Fa': isEnglish}">
+        <div [ngClass]="{'ShortTechnicalDescription': isEnglish, 'ShortTechnicalDescription_Fa': !isEnglish}">
           <h4 class="clearfix"
-            [ngClass]="{'ShortTechnicalDescription': isEnglish, 'ShortTechnicalDescription_Fa': isEnglish}">
+            [ngClass]="{'ShortTechnicalDescription': isEnglish, 'ShortTechnicalDescription_Fa': !isEnglish}">
             {{ isEnglish ? defineDetailProduct.ShortTechnicalDescription : (defineDetailProduct.ShortTechnicalDescription_Fa != '' && defineDetailProduct.ShortTechnicalDescription_Fa != undefined && defineDetailProduct.ShortTechnicalDescription_Fa != 0 ? defineDetailProduct.ShortTechnicalDescription_Fa : defineDetailProduct.ShortTechnicalDescription) }}
           </h4>
         </div>
       </section>
 
-      <!-- main image and carousel -->
+      <!-- images -->
       <section class="DefineImage">
         <div class="MasterImageBig"
           (click)="onOpenGalleryModal(defineDetailProduct, otherImages)">
@@ -32,64 +32,71 @@
             [alt]="defineDetailProduct.PartNumber">
         </div>
         <div class="clearfix"></div>
-        <app-gallery-carousel class="Div100 Float-Left"
-          [carouselData]="imageGalleryData"></app-gallery-carousel>
+        <app-gallery-carousel class="Div100 Float-Left DefineImage-carousel"
+          [carouselData]="imageGalleryData"
+          [itemWidth]="80"></app-gallery-carousel>
       </section>
 
-      <!-- all descriptions -->
+      <!-- descriptions -->
       <section class="AllDescriptions">
 
         <!-- right side -->
         <section class="DefineButtons">
           <qr-code *ngIf="!isMobile"
             [value]="enviornment.baseUrl + 'product/define-detail-product/' + productId"
-            [size]="isTablet ? 140 : 197"
+            [size]="isTablet ? 100 : 145"
             class="QRCode DefineDetails-QRCode"></qr-code>
           <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Desktop">!در موبایل یا تبلت دنبال کنید</span>
           <span class="DefineDetails-QRCode-Span DefineDetails-QRCode-Span-Tablet">!در موبایل دنبال کنید</span>
           <div class="btnDefine">
-            <!-- ng-click="AddToMaterialList(DefineDetailProducts.IDDefineDetailProduct)" -->
-            <img src="assets/img/AddToListWhite.png"
-              [alt]="defineDetailProduct.ShortTechnicalDescription" />
-            <div class="clearfix"></div>
-            Add to material list
+            <img class="clearfix"
+              src="assets/img/AddToListWhite.png"
+              [alt]="defineDetailProduct.ShortTechnicalDescription"
+              (click)="onAddToMaterialList(defineDetailProduct.IDDefineDetailProduct)">
+            <p>Add to material list</p>
           </div>
           <div class="btnDefine">
-            <!-- ng-click="AddToCompareList(DefineDetailProducts.IDDefineDetailProduct,'MasterImage')" -->
-            <img src="assets/img/Compare.png"
-              [alt]="defineDetailProduct.ShortTechnicalDescription" />
-            <div class="clearfix"></div>
-            Add to compare list
+            <img class="clearfix"
+              src="assets/img/Compare.png"
+              [alt]="defineDetailProduct.ShortTechnicalDescription"
+              (click)="onAddToCompareList(defineDetailProduct.IDDefineDetailProduct, 'MasterImage')">
+            <p>Add to compare list</p>
           </div>
-        </section>
-
-        <!-- change language button -->
-        <section class="LangSituationContainer">
-          <!-- ng-click="ChangeDescriptionLang()" -->
-          <!-- ng-show="defineDetailProduct.ShortTechnicalDescription_Fa 
-            || defineDetailProduct.TechnicalDescription_Fa 
-            || defineDetailProduct.DescriptionInSite_Fa"> -->
-          <input id="chkLangSituation"
-            type="checkbox"
-            (change)="onToggleDescLanguage()"
-            data-on="برگردان فارسی"
-            data-off="Shift to EN">
         </section>
 
         <!-- text description -->
         <section class="TextDescription">
-          <div>
+          <div class="TextDescription-Inner">
+            <div class="clearfix"></div>
+            <div class="LangSituationContainer">
+              <section class="toggle btn btn-primary"
+                (click)="onToggleDescLanguage()">
+                <div id="chkLangSituation"
+                  type="checkbox"
+                  *ngIf="defineDetailProduct.ShortTechnicalDescription_Fa || defineDetailProduct.TechnicalDescription_Fa || defineDetailProduct.DescriptionInSite_Fa">
+                </div>
+                <div class="toggles">
+                  <label *ngIf="!isEnglish"
+                    class="LangSituationContainer-faLabel">برگردان فارسی</label>
+                  <label *ngIf="isEnglish"
+                    class="LangSituationContainer-enLabel">Shift to EN</label>
+                  <span
+                    [ngClass]="{ 'LangSituationContainer-spanInactive': isEnglish, 'LangSituationContainer-spanActive': !isEnglish}"
+                    class="toggle-handle btn btn-default"></span>
+                </div>
+              </section>
+            </div>
             <h4 class="Description">Description</h4>
             <!-- ng-show="SiteSetting.FaLanguage" -->
             <h5 class="TextDescription-TitleH5 clearfix"
-              [ngClass]="{'ShortDescription': isEnglish, 'ShortDescription_Fa': isEnglish}"
+              [ngClass]="{'ShortDescription': isEnglish, 'ShortDescription_Fa': !isEnglish}"
               [innerHtml]="isEnglish ? defineDetailProduct.TechnicalDescription : (defineDetailProduct.TechnicalDescription_Fa != '' && defineDetailProduct.TechnicalDescription_Fa != undefined ? defineDetailProduct.TechnicalDescription_Fa : defineDetailProduct.TechnicalDescription)">
             </h5>
           </div>
           <div>
             <h4 class="Summary clearfix">Summary</h4>
             <div class="clearfix"
-              [ngClass]="{'DefineDescriptionEN': isEnglish, 'DefineDescriptionFa': isEnglish}"
+              [ngClass]="{'DefineDescriptionEN': isEnglish, 'DefineDescriptionFa': !isEnglish}"
               [innerHtml]="isEnglish ?  defineDetailProduct.DescriptionInSite_En : defineDetailProduct.DescriptionInSite_Fa">
             </div>
           </div>
@@ -144,7 +151,7 @@
             #tabsHead>
 
             <!-- properties -->
-            <li class="TabDetails-TabBox-Item-FirstItem active"
+            <li class="TabDetails-TabBox-Item TabDetails-TabBox-Item-active active"
               *ngIf="rulePropertiesLength"
               (click)="onToggleTab($event, properties)"
               appStopPropagation>
@@ -290,7 +297,7 @@
               <div class="RelateProductBox">
                 <div class="DefineItemInRelated"
                   *ngFor="let accessoryProduct of accessoryProducts">
-                  <a [routerLink]="['define-detail-product', accessoryProduct.AccessoryIDX]">
+                  <a [routerLink]="['/product/define-detail-product', accessoryProduct.AccessoryIDX]">
                     <img class="img-responsive Accessory{{ accessoryProduct.AccessoryIDX }}"
                       [src]="enviornment.baseUrl + accessoryProduct.AccessoryPicUrl | getSmallImage"
                       [alt]="accessoryProduct.PartNumber">
@@ -303,21 +310,21 @@
                     <div class="Accessories-DefineItemInRelated-DescInner">
                       <img [src]="enviornment.baseUrl + accessoryProduct.IndexDescriptionPicUrl"
                         class="IndexDescritionPicInRelated"
-                        [alt]="accessoryProduct.AccessoryTechnicalDescription" />
+                        [alt]="accessoryProduct.AccessoryTechnicalDescription">
                       <!-- tooltip -->
-                      <!-- ng-click="AddToMaterialList(AccessoryProduct.IDDefineDetailAccessory)" -->
                       <img src="assets/img/AddToListWhite.png"
                         class="AddToListButton"
                         data-placement="left"
                         title="Add to List"
-                        [alt]="accessoryProduct.AccessoryTechnicalDescription" />
+                        [alt]="accessoryProduct.AccessoryTechnicalDescription"
+                        (click)="onAddToMaterialList(accessoryProduct.IDDefineDetailAccessory)">
                       <!-- tooltip -->
-                      <!-- ng-click="AddToCompareList(AccessoryProduct.IDDefineDetailAccessory,'Accessory'+AccessoryProduct.AccessoryIDX)" -->
                       <img src="assets/img/Compare.png"
                         class="CompareButton"
                         data-placement="left"
                         title="Compare"
-                        [alt]="accessoryProduct.AccessoryTechnicalDescription" />
+                        [alt]="accessoryProduct.AccessoryTechnicalDescription"
+                        (click)="onAddToCompareList(accessoryProduct.IDDefineDetailAccessory, 'Accessory'+ accessoryProduct.AccessoryIDX)">
                     </div>
                   </div>
                 </div>
@@ -330,8 +337,7 @@
               <div class="RelateProductBox">
                 <div class="DefineItemInRelated"
                   *ngFor="let relatedDefineDetailProduct of relatedDefineDetailProducts">
-                  <a [routerLink]="['define-detail-product', relatedDefineDetailProduct.IDX]">
-                    <!-- RelatedDefine{{ accessoryProduct.AccessoryIDX }} -->
+                  <a [routerLink]="['/product/define-detail-product', relatedDefineDetailProduct.IDX]">
                     <img class="img-responsive"
                       [src]="enviornment.baseUrl + relatedDefineDetailProduct.PicUrl | getSmallImage"
                       [alt]="relatedDefineDetailProduct.PartNumber">
@@ -346,18 +352,18 @@
                         [src]="enviornment.baseUrl + relatedDefineDetailProduct.IndexDescriptionPicUrl"
                         [alt]="relatedDefineDetailProduct.AccessoryTechnicalDescription">
                       <!-- tooltip -->
-                      <!-- ng-click="AddToMaterialList(RelatedDefineDetailProduct.IDDefineDetailProduct)" -->
                       <img src="assets/img/AddToListWhite.png"
                         class="AddToListButton"
                         data-placement="left"
                         title="Add to List"
+                        (click)="onAddToMaterialList(relatedDefineDetailProduct.IDDefineDetailProduct)"
                         [alt]="relatedDefineDetailProduct.AccessoryTechnicalDescription" />
                       <!-- tooltip -->
-                      <!-- ng-click="AddToCompareList(RelatedDefineDetailProduct.IDDefineDetailProduct,'RelatedDefine'+AccessoryProduct.AccessoryIDX)" -->
                       <img src="assets/img/Compare.png"
                         class="CompareButton"
                         data-placement="left"
                         title="Compare"
+                        (click)="onAddToCompareList(relatedDefineDetailProduct.IDDefineDetailProduct, 'RelatedDefine'+ relatedDefineDetailProduct.AccessoryIDX)"
                         [alt]="relatedDefineDetailProduct.AccessoryTechnicalDescription">
                     </div>
                   </div>

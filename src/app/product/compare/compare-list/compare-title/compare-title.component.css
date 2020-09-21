@@ -1,0 +1,45 @@
+.UnderLineTitle {
+  width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.UnderLineTitleFa {
+  margin-top: 1px;
+}
+
+.UnderLineTitle .UnderLineTitleEn {
+  text-align: left;
+  display: inline-block;
+  font-size: 15px;
+  color: #ffb500;
+  float: left;
+}
+
+.UnderLineTitle .UnderLineTitleFa {
+  text-align: right;
+  display: inline-block;
+  font-size: 15px;
+  color: #ffb500;
+  float: right;
+}
+
+.ComparePage-UnderLineTitleEn-Clearfix {
+  border-bottom: solid 1px #bebebe;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareContainer {
+    padding: 50px 25px;
+  }
+  .UnderLineTitle {
+    width: 300px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .CompareContainer {
+    padding: 50px 70px 50px 47px;
+  }
+}

@@ -1,0 +1,216 @@
+.AddToListButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+.CompareButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+.RemoveRecentlyViewedItem {
+  position: relative;
+  margin: -10px -10px -8px 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ffb500;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px 3px 6px 5.5px;
+  float: right;
+  cursor: pointer;
+  right: 10px;
+}
+
+.RemoveRecentlyViewedItem:hover {
+  background-color: #ff0000;
+}
+
+.RecentlyViewedRecentlyViewedProductCarousel {
+  margin-bottom: 40px;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail-Buttons {
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 5px;
+}
+
+.UnderSpotPartNumber {
+  font-size: 15px;
+  color: #81b7cc;
+}
+
+.UnderSpotPartIndex {
+  font-size: 10px;
+  color: #fff;
+  margin-top: 6px;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .RemoveRecentlyViewedItem {
+    position: relative;
+    margin: -10px -10px 0 0;
+    width: 20px;
+    height: 20px;
+    background-color: #ffb500;
+    color: #fff;
+    border-radius: 50%;
+    padding: 3px 3px 6px 5.5px;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  .RemoveRecentlyViewedItem:hover {
+    background-color: #ff0000;
+  }
+  .UnderSpotPartNumber {
+    font-size: 16px;
+    color: #81b7cc;
+  }
+  .UnderSpotPartIndex {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .UnderSpotPartIndex {
+    font-size: 15px;
+  }
+}
+
+/* desktop */
+
+.RecentlyViewedProductCarousel-OwlCarousel {
+  margin: 10px 0px 40px 0px;
+  direction: ltr;
+}
+
+.RecentlyViewedProductCarousel-OwlCarousel .owl-stage-outer {
+  padding-top: 5px;
+}
+
+.RecentlyViewedProductCarousel .owl-carousel .owl-wrapper-outer {
+  overflow: unset;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel {
+  margin: 5px 0 50px 0;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-Item {
+  margin: 5px 15px 5px 5px;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-ItemInner {
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  display: block;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-ItemMainImage {
+  width: 100%;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-ItemDesc {
+  width: 70%;
+  margin-top: 5px;
+  float: left;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-Thumbnail {
+  width: 30%;
+  margin-top: 5px;
+  float: left;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage {
+  width: 7px !important;
+  height: 37px;
+  float: right;
+  display: inline-block;
+  border: 1px solid #333333;
+}
+
+.RecentlyViewedProductCarousel-Desktop-MainCarousel-ThumbnailDesc {
+  float: right;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+/* mobile */
+
+.RecentlyViewedProductCarousel-Mobile {
+  display: flex;
+  overflow: auto;
+  padding-top: 5px;
+}
+
+.RecentlyViewedProductCarousel-Mobile::-webkit-scrollbar {
+  height: 2px;
+}
+
+.RecentlyViewedProductCarousel-Mobile::-webkit-scrollbar-track {
+  margin-right: 5px;
+  background-color: transparent;
+}
+
+.RecentlyViewedProductCarousel-Mobile::-webkit-scrollbar-thumb {
+  background-color: #666695;
+  outline: 1px solid #666695;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Inner {
+  margin: 5px 10px 10px 10px;
+}
+
+.RecentlyViewedProductCarousel-Mobile-MainIamge img {
+  width: 120px;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail-Desc {
+  margin-right: auto;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber {
+  display: block;
+  font-size: 15px;
+  color: #81b7cc;
+  margin-top: 5px;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex {
+  display: block;
+  font-size: 11px;
+  color: #fff;
+  margin-top: 6px;
+  display: block;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail-Buttons {
+  margin-top: 5px;
+}
+
+.RecentlyViewedProductCarousel-Mobile-Thumbnail-ItemColor {
+  margin-top: 5px;
+  width: 7px;
+  height: 40px;
+  border: 1px solid #333333;
+}
+
+@media screen and (min-width: 768px) {
+  .RecentlyViewedProductCarousel-Mobile-Inner {
+    position: relative;
+  }
+}

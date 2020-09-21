@@ -1,0 +1,81 @@
+<article class="CompareDetail-Wrapper"
+  *ngIf="props && technicalProps">
+  <div class="container-fluid CompareDetailContainer">
+
+    <!-- header -->
+    <div class="row CompareTable"
+      id="StickyDefineHeader">
+
+      <!-- first cell -->
+      <section class="TitpePropertyInCompare grid-comparetable centering">
+        <img src="assets/img/Compare.png"
+          class="CompareLogo"
+          *ngIf="isScrollReachedTop"
+          alt="نوآوران شبکه فربین - Farbin Corporation">
+        <h1>Compare</h1>
+      </section>
+
+      <!-- other cells -->
+      <section class="grid-comparetable"
+        *ngFor="let technicalProp of technicalProps[0].CompareDetail; let i = index"
+        [ngClass]="{'TitpePropertyInCompare-BackColorOdd': 0 === i % 2}">
+        <p class="CompareSupplierName"
+          *ngIf="isScrollReachedTop">{{ technicalProp.SupplierName_En }}</p>
+        <a [routerLink]="['/product/define-detail-product', technicalProp.IDX]">
+          <img [src]="enviornment.baseUrl + technicalProp.PicUrl | getSmallImage"
+            [ngClass]="{'compareDetail-img': !isScrollReachedTop}"
+            class="CompareItemImage"
+            [alt]="technicalProp.PartNumber">
+        </a>
+        <div class="clearfix"></div>
+        <div class="CompareItemButtonContainer">
+          <span>{{ technicalProp.PartNumber }}</span>
+          <div class="btnInCompareHeader">
+            <img class="IndexDescritionPicInCompare"
+              *ngIf="isScrollReachedTop"
+              [src]="enviornment.baseUrl + technicalProp.IndexDescriptionPicUrl"
+              alt="نوآوران شبکه فربین - Farbin Corporation">
+            <img src="assets/img/AddToListWhite.png"
+              *ngIf="isScrollReachedTop"
+              class="AddToListButton"
+              data-placement="left"
+              title="Add to List"
+              (click)="onAddToMaterialList(technicalProp.IDDefineDetailProduct)"
+              alt="نوآوران شبکه فربین - Farbin Corporation" />
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- body -->
+    <div id="scrollable-body"
+      appGetScrollData
+      (triggered)="onScrollDiv($event)">
+
+      <!-- first column -->
+      <section class="row CompareTable"
+        *ngFor="let prop of props">
+        <p class="TitpePropertyInCompare grid-comparetable">{{ prop.TitleProperty }}</p>
+        <p class="grid-comparetable"
+          [ngClass]="{'TitpePropertyInCompare-BackColorOdd': 0 === i % 2}"
+          *ngFor="let detail of prop.CompareDetail; let i = index">
+          {{ detail.ValuesProperty[0].Value !== undefined ? detail.ValuesProperty[0].Value : '---' }}</p>
+      </section>
+
+      <!-- other columns -->
+      <section class="row CompareTable"
+        *ngFor="let technicalProp of technicalProps">
+        <p class="TitpePropertyInCompare grid-comparetable">{{ technicalProp.TitleProperty }}</p>
+        <div class="grid-comparetable"
+          [ngClass]="{'TitpePropertyInCompare-BackColorOdd': 0 === i % 2}"
+          *ngFor="let detail of technicalProp.CompareDetail; let i = index">
+          <div class="grid-comparetable-Inner"
+            [innerHtml]="detail.ValuesProperty[0].Value !== undefined ? detail.ValuesProperty[0].Value : '---'"></div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</article>

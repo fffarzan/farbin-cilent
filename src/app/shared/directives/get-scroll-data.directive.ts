@@ -5,6 +5,7 @@ import { Directive, HostListener, Output, EventEmitter } from '@angular/core';
 })
 export class GetScrollDataDirective {
   @Output() scrolled = new EventEmitter<void>();
+  @Output() triggered = new EventEmitter<boolean>();
 
   @HostListener('scroll', ['$event'])
   public onScroll(event: Event) {
@@ -13,5 +14,9 @@ export class GetScrollDataDirective {
     if (element.scrollTop + element.clientHeight > element.scrollHeight - 1) {
       this.scrolled.emit();
     }
+
+    if (element.scrollTop > 0) this.triggered.emit(false);
+
+    if (element.scrollTop === 0) this.triggered.emit(true);
   }
 }

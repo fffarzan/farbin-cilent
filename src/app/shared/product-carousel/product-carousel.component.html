@@ -27,17 +27,17 @@
           <div class="ProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
             <!-- data-placement="left" -->
             <!-- tooltip -->
-            <!-- ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" -->
             <img src="assets/img/AddToListWhite.png"
               class="AddToListButton clearfix"
               title="Add to List"
-              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+              (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
             <!-- data-placement="left" -->
             <!-- tooltip -->
-            <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)" -->
             <img src="assets/img/Compare.png"
               class="CompareButton"
               title="Compare"
+              (click)="onAddToCompareList(product.IDDefineDetailProduct, 'DefineItemImage' + product.IDX)"
               alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
           </div>
         </section>
@@ -62,24 +62,23 @@
     </a>
 
     <section class="ProductCarousel-Mobile-Thumbnail">
-      <!-- href="/{{::pageurldirection}}/{{::DataDetails.IDX}}"  -->
-      <a href="#"
+      <a [routerLink]="['/product/define-detail-product', product.IDX]"
         class="ProductCarousel-Mobile-Thumbnail-Desc">
         <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
         <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
       </a>
       <div class="ProductCarousel-Mobile-Thumbnail-Buttons">
-        <!-- ng-click="AddToMaterialList(DataDetails.IDDefineDetailProduct)" -->
         <!-- data-placement="left" -->
         <img src="assets/img/AddToListWhite.png"
           class="AddToListButton clearfix"
           title="Add to List"
+          (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
           alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
-        <!-- ng-click="AddToCompareList(DataDetails.IDDefineDetailProduct,'DefineItemImage' + DataDetails.IDX)"  -->
         <!-- data-placement="left" -->
         <img src="assets/img/Compare.png"
           class="CompareButton"
           title="Compare"
+          (click)="onAddToCompareList(product.IDDefineDetailProduct, 'DefineItemImage' + product.IDX)"
           alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
       </div>
       <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"

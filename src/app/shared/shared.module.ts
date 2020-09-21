@@ -14,6 +14,7 @@ import { GalleryCarouselComponent } from './gallery-carousel/gallery-carousel.co
 import { StopPropagationDirective } from './directives/stop-propagation.directive';
 import { GetScrollDataDirective } from './directives/get-scroll-data.directive';
 import { TriggerScrollDirective } from './directives/trigger-scroll.directive';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [

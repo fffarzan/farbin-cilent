@@ -2,7 +2,7 @@ export class CookieUtils {
   static setCookie(name: string, value: string, expireDays: number = 0, path: string = '') {
     let expires: string = '';
     let cpath: string = path ? `; path=${path}` : '';
-    
+
     if (expireDays) {
       let date: Date = new Date();
       date.setTime(date.getTime() + expireDays * 24 * 60 * 60 * 1000);
@@ -28,6 +28,6 @@ export class CookieUtils {
   }
 
   static deleteCookie(name: string) {
-    this.setCookie(name, '', -1);
+    this.setCookie(name, '', -1, '/');
   }
 }

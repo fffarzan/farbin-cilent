@@ -17,7 +17,8 @@ import { OtherImage } from './other-image.model';
 import { DataManagementService } from 'src/app/shared/services/data-management.service';
 import { removeDotFromObjectFileType } from '../../shared/utils/common-utils';
 import { GalleryModalService } from 'src/app/layout/gallery-modal/gallery-modal.service';
-import { GalleryCarousel, GalleryMedia } from 'src/app/shared/gallery-carousel/gallery-carousel.model';
+import { GalleryMedia } from 'src/app/shared/gallery-carousel/gallery-carousel.model';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-define-detail-product',
@@ -137,14 +138,25 @@ export class DefineDetailProductComponent implements OnInit, OnDestroy {
   }
 
   onToggleTab(e: Event, el: Element) {
-    for (let element of this.tabsHead.nativeElement.children)
+    for (let element of this.tabsHead.nativeElement.children) {
       this.renderer.removeClass(element, 'active');
+      this.renderer.removeClass(element, 'TabDetails-TabBox-Item-active');
+    }
 
     for (let element of this.tabsBody.nativeElement.children)
       this.renderer.removeClass(element, 'active');
 
     this.renderer.addClass(el, 'active');
     this.renderer.addClass(e.currentTarget, 'active');
+    this.renderer.addClass(e.currentTarget, 'TabDetails-TabBox-Item-active');
+  }
+
+  onAddToMaterialList(id: string) {
+    this.dataManagementService.addToMaterialList(id);
+  }
+
+  onAddToCompareList(id, imgClassName) {
+    this.dataManagementService.addToCompareList(id, imgClassName);
   }
 
   ngOnDestroy() {

@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
+import * as CommonUtils from '../utils/common-utils';
 import { environment } from '../../../environments/environment';
-import { ExtensionMethodService } from '../extension-method.service';
-import { Product } from './product.model';
 import { ProductCarouselParams } from './product-carousel-params.model';
-import { Subscription } from 'rxjs';
+import { DataManagementService } from '../services/data-management.service';
 
 @Component({
   selector: 'app-product-carousel',
@@ -15,10 +14,18 @@ export class ProductCarouselComponent {
   @Input() carouselData: ProductCarouselParams;
   @Input() data;
   enviornment: { production: boolean, baseUrl: string } = environment;
-  isMobile: boolean = this.extensionMethodService.DetectMobile();
-  isTablet: boolean = this.extensionMethodService.DetectTablet();
+  isMobile: boolean = CommonUtils.detectMobile();
+  isTablet: boolean = CommonUtils.detectTablet();
   dynamicId: number = Math.round(Math.random() * 100);
   carouselItemWidth: number = 160;
 
-  constructor(private extensionMethodService: ExtensionMethodService) { }
+  constructor(private dataManagementService: DataManagementService) { }
+
+  onAddToMaterialList(id: string) {
+    this.dataManagementService.addToMaterialList(id);
+  }
+
+  onAddToCompareList(id, imgClassName) {
+    this.dataManagementService.addToCompareList(id, imgClassName);
+  }
 }

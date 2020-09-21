@@ -1,0 +1,140 @@
+.compare-list {
+  min-height: calc(100vh - 40px);
+}
+
+.CompareContainer {
+  padding: 10px 15px 0 15px;
+}
+
+.btnCompare {
+  background-color: #81b7cc;
+  padding: 5px 15px 5px 15px;
+  border-radius: 5px;
+  border: none;
+  float: right;
+  margin: 0 0 15px 55px;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.CompareItems {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  clear: both;
+}
+
+.CompareItem {
+  width: 47%;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareItems {
+    justify-content: flex-start;
+  }
+  .CompareItem {
+    width: 17%;
+    float: left;
+    margin: 0 10px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .CompareItem {
+    width: 18%;
+  }
+}
+
+/* recently viewed products */
+
+.ComparePage-RecentlyViewed-Items {
+  width: 30%;
+  margin-top: 5px;
+  float: left;
+}
+
+.ComparePage-RecentlyViewed-ItemImage {
+  width: 7px !important;
+  height: 37px;
+  float: right;
+  display: inline-block;
+  border: 1px solid #333333;
+}
+
+.ComparePage-RecentlyViewed-ItemContext {
+  float: right;
+}
+
+.RecentlyViewedContainer {
+  padding: 50px 15px;
+}
+
+.RecentlyViewedList {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.RecentlyViewedItem {
+  width: 18%;
+  position: relative;
+  float: left;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.RecentlyViewedItemDetail {
+  width: 100%;
+}
+
+.RecentlyViewedItemPic {
+  border: 2px dashed #ccc;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .compare-list {
+    padding: 50px 10px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .compare-list {
+    padding: 50px 55px 50px 32px;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+
+@media screen and (max-width: 767px) {
+  .DefineDetailProductsInMasterPageRole {
+    padding: 15px 15px 0 0;
+    font-size: 12px;
+    background: none;
+  }
+  .DefineDetailProductsInMasterPageRole .imgProduct {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .DefineDetailProductsInMasterPageRole .titleProduct {
+    line-height: 10px;
+    color: #ccc;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .DefineDetailProductsInMasterPageRole {
+    padding: 5px 5px 5px 0px;
+    font-size: 12px;
+    background: none;
+    margin: 5px;
+  }
+  .DefineDetailProductsInMasterPageRole .imgProduct {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .DefineDetailProductsInMasterPageRole .titleProduct {
+    line-height: 10px;
+  }
+}

@@ -1,0 +1,188 @@
+/* mobile-first */
+
+.CompareDetail-Wrapper {
+  min-height: calc(100vh - 40px);
+}
+
+.grid-comparetable {
+  width: 33.333334%;
+  float: left;
+  padding: 20px;
+  position: relative;
+  left: -1px;
+  margin: 0;
+  height: 100%;
+}
+
+.grid-comparetable:first-child {
+  padding-bottom: 0px
+}
+
+.TitpePropertyInCompare {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.TitpePropertyInCompare h1 {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.TitpePropertyInCompare-BackColorOdd {
+  background-color: #777;
+}
+
+.CompareTable {
+  margin-left: 0;
+  margin-right: 0;
+  border-bottom: 1px solid #222;
+  padding: 0px;
+}
+
+.CompareTable:hover {
+  background-color: #424242;
+}
+
+.CompareItemImage {
+  width: 90%;
+  height: 100%;
+}
+
+.centering {
+  padding-top: 7%;
+  text-align: center;
+}
+
+#scrollable-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 100px);
+  margin-bottom: 50px;
+}
+
+.IndexDescritionPicInCompare {
+  width: 7px;
+  height: 20px;
+  float: right;
+  display: inline-block;
+  border: 1px solid #333333;
+}
+
+.grid-comparetable-Inner {
+  max-width: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  .CompareDetailContainer {
+    padding: 0 25px;
+  }
+  .CompareItemButtonContainer {
+    width: 100px;
+    margin-top: 5px;
+  }
+  .CompareTable {
+    padding: 0 10px;
+  }
+  .CompareLogo {
+    width: 50px;
+  }
+  .TitpePropertyInCompare {
+    flex-flow: unset;
+  }
+  .grid-comparetable {
+    width: 16.666664%;
+  }
+  #scrollable-body {
+    height: unset;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .CompareDetailContainer {
+    padding: 0 70px 0 45px;
+  }
+}
+
+.AddToListButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+.compareDetail-img {
+  width: 45%;
+  ;
+}
+
+/* -------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------- */
+
+/* @media only screen and (min-width: 768px) {
+  .CompareTable {
+    padding: 0px 10px;
+  }
+  .CompareTable col:nth-child(odd) {
+    background-color: transparent;
+  }
+  .CompareTable col:nth-child(even) {
+    background: #333;
+  }
+  .CompareTable tr {
+    padding: 10px;
+    border-bottom: 1px solid #222;
+  }
+  .CompareTable tr:hover {
+    background-color: #424242;
+  }
+  .CompareTable tr td {
+    padding: 10px;
+    text-align: left;
+    width: 200px;
+  }
+  .CompareTable tr th {
+    padding: 10px;
+    text-align: left;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .CompareTable {
+    padding: 10px;
+    width: 100%;
+  }
+  .CompareTable col:nth-child(odd) {
+    background-color: transparent;
+  }
+  .CompareTable col:nth-child(even) {
+    background: #333;
+  }
+  .CompareTable tr {
+    border-bottom: 1px solid #222;
+    width: 100%;
+    display: table;
+  }
+  .CompareTable tr:hover {
+    background-color: #424242;
+  }
+  .CompareTable tr td {
+    padding: 10px;
+    text-align: left;
+    width: 33%;
+    border-right: 1px solid #222;
+  }
+  .CompareTable tr th {
+    padding: 10px;
+    text-align: left;
+    width: 33%;
+    border-right: 1px solid #222;
+  }
+  .CompareItemImage {
+    width: 84px;
+    margin: 5px 0 5px 0;
+  }
+} */
