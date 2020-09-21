@@ -4,23 +4,19 @@ import { SearchDefineDetail, SearchIncident, SearchTrainingCourse, SearchContent
 
 @Injectable({ providedIn: 'root' })
 export class SearchService {
-  private defineDetailProducts: SearchDefineDetail[] = [];
+  private defineDetailProducts: SearchDefineDetail;
   private incidents: SearchIncident[] = [];
   private trainingCourses: SearchTrainingCourse[] = [];
   private contents: SearchContent[] = [];
   private trainingCourseBatches: SearchTrainingCourseBatch[] = [];
   private trainingCourseUsers: SearchTrainingCourseUser[] = [];
 
-  setDefneDetailProducts(defineDetailProducts: SearchDefineDetail[]) {
+  setDefneDetailProducts(defineDetailProducts: SearchDefineDetail) {
     this.defineDetailProducts = defineDetailProducts;
   }
 
   getDefneDetailProducts() {
-    return this.defineDetailProducts.slice();
-  }
-
-  getDefineDetailProductsLength() {
-    return this.defineDetailProducts.length;
+    return this.defineDetailProducts;
   }
 
   setIncidents(incidents: SearchIncident[]) {
@@ -28,11 +24,7 @@ export class SearchService {
   }
 
   getIncidents() {
-    return this.incidents.slice();
-  }
-
-  getIncidentsLength() {
-    return this.incidents.length;
+    return this.incidents;
   }
 
   setTrainingCourses(trainingCourses: SearchTrainingCourse[]) {
@@ -40,11 +32,7 @@ export class SearchService {
   }
 
   getTrainingCourses() {
-    return this.trainingCourses.slice();
-  }
-
-  getTrainingCoursesLength() {
-    return this.trainingCourses.length;
+    return this.trainingCourses;
   }
 
   setContents(contents: SearchContent[]) {
@@ -52,11 +40,7 @@ export class SearchService {
   }
 
   getContents() {
-    return this.contents.slice();
-  }
-
-  getContentsLength() {
-    return this.contents.length;
+    return this.contents;
   }
 
   setTrainingCourseBatchs(trainingCourseBatches: SearchTrainingCourseBatch[]) {
@@ -64,11 +48,7 @@ export class SearchService {
   }
 
   getTrainingCourseBatchs() {
-    return this.trainingCourseBatches.slice();
-  }
-
-  getTrainingCourseBatchsLength() {
-    return this.trainingCourseBatches.length;
+    return this.trainingCourseBatches;
   }
 
   setTrainingCourseUsers(trainingCourseUsers: SearchTrainingCourseUser[]) {
@@ -76,10 +56,6 @@ export class SearchService {
   }
 
   getTrainingCourseUsers() {
-    return this.trainingCourseUsers.slice();
-  }
-
-  getTrainingCourseUsersLength() {
-    return this.trainingCourseUsers.length;
+    return this.trainingCourseUsers;
   }
 }

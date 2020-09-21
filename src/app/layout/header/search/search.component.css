@@ -62,7 +62,7 @@
 @media screen and (min-width: 576px) {
   .SearchModule-Inner {
     width: 57%;
-    float: right; 
+    float: right;
   }
   .SearchModule-TextBox-TextSearch {
     width: 80%;
@@ -77,7 +77,7 @@
 @media screen and (min-width: 768px) {
   .SearchModule-Inner {
     width: 63%;
-    margin: 0px 10px 0 10px; 
+    margin: 0px 10px 0 10px;
   }
   .SearchModule-Inner .fa-search {
     color: #fff;
@@ -108,7 +108,7 @@
   .SearchModule-ClearTextSearch {
     float: right;
     font-size: 14px;
-    margin: 1px 0 0 0; 
+    margin: 1px 0 0 0;
   }
 }
 
@@ -195,6 +195,12 @@
 
 .SearchModule-Template-open {
   right: 0;
+  display: block;
+}
+
+.SearchModule-Template-close {
+  right: 0;
+  display: none;
 }
 
 .SearchModule-Template-Inner {
@@ -215,7 +221,6 @@
   .SearchModule-Template {
     left: 0;
     right: 0;
-    display: none;
     padding: 0 25px;
   }
   .SearchMobilePadding {
@@ -363,7 +368,7 @@
 
 .SearchModule-ArticleTemplate-Inner {
   width: 100%;
-  margin: 0 0 10px 0; 
+  margin: 0 0 10px 0;
   direction: ltr;
 }
 

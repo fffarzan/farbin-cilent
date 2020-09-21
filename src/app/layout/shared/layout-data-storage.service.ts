@@ -84,7 +84,7 @@ export class LayoutDataStorageService {
 
   fetchSearchDefineDetailProducts(param: object) {
     return this.http
-      .post<SearchDefineDetail[]>(
+      .post<SearchDefineDetail>(
         environment.baseUrl + '/api/Search/SearchRuleDefineProduct/',
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }

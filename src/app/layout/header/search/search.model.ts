@@ -1,12 +1,6 @@
 export class SearchDefineDetail {
   constructor(
-    public IDDefineDetailProduct: string,
-    public IDX: number,
-    public IndexDescriptionPicUrl: string,
-    public IndexDescriptionText: string,
-    public PartNumber: string,
-    public PicUrl: string,
-    public TechnicalDescription: string
+    public RuleDefine: RuleDefine[]
   ) { }
 }
 
@@ -21,7 +15,7 @@ export class SearchContent {
     public MetaTags: string,
     public Name_Fa: string,
     public PicUrl: string,
-  ) {}
+  ) { }
 }
 
 export class SearchIncident {
@@ -75,5 +69,17 @@ export class SearchTrainingCourse {
     public IDX: number,
     public Name_Fa: string,
     public PicUrl: string
+  ) { }
+}
+
+class RuleDefine {
+  constructor(
+    public IDDefineDetailProduct: string,
+    public IDX: number,
+    public IndexDescriptionPicUrl: string,
+    public IndexDescriptionText: string,
+    public PartNumber: string,
+    public PicUrl: string,
+    public TechnicalDescription: string
   ) { }
 }
