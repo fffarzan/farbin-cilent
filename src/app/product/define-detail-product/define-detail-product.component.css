@@ -83,6 +83,7 @@
 .MasterImageBig {
   width: 100%;
   float: left;
+  margin-bottom: 10px;
 }
 
 .DefineButtons {
@@ -125,6 +126,11 @@
   width: 100%;
 }
 
+.TextDescription-Inner h5 {
+  width: 100%;
+  margin: 0;
+}
+
 .TextDescription-TitleH5 {
   font-size: 12px;
   float: left;
@@ -136,17 +142,25 @@
   float: right;
   margin: 5px 15px 0 0;
   padding: 0;
+  cursor: pointer;
+}
+
+.LangSituationContainer .toggles {
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .LangSituationContainer label {
   font-size: 10px;
+  cursor: pointer;
 }
 
-.LangSituationContainer .btn-default.active, .btn-default:active {
-  background-color: #282829;
-  border-color: #282829;
-  color: #ffb500;
-  text-shadow: none;
+.LangSituationContainer-faLabel {
+  margin: 6px 12px 6px 20px;
+}
+
+.LangSituationContainer-enLabel {
+  margin: 6px 20px 6px 12px;
 }
 
 .LangSituationContainer .btn-primary {
@@ -155,6 +169,27 @@
   color: #ffb500 !important;
   text-shadow: none !important;
   background-image: none !important;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.LangSituationContainer span {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.LangSituationContainer-spanInactive {
+  right: -13px;
+  left: unset;
+}
+
+.LangSituationContainer-spanActive {
+  right: unset;
+  left: -13px;
 }
 
 .Description {
@@ -282,7 +317,16 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .DefineDetails-QRCode {
+    width: 105% !important;
+  }
+}
+
 @media screen and (min-width: 992px) {
+  .DefineDetails-QRCode {
+    width: 100% !important;
+  }
   .DefineDetails-QRCode-Span-Desktop {
     display: block;
   }
@@ -397,18 +441,22 @@
   padding: 0;
 }
 
-.TabDetails-TabBox-Item {
-  padding-left: 15px;
+.TabDetails-TabBox-Header .nav-tabs {
+  border: none;
 }
 
-.TabDetails-TabBox-Item-FirstItem {
-  padding-left: 5px;
+.TabDetails-TabBox-Item {
+  padding-right: 15px;
+  padding-bottom: 10px;
+}
+
+.TabDetails-TabBox-Item-active {
+  color: #337ab7 !important;
 }
 
 .SpecificationsTab {
   font-size: 13px;
   text-align: left;
-  padding-left: 5px;
   border-radius: 5px 0 0 5px;
   cursor: pointer;
 }
@@ -437,6 +485,14 @@
 
 .TabDetails-TabBox-Body {
   padding: 0px;
+}
+
+.TabDetails-TabBox-Body .table-striped tbody tr:nth-of-type(odd) {
+  background-color: black;
+}
+
+.table-hover tbody tr:hover {
+  background-color: black;
 }
 
 .TableTitleInDefineDetail {
@@ -475,11 +531,27 @@
   margin-top: 15px;
 }
 
+.TabBoxBody-Properies .table-striped tbody tr:nth-of-type(odd) {
+  background-color: black;
+}
+
+.TabBoxBody-Properies .table-striped tbody tr {
+  color: #fff;
+}
+
+.TabBoxBody-Properies-Inner .table-striped tbody tr:nth-of-type(odd) {
+  background-color: black;
+}
+
 .Accessories-DefineItemInRelated-Titles {
   width: 70%;
   display: inline-block;
   float: left;
   margin-top: 5px;
+}
+
+.Accessories-DefineItemInRelated-Titles h6 {
+  margin: 5px 0;
 }
 
 .Accessories-DefineItemInRelated-Desc {
@@ -807,4 +879,22 @@
   .DefineDetailProductsInMasterPageRole-LinksInner {
     float: right;
   }
+}
+
+.AddToListButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+.CompareButton {
+  width: 15px !important;
+  float: right;
+  margin: 3px 5px 5px 0;
+  cursor: pointer;
+}
+
+.DefineImage-carousel .GalleryCarousel-OwlCarousel-Item {
+  width: 50px;
 }

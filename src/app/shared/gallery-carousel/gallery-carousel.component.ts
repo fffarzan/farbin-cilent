@@ -12,6 +12,7 @@ import { GalleryModalService } from 'src/app/layout/gallery-modal/gallery-modal.
 })
 export class GalleryCarouselComponent implements OnInit {
   @Input() carouselData: GalleryCarousel;
+  @Input() itemWidth: number;
   enviornment: { production: boolean, baseUrl: string } = environment;
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
@@ -25,6 +26,7 @@ export class GalleryCarouselComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.itemWidth) this.carouselItemWidth = this.itemWidth;
   }
 
   onOpenGalleryModal(currentItem: any, allItems: any) {
