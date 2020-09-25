@@ -1,7 +1,5 @@
 export class SearchDefineDetail {
-  constructor(
-    public RuleDefine: RuleDefine[]
-  ) { }
+  constructor(public RuleDefine: RuleDefine[]) {}
 }
 
 export class SearchContent {
@@ -14,8 +12,8 @@ export class SearchContent {
     public MetaDescriptions: string,
     public MetaTags: string,
     public Name_Fa: string,
-    public PicUrl: string,
-  ) { }
+    public PicUrl: string
+  ) {}
 }
 
 export class SearchIncident {
@@ -26,7 +24,7 @@ export class SearchIncident {
     public Name_Fa: string,
     public PicUrl: string,
     public StartDate: string
-  ) { }
+  ) {}
 }
 
 export class SearchTrainingCourseBatch {
@@ -36,31 +34,24 @@ export class SearchTrainingCourseBatch {
     public IDX: number,
     public Name_Fa: string,
     public TrainingCourse: {
-      EndDate: string,
-      IDTrainingCourse: string,
-      IDX: number,
-      Name_Fa: string,
-      PicUrl: string
+      EndDate: string;
+      IDTrainingCourse: string;
+      IDX: number;
+      Name_Fa: string;
+      PicUrl: string;
     }
-  ) { }
+  ) {}
 }
 
 export class SearchTrainingCourseUser {
   constructor(
-    public Certification: {
-      CertificationUrl: string,
-      IDTrainingCourse: string,
-      IDX: number,
-      Name_Fa: string,
-      PicUrl: string,
-      TrainingCourseCategoryName_Fa: string
-    },
+    public Certification: Certification[],
     public FullName_En: string,
     public FullName_Fa: string,
     public IDPersonelInCompany: string,
     public IDX: number,
     public PicUrl: string
-  ) { }
+  ) {}
 }
 
 export class SearchTrainingCourse {
@@ -69,7 +60,7 @@ export class SearchTrainingCourse {
     public IDX: number,
     public Name_Fa: string,
     public PicUrl: string
-  ) { }
+  ) {}
 }
 
 class RuleDefine {
@@ -81,5 +72,16 @@ class RuleDefine {
     public PartNumber: string,
     public PicUrl: string,
     public TechnicalDescription: string
-  ) { }
+  ) {}
+}
+
+class Certification {
+  constructor(
+    public CertificationUrl: string,
+    public IDTrainingCourse: string,
+    public IDX: number,
+    public Name_Fa: string,
+    public PicUrl: string,
+    public TrainingCourseCategoryName_Fa: string
+  ) {}
 }

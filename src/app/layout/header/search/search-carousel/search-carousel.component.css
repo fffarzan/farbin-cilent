@@ -1,0 +1,33 @@
+.SearchModule-TrainingTemplate-OwlCarousel {
+  margin: 10px 0 10px 0;
+  direction: ltr;
+  width: 99%;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel .owl-item {
+  padding: 0px 12px;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel .item {
+  cursor: pointer;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel a p {
+  color: #fff !important;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel img {
+  width: 100%;
+}
+
+.SearchModule-TrainingTemplate-OwlCarousel .owl-item .item p {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchModule-TrainingTemplate-OwlCarousel {
+    display: block !important;
+    margin-right: 0;
+  }
+}
