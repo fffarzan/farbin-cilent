@@ -54,13 +54,22 @@ export class SearchComponent implements OnInit, OnChanges, OnDestroy {
   searchTrainingCourseUsersSub: Subscription;
   searchTrainingCourseBatchsSub: Subscription;
   searchIncidentsSub: Subscription;
+  carouselItemWidth: number;
+  carouselOptions = {
+    items: 4,
+    dots: false,
+    nav: false,
+    autoWidth: true,
+    stagePadding: 20,
+    responsive: { 1024: { items: 5 } }
+  };
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
     private layoutDataStorageService: LayoutDataStorageService,
     private searchService: SearchService,
     private renderer: Renderer2
-  ) {}
+  ) { }
 
   ngOnChanges(): void {
     if (!this.isSearchMenuOpen) {
@@ -143,10 +152,7 @@ export class SearchComponent implements OnInit, OnChanges, OnDestroy {
   private getTriningCoursesUsersData(str: string) {
     this.searchTrainingCourseUsersSub = this.layoutDataStorageService
       .fetchSearchTrainingCourseUser({ SearchText: str })
-      .subscribe(() => {
-        this.searchTrainingCourseUsers = this.searchService.getTrainingCourseUsers();
-        console.log(this.searchTrainingCourseUsers);
-      });
+      .subscribe(() => this.searchTrainingCourseUsers = this.searchService.getTrainingCourseUsers());
   }
 
   private getTrainingCoursesBatch(str: string) {

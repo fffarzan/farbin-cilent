@@ -124,16 +124,23 @@
 
                   <!-- courses template -->
                   <section class="SearchModule-TrainingTemplate-SliderBody">
-                    <!-- <div id="xxx{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
-                          stagePadding: 20,
-                          items: 3,
-                          responsive: { 1024: { items: 5 } }
-                        }">
-                        <a href="/TrainingCoursesHeld/{{TrainingCourses.IDX}}" class="item" data-owl-carousel-item ng-repeat="TrainingCourses in SearchTrainingCourses" ng-click="HideMenuBox()">
-                          <img style="height: auto;" ng-src="{{ServerUrl + TrainingCourses.PicUrl | GetSmallImage}}" />
-                          <p style="direction: rtl;">{{TrainingCourses.Name_Fa}}</p>
-                        </a>
-                      </div> -->
+                    <owl-carousel-o [options]="carouselOptions"
+                      class="SearchModule-TrainingTemplate-OwlCarousel">
+                      <ng-container *ngFor="let trainingCourses of searchTrainingCourses">
+                        <ng-template class="item"
+                          carouselSlide
+                          [width]="carouselItemWidth">
+                          <a [routerLink]="['/training/training-course-held', trainingCourses.IDX]"
+                            (click)="onCloseSearchMenu()"
+                            class="item">
+                            <img style="height: auto;"
+                              src="{{ enviornment.baseUrl + trainingCourses.PicUrl | getSmallImage }}"
+                              alt="{{ trainingCourses.Name_Fa }}">
+                            <p style="direction: rtl;">{{ trainingCourses.Name_Fa }}</p>
+                          </a>
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
                     <div class="SearchModule-TrainingTemplate-MobileSlider"
                       [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourseUsers.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
                       <ul
@@ -159,23 +166,27 @@
                       <hr style="border-color: #666;" />
                     </div>
                     <div class="SearchModule-TrainingTemplate-SliderBody">
-                      <!-- <section id="yyy{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
-                            stagePadding: 20,
-                            items: 3,
-                            responsive: { 1024: { items: 5 } }
-                          }">
-                          <a href="/TrainingCoursesHeld/{{SearchUserCertificate.IDX}}" class="item" data-owl-carousel-item ng-repeat="SearchUserCertificate in SearchTrainingCourseUser.Certification" ng-click="HideMenuBox()">
-                            <img style="height: auto;" ng-src="{{ServerUrl + SearchUserCertificate.PicUrl | GetSmallImage}}" />
-                            <p style="direction: rtl;">
-                              {{SearchUserCertificate.TrainingCourseCategoryName_Fa}}
-                            </p>
-                          </a>
-                        </section> -->
+                      <owl-carousel-o [options]="carouselOptions"
+                        class="SearchModule-TrainingTemplate-OwlCarousel">
+                        <ng-container *ngFor="let certificate of user.Certification">
+                          <ng-template class="item"
+                            carouselSlide
+                            [width]="carouselItemWidth">
+                            <a [routerLink]="['/training/training-course-held', certificate.IDX]"
+                              (click)="onCloseSearchMenu()"
+                              class="item">
+                              <img style="height: auto;"
+                                src="{{ enviornment.baseUrl + certificate.PicUrl | getSmallImage }}"
+                                alt="{{ certificate.Name_Fa }}">
+                              <p style="direction: rtl;">{{ certificate.TrainingCourseCategoryName_Fa }}</p>
+                            </a>
+                          </ng-template>
+                        </ng-container>
+                      </owl-carousel-o>
                       <div class="SearchModule-TrainingTemplate-MobileSlider"
                         [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
                         <ul
                           [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
-
                           <li *ngFor="let certificate of user.Certification"
                             (click)="onCloseSearchMenu()"
                             [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
@@ -199,20 +210,23 @@
                     <hr style="border-color: #666;" />
                   </div>
                   <div class="SearchModule-TrainingTemplate-SliderBody">
-                    <!-- <div id="zzz{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel"
-                        data-owl-carousel data-options="{
-                            stagePadding: 20,
-                            items: 3,
-                            responsive: { 1024: { items: 5 } }
-                          }">
-                        <a href="/TrainingCoursesHeld/{{TrainingCourseForBatch.IDX}}" class="item" data-owl-carousel-item
-                          ng-repeat="TrainingCourseForBatch in SearchTrainingCourseBatch.TrainingCourse"
-                          ng-click="HideMenuBox()">
-                          <img style="height: auto;"
-                            ng-src="{{ServerUrl + TrainingCourseForBatch.PicUrl | GetSmallImage}}" />
-                          <p style="direction: rtl;">{{TrainingCourseForBatch.Name_Fa}}</p>
-                        </a>
-                      </div> -->
+                    <owl-carousel-o [options]="carouselOptions"
+                      class="SearchModule-TrainingTemplate-OwlCarousel">
+                      <ng-container *ngFor="let course of batch.TrainingCourse">
+                        <ng-template class="item"
+                          carouselSlide
+                          [width]="carouselItemWidth">
+                          <a [routerLink]="['/training/training-course-held', course.IDX]"
+                            (click)="onCloseSearchMenu()"
+                            class="item">
+                            <img style="height: auto;"
+                              src="{{ enviornment.baseUrl + course.PicUrl | getSmallImage }}"
+                              alt="{{ course.Name_Fa }}">
+                            <p style="direction: rtl;">{{ course.Name_Fa }}</p>
+                          </a>
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
                   </div>
                   <div class="SearchModule-TrainingTemplate-MobileSlider"
                     [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourseUsers.length || searchTrainingCourses.length || searchIncidents.length}">
@@ -220,7 +234,8 @@
                       [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourseUsers.length || searchTrainingCourses.length || searchIncidents.length}">
                       <li *ngFor="let course of batch.TrainingCourse"
                         [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourseUsers.length || searchTrainingCourses.length || searchIncidents.length}">
-                        <a [routerLink]="['/training/training-course-held', course.IDX]">
+                        <a [routerLink]="['/training/training-course-held', course.IDX]"
+                          (click)="onCloseSearchMenu()">
                           <img [src]="enviornment.baseUrl + course.PicUrl | getSmallImage">
                           <p>{{ course.Name_Fa }}</p>
                         </a>
@@ -235,32 +250,24 @@
                     <hr style="border-color: #666;" />
                   </div>
                   <div class="SearchModule-TrainingTemplate-SliderBody">
-                    <!-- ng-click="HideMenuBox()" -->
-                    <!-- <owl-carousel-o [options]="{
-                      stagePadding: 20,
-                      items: 3,
-                      dots: false,
-                      nav: false,
-                      autoWidth: true,
-                      responsive: { 1024: { items: 5 } }
-                    }"
-                      class="SearchModule-TrainingTemplate-OwlCarousel"
-                      id="carousel{{ dynamicId }}">
+                    <!-- id="carousel{{ dynamicId }}" -->
+                    <owl-carousel-o [options]="carouselOptions"
+                      class="SearchModule-TrainingTemplate-OwlCarousel">
                       <ng-container *ngFor="let incident of searchIncidents">
                         <ng-template class="item"
                           carouselSlide
                           [width]="carouselItemWidth">
-                          
                           <a [routerLink]="['/about-us/news-and-events/incident', incident.IDX]"
+                            (click)="onCloseSearchMenu()"
                             class="item">
                             <img style="height: auto;"
                               src="{{ enviornment.baseUrl + incident.PicUrl | getSmallImage }}"
                               alt="{{ incident.Name_Fa }}">
-                            <p style="direction: rtl;">{{ searchIncident.Name_Fa }}</p>
+                            <p style="direction: rtl;">{{ incident.Name_Fa }}</p>
                           </a>
                         </ng-template>
                       </ng-container>
-                    </owl-carousel-o> -->
+                    </owl-carousel-o>
                     <section class="SearchModule-TrainingTemplate-MobileSlider"
                       [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll':  searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchTrainingCourseUsers.length}">
                       <ul
