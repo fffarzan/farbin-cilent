@@ -143,10 +143,10 @@ export class SearchComponent implements OnInit, OnChanges, OnDestroy {
   private getTriningCoursesUsersData(str: string) {
     this.searchTrainingCourseUsersSub = this.layoutDataStorageService
       .fetchSearchTrainingCourseUser({ SearchText: str })
-      .subscribe(
-        () =>
-          (this.searchTrainingCourseUsers = this.searchService.getTrainingCourseUsers())
-      );
+      .subscribe(() => {
+        this.searchTrainingCourseUsers = this.searchService.getTrainingCourseUsers();
+        console.log(this.searchTrainingCourseUsers);
+      });
   }
 
   private getTrainingCoursesBatch(str: string) {

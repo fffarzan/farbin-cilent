@@ -45,12 +45,12 @@ export class SearchTrainingCourseBatch {
 
 export class SearchTrainingCourseUser {
   constructor(
-    public Certification: Certification[],
     public FullName_En: string,
     public FullName_Fa: string,
     public IDPersonelInCompany: string,
     public IDX: number,
-    public PicUrl: string
+    public PicUrl: string,
+    public Certification: Certification[]
   ) {}
 }
 

@@ -58,7 +58,7 @@
               <p>محصولات</p>
             </div>
             <div class="SearchModule-Body">
-              <div class="SearchModule-ProductTemplate-Inner"
+              <section class="SearchModule-ProductTemplate-Inner"
                 *ngFor="let ruleDefine of searchDefineDetail.RuleDefine">
                 <a [routerLink]="['/product/define-detail-product', ruleDefine.IDX]"
                   (click)="onCloseSearchMenu()"
@@ -72,7 +72,7 @@
                   </div>
                 </a>
                 <hr />
-              </div>
+              </section>
               <p class="SearchModule-NotFoundMessage"
                 [ngClass]="{'SearchModule-ShowNotFoundMessage': !searchDefineDetail.RuleDefine.length}">موردی یافت نشد!
               </p>
@@ -86,17 +86,16 @@
               <p>مقالات</p>
             </div>
             <div class="SearchModule-Body">
-              <div class="TopArticleContent SearchModule-ArticleTemplate-Inner"
+              <section class="TopArticleContent SearchModule-ArticleTemplate-Inner"
                 *ngFor="let article of searchContent">
-                <section class="imgTopArticleContent SearchModule-ArticleTemplate-Image">
-
+                <div class="imgTopArticleContent SearchModule-ArticleTemplate-Image">
                   <a [routerLink]="['article-category/article', article.IDX]"
                     (click)="onCloseSearchMenu()">
                     <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage"
                       [alt]="article.Name_Fa" />
                   </a>
-                </section>
-                <section class="TitleTopArticleContent SearchModule-ArticleTemplate-Title">
+                </div>
+                <div class="TitleTopArticleContent SearchModule-ArticleTemplate-Title">
                   <a [routerLink]="['article-category/article', article.IDX]"
                     (click)="onCloseSearchMenu()"
                     class="clearfix">
@@ -104,8 +103,8 @@
                   </a>
                   <p class="clearfix SearchModule-ArticleTemplate-AbstractArticle AbstractArticle">
                     {{ article.Abstract_Fa }}</p>
-                </section>
-              </div>
+                </div>
+              </section>
               <p class="SearchModule-NotFoundMessage"
                 [ngClass]="{'SearchModule-ShowNotFoundMessage': !searchContent.length}">موردی یافت نشد!</p>
             </div>
@@ -152,7 +151,7 @@
                     </div>
                   </section>
 
-                  <!-- certificate template -->
+                  <!-- certification template -->
                   <section class="SearchModule-TrainingCourseUserSection"
                     *ngFor="let user of searchTrainingCourseUsers">
                     <div class="SearchModule-TrainingTemplate-SliderHeader">
@@ -176,12 +175,12 @@
                         [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
                         <ul
                           [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
-                          <!-- ng-click="HideMenuBox()" -->
-                          <li *ngFor="let certificate of searchTrainingCourseUsers.Certification"
+
+                          <li *ngFor="let certificate of user.Certification"
+                            (click)="onCloseSearchMenu()"
                             [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
-                            <a href="#"
-                              [routerLink]="['/training/training-course-held', certificate.IDX]">
-                              <img ng-src="enviornment.baseUrl + searchUserCertificate.PicUrl | getSmallImage" />
+                            <a [routerLink]="['/training/training-course-held', certificate.IDX]">
+                              <img [src]="enviornment.baseUrl + certificate.PicUrl | getSmallImage" />
                               <p>{{ certificate.TrainingCourseCategoryName_Fa }}</p>
                             </a>
                           </li>
@@ -233,7 +232,6 @@
                 <!-- incident template -->
                 <section *ngIf="searchIncidents">
                   <div class="SearchModule-TrainingTemplate-SliderHeader">
-                    <h1>{{ searchIncidents.Name_Fa }}</h1>
                     <hr style="border-color: #666;" />
                   </div>
                   <div class="SearchModule-TrainingTemplate-SliderBody">
@@ -270,8 +268,8 @@
                         <li
                           [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchTrainingCourseUsers.length}"
                           *ngFor="let incident of searchIncidents">
-                          <!-- ng-click="HideMenuBox()" -->
-                          <a [routerLink]="['/about-us/news-and-events/incident', incident.IDX]">
+                          <a [routerLink]="['/about-us/news-and-events/incident', incident.IDX]"
+                            (click)="onCloseSearchMenu()">
                             <img [src]="enviornment.baseUrl + incident.PicUrl | getSmallImage" />
                             <p>{{ incident.Name_Fa }}</p>
                           </a>
@@ -281,7 +279,6 @@
                   </div>
                 </section>
 
-                <!-- ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[SearchTrainingCourses.length == 0 && SearchTrainingCourseUsers.length == 0 && SearchTrainingCourseBatchs.length == 0 && SearchIncidentsLength.length]" -->
                 <p class="SearchModule-NotFoundMessage SearchMobilePadding"
                   [ngClass]="{'SearchModule-ShowNotFoundMessage': !searchTrainingCourses.length && !searchTrainingCourseUsers.length && !searchTrainingCourseBatchs.length && !searchIncidents.length}">
                   موردی یافت نشد!</p>
