@@ -6,6 +6,7 @@ import { CatalogsService } from './catalogs.service';
 import { Catalog } from './catalog.model';
 import { SupplierService } from 'src/app/layout/navbar/supplier-menu/supplier.service';
 import { Supplier } from 'src/app/layout/navbar/supplier-menu/supplier.model';
+import { LayoutDataStorageService } from './../../shared/layout-data-storage.service';
 
 @Component({
   selector: 'app-catalogs',
@@ -19,18 +20,22 @@ export class CatalogsComponent implements OnInit {
   isMobile: boolean = this.extensionMethodService.DetectMobile();
   isTablet: boolean = this.extensionMethodService.DetectTablet();
   dynamicId = Math.round(Math.random() * 100);
-  catalogs: Catalog[] = [];
-  suppliers: Supplier[] = [];
+  catalogs: Catalog[];
+  suppliers: Supplier[];
 
   constructor(
     private extensionMethodService: ExtensionMethodService,
     private catalogService: CatalogsService,
-    private supplierService: SupplierService
+    private supplierService: SupplierService,
+    private layoutDataStorageService: LayoutDataStorageService
   ) { }
 
   ngOnInit(): void {
-    this.catalogs = this.catalogService.getCatalogs();
-    this.suppliers = this.supplierService.getSuppliers();
+    this.layoutDataStorageService.fetchCatalogs()
+      .subscribe(() => this.catalogs = this.catalogService.getCatalogs())
+
+    this.layoutDataStorageService.fetchSuppliers()
+      .subscribe(() => this.suppliers = this.supplierService.getSuppliers());
   }
 
   onCopyToClipboard(pdfUrl: string) {

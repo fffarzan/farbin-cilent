@@ -1,28 +1,34 @@
-<article id="CatalogeMenuContainer" class="CatalogeMenu">
+<article id="CatalogeMenuContainer"
+  class="CatalogeMenu">
 
-  <div id="CloseCatalogMenu" class="CursorPointer" (click)="onCloseCatalog()">&times;</div>
+  <div id="CloseCatalogMenu"
+    (click)="onCloseCatalog()">&times;</div>
   <h3>Catalogs</h3>
   <div class="CatalogeMenu-LineOut">
     <div class="CatalogeMenu-LineIN"></div>
   </div>
 
   <div id="CatalogList">
-    
+
     <div *ngFor="let supplier of suppliers">
       <div *ngIf="supplier.Name_En">
         <h4 class="CatalogHeader">{{ supplier.Name_En }}</h4><br />
         <section class="CatalogMenu-Items">
-          <div class="CatalogList-Catalogs" *ngFor="let catalog of catalogs">
-            <div *ngIf="catalog.IDRet === supplier.IDUser">
-              <a href="{{ enviornment.baseUrl + catalog.PDFUrl }}">
-                <img class="CatalogMenu-Item-CatalogImage" src="{{ enviornment.baseUrl + catalog.PicUrl }}" />
-              </a>
-              <strong class="clearfix">{{ catalog.Name_En }}</strong>
-              <span>File size: {{ catalog.SizeOfPDF }}MB </span>
+          <div class="CatalogList-Catalogs"
+            *ngFor="let catalog of catalogs"
+            [ngStyle]="{display: catalog.IDRet === supplier.IDUser ? 'block' : 'none'}">
+            <a href="{{ enviornment.baseUrl + catalog.PDFUrl }}">
+              <img class="CatalogMenu-Item-CatalogImage"
+                src="{{ enviornment.baseUrl + catalog.PicUrl }}" />
+            </a>
+            <strong class="clearfix">{{ catalog.Name_En }}</strong>
+            <span>File size: {{ catalog.SizeOfPDF }}MB </span>
 
-              <img src="assets/img/CopyToClipboarad.png" data-toggle="tooltip" class="CatalogMenu-Item-CopyToClipboard"
-                title="Copy to clipboard" (click)="onCopyToClipboard(catalog.PDFUrl)" />
-            </div>
+            <img src="assets/img/CopyToClipboarad.png"
+              data-toggle="tooltip"
+              class="CatalogMenu-Item-CopyToClipboard"
+              title="Copy to clipboard"
+              (click)="onCopyToClipboard(catalog.PDFUrl)" />
           </div>
         </section>
       </div>
