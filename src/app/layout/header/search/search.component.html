@@ -1,77 +1,67 @@
 <article class="SearchModule-Wrapper">
-
   <div class="SearchModule-Inner">
-
-    <i class="fa fa-search SearchModule-Icon"></i>
-    <!-- ng-model-options="{ debounce: 500 }"  -->
-    <input id="txtIndexSearch"
-      class="SearchModule-TextBox-TextSearch"
-      type="text"
-      [ngModel]="searchText"
-      (ngModelChange)="onModelChanged($event)"
-      (click)="openSearchMenu()">
-    <!-- ng-click="ClearTextSearch()" onclick="HideSearchListWithClearButton()" -->
-    <span *ngIf="searchText"
-      class="Color-Withe SearchModule-ClearTextSearch">×</span>
-    <img class="SearchModule-ImgLoaderSearch"
-      src="assets/img/loader1.gif"
-      alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
-
-    <section class="SearchModule-Template"
-      [ngClass]="{'SearchModule-Template-open': isSearchTemplateOpen, 'SearchModule-Template-close': searchClosing || !isSearchTemplateOpen}"
+    <div class="SearchModule-Template"
+      [ngClass]="{'SearchModule-Template-open': !isSearchMenuOpen, 'SearchModule-Template-close': (!isMobile && isSearchMenuOpen)}"
       [@searchTemplateState]="searchTemplateState">
       <div *ngIf="searchDefineDetail">
 
+        <!-- mobile search list -->
         <div class="SearchModule-MobileSearchList"
-          *ngIf="isMobileSearchListShown">
-          <!-- onclick="ShowSearchResultTempalte('Product')" -->
-          <section class="SearchModule-MobileSearchList-Item">
+          *ngIf="!isSearchContentShow && isMobile">
+
+          <!-- products link -->
+          <section class="SearchModule-MobileSearchList-Item"
+            (click)="onShowCurrentTemp('product')">
             <div class="SearchModule-MobileSearchList-Title">
               <h1>محصولات</h1>
               <div class="SearchModule-MobileSearchList-Number">
-                <!-- <span>{{ SearchesLength }}</span> -->
+                <span>{{ searchDefineDetail.RuleDefine.length }}</span>
               </div>
             </div>
             <span class="SearchModule-MobileSearchList-AngleLeft"><i class='fa fa-angle-left'></i></span>
           </section>
-          <!-- onclick="ShowSearchResultTempalte('Article')" -->
-          <section class="SearchModule-MobileSearchList-Item">
+
+          <!-- articles link -->
+          <section class="SearchModule-MobileSearchList-Item"
+            (click)="onShowCurrentTemp('article')">
             <div class="SearchModule-MobileSearchList-Title">
               <h1>مقالات</h1>
               <div class="SearchModule-MobileSearchList-Number">
-                <!-- <span>{{ SearchContentLength }}</span> -->
+                <span>{{ searchContent.length }}</span>
               </div>
             </div>
             <span class="SearchModule-MobileSearchList-AngleLeft"><i class='fa fa-angle-left'></i></span>
           </section>
-          <!-- onclick="ShowSearchResultTempalte('Training')" -->
-          <section class="SearchModule-MobileSearchList-Item">
+
+          <!-- training link -->
+          <section class="SearchModule-MobileSearchList-Item"
+            (click)="onShowCurrentTemp('training')">
             <div class="SearchModule-MobileSearchList-Title">
               <h1>آموزش</h1>
               <div class="SearchModule-MobileSearchList-Number">
-                <!-- <span>{{SearchTrainingCoursesLength + SearchTrainingCourseUsersLength + SearchTrainingCourseBatchsLength + SearchIncidentsLength}}</span> -->
+                <span>{{ searchTrainingCourses.length + searchTrainingCourseUsers.length + searchTrainingCourseBatchs.length + searchIncidents.length }}</span>
               </div>
             </div>
             <span class="SearchModule-MobileSearchList-AngleLeft"><i class='fa fa-angle-left'></i></span>
           </section>
+
         </div>
 
-        <div class="row SearchModule-Template-Inner">
+        <!-- search contnet -->
+        <div class="row SearchModule-Template-Inner"
+          *ngIf="(isSearchContentShow && isMobile) || !isMobile">
 
-          <div *ngIf="isMobile || searchContent.length || searchDefineDetail.RuleDefine.length"
+          <!-- product content -->
+          <section *ngIf="(isMobile && (tempName === 'product')) || !isMobile"
             class="col-xs-12 col-sm-6 SearchModule-ProductTemplate SearchMobilePadding SearchTemplate-SearchItemsWrapper">
-
             <div class="SearchModule-Title">
               <p>محصولات</p>
             </div>
-
-            <!-- autoheightdirective heightforthisclass=".SearchModule-Body" -->
-            <section class="SearchModule-Body">
-
-              <div class="SearchModule-ProductTemplate-Inner"
+            <div class="SearchModule-Body">
+              <section class="SearchModule-ProductTemplate-Inner"
                 *ngFor="let ruleDefine of searchDefineDetail.RuleDefine">
-                <!-- ng-click="HideMenuBox()" -->
                 <a [routerLink]="['/product/define-detail-product', ruleDefine.IDX]"
+                  (click)="onCloseSearchMenu()"
                   class="SearchModule-ProductTemplate-Item">
                   <img [src]="enviornment.baseUrl + ruleDefine.PicUrl | getSmallImage"
                     [alt]="ruleDefine.PartNumber">
@@ -82,221 +72,230 @@
                   </div>
                 </a>
                 <hr />
-              </div>
+              </section>
+              <p class="SearchModule-NotFoundMessage"
+                [ngClass]="{'SearchModule-ShowNotFoundMessage': !searchDefineDetail.RuleDefine.length}">موردی یافت نشد!
+              </p>
+            </div>
+          </section>
 
-              <!-- ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[Searches.RuleDefine.length == 0]" -->
-              <p class="SearchModule-NotFoundMessage">موردی یافت نشد!</p>
-            </section>
-
-          </div>
-
-          <!-- ng-if="SearchContent.length || Searches.RuleDefine.length || IsMobile" -->
-          <section
+          <!-- article content -->
+          <section *ngIf="(isMobile && (tempName === 'article')) || !isMobile"
             class="col-xs-12 col-sm-6 SearchModule-ArticleTemplate SearchMobilePadding SearchTemplate-SearchItemsWrapper">
             <div class="SearchModule-Title">
               <p>مقالات</p>
             </div>
-            <!-- autoheightdirective heightforthisclass=".SearchModule-Body" -->
             <div class="SearchModule-Body">
-              <!-- ng-repeat="Article in SearchContent" -->
-              <div class="TopArticleContent SearchModule-ArticleTemplate-Inner">
-                <section class="imgTopArticleContent SearchModule-ArticleTemplate-Image">
-                  <!-- ng-click="HideMenuBox()" -->
-                  <!-- href="//Article/{{Article.IDX}}" -->
-                  <a href="#">
-                    <!-- <img ng-src="{{ServerUrl + Article.PicUrl | GetSmallImage}}" alt="{{Article.Name_Fa}}" /> -->
+              <section class="TopArticleContent SearchModule-ArticleTemplate-Inner"
+                *ngFor="let article of searchContent">
+                <div class="imgTopArticleContent SearchModule-ArticleTemplate-Image">
+                  <a [routerLink]="['article-category/article', article.IDX]"
+                    (click)="onCloseSearchMenu()">
+                    <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage"
+                      [alt]="article.Name_Fa" />
                   </a>
-                </section>
-                <section class="TitleTopArticleContent SearchModule-ArticleTemplate-Title">
-                  <!-- ng-click="HideMenuBox()" -->
-                  <!-- href="//Article/{{Article.IDX}}" -->
-                  <a href="#"
+                </div>
+                <div class="TitleTopArticleContent SearchModule-ArticleTemplate-Title">
+                  <a [routerLink]="['article-category/article', article.IDX]"
+                    (click)="onCloseSearchMenu()"
                     class="clearfix">
-                    <!-- <span dir="rtl">{{Article.Name_Fa}}</span> -->
+                    <span dir="rtl">{{ article.Name_Fa }}</span>
                   </a>
-                  <!-- <p class="clearfix SearchModule-ArticleTemplate-AbstractArticle AbstractArticle">{{Article.Abstract_Fa}}</p> -->
-                </section>
-              </div>
-              <!-- ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[SearchContent.length == 0]" -->
-              <p class="SearchModule-NotFoundMessage">موردی یافت نشد!</p>
+                  <p class="clearfix SearchModule-ArticleTemplate-AbstractArticle AbstractArticle">
+                    {{ article.Abstract_Fa }}</p>
+                </div>
+              </section>
+              <p class="SearchModule-NotFoundMessage"
+                [ngClass]="{'SearchModule-ShowNotFoundMessage': !searchContent.length}">موردی یافت نشد!</p>
             </div>
           </section>
 
-          <!-- ng-if="SearchTrainingCourses.length || SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length || IsMobile" -->
-          <section class="col-xs-12 SearchModule-TrainingTemplate-Wrapper SearchTemplate-SearchItemsWrapper">
+          <!-- training content -->
+          <section *ngIf="(isMobile && (tempName === 'training')) || !isMobile"
+            class="col-xs-12 SearchModule-TrainingTemplate-Wrapper SearchTemplate-SearchItemsWrapper">
             <div class="SearchModule-Title SearchMobilePadding">
               <p>آموزش</p>
             </div>
-            <!-- autoheightdirective heightforthisclass=".SearchModule-Body" -->
             <div class="SearchModule-Body SearchModule-Training-Body">
-              <div class="SearchModule-Template-Inner">
-                <div class="SearchModule-TrainingTemplate-Sections">
-                  <div class="SearchModule-TrainingCourseSection">
-                    <section class="SearchModule-TrainingTemplate-SliderBody">
-                      <!-- <div id="xxx{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
-                          stagePadding: 20,
-                          items: 3,
-                          responsive: { 1024: { items: 5 } }
-                        }">
-                        <a href="/TrainingCoursesHeld/{{TrainingCourses.IDX}}" class="item" data-owl-carousel-item ng-repeat="TrainingCourses in SearchTrainingCourses" ng-click="HideMenuBox()">
-                          <img style="height: auto;" ng-src="{{ServerUrl + TrainingCourses.PicUrl | GetSmallImage}}" />
-                          <p style="direction: rtl;">{{TrainingCourses.Name_Fa}}</p>
-                        </a>
-                      </div> -->
-                      <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}" -->
-                      <div class="SearchModule-TrainingTemplate-MobileSlider">
-                        <!-- ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}" -->
-                        <ul>
-                          <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourseUsers.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}" -->
-                          <!-- ng-repeat="TrainingCourses in SearchTrainingCourses" -->
-                          <li>
-                            <!-- href="/TrainingCoursesHeld/{{TrainingCourses.IDX}}" -->
-                            <!-- ng-click="HideMenuBox()" -->
-                            <a href="#">
-                              <!-- <img ng-src="{{ServerUrl + TrainingCourses.PicUrl | GetSmallImage}}" /> -->
-                              <!-- <p>{{TrainingCourses.Name_Fa}}</p> -->
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </section>
-                    <!-- ng-repeat="SearchTrainingCourseUser in SearchTrainingCourseUsers" -->
-                    <section class="SearchModule-TrainingCourseUserSection">
-                      <div class="SearchModule-TrainingTemplate-SliderHeader">
-                        <!-- <h1>{{SearchTrainingCourseUser.FullName_Fa}}</h1> -->
-                        <hr style="border-color: #666;" />
-                      </div>
-                      <div class="SearchModule-TrainingTemplate-SliderBody">
-                        <!-- <section id="yyy{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel" data-owl-carousel data-options="{
-                            stagePadding: 20,
-                            items: 3,
-                            responsive: { 1024: { items: 5 } }
-                          }">
-                          <a href="/TrainingCoursesHeld/{{SearchUserCertificate.IDX}}" class="item" data-owl-carousel-item ng-repeat="SearchUserCertificate in SearchTrainingCourseUser.Certification" ng-click="HideMenuBox()">
-                            <img style="height: auto;" ng-src="{{ServerUrl + SearchUserCertificate.PicUrl | GetSmallImage}}" />
-                            <p style="direction: rtl;">
-                              {{SearchUserCertificate.TrainingCourseCategoryName_Fa}}
-                            </p>
+              <div class="SearchModule-TrainingTemplate-Sections">
+
+                <!-- training courses template -->
+                <section class="SearchModule-TrainingCourseSection">
+
+                  <!-- courses template -->
+                  <section class="SearchModule-TrainingTemplate-SliderBody">
+                    <owl-carousel-o [options]="carouselOptions"
+                      class="SearchModule-TrainingTemplate-OwlCarousel">
+                      <ng-container *ngFor="let trainingCourses of searchTrainingCourses">
+                        <ng-template class="item"
+                          carouselSlide
+                          [width]="carouselItemWidth">
+                          <a [routerLink]="['/training/training-course-held', trainingCourses.IDX]"
+                            (click)="onCloseSearchMenu()"
+                            class="item">
+                            <img style="height: auto;"
+                              src="{{ enviornment.baseUrl + trainingCourses.PicUrl | getSmallImage }}"
+                              alt="{{ trainingCourses.Name_Fa }}">
+                            <p style="direction: rtl;">{{ trainingCourses.Name_Fa }}</p>
                           </a>
-                        </section> -->
-
-                        <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}" -->
-                        <div class="SearchModule-TrainingTemplate-MobileSlider">
-                          <!-- ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}" -->
-                          <ul>
-                            <!-- ng-repeat="SearchUserCertificate in SearchTrainingCourseUser.Certification" ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchIncidents.length}" -->
-                            <li>
-                              <!-- href="/TrainingCoursesHeld/{{SearchUserCertificate.IDX}}" -->
-                              <!-- ng-click="HideMenuBox()" -->
-                              <a href="#">
-                                <!-- <img ng-src="{{ServerUrl + SearchUserCertificate.PicUrl | GetSmallImage}}" /> -->
-                                <!-- <p>{{SearchUserCertificate.TrainingCourseCategoryName_Fa}}</p> -->
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                  <!-- ng-repeat="SearchTrainingCourseBatch in SearchTrainingCourseBatchs" -->
-                  <section class="SearchModule-TrainingCourseBatchSection">
-
-                    <div class="SearchModule-TrainingTemplate-SliderHeader">
-                      <!-- <h1>{{SearchTrainingCourseBatch.Name_Fa}}</h1> -->
-                      <hr style="border-color: #666;" />
-                    </div>
-
-                    <div class="SearchModule-TrainingTemplate-SliderBody">
-                      <!-- <div id="zzz{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel"
-                        data-owl-carousel data-options="{
-                            stagePadding: 20,
-                            items: 3,
-                            responsive: { 1024: { items: 5 } }
-                          }">
-                        <a href="/TrainingCoursesHeld/{{TrainingCourseForBatch.IDX}}" class="item" data-owl-carousel-item
-                          ng-repeat="TrainingCourseForBatch in SearchTrainingCourseBatch.TrainingCourse"
-                          ng-click="HideMenuBox()">
-                          <img style="height: auto;"
-                            ng-src="{{ServerUrl + TrainingCourseForBatch.PicUrl | GetSmallImage}}" />
-                          <p style="direction: rtl;">{{TrainingCourseForBatch.Name_Fa}}</p>
-                        </a>
-                      </div> -->
-                    </div>
-
-                    <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll':SearchTrainingCourseUsers.length || SearchTrainingCourses.length || SearchIncidents.length }" -->
-                    <div class="SearchModule-TrainingTemplate-MobileSlider">
-                      <!-- ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourseUsers.length ||SearchTrainingCourses.length || SearchIncidents.length}" -->
-                      <ul>
-                        <!-- ng-repeat="TrainingCourseForBatch in SearchTrainingCourseBatch.TrainingCourse" -->
-                        <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourseUsers.length || SearchTrainingCourses.length || SearchIncidents.length}" -->
-                        <li>
-                          <!-- href="/TrainingCoursesHeld/{{TrainingCourseForBatch.IDX}}" -->
-                          <!--  -->
-                          <a href="#">
-                            <!-- <img ng-src="{{ServerUrl + TrainingCourseForBatch.PicUrl | GetSmallImage}}" class="" /> -->
-                            <!-- <p>{{TrainingCourseForBatch.Name_Fa}}</p> -->
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
+                    <div class="SearchModule-TrainingTemplate-MobileSlider"
+                      [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourseUsers.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
+                      <ul
+                        [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourseUsers.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
+                        <li
+                          [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourseUsers.length || searchTrainingCourseBatchs.length || searchIncidents.length}"
+                          *ngFor="let trainingCourses of searchTrainingCourses">
+                          <!-- ng-click="HideMenuBox()" -->
+                          <a [routerLink]="['/training/training-course-held', trainingCourses.IDX]">
+                            <img [src]="enviornment.baseUrl + trainingCourses.PicUrl | getSmallImage">
+                            <p>{{ trainingCourses.Name_Fa }}</p>
                           </a>
                         </li>
                       </ul>
                     </div>
                   </section>
 
-                  <section class="">
-
+                  <!-- certification template -->
+                  <section class="SearchModule-TrainingCourseUserSection"
+                    *ngFor="let user of searchTrainingCourseUsers">
                     <div class="SearchModule-TrainingTemplate-SliderHeader">
-                      <!-- <h1>{{SearchIncidents.Name_Fa}}</h1> -->
+                      <h1>{{ user.FullName_Fa }}</h1>
                       <hr style="border-color: #666;" />
                     </div>
-
                     <div class="SearchModule-TrainingTemplate-SliderBody">
-
-                      <!-- <section id="aaa{{$index}}" class="SearchModule-TrainingTemplate-OwlCarousel owl-carousel"
-                        data-owl-carousel data-options="{
-                            stagePadding: 20,
-                            items: 3,
-                            responsive: { 1024: { items: 5 } }
-                          }">
-                        <a href="/Incident/{{SearchIncident.IDX}}" class="item" data-owl-carousel-item
-                          ng-repeat="SearchIncident in SearchIncidents" ng-click="HideMenuBox()">
-                          <img style="height: auto;" ng-src="{{ServerUrl + SearchIncident.PicUrl | GetSmallImage}}"
-                            alt="{{SearchIncident.Name_Fa}}" />
-                          <p style="direction: rtl;">
-                            {{SearchIncident.Name_Fa}}
-                          </p>
-                        </a>
-                      </section> -->
-
-                      <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchTrainingCourseUsers.length}" -->
-                      <section class="SearchModule-TrainingTemplate-MobileSlider">
-                        <!-- ng-class="{'SearchHorizontalTrainingItems': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchTrainingCourseUsers.length}" -->
-                        <ul>
-                          <!-- ng-repeat="SearchIncident in SearchIncidents" -->
-                          <!-- ng-class="{'SearchModule-TrainingTemplate-MobileSlider-li': SearchTrainingCourses.length || SearchTrainingCourseBatchs.length || SearchTrainingCourseUsers.length}" -->
-                          <li>
-                            <!-- ng-click="HideMenuBox()" -->
-                            <!-- ref="/Incident/{{SearchIncident.IDX}}" -->
-                            <a href="#">
-                              <!-- <img ng-src="{{ServerUrl + SearchIncident.PicUrl | GetSmallImage}}" /> -->
-                              <!-- <p>{{SearchIncident.Name_Fa}}</p> -->
+                      <owl-carousel-o [options]="carouselOptions"
+                        class="SearchModule-TrainingTemplate-OwlCarousel">
+                        <ng-container *ngFor="let certificate of user.Certification">
+                          <ng-template class="item"
+                            carouselSlide
+                            [width]="carouselItemWidth">
+                            <a [routerLink]="['/training/training-course-held', certificate.IDX]"
+                              (click)="onCloseSearchMenu()"
+                              class="item">
+                              <img style="height: auto;"
+                                src="{{ enviornment.baseUrl + certificate.PicUrl | getSmallImage }}"
+                                alt="{{ certificate.Name_Fa }}">
+                              <p style="direction: rtl;">{{ certificate.TrainingCourseCategoryName_Fa }}</p>
+                            </a>
+                          </ng-template>
+                        </ng-container>
+                      </owl-carousel-o>
+                      <div class="SearchModule-TrainingTemplate-MobileSlider"
+                        [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
+                        <ul
+                          [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
+                          <li *ngFor="let certificate of user.Certification"
+                            (click)="onCloseSearchMenu()"
+                            [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchIncidents.length}">
+                            <a [routerLink]="['/training/training-course-held', certificate.IDX]">
+                              <img [src]="enviornment.baseUrl + certificate.PicUrl | getSmallImage" />
+                              <p>{{ certificate.TrainingCourseCategoryName_Fa }}</p>
                             </a>
                           </li>
                         </ul>
-                      </section>
-
+                      </div>
                     </div>
-
                   </section>
 
-                  <!-- ng-class="{true: 'SearchModule-ShowNotFoundMessage'}[SearchTrainingCourses.length == 0 && SearchTrainingCourseUsers.length == 0 && SearchTrainingCourseBatchs.length == 0 && SearchIncidentsLength.length]" -->
-                  <p class="SearchModule-NotFoundMessage SearchMobilePadding">موردی یافت نشد!</p>
-                </div>
+                </section>
+
+                <!-- batches template -->
+                <section class="SearchModule-TrainingCourseBatchSection"
+                  *ngFor="let batch of searchTrainingCourseBatchs">
+                  <div class="SearchModule-TrainingTemplate-SliderHeader">
+                    <h1>{{ batch.Name_Fa }}</h1>
+                    <hr style="border-color: #666;" />
+                  </div>
+                  <div class="SearchModule-TrainingTemplate-SliderBody">
+                    <owl-carousel-o [options]="carouselOptions"
+                      class="SearchModule-TrainingTemplate-OwlCarousel">
+                      <ng-container *ngFor="let course of batch.TrainingCourse">
+                        <ng-template class="item"
+                          carouselSlide
+                          [width]="carouselItemWidth">
+                          <a [routerLink]="['/training/training-course-held', course.IDX]"
+                            (click)="onCloseSearchMenu()"
+                            class="item">
+                            <img style="height: auto;"
+                              src="{{ enviornment.baseUrl + course.PicUrl | getSmallImage }}"
+                              alt="{{ course.Name_Fa }}">
+                            <p style="direction: rtl;">{{ course.Name_Fa }}</p>
+                          </a>
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
+                  </div>
+                  <div class="SearchModule-TrainingTemplate-MobileSlider"
+                    [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll': searchTrainingCourseUsers.length || searchTrainingCourses.length || searchIncidents.length}">
+                    <ul
+                      [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourseUsers.length || searchTrainingCourses.length || searchIncidents.length}">
+                      <li *ngFor="let course of batch.TrainingCourse"
+                        [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourseUsers.length || searchTrainingCourses.length || searchIncidents.length}">
+                        <a [routerLink]="['/training/training-course-held', course.IDX]"
+                          (click)="onCloseSearchMenu()">
+                          <img [src]="enviornment.baseUrl + course.PicUrl | getSmallImage">
+                          <p>{{ course.Name_Fa }}</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+
+                <!-- incident template -->
+                <section *ngIf="searchIncidents">
+                  <div class="SearchModule-TrainingTemplate-SliderHeader">
+                    <hr style="border-color: #666;" />
+                  </div>
+                  <div class="SearchModule-TrainingTemplate-SliderBody">
+                    <!-- id="carousel{{ dynamicId }}" -->
+                    <owl-carousel-o [options]="carouselOptions"
+                      class="SearchModule-TrainingTemplate-OwlCarousel">
+                      <ng-container *ngFor="let incident of searchIncidents">
+                        <ng-template class="item"
+                          carouselSlide
+                          [width]="carouselItemWidth">
+                          <a [routerLink]="['/about-us/news-and-events/incident', incident.IDX]"
+                            (click)="onCloseSearchMenu()"
+                            class="item">
+                            <img style="height: auto;"
+                              src="{{ enviornment.baseUrl + incident.PicUrl | getSmallImage }}"
+                              alt="{{ incident.Name_Fa }}">
+                            <p style="direction: rtl;">{{ incident.Name_Fa }}</p>
+                          </a>
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
+                    <section class="SearchModule-TrainingTemplate-MobileSlider"
+                      [ngClass]="{'SearchModule-TrainingTemplate-MobileSliderHorizontalScroll':  searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchTrainingCourseUsers.length}">
+                      <ul
+                        [ngClass]="{'SearchHorizontalTrainingItems': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchTrainingCourseUsers.length}">
+                        <li
+                          [ngClass]="{'SearchModule-TrainingTemplate-MobileSlider-li': searchTrainingCourses.length || searchTrainingCourseBatchs.length || searchTrainingCourseUsers.length}"
+                          *ngFor="let incident of searchIncidents">
+                          <a [routerLink]="['/about-us/news-and-events/incident', incident.IDX]"
+                            (click)="onCloseSearchMenu()">
+                            <img [src]="enviornment.baseUrl + incident.PicUrl | getSmallImage" />
+                            <p>{{ incident.Name_Fa }}</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </section>
+
+                <p class="SearchModule-NotFoundMessage SearchMobilePadding"
+                  [ngClass]="{'SearchModule-ShowNotFoundMessage': !searchTrainingCourses.length && !searchTrainingCourseUsers.length && !searchTrainingCourseBatchs.length && !searchIncidents.length}">
+                  موردی یافت نشد!</p>
               </div>
             </div>
           </section>
+
         </div>
 
       </div>
-    </section>
-
+    </div>
   </div>
 </article>
