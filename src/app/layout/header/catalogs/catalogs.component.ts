@@ -7,6 +7,7 @@ import { Catalog } from './catalog.model';
 import { SupplierService } from 'src/app/layout/navbar/supplier-menu/supplier.service';
 import { Supplier } from 'src/app/layout/navbar/supplier-menu/supplier.model';
 import { LayoutDataStorageService } from './../../shared/layout-data-storage.service';
+import { GalleryModalService } from './../../gallery-modal/gallery-modal.service';
 
 @Component({
   selector: 'app-catalogs',
@@ -27,7 +28,8 @@ export class CatalogsComponent implements OnInit {
     private extensionMethodService: ExtensionMethodService,
     private catalogService: CatalogsService,
     private supplierService: SupplierService,
-    private layoutDataStorageService: LayoutDataStorageService
+    private layoutDataStorageService: LayoutDataStorageService,
+    private galleryModalService: GalleryModalService
   ) { }
 
   ngOnInit(): void {
@@ -50,5 +52,12 @@ export class CatalogsComponent implements OnInit {
 
   onCloseCatalog() {
     this.close.emit();
+  }
+
+  onOpenGalleryModal(currentItem: any, allItems: any) {
+    this.galleryModalService.setGalleryModalData(currentItem, allItems);
+
+    // trigger model when data arrived
+    this.galleryModalService.galleryModalOpen();
   }
 }

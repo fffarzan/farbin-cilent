@@ -22,10 +22,11 @@
         </video>
 
         <!-- Static video -->
-        <!-- ng-if="MainMediaDetails.target.currentSrc" -->
-        <!-- <video controls class="ModalVideoItem">
-          <source ng-src="{{::MainMediaDetails.target.currentSrc}}">
-        </video> -->
+        <video controls
+          class="ModalVideoItem"
+          *ngIf="media.target.currentSrc">
+          <source [src]="media.target.currentSrc">
+        </video>
       </section>
 
       <!-- desktop carousel template -->

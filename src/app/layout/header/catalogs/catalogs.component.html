@@ -42,6 +42,43 @@
           itemsDesktop: [1024,5]
         }">
       </staticgallerycarousel> -->
+      <article class="GalleryCarousel-Mobile">
+        <div style="overflow-x: auto;">
+          <section class="GalleryCarousel-Mobile-Inner"
+            style="display: inline-flex;">
+            <section class="Catalog-StaticVideo">
+              <!-- (click)="onOpenGalleryModal($event, undefined)" -->
+              <video class="GalleryCarousel-VideoItem"
+                [ngStyle]="{width: '200px'}">
+                <source class="ModalStaticVideoItem"
+                  src="https://farbin.ir/Videos/Datacenter_LISA-60.mp4#t=0.2"
+                  type="video/mp4">
+              </video>
+              <p>Datacenter_LISA-60</p>
+            </section>
+            <section class="Catalog-StaticVideo">
+              <!-- (click)="onOpenGalleryModal($event, undefined)" -->
+              <video class="GalleryCarousel-VideoItem"
+                [ngStyle]="{width: '200px'}">
+                <source class="ModalStaticVideoItem"
+                  src="https://farbin.ir/Videos/IANOS-51m.mp4#t=0.2"
+                  type="video/mp4">
+              </video>
+              <p>IANOS-51m</p>
+            </section>
+            <section class="Catalog-StaticVideo">
+              <!-- (click)="onOpenGalleryModal($event, undefined)" -->
+              <video class="GalleryCarousel-VideoItem"
+                [ngStyle]="{width: '200px'}">
+                <source class="ModalStaticVideoItem"
+                  src="https://farbin.ir/Videos/LCSystem-41m.mp4#t=0.2"
+                  type="video/mp4" />
+              </video>
+              <p>LC System-41m</p>
+            </section>
+          </section>
+        </div>
+      </article>
     </section>
 
   </div>
