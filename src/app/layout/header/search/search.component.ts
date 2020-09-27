@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit, OnChanges, OnDestroy {
   searchTrainingCourseUsersSub: Subscription;
   searchTrainingCourseBatchsSub: Subscription;
   searchIncidentsSub: Subscription;
-  carouselItemWidth: number;
+  carouselItemWidth: number = 160;
   carouselOptions = {
     items: 4,
     dots: false,

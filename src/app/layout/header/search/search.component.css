@@ -420,6 +420,10 @@
   line-height: 23px;
 }
 
+.SearchModule-TrainingTemplate-OwlCarousel {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .SearchModule-TrainingTemplate-Wrapper {
     display: block;
@@ -434,7 +438,9 @@
   .SearchModule-TrainingCourseUserSection {
     margin-right: 0;
   }
-  .SearchModule-TrainingTemplate-MobileSlider {}
+  .SearchModule-TrainingTemplate-MobileSlider {
+    display: none;
+  }
   .SearchModule-TrainingTemplate-MobileSliderHorizontalScroll {
     overflow-x: unset;
   }
@@ -443,6 +449,12 @@
   }
   .SearchHorizontalTrainingItems {
     display: block;
+  }
+  .SearchModule-TrainingTemplate-OwlCarousel {
+    display: block;
+  }
+  .SearchModule-TrainingTemplate-OwlCarousel img {
+    padding: 0 10px;
   }
 }
 
