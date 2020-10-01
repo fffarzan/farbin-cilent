@@ -98,6 +98,7 @@
 .CatalogMenuButton img {
   border: solid 1px #81b7cc;
   height: 27px;
+  cursor: pointer;
 }
 
 #OpenCatalogMenu {

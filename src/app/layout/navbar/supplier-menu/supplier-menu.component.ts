@@ -4,6 +4,7 @@ import { SupplierService } from './supplier.service';
 import { Supplier } from 'src/app/layout/navbar/supplier-menu/supplier.model';
 import { toggleMenu } from '../navbar.animation';
 import { LayoutDataStorageService } from '../../shared/layout-data-storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-supplier-menu',
@@ -15,6 +16,7 @@ import { LayoutDataStorageService } from '../../shared/layout-data-storage.servi
   host: { '[@toggleMenu]': 'in' }
 })
 export class SupplierMenuComponent implements OnInit {
+  enviornment: { production: boolean, baseUrl: string } = environment;
   suppliers: Supplier[] = [];
 
   constructor(

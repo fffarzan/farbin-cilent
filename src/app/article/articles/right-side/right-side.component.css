@@ -132,6 +132,7 @@
   }
   .ContentTitle {
     padding: 0 5px 30px 3px;
+    font-weight: bold;
   }
 }
 

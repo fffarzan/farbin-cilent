@@ -11,6 +11,7 @@ import { Articles } from '../articles.model';
 export class LeftSideComponent implements OnInit {
   @Input() articles = Articles;
   @Input() isLeftSideMenuOpen: boolean;
+  currentId: number;
 
   constructor(
     private router: Router,

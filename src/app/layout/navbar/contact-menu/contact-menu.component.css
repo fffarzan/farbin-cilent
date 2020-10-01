@@ -1,7 +1,8 @@
-
-:host { /* add css to container tag of dynamic component */
+:host {
+  /* add css to container tag of dynamic component */
   position: fixed;
   bottom: 60px;
+  left: 0;
   width: 100%;
   z-index: 20000;
   background-color: rgba(51, 51, 51, 0.5) !important;
@@ -10,6 +11,7 @@
 @media screen and (min-width: 768px) {
   :host {
     bottom: 50px;
+    left: 5%;
     /* height: 300px; */
   }
 }
@@ -142,7 +144,7 @@
     padding: 0px;
     bottom: 50px;
   }
-  .ContactMenu>.Item {
+  .ContactMenu > .Item {
     width: 33%;
     text-align: center;
     display: inline-block;
@@ -150,7 +152,7 @@
     height: 120px;
     float: left;
   }
-  .ContactMenu>.Item img {
+  .ContactMenu > .Item img {
     width: 50px;
   }
   .ContactInfoInFooter {
@@ -223,7 +225,10 @@
     width: 100%;
   }
   @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .AboutHeaderTitle, .AboutInContact .AboutItem, .ContactInfoInFooter .Address-Fa, .ContactInfoInFooter .Address-En {
+    .AboutHeaderTitle,
+    .AboutInContact .AboutItem,
+    .ContactInfoInFooter .Address-Fa,
+    .ContactInfoInFooter .Address-En {
       line-height: 150%;
     }
     .ContactInfoInFooter .Item {
@@ -238,7 +243,8 @@
     .ContactMenu {
       width: 100%;
     }
-    .AboutHeaderTitle, .AboutInContact .AboutItem {
+    .AboutHeaderTitle,
+    .AboutInContact .AboutItem {
       padding-right: 20px;
       width: 100%;
     }
