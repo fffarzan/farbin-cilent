@@ -18,6 +18,8 @@ import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
 import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-placeholder.directive';
 import { FixedMenuComponent } from './fixed-menu/fixed-menu.component';
 import { ProductModule } from '../product/product.module';
+import { StaticModalComponent } from './static-modal/static-modal.component';
+import { StaticModalPlaceholderDirective } from './static-modal/static-modal-placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ProductModule } from '../product/product.module';
     SupplierMenuPlaceholderDirective,
     GalleryModalComponent,
     GalleryModalPlaceholderDirective,
-    FixedMenuComponent
+    FixedMenuComponent,
+    StaticModalComponent,
+    StaticModalPlaceholderDirective
   ],
   imports: [
     SharedModule,
@@ -46,7 +50,8 @@ import { ProductModule } from '../product/product.module';
     CatalogsComponent,
     ContactMenuComponent,
     SupplierMenuComponent,
-    GalleryModalComponent
+    GalleryModalComponent,
+    StaticModalComponent
   ],
   exports: [
     LayoutComponent
