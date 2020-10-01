@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -30,6 +30,7 @@ export class ArticlesContentsComponent implements OnInit, OnDestroy {
     let clonedArticle;
 
     this.routeSub = this.route.data.subscribe(data => {
+      console.log(data);
       clonedArticle = ArticleUtils.convertStringToJson(data.articles, 'Items');
       this.articles = clonedArticle;
 
@@ -51,7 +52,7 @@ export class ArticlesContentsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.routerSub) this.routerSub.unsubscribe();
-    if (this.routeSub) this.routeSub.unsubscribe();
+    // if (this.routeSub) this.routeSub.unsubscribe();
   }
 
   onScrollDiv(event: Event) {

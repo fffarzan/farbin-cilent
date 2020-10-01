@@ -22,8 +22,6 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   isRightSideMenuOpen: boolean = false;
   randomDictionaryWord: DictionaryWord;
   randomDictionaryWordSub: Subscription;
-  contentArticles;
-  // contentArticlesSub: Subscription;
   rightSideAtricles: Articles;
   rightSideAtriclesSub: Subscription;
   leftSideArticles: Articles;
@@ -44,9 +42,6 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
     this.leftSideArticlesSub = this.articleDataStorageService.fetchArticlesForSides({ UniqueName: 'LeftArticleCategory' })
       .subscribe(() => this.leftSideArticles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items'));
-
-    // this.contentArticlesSub = this.articleDataStorageService.fetchArticlesForSides({ UniqueName: 'MiddleArticleCategory' })
-    //   .subscribe(() => this.contentArticles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items'));
   }
 
   onLeftSideMenuToggle(isOpen: boolean) {
@@ -61,6 +56,5 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     this.randomDictionaryWordSub.unsubscribe();
     this.rightSideAtriclesSub.unsubscribe();
     this.leftSideArticlesSub.unsubscribe();
-    // this.contentArticlesSub.unsubscribe();
   }
 }

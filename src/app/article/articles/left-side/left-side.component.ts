@@ -16,12 +16,15 @@ export class LeftSideComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+    // console.log(this.router.url.split('/'));
   }
 
   onLoadLink(article): void {
-    this.router.navigate(['./', article.IDX], { relativeTo: this.route });
+    // this.router.navigate(['./', article.IDX], { relativeTo: this.route });
   }
+
 }
