@@ -32,12 +32,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private extensionMethodService: ExtensionMethodService,
     private layoutDataStorageService: LayoutDataStorageService,
     private dataManagementService: DataManagementService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.subscription = this.layoutDataStorageService
-      .fetchCatalogs()
-      .subscribe();
     this.compareListNumber = this.dataManagementService.compareListCount;
     this.compareProductsNumber();
   }
@@ -78,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   private compareProductsNumber() {

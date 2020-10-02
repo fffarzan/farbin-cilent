@@ -9,7 +9,6 @@
 
       <!-- main item -->
       <section class="CustomModal-Item">
-        <!-- ng-if="&& !(MainMediaDetails.target.currentSrc)" -->
         <img [src]="enviornment.baseUrl + media.item.Url"
           [alt]="media.item.Name_Fa"
           *ngIf="media.item.FileType !== 'mp4'">
@@ -17,14 +16,15 @@
         <video controls
           class="ModalVideoItem"
           *ngIf="media.item.FileType === 'mp4'">
-          <source src="{{ enviornment.baseUrl + media.item.Url }}#t=0.1"
+          <source src="{{ enviornment.baseUrl + media.item.Url }}#t=0.2"
             type="video/{{ media.item.FileType }}">
         </video>
 
         <!-- Static video -->
-        <!-- ng-if="MainMediaDetails.target.currentSrc" -->
-        <!-- <video controls class="ModalVideoItem">
-          <source ng-src="{{::MainMediaDetails.target.currentSrc}}">
+        <!-- <video controls
+          class="ModalVideoItem"
+          *ngIf="media">
+          <source [src]="media">
         </video> -->
       </section>
 
@@ -51,7 +51,7 @@
               <div class="GalleryCarousel-OwlCarousel-Item"
                 (click)="onSendDataToMain(media)">
                 <video class="GalleryCarousel-VideoItem">
-                  <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.1">
+                  <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.2">
                 </video>
               </div>
             </ng-template>
@@ -74,7 +74,7 @@
             [style.width.px]="carouselItemWidth"
             class="GalleryCarousel-VideoItem"
             [appMobileTemplate]="carouselData">
-            <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.1" />
+            <source src="{{ enviornment.baseUrl + media[carouselData.dynamicImagePropertyName] }}#t=0.2" />
           </video>
         </div>
       </section>

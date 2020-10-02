@@ -93,6 +93,7 @@
   float: right;
   width: 28px;
   z-index: 199;
+  cursor: pointer;
 }
 
 .CatalogMenuButton img {

@@ -34,6 +34,7 @@
   float: right;
   font-size: 35px;
   color: #333;
+  cursor: pointer;
 }
 
 .CatalogeMenu-LineOut {
@@ -117,7 +118,7 @@
   margin-right: 10px;
 }
 
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
   .CatalogeMenu-LineIN {
     border: none;
     border-top: 1px;
@@ -141,6 +142,7 @@
   }
   #CatalogList {
     overflow-y: scroll;
+    height: calc(100vh - 120px);
   }
 }
 
