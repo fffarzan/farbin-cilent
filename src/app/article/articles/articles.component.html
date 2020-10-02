@@ -1,15 +1,11 @@
-<article class="ArticleContainer"
-  *ngIf="rightSideAtricles && leftSideArticles && randomDictionaryWord">
+<article class="ArticleContainer" *ngIf="rightSideAtricles && leftSideArticles && randomDictionaryWord">
 
   <!-- navbar (mobile) -->
-  <app-navbar (leftSideMenuOpen)="onLeftSideMenuToggle($event)"
-    (rightSideMenuOpen)="onRightSideMenuToggle($event)"
+  <app-navbar (leftSideMenuOpen)="onLeftSideMenuToggle($event)" (rightSideMenuOpen)="onRightSideMenuToggle($event)"
     [dictionary]="randomDictionaryWord"></app-navbar>
 
   <!-- dictionary (desktop) -->
-  <a class="DictionaryContainer"
-    [routerLink]="['dictionary', randomDictionaryWord.IDX]"
-    *ngIf="!isMobile">
+  <a class="DictionaryContainer" [routerLink]="['dictionary', randomDictionaryWord.IDX]" *ngIf="!isMobile">
     <span class="DailySentence">اصطلاحات پسیو</span>
     <div>
       <p class="DicTitle">{{ randomDictionaryWord.Title }}</p>
@@ -19,14 +15,12 @@
   </a>
 
   <!-- left-side -->
-  <app-left-side [articles]="leftSideArticles"
-    [isLeftSideMenuOpen]="isLeftSideMenuOpen"></app-left-side>
+  <app-left-side [articles]="leftSideArticles" [isLeftSideMenuOpen]="isLeftSideMenuOpen"></app-left-side>
 
   <!-- content -->
   <app-articles-contents></app-articles-contents>
 
   <!-- right-side -->
-  <app-right-side [articles]="rightSideAtricles"
-    [isRightSideMenuOpen]="isRightSideMenuOpen"></app-right-side>
+  <app-right-side [articles]="rightSideAtricles" [isRightSideMenuOpen]="isRightSideMenuOpen"></app-right-side>
 
 </article>

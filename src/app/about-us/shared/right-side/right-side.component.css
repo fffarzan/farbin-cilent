@@ -36,6 +36,15 @@
   padding-right: 10px !important;
 }
 
+.AboutUsSubCategory-RightSide-SubCategories-Active {
+  display: block;
+}
+
+.AboutUsSubCategory-RightSide-SubCategoriesLink-Active {
+  font-weight: bold;
+  color: #610040 !important;
+}
+
 .AboutUsSubCategory-RightSide-SubCategories li {
   margin: 10px 0px;
   font-size: 12px;

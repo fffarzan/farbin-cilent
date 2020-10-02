@@ -1,19 +1,14 @@
-<section class="RightSideArticleList clearfix"
-  [ngClass]="{'RightSideArticleList-Active': isRightSideMenuOpen}"
+<section class="RightSideArticleList clearfix" [ngClass]="{'RightSideArticleList-Active': isRightSideMenuOpen}"
   *ngIf="(isMobile && isRightSideMenuOpen) || (!isMobile && articles)">
   <h4 class="Float-Right Color-Black ContentTitle Font-Bold RightSideArticleContainer-ContentOuter-title">
     {{ articles[0].Title }}</h4>
-  <div class="RightSideArticleContainer clearfix"
-    appGetScrollData
-    (scrolled)="onScrollDiv($event)">
+  <div class="RightSideArticleContainer clearfix" appGetScrollData (scrolled)="onScrollDiv($event)">
 
-    <div class="RightSideArticleContainer-ContentWrapper"
-      *ngFor="let article of contentArticleLazyLoad">
-      <div class="RightSideArticleContainer-ContentInner">
+    <div class="RightSideArticleContainer-ContentWrapper" *ngFor="let article of contentArticleLazyLoad">
+      <div *ngIf="article" class="RightSideArticleContainer-ContentInner">
         <div class="RightSideArticleContainer-ArticleImg">
           <a [routerLink]="['article', article.IDX]">
-            <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage"
-              [alt]="article.Name_Fa" />
+            <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage" [alt]="article.Name_Fa" />
           </a>
         </div>
         <div class="RightSideArticleContainer-ArticleTitle">

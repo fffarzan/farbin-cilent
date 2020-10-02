@@ -8,9 +8,11 @@ export class ArticleUtils {
     let dataArrayLength: number;
     let articleCategoryTitlesLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let articlesLazyLoad: ArticlePreview[] = [];
-    let daLength: number = dataArray.length;
+    let daLength: number;
 
-    if (!dataArray.Items && !daLength) dataArrayLength = 0; 
+    daLength = dataArray.length;
+
+    if (!dataArray.Items && !daLength) dataArrayLength = 0;
     else dataArrayLength = Object.keys(dataArray).length;
 
     if (dataArrayLength) { // if data has loaded for first time, loading titles and first five articles
@@ -18,8 +20,7 @@ export class ArticleUtils {
 
       let allArticles = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).allArticles;
       articlesLazyLoad = ArticleUtils.getArticleItemsForLazyLoading(allArticles, 0);
-    }
-    else if (!dataArrayLength)  // if no article was existed in the category
+    } else if (!dataArrayLength)  // if no article was existed in the category
       articleCategoryTitlesLazyLoad.push({ 'Title': dataArray.Title, 'ID': dataArray.ID, 'ErrorText': 'مقاله ای یافت نشد!' });
 
     return { articlesLazyLoad, articleCategoryTitlesLazyLoad }

@@ -42,6 +42,7 @@
   color: #ffb700;
   font-size: 12px;
   line-height: 15px;
+  text-align: center;
 }
 
 .ArticleMenuBar-DailySentence-img {
@@ -52,7 +53,7 @@
 }
 
 .ArticleMenuBar-DailySentence-img-Animate {
-  transform: rotate(0deg)
+  transform: rotate(0deg);
 }
 
 .DictionaryContainer-MobileMenu {
@@ -67,12 +68,12 @@
 }
 
 .DictionaryContainer-MobileMenu-Active {
- height: 200px; 
+  height: 200px;
 }
 
 .DictionaryContainer-MobileMenu-MoreDetailsActive {
-  height: calc(100vh - 160px); 
- }
+  height: calc(100vh - 160px);
+}
 
 .MobileMenu-DicTitle {
   text-align: right;
@@ -97,6 +98,7 @@
   bottom: 10px;
   left: 0px;
   right: 0px;
+  text-align: center;
 }
 
 .MobileMenu-DicDesc {

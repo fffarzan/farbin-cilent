@@ -5,18 +5,16 @@
 <div class="MovableContainer">
   <!-- [style.height.px]="height" -->
   <!-- <div class="MainSection"> -->
-  <div id="DarkBody"
-    *ngIf="isDarkbodyShown"
-    (click)="onCloseDarkbody()"></div>
+  <div id="DarkBody" *ngIf="isDarkbodyShown" (click)="onCloseDarkbody()"></div>
 
-  <div class="ViewContainer"
-    [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
+  <div class="ViewContainer" [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
     <router-outlet></router-outlet>
   </div>
 
   <ng-template appContactMenuPlaceholder></ng-template>
   <ng-template appSupplierMenuPlaceholder></ng-template>
   <ng-template appGalleryModalPlaceholder></ng-template>
+  <ng-template appStaticModalPlaceholder></ng-template>
   <!-- </div> -->
 </div>
 

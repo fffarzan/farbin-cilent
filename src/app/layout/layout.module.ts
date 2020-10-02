@@ -18,7 +18,8 @@ import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
 import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-placeholder.directive';
 import { FixedMenuComponent } from './fixed-menu/fixed-menu.component';
 import { ProductModule } from '../product/product.module';
-import { SearchCarouselComponent } from './header/search/search-carousel/search-carousel.component';
+import { StaticModalComponent } from './static-modal/static-modal.component';
+import { StaticModalPlaceholderDirective } from './static-modal/static-modal-placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SearchCarouselComponent } from './header/search/search-carousel/search-
     GalleryModalComponent,
     GalleryModalPlaceholderDirective,
     FixedMenuComponent,
-    SearchCarouselComponent
+    StaticModalComponent,
+    StaticModalPlaceholderDirective
   ],
   imports: [
     SharedModule,
@@ -48,7 +50,8 @@ import { SearchCarouselComponent } from './header/search/search-carousel/search-
     CatalogsComponent,
     ContactMenuComponent,
     SupplierMenuComponent,
-    GalleryModalComponent
+    GalleryModalComponent,
+    StaticModalComponent
   ],
   exports: [
     LayoutComponent

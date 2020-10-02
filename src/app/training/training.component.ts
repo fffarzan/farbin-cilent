@@ -6,6 +6,7 @@ import { TrainingDataStorageService } from './shared/training-data-storage.servi
 import { TrainingService } from './training.service';
 import { TrainingCoursesReview } from './training-course-review.model';
 import { TrainingCourseHeldReview } from './training-course-held-review.model';
+import { StaticModalService } from '../layout/static-modal/static-modal.service';
 
 @Component({
   selector: 'app-training',
@@ -32,7 +33,8 @@ export class TrainingComponent implements OnInit, OnDestroy {
 
   constructor(
     private trainingService: TrainingService,
-    private trainingDataStorageService: TrainingDataStorageService
+    private trainingDataStorageService: TrainingDataStorageService,
+    private staticModalService: StaticModalService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +42,13 @@ export class TrainingComponent implements OnInit, OnDestroy {
       .subscribe(() => this.trainingCourses = this.trainingService.getTrainingCoursesReview());
     this.trianingCoursesHeldSub = this.trainingDataStorageService.fetchTrainingCourseHeldReview()
       .subscribe(() => this.trianingCoursesHeld = this.trainingService.getTrainingCoursesHeldReview());
+  }
+
+  onOpenStaticModal(item: number) {
+    this.staticModalService.setStaticModalData(item);
+
+    // trigger model when data arrived
+    this.staticModalService.staticModalOpen();
   }
 
   ngOnDestroy() {

@@ -1,39 +1,27 @@
-<article id="TrainingModule-Wrapper"
-  class="TrainingMain">
+<article id="TrainingModule-Wrapper" class="TrainingMain">
 
   <!-- main slider -->
   <section class="StaticMainSlider TrainingMain-MainSlider">
-    <owl-carousel-o id="TrainingOwlCarousel"
-      class="TrainingMainPage-OwlCarousel"
-      [options]="customStaticSlideOptions">
+    <owl-carousel-o id="TrainingOwlCarousel" class="TrainingMainPage-OwlCarousel" [options]="customStaticSlideOptions">
       <ng-template carouselSlide>
         <div class="item">
-          <img src="assets/img/TrainingMainSlideMobile3.jpg"
-            class="hidden-sm hidden-md hidden-lg hidden-xl"
+          <img src="assets/img/TrainingMainSlideMobile3.jpg" class="hidden-sm hidden-md hidden-lg hidden-xl"
             alt="دوره های آموزشی فربین">
-          <img class="hidden-xs"
-            src="assets/img/TrainingMainSlide3.jpg"
-            alt="دوره های آموزشی فربین">
+          <img class="hidden-xs" src="assets/img/TrainingMainSlide3.jpg" alt="دوره های آموزشی فربین">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item">
-          <img class="hidden-sm hidden-md hidden-lg hidden-xl"
-            src="assets/img/TrainingMainSlideMobile1.jpg"
+          <img class="hidden-sm hidden-md hidden-lg hidden-xl" src="assets/img/TrainingMainSlideMobile1.jpg"
             alt="دوره های آموزشی فربین">
-          <img class="hidden-xs"
-            src="assets/img/TrainingMainSlide1.jpg"
-            alt="دوره های آموزشی فربین">
+          <img class="hidden-xs" src="assets/img/TrainingMainSlide1.jpg" alt="دوره های آموزشی فربین">
         </div>
       </ng-template>
       <ng-template carouselSlide>
         <div class="item">
-          <img class="hidden-sm hidden-md hidden-lg hidden-xl"
-            src="assets/img/TrainingMainSlideMobile2.jpg"
+          <img class="hidden-sm hidden-md hidden-lg hidden-xl" src="assets/img/TrainingMainSlideMobile2.jpg"
             alt="دوره های آموزشی فربین">
-          <img class="hidden-xs"
-            src="assets/img/TrainingMainSlide2.jpg"
-            alt="دوره های آموزشی فربین">
+          <img class="hidden-xs" src="assets/img/TrainingMainSlide2.jpg" alt="دوره های آموزشی فربین">
         </div>
       </ng-template>
     </owl-carousel-o>
@@ -45,8 +33,7 @@
 
       <!-- brand supporter -->
       <section class="col-xs-12 col-sm-6 TrainingModule-MainTopic-ItemWrapper">
-        <!-- ng-click="OpenDynamicModal1($event, 1, undefined)" -->
-        <div class="TrainingModule-MainTopic TrainingModule-MainTopic-BrandSupporter">
+        <div class="TrainingModule-MainTopic TrainingModule-MainTopic-BrandSupporter" (click)="onOpenStaticModal(1)">
           <div class="MainTopic-Desc">
             <h3>متولیان برند</h3>
             <p>آیا به دنبال یک مجموعه تخصصی برای معرفی برند پسیو خود هستید؟</p>
@@ -56,8 +43,7 @@
 
       <!-- infrastructure -->
       <section class="col-xs-12 col-sm-6 TrainingModule-MainTopic-ItemWrapper">
-        <!-- ng-click="OpenDynamicModal1($event, 2, undefined)" -->
-        <div class="TrainingModule-MainTopic TrainingModule-MainTopic-Infrastructure">
+        <div class="TrainingModule-MainTopic TrainingModule-MainTopic-Infrastructure" (click)="onOpenStaticModal(2)">
           <div class="MainTopic-Desc">
             <h3>زیرساخت</h3>
             <p>با فربین صنعت زیرساخت شبکه را برای آینده حرفه ای خود انتخاب کنید</p>
@@ -118,8 +104,7 @@
   </section>
 
   <!-- all courses held link -->
-  <a class="TrainingModule-AllCoursesLink"
-    [routerLink]="['training-course-held-batch-list']">
+  <a class="TrainingModule-AllCoursesLink" [routerLink]="['training-course-held-batch-list']">
     <p>نمایش همه دوره ها</p>
     <i class="fa fa-angle-left"></i>
   </a>

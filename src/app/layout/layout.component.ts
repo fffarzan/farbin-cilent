@@ -10,8 +10,11 @@ import { ContactMenuComponent } from './navbar/contact-menu/contact-menu.compone
 import { SupplierMenuComponent } from './navbar/supplier-menu/supplier-menu.component';
 import { NavbarService } from './navbar/navbar.service';
 import { GalleryModalPlaceholderDirective } from './gallery-modal/gallery-modal-placeholder.directive';
+import { StaticModalPlaceholderDirective } from './static-modal/static-modal-placeholder.directive';
 import { GalleryModalComponent } from './gallery-modal/gallery-modal.component';
 import { GalleryModalService } from './gallery-modal/gallery-modal.service';
+import { StaticModalService } from './static-modal/static-modal.service';
+import { StaticModalComponent } from './static-modal/static-modal.component';
 
 @Component({
   selector: 'app-layout',
@@ -26,8 +29,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
   @ViewChild(ContactMenuPlaceholderDirective, { static: false }) contactMenuHost: ContactMenuPlaceholderDirective;
   @ViewChild(SupplierMenuPlaceholderDirective, { static: false }) supplierMenuHost: SupplierMenuPlaceholderDirective;
   @ViewChild(GalleryModalPlaceholderDirective, { static: false }) galleryModalHost: GalleryModalPlaceholderDirective;
+  @ViewChild(StaticModalPlaceholderDirective, { static: false }) staticModalHost: StaticModalPlaceholderDirective;
   private closeCatalogSub: Subscription;
   private closeGalleryModalSub: Subscription;
+  private closeStaticModalSub: Subscription;
   closeContactMenuSub: Subscription;
   closeSupplierMenuSub: Subscription;
   isDarkbodyShown: boolean = false;
@@ -37,7 +42,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   constructor(
     private componentFatoryResolver: ComponentFactoryResolver,
     private navbarService: NavbarService,
-    private galleryMoadalServeic: GalleryModalService
+    private galleryMoadalServeic: GalleryModalService,
+    private staticModalService: StaticModalService
   ) { }
 
   ngOnInit() {
@@ -47,6 +53,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
       .subscribe(isOpen => this.toggleSupplierMenu(isOpen));
     this.closeGalleryModalSub = this.galleryMoadalServeic.galleryModalOpenedObs
       .subscribe(() => this.showGalleryModal(false));
+    this.closeStaticModalSub = this.staticModalService.staticModalOpenedObs
+      .subscribe(() => this.showStaticModal(false));
   }
 
   onToggleCatalog(isOpen: boolean) {
@@ -57,6 +65,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.toggleContactMenu(true);
     this.toggleSupplierMenu(true);
     this.showGalleryModal(true);
+    this.showStaticModal(true);
     this.isDarkbodyShown = false;
 
     // forcely close all
@@ -68,6 +77,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (this.closeContactMenuSub) this.closeContactMenuSub.unsubscribe();
     if (this.closeSupplierMenuSub) this.closeSupplierMenuSub.unsubscribe();
     if (this.closeGalleryModalSub) this.closeGalleryModalSub.unsubscribe();
+    if (this.closeStaticModalSub) this.closeStaticModalSub.unsubscribe();
   }
 
   private showCatalog() {
@@ -136,6 +146,27 @@ export class LayoutComponent implements OnInit, OnDestroy {
       const componentRef = hostViewContainerRef.createComponent(galleryModalCmpFactory);
       this.closeGalleryModalSub = componentRef.instance.close.subscribe(() => {
         this.closeGalleryModalSub.unsubscribe();
+        hostViewContainerRef.clear();
+
+        // delete darkbody from dom
+        this.isDarkbodyShown = false;
+      });
+    } else {
+      this.darkbodyRemoved = false;
+    }
+  }
+
+  private showStaticModal(isOpen: boolean) {
+    const staticModalCmpFactory = this.componentFatoryResolver.resolveComponentFactory(StaticModalComponent);
+    const hostViewContainerRef = this.staticModalHost.viewContainerRef;
+    hostViewContainerRef.clear();
+
+    if (!isOpen) {
+      this.isDarkbodyShown = true;
+
+      const componentRef = hostViewContainerRef.createComponent(staticModalCmpFactory);
+      this.closeStaticModalSub = componentRef.instance.close.subscribe(() => {
+        this.closeStaticModalSub.unsubscribe();
         hostViewContainerRef.clear();
 
         // delete darkbody from dom
