@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 
 import { Articles } from '../articles.model';
+import { ArticlesLeftSideService } from './articles-left-side.service';
 
 @Component({
   selector: 'app-left-side',
@@ -13,18 +13,12 @@ export class LeftSideComponent implements OnInit {
   @Input() isLeftSideMenuOpen: boolean;
   currentId: number;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-  }
+  constructor(private articlesLeftSideService: ArticlesLeftSideService) { }
 
   ngOnInit(): void {
-    // console.log(this.router.url.split('/'));
   }
 
-  onLoadLink(article): void {
-    // this.router.navigate(['./', article.IDX], { relativeTo: this.route });
+  onSendCategoryItems(articles) {
+    this.articlesLeftSideService.articles = articles;
   }
-
 }

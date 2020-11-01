@@ -10,6 +10,6 @@ export class ArticlesContentsResolver implements Resolve<any> {
   constructor(private articleDataStorageService: ArtcileDataStorageService) { }
 
   resolve() {
-    return this.articleDataStorageService.fetchArticlesForSides({ UniqueName: 'MiddleArticleCategory' });
+    return
   }
 }

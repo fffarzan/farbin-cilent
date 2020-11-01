@@ -34,13 +34,16 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.randomDictionaryWordSub = this.articleDataStorageService.fetchOneDictionaryWordRandom()
+    this.randomDictionaryWordSub = this.articleDataStorageService
+      .fetchOneDictionaryWordRandom()
       .subscribe(() => this.randomDictionaryWord = this.articlesService.getRandomDictionaryWord()[0]);
 
-    this.rightSideAtriclesSub = this.articleDataStorageService.fetchArticlesForSides({ UniqueName: 'RightArticleCategory' })
+    this.rightSideAtriclesSub = this.articleDataStorageService
+      .fetchArticlesForSides({ UniqueName: 'RightArticleCategory' })
       .subscribe(() => this.rightSideAtricles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items'));
 
-    this.leftSideArticlesSub = this.articleDataStorageService.fetchArticlesForSides({ UniqueName: 'LeftArticleCategory' })
+    this.leftSideArticlesSub = this.articleDataStorageService
+      .fetchArticlesForSides({ UniqueName: 'LeftArticleCategory' })
       .subscribe(() => this.leftSideArticles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items'));
   }
 
