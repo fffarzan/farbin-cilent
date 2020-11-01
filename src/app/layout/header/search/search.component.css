@@ -7,113 +7,6 @@
 
 /*  */
 
-.SearchModule-Inner {
-  border: solid 1px #81b7cc;
-  float: left;
-  width: 45%;
-  margin: 10px 0 0 3px;
-  height: 27px;
-  position: relative;
-}
-
-.SearchModule-Inner .fa-search {
-  color: #5f5f5f;
-  font-size: 18px;
-  margin: 4px;
-}
-
-.SearchModule-Icon {
-  display: inline-block;
-}
-
-.SearchModule-TextBox-TextSearch {
-  border: none;
-  background: none;
-  width: 71%;
-  direction: ltr;
-  font-size: 16px;
-  color: white;
-  position: absolute;
-  top: 0px;
-  height: 26px;
-}
-
-.SearchModule-ImgLoaderSearch {
-  display: none;
-  position: absolute;
-  right: 9%;
-  top: -5%;
-  width: 27px;
-  height: 27px;
-}
-
-.SearchModule-ClearTextSearch {
-  /* display: none; */
-  background-color: #2b2b2b;
-  border-radius: 100%;
-  position: absolute;
-  cursor: pointer;
-  top: 3px;
-  right: 6px;
-  /* width: 19px; */
-  /* height: 19px; */
-}
-
-@media screen and (min-width: 576px) {
-  .SearchModule-Inner {
-    width: 57%;
-    float: right;
-  }
-  .SearchModule-TextBox-TextSearch {
-    width: 80%;
-  }
-  .SearchModule-ImgLoaderSearch {
-    right: 3%;
-    height: 27px !important;
-    width: 27px !important;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .SearchModule-Inner {
-    width: 63%;
-    margin: 0px 10px 0 10px;
-  }
-  .SearchModule-Inner .fa-search {
-    color: #fff;
-  }
-  .SearchModule-TextBox-TextSearch {
-    width: 85%;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .SearchModule-Inner {
-    width: 65%;
-    position: relative;
-  }
-  .SearchModule-ImgLoaderSearch {
-    right: 2%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .SearchModule-TextBox-TextSearch {
-    width: 80%;
-  }
-  .SearchModule-ImgLoaderSearch {
-    float: right;
-    right: 2%;
-  }
-  .SearchModule-ClearTextSearch {
-    float: right;
-    font-size: 14px;
-    margin: 1px 0 0 0;
-  }
-}
-
-/*  */
-
 .SearchModule-Title {
   text-align: right;
   color: #ffb500;
@@ -122,12 +15,13 @@
   flex-flow: row wrap;
   justify-content: space-between;
   direction: rtl;
-  margin-bottom: 20px;
 }
 
 .SearchModule-Body {
   overflow-y: auto;
   overflow-x: hidden;
+  height: calc(100vh - 120px);
+  padding-bottom: 55px;
 }
 
 .SearchModule-Body::-webkit-scrollbar {
@@ -211,6 +105,7 @@
   text-align: left;
   /* display: flex; */
   margin: 0;
+  padding: 0 15px;
 }
 
 .SearchMobilePadding {
@@ -240,7 +135,6 @@
 
 .SearchModule-MobileSearchList {
   direction: rtl;
-  display: none;
 }
 
 .SearchModule-MobileSearchList-Item {
@@ -248,7 +142,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   border-bottom: 1px solid #666;
-  padding: 15px 15px;
+  padding: 10px 15px;
 }
 
 .SearchModule-MobileSearchList-Title {
@@ -258,6 +152,7 @@
 .SearchModule-MobileSearchList-Title h1 {
   font-size: 14px;
   margin: 5px 0 0 10px;
+  align-self: center;
 }
 
 .SearchModule-MobileSearchList-Number {
@@ -267,11 +162,12 @@
   border-radius: 20px;
   padding: 10px;
   position: relative;
+  align-self: center;
 }
 
 .SearchModule-MobileSearchList-Number span {
   position: absolute;
-  top: 6px;
+  top: 3px;
   right: 0;
   left: 0;
   text-align: center;
@@ -288,7 +184,6 @@
 
 .SearchModule-ProductTemplate {
   width: 100%;
-  display: none;
   padding: 0;
 }
 
@@ -361,7 +256,6 @@
 /* Article template */
 
 .SearchModule-ArticleTemplate {
-  display: none;
   width: 100%;
   padding: 0;
 }
@@ -383,6 +277,28 @@
 .TitleTopArticleContent {
   font-size: 12px;
   line-height: 20px;
+  float: right;
+  width: 60%;
+  text-align: right;
+  padding: 10px 10px 0 5px;
+  color: #000;
+}
+
+.TitleTopArticleContent a {
+  display: block;
+  color: #000 !important;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.AbstractArticle {
+  text-align: justify;
+  direction: rtl;
+  font-size: 10px;
+  padding: 5px 0px 10px 5px;
+  color: #000 !important;
+  padding-bottom: 25px;
+  line-height: 17px;
 }
 
 .AbstractArticle {
@@ -390,7 +306,35 @@
   margin-bottom: 10px;
 }
 
+.TopArticleContent {
+  display: flex;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  border-radius: 3px;
+  background-color: #fff;
+  position: relative;
+}
+
+.imgTopArticleContent {
+  order: 1;
+  width: 39%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 2px;
+  height: 100%;
+}
+
+.imgTopArticleContent img {
+  width: 100%;
+  height: auto;
+  padding: 0px;
+  border-radius: 3px;
+}
+
 @media screen and (min-width: 768px) {
+  .imgTopArticleContent {
+    order: 0;
+  }
   .SearchModule-ArticleTemplate {
     width: 50.3%;
     display: block;
@@ -420,8 +364,7 @@
 
 .SearchModule-TrainingTemplate-Wrapper {
   width: 100%;
-  padding: 0 15px;
-  display: none;
+  padding: 0;
 }
 
 .SearchModule-TrainingTemplate-Outer {
@@ -436,34 +379,6 @@
 
 .SearchModule-TrainingTemplate-SliderHeader hr {
   margin: 5px 0 5px 0;
-}
-
-.SearchModule-TrainingTemplate-OwlCarousel {
-  margin: 10px 0 10px 0;
-  direction: ltr;
-  width: 99%;
-  display: none !important;
-}
-
-.SearchModule-TrainingTemplate-OwlCarousel .owl-item {
-  padding: 0px 12px;
-}
-
-.SearchModule-TrainingTemplate-OwlCarousel .item {
-  cursor: pointer;
-}
-
-.SearchModule-TrainingTemplate-OwlCarousel a p {
-  color: #fff !important;
-}
-
-.SearchModule-TrainingTemplate-OwlCarousel img {
-  width: 100%;
-}
-
-.SearchModule-TrainingTemplate-OwlCarousel .owl-item .item p {
-  font-size: 13px;
-  margin-top: 10px;
 }
 
 .SearchModule-TrainingTemplate-MobileSlider {
@@ -505,6 +420,10 @@
   line-height: 23px;
 }
 
+.SearchModule-TrainingTemplate-OwlCarousel {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .SearchModule-TrainingTemplate-Wrapper {
     display: block;
@@ -519,10 +438,6 @@
   .SearchModule-TrainingCourseUserSection {
     margin-right: 0;
   }
-  .SearchModule-TrainingTemplate-OwlCarousel {
-    display: block !important;
-    margin-right: 0;
-  }
   .SearchModule-TrainingTemplate-MobileSlider {
     display: none;
   }
@@ -534,6 +449,12 @@
   }
   .SearchHorizontalTrainingItems {
     display: block;
+  }
+  .SearchModule-TrainingTemplate-OwlCarousel {
+    display: block;
+  }
+  .SearchModule-TrainingTemplate-OwlCarousel img {
+    padding: 0 10px;
   }
 }
 
@@ -569,7 +490,6 @@
 .SearchModule-CloseSearchBoxText {
   color: #000 !important;
   font-size: 20px;
-  display: none;
   font-size: 15px;
 }
 

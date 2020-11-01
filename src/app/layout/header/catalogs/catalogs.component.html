@@ -1,28 +1,34 @@
-<article id="CatalogeMenuContainer" class="CatalogeMenu">
+<article id="CatalogeMenuContainer"
+  class="CatalogeMenu">
 
-  <div id="CloseCatalogMenu" class="CursorPointer" (click)="onCloseCatalog()">&times;</div>
+  <div id="CloseCatalogMenu"
+    (click)="onCloseCatalog()">&times;</div>
   <h3>Catalogs</h3>
   <div class="CatalogeMenu-LineOut">
     <div class="CatalogeMenu-LineIN"></div>
   </div>
 
   <div id="CatalogList">
-    
+
     <div *ngFor="let supplier of suppliers">
       <div *ngIf="supplier.Name_En">
         <h4 class="CatalogHeader">{{ supplier.Name_En }}</h4><br />
         <section class="CatalogMenu-Items">
-          <div class="CatalogList-Catalogs" *ngFor="let catalog of catalogs">
-            <div *ngIf="catalog.IDRet === supplier.IDUser">
-              <a href="{{ enviornment.baseUrl + catalog.PDFUrl }}">
-                <img class="CatalogMenu-Item-CatalogImage" src="{{ enviornment.baseUrl + catalog.PicUrl }}" />
-              </a>
-              <strong class="clearfix">{{ catalog.Name_En }}</strong>
-              <span>File size: {{ catalog.SizeOfPDF }}MB </span>
+          <div class="CatalogList-Catalogs"
+            *ngFor="let catalog of catalogs"
+            [ngStyle]="{display: catalog.IDRet === supplier.IDUser ? 'block' : 'none'}">
+            <a href="{{ enviornment.baseUrl + catalog.PDFUrl }}">
+              <img class="CatalogMenu-Item-CatalogImage"
+                src="{{ enviornment.baseUrl + catalog.PicUrl }}" />
+            </a>
+            <strong class="clearfix">{{ catalog.Name_En }}</strong>
+            <span>File size: {{ catalog.SizeOfPDF }}MB </span>
 
-              <img src="assets/img/CopyToClipboarad.png" data-toggle="tooltip" class="CatalogMenu-Item-CopyToClipboard"
-                title="Copy to clipboard" (click)="onCopyToClipboard(catalog.PDFUrl)" />
-            </div>
+            <img src="assets/img/CopyToClipboarad.png"
+              data-toggle="tooltip"
+              class="CatalogMenu-Item-CopyToClipboard"
+              title="Copy to clipboard"
+              (click)="onCopyToClipboard(catalog.PDFUrl)" />
           </div>
         </section>
       </div>
@@ -30,12 +36,46 @@
 
     <h4 class="CatalogHeader">Videos</h4>
     <section class="index-catalog-videos">
-      <!-- <staticgallerycarousel galleryname="CatalogStaticVideoCarousel" mobilecarouseloptions="{
-          itemsMobile: [500,1.7],
-          itemsTablet: [768,0],
-          itemsDesktop: [1024,5]
-        }">
-      </staticgallerycarousel> -->
+      <article class="GalleryCarousel-Mobile">
+        <div style="overflow-x: auto;">
+          <section class="GalleryCarousel-Mobile-Inner"
+            style="display: inline-flex;">
+            <a href="https://farbin.ir/Videos/Datacenter_LISA-60.mp4"
+              class="Catalog-StaticVideo">
+              <!-- (click)="onOpenGalleryModal('https://farbin.ir/Videos/Datacenter_LISA-60.mp4#t=0.2', undefined)" -->
+              <video class="GalleryCarousel-VideoItem"
+                [ngStyle]="{width: '200px'}">
+                <source class="ModalStaticVideoItem"
+                  src="https://farbin.ir/Videos/Datacenter_LISA-60.mp4#t=0.2"
+                  type="video/mp4">
+              </video>
+              <p style="color: #000">Datacenter_LISA-60</p>
+            </a>
+            <a href="https://farbin.ir/Videos/IANOS-51m.mp4"
+              class="Catalog-StaticVideo">
+              <!-- (click)="onOpenGalleryModal($event, undefined)" -->
+              <video class="GalleryCarousel-VideoItem"
+                [ngStyle]="{width: '200px'}">
+                <source class="ModalStaticVideoItem"
+                  src="https://farbin.ir/Videos/IANOS-51m.mp4#t=0.2"
+                  type="video/mp4">
+              </video>
+              <p style="color: #000">IANOS-51m</p>
+            </a>
+            <a href="https://farbin.ir/Videos/LCSystem-41m.mp4"
+              class="Catalog-StaticVideo">
+              <!-- (click)="onOpenGalleryModal($event, undefined)" -->
+              <video class="GalleryCarousel-VideoItem"
+                [ngStyle]="{width: '200px'}">
+                <source class="ModalStaticVideoItem"
+                  src="https://farbin.ir/Videos/LCSystem-41m.mp4#t=0.2"
+                  type="video/mp4" />
+              </video>
+              <p style="color: #000">LC System-41m</p>
+            </a>
+          </section>
+        </div>
+      </article>
     </section>
 
   </div>

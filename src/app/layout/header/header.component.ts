@@ -1,29 +1,40 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataManagementService } from 'src/app/shared/services/data-management.service';
 
 import { LayoutDataStorageService } from '../shared/layout-data-storage.service';
+import { ExtensionMethodService } from './../../shared/extension-method.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() catalogSituation = new EventEmitter<boolean>();
-  closeSearch: boolean = false;
-  hideIconsWhenSearchOpen: boolean = false;
+  isMobile: boolean = this.extensionMethodService.DetectMobile();
+  isTablet: boolean = this.extensionMethodService.DetectTablet();
+  isSearchMenuOpen: boolean;
+  isSearchListShow: boolean;
+  isSearchContentShow: boolean;
+  isDataFetched: boolean;
   compareListNumber: number;
   subscription: Subscription;
+  searchText = '';
 
   constructor(
+    private extensionMethodService: ExtensionMethodService,
     private layoutDataStorageService: LayoutDataStorageService,
     private dataManagementService: DataManagementService
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.layoutDataStorageService.fetchCatalogs()
-      .subscribe();
     this.compareListNumber = this.dataManagementService.compareListCount;
     this.compareProductsNumber();
   }
@@ -32,22 +43,44 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.catalogSituation.emit(true);
   }
 
-  onHideOtherIcons() {
-    this.hideIconsWhenSearchOpen = true;
-    this.closeSearch = false;
+  onOpenSearchMenu() {
+    this.isSearchMenuOpen = true;
+    this.isSearchListShow = true;
   }
 
   onCloseSearchMenu() {
-    this.hideIconsWhenSearchOpen = false;
-    this.closeSearch = true;
+    this.isSearchMenuOpen = false;
+    this.isSearchContentShow = false;
+    this.searchText = '';
+    this.isSearchListShow = false;
+  }
+
+  onClearSearchContent() {
+    this.searchText = '';
+    this.isSearchContentShow = false;
+    this.isSearchListShow = true;
+  }
+
+  onBackToSearchList() {
+    this.isSearchMenuOpen = true;
+    this.isSearchContentShow = false;
+    this.isSearchListShow = true;
+  }
+
+  onShowBackward2() {
+    this.isSearchMenuOpen = true;
+    this.isSearchContentShow = true;
+    this.isSearchListShow = false;
+    this.isSearchListShow = false;
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   private compareProductsNumber() {
-    this.dataManagementService.compareProductList
-      .subscribe(num => this.compareListNumber = num);
+    this.dataManagementService.compareProductList.subscribe(
+      (num) => (this.compareListNumber = num)
+    );
   }
 }
