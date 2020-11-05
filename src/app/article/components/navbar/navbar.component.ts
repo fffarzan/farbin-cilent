@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
-import { DictionaryWord } from '../../dictionary-detail/dictionary-word.model';
+import { DictionaryWord } from '../../../core/models/dictionary-word.model';
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
       this.isLeftSideMenuOpen = false;
       this.leftSideMenuOpen.emit(false);
       this.isDictionaryMenuOpen = false;
-    } else 
+    } else
       this.rightSideMenuOpen.emit(false);
   }
 
@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
       this.rightSideMenuOpen.emit(false);
       this.isDictionaryMenuOpen = false;
     }
-    else 
+    else
       this.leftSideMenuOpen.emit(false);
   }
 

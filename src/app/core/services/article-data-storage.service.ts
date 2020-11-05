@@ -4,12 +4,12 @@ import { throwError, pipe } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { DictionaryWord } from '../dictionary-detail/dictionary-word.model';
-import { ArticlesService } from '../articles/articles.service';
-import { Articles } from "../articles/articles.model";
-import { Article } from '../article-detail/article.model';
-import { ArticleDetailService } from '../article-detail/article-detail.service';
-import { DictionaryDetailService } from '../dictionary-detail/dictionary-detial.service';
+import { DictionaryWord } from '../models/dictionary-word.model';
+import { ArticlesService } from './articles.service';
+import { Articles } from "../models/articles.model";
+import { Article } from '../models/article.model';
+import { ArticleDetailService } from './article-detail.service';
+import { DictionaryDetailService } from './dictionary-detial.service';
 
 @Injectable({
   providedIn: 'root'

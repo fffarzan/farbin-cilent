@@ -1,4 +1,4 @@
-import { DictionaryWord } from '../dictionary-detail/dictionary-word.model';
+import { DictionaryWord } from './dictionary-word.model';
 
 export class Article {
   constructor(

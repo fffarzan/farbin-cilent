@@ -3,10 +3,10 @@ import { Params, Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { ArtcileDataStorageService } from '../../shared/article-data-storage.service';
-import { ArticleUtils } from '../../shared/article-utils';
-import { ArticlesService } from '../articles.service';
-import { ArticlesLeftSideService } from '../left-side/articles-left-side.service';
+import { ArtcileDataStorageService } from '../../../core/services/article-data-storage.service';
+import { ArticleUtils } from '../../../core/models/article-utils';
+import { ArticlesService } from '../../../core/services/articles.service';
+import { ArticlesLeftSideService } from '../../../core/services/articles-left-side.service';
 
 @Component({
   selector: 'app-articles-contents',

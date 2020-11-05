@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
-import { ArtcileDataStorageService } from '../shared/article-data-storage.service';
-import { DictionaryWord } from './dictionary-word.model';
-import { DictionaryDetailService } from './dictionary-detial.service';
+import { ArtcileDataStorageService } from '../../../core/services/article-data-storage.service';
+import { DictionaryWord } from '../../../core/models/dictionary-word.model';
+import { DictionaryDetailService } from '../../../core/services/dictionary-detial.service';
 
 @Component({
   selector: 'app-dictionary-detail',

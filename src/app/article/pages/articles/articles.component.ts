@@ -3,12 +3,12 @@ import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
-import { ArtcileDataStorageService } from '../shared/article-data-storage.service';
-import { ArticlesService } from './articles.service';
-import { DictionaryWord } from '../dictionary-detail/dictionary-word.model';
-import { Articles } from './articles.model';
-import { ArticlePreview } from './article-preview.model';
-import { ArticleUtils } from '../shared/article-utils';
+import { ArtcileDataStorageService } from '../../../core/services/article-data-storage.service';
+import { ArticlesService } from '../../../core/services/articles.service';
+import { DictionaryWord } from '../../../core/models/dictionary-word.model';
+import { Articles } from '../../../core/models/articles.model';
+import { ArticlePreview } from '../../../core/models/article-preview.model';
+import { ArticleUtils } from '../../../core/models/article-utils';
 
 @Component({
   selector: 'app-articles',

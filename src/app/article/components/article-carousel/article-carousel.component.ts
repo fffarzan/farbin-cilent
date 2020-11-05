@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 import { ArticleCarouselParams } from './article-carousel-params.model';
-import { ArticlePreview } from '../../article-detail/article.model';
+import { ArticlePreview } from '../../../core/models/article.model';
 
 @Component({
   selector: 'app-article-carousel',

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Articles } from '../articles.model';
+import { Articles } from '../../../core/models/articles.model';
 import { environment } from 'src/environments/environment';
-import { ArticlePreview } from '../article-preview.model';
-import { ArticleUtils } from '../../shared/article-utils';
+import { ArticlePreview } from '../../../core/models/article-preview.model';
+import { ArticleUtils } from '../../../core/models/article-utils';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 
-import { ArtcileDataStorageService } from '../../shared/article-data-storage.service';
+import { ArtcileDataStorageService } from '../services/article-data-storage.service';
 
 @Injectable({
   providedIn: 'root'

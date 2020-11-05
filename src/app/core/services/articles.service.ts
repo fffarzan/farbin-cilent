@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DictionaryWord } from '../dictionary-detail/dictionary-word.model';
-import { Articles } from './articles.model';
+import { DictionaryWord } from '../models/dictionary-word.model';
+import { Articles } from '../models/articles.model';
 
 @Injectable({
   providedIn: 'root'

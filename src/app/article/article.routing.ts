@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ArticlesComponent } from './articles/articles.component';
-import { ArticleDetailComponent } from './article-detail/article-detail.component';
-import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
-import { ArticlesContentsComponent } from './articles/articles-contents/articles-contents.component';
-import { ArticlesContentsResolver } from './articles/articles-contents/articles-content.resolver';
+import { ArticlesComponent } from './pages/articles/articles.component';
+import { ArticleDetailComponent } from './pages/article-detail/article-detail.component';
+import { DictionaryDetailComponent } from './pages/dictionary-detail/dictionary-detail.component';
+import { ArticlesContentsComponent } from './components/articles-contents/articles-contents.component';
+import { ArticlesContentsResolver } from '../core/resolvers/articles-content.resolver';
 
 const routes: Routes = [
   {

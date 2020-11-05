@@ -1,7 +1,7 @@
 import { Params } from '@angular/router';
 
-import { ArticlePreview } from '../articles/article-preview.model';
-import { Articles } from '../articles/articles.model';
+import { ArticlePreview } from './article-preview.model';
+import { Articles } from './articles.model';
 
 export class ArticleUtils {
   static contentLazyLoad(dataArray): { 'articlesLazyLoad': ArticlePreview[], 'articleCategoryTitlesLazyLoad': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {

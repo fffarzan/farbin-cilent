@@ -2,12 +2,12 @@ import { Component, OnInit, ViewEncapsulation, ElementRef, ViewChild } from '@an
 import { ActivatedRoute } from '@angular/router';
 
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
-import { ArtcileDataStorageService } from '../shared/article-data-storage.service';
-import { Article } from './article.model';
-import { ArticleDetailService } from './article-detail.service';
+import { ArtcileDataStorageService } from '../../../core/services/article-data-storage.service';
+import { Article } from '../../../core/models/article.model';
+import { ArticleDetailService } from '../../../core/services/article-detail.service';
 import { environment } from 'src/environments/environment';
 import { CookieUtils } from 'src/app/shared/utils/cookie-utils';
-import { ArticleCarouselParams } from '../shared/article-carousel/article-carousel-params.model';
+import { ArticleCarouselParams } from '../../components/article-carousel/article-carousel-params.model';
 
 @Component({
   selector: 'app-article-detail',
@@ -69,7 +69,7 @@ export class ArticleDetailComponent implements OnInit {
       likeStatus = 'Like';
       this.toggleLikeContentInCookie(articleId, likeStatus);
       this.heartImage.nativeElement.src = 'assets/img/full color.png';
-    } 
+    }
 
     this.article = this.toggleLikeArticleData(articleId, likeStatus, this.article);
   }

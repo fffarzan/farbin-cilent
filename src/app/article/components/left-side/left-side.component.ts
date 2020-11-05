@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Articles } from '../articles.model';
-import { ArticlesLeftSideService } from './articles-left-side.service';
+import { Articles } from '../../../core/models/articles.model';
+import { ArticlesLeftSideService } from '../../../core/services/articles-left-side.service';
 
 @Component({
   selector: 'app-left-side',
