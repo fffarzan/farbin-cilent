@@ -1,0 +1,89 @@
+<!-- desktop template -->
+<article class="ProductCarousel"
+  *ngIf="!isMobile && !isTablet">
+  <owl-carousel-o id="Product{{dynamicId}}"
+    class="ProductCarousel-OwlCarousel"
+    [options]="carouselData.desktopOptions">
+    <ng-container *ngFor="let product of data">
+      <ng-template class="item ProductCarousel-Desktop-MainCarousel-Item"
+        carouselSlide
+        [width]="carouselItemWidth">
+
+        <a [routerLink]="['/product/define-detail-product', product.IDX]"
+          class="ProductCarousel-Desktop-MainCarousel-ItemInner">
+          <img
+            [src]="product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl | getSmallImage"
+            alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
+            class="DefineItemImage{{ product.IDX }} ProductCarousel-Desktop-MainCarousel-ItemMainImage" />
+          <div class="ProductCarousel-Desktop-MainCarousel-ItemDesc">
+            <span class="UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
+            <span class="UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
+          </div>
+        </a>
+
+        <section class="ProductCarousel-Desktop-MainCarousel-Thumbnail">
+          <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
+            class="ProductCarousel-Desktop-MainCarousel-Thumbnail-RandomImage">
+          <div class="ProductCarousel-Desktop-MainCarousel-ThumbnailDesc">
+            <!-- data-placement="left" -->
+            <!-- tooltip -->
+            <img src="assets/img/AddToListWhite.png"
+              class="AddToListButton clearfix"
+              title="Add to List"
+              (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
+            <!-- data-placement="left" -->
+            <!-- tooltip -->
+            <img src="assets/img/Compare.png"
+              class="CompareButton"
+              title="Compare"
+              (click)="onAddToCompareList(product.IDDefineDetailProduct, 'DefineItemImage' + product.IDX)"
+              alt="{{ product.ProductName_En }} - {{ product.PartNumber }}">
+          </div>
+        </section>
+
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</article>
+
+<!-- mobile template -->
+<article *ngIf="isMobile || isTablet"
+  class="ProductCarousel-Mobile">
+  <div *ngFor="let product of data"
+    class="ProductCarousel-Mobile-Inner">
+
+    <a [routerLink]="['/product/define-detail-product', product.IDX]"
+      class="ProductCarousel-Mobile-MainIamge">
+      <img [appMobileTemplate]="carouselData"
+        class="DefineItemImage{{ product.IDX }}"
+        alt="{{ product.ProductName_En }} - {{ product.PartNumber }}"
+        [src]="(product[carouselData.dynamicFieldName] ? enviornment.baseUrl + product[carouselData.dynamicFieldName] : carouselData.staticUrl) | getSmallImage" />
+    </a>
+
+    <section class="ProductCarousel-Mobile-Thumbnail">
+      <a [routerLink]="['/product/define-detail-product', product.IDX]"
+        class="ProductCarousel-Mobile-Thumbnail-Desc">
+        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartNumber clearfix">{{ product.PartNumber }}</span>
+        <span class="ProductCarousel-Mobile-Thumbnail-UnderSpotPartIndex">{{ product.IndexDescriptionText }}</span>
+      </a>
+      <div class="ProductCarousel-Mobile-Thumbnail-Buttons">
+        <!-- data-placement="left" -->
+        <img src="assets/img/AddToListWhite.png"
+          class="AddToListButton clearfix"
+          title="Add to List"
+          (click)="onAddToMaterialList(product.IDDefineDetailProduct)"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+        <!-- data-placement="left" -->
+        <img src="assets/img/Compare.png"
+          class="CompareButton"
+          title="Compare"
+          (click)="onAddToCompareList(product.IDDefineDetailProduct, 'DefineItemImage' + product.IDX)"
+          alt="{{ product.ProductName_En }} - {{ product.PartNumber }}" />
+      </div>
+      <img [src]="enviornment.baseUrl + product.IndexDescriptionPicUrl"
+        class="ProductCarousel-Mobile-Thumbnail-ItemColor" />
+    </section>
+
+  </div>
+</article>
