@@ -28,14 +28,15 @@
   <section class="LeftSideArticleList-BodyWrapper">
     <!-- main link -->
     <a [routerLink]="['/article-category']"
-      class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle">
+      class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle"
+      (click)="onChooseLatestArticles()">
       <img class="LeftSideArticleList-HeaderLink-icon" src="assets/img/writingaaa.png"
         alt="نوآوران شبکه فربین - Farbin Corporation" />
       <div class="LeftSideArticleList-HeaderLink-desc">
         <span class="LeftSideArticleList-Header-LinkEn"
-          [ngClass]="{'LeftSideArticleList-Header-LinkActive': !articles[0].IDX}">LatestArticles</span>
-        <!-- ng-class="{'LeftSideArticleList-Header-LinkActive': !routeParamsIDX , 'LeftSideArticleList-Header-LinkInactive': routeParamsIDX}" -->
-        <span class="LeftSideArticleList-Header-LinkFa">آخرین مقالات</span>
+          [ngClass]="{'LeftSideArticleList-Header-LinkActive': isLatestArticlesClicked}">LatestArticles</span>
+        <span [ngClass]="{'LeftSideArticleList-Header-LinkActive': isLatestArticlesClicked}"
+          class="LeftSideArticleList-Header-LinkFa">آخرین مقالات</span>
       </div>
     </a>
 

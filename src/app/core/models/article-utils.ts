@@ -1,28 +1,33 @@
-import { Params } from '@angular/router';
-
 import { ArticlePreview } from './article-preview.model';
 import { Articles } from './articles.model';
 
 export class ArticleUtils {
-  static contentLazyLoad(dataArray): { 'articlesLazyLoad': ArticlePreview[], 'articleCategoryTitlesLazyLoad': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {
+  static contentLazyLoad(dataArray): {
+    'articlesLazyLoad': ArticlePreview[],
+    'articleCategoryTitlesLazyLoad': { 'Title': string, 'ID': string, 'ErrorText'?: string }[]
+  } {
     let dataArrayLength: number;
     let articleCategoryTitlesLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let articlesLazyLoad: ArticlePreview[] = [];
-    let daLength: number;
+    let daLength: number = dataArray.length;
 
-    daLength = dataArray.length;
+    console.log('dataArray', dataArray);
+    console.log('daLength', daLength);
 
     if (!dataArray.Items && !daLength) dataArrayLength = 0;
-    else dataArrayLength = Object.keys(dataArray).length;
+    // else dataArrayLength = Object.keys(dataArray).length;
 
-    if (dataArrayLength) { // if data has loaded for first time, loading titles and first five articles
+    if (daLength) { // if data has loaded for first time, loading titles and first five articles
       articleCategoryTitlesLazyLoad = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).articleCategoryTitles;
 
       let allArticles = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).allArticles;
+      console.log(allArticles)
       articlesLazyLoad = ArticleUtils.getArticleItemsForLazyLoading(allArticles, 0);
+      console.log(articlesLazyLoad)
     } else if (!dataArrayLength)  // if no article was existed in the category
       articleCategoryTitlesLazyLoad.push({ 'Title': dataArray.Title, 'ID': dataArray.ID, 'ErrorText': 'مقاله ای یافت نشد!' });
 
+    // console.log(articlesLazyLoad)
     return { articlesLazyLoad, articleCategoryTitlesLazyLoad }
   }
 

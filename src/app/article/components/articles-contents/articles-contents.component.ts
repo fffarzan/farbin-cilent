@@ -15,6 +15,8 @@ import { ArticlesLeftSideService } from '../../../core/services/articles-left-si
 })
 export class ArticlesContentsComponent implements OnInit, OnDestroy {
   articles;
+  latestArticles;
+  tempArticles;
   enviornment: { production: boolean, baseUrl: string } = environment;
   contentArticleLazyLoad;
   contentTitleLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[];
@@ -23,7 +25,6 @@ export class ArticlesContentsComponent implements OnInit, OnDestroy {
   routeSub: Subscription;
   isComponentInitialized: boolean = false;
   contentArticlesSub: Subscription;
-  tempArticles;
 
   constructor(
     private router: Router,
@@ -37,50 +38,44 @@ export class ArticlesContentsComponent implements OnInit, OnDestroy {
     this.contentArticlesSub = this.articleDataStorageService
       .fetchArticlesForSides({ UniqueName: 'MiddleArticleCategory' })
       .subscribe(() => {
-        this.tempArticles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items');
-        console.log(this.tempArticles);
+        const articlesObjectStr = this.articlesService.getArticles();
+        const articlesObject = ArticleUtils.convertStringToJson(articlesObjectStr, 'Items');
+        const articlesArr = articlesObject[0].Items;
+
+        this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(articlesArr).articleCategoryTitlesLazyLoad;
+        this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(articlesArr).articlesLazyLoad;
       })
 
+    // this.articlesLeftSideService.articlesObs.subscribe(articles => {
+    //   console.log(articles)
+    //   this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(articles.Items).articleCategoryTitlesLazyLoad;
+    //   this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(articles.Items).articlesLazyLoad;
+    // });
 
-
-    console.log(this.articlesLeftSideService.articles);
-
-
-
-
-
-
-
+    // this.setLatestArticlesFromLeftSide();
 
 
 
-    const id = ArticleUtils.getIdFromUrlString(this.router.routerState.snapshot.url);
-    console.log(this.router.routerState.snapshot.url)
-    this.route.params.subscribe(param => { console.log(param['id']) })
+    // const id = ArticleUtils.getIdFromUrlString(this.router.routerState.snapshot.url);
+    // this.route.params.subscribe(param => { console.log(param['id']) })
     // let clonedArticle;
 
-    this.routeSub = this.route.data.subscribe(data => {
-      // clonedArticle = ArticleUtils.convertStringToJson(data.articles, 'Items');
-      // this.articles = clonedArticle;
+    // this.routeSub = this.route.data.subscribe(data => {
+    // clonedArticle = ArticleUtils.convertStringToJson(data.articles, 'Items');
+    // this.articles = clonedArticle;
 
-      // if (id) {
-      //   clonedArticle = clonedArticle.find(obj => obj.IDX === id);
-      //   this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articleCategoryTitlesLazyLoad;
-      //   this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articlesLazyLoad;
-      // } else {
-      //   this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articleCategoryTitlesLazyLoad;
-      //   this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articlesLazyLoad;
-      // }
-    });
-
-    // this.routerSub = this.router.events.subscribe((param: Params) => {
-    //   this.contentTitleLazyLoad = ArticleUtils.extractDataAddressFromUrl(param, this.articles).contentTitleLazyLoad;
-    //   this.contentArticleLazyLoad = ArticleUtils.extractDataAddressFromUrl(param, this.articles).contentArticleLazyLoad;
+    // if (id) {
+    //   clonedArticle = clonedArticle.find(obj => obj.IDX === id);
+    //   this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articleCategoryTitlesLazyLoad;
+    //   this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articlesLazyLoad;
+    // } else {
+    //   this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articleCategoryTitlesLazyLoad;
+    //   this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(clonedArticle).articlesLazyLoad;
+    // }
     // });
   }
 
   ngOnDestroy() {
-    if (this.routerSub) this.routerSub.unsubscribe();
     // if (this.routeSub) this.routeSub.unsubscribe();
   }
 
@@ -90,4 +85,14 @@ export class ArticlesContentsComponent implements OnInit, OnDestroy {
 
     for (let i = 0; i < articles.length; i++) this.contentArticleLazyLoad.push(articles[i]);
   }
+
+  // setLatestArticlesFromLeftSide() {
+  //   this.articlesLeftSideService.isLatestArticlesLinkObs.subscribe((isSet) => {
+  //     this.articleDataStorageService
+  //       .fetchArticlesForSides({ UniqueName: 'MiddleArticleCategory' })
+  //       .subscribe(() => {
+  //         this.latestArticles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items');
+  //       })
+  //   });
+  // }
 }

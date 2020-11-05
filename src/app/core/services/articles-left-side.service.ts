@@ -5,5 +5,16 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ArticlesLeftSideService {
-  articles;
+  private articles: Subject<any> = new Subject<any>();
+  private isLatestArticlesLink: Subject<boolean> = new Subject<boolean>();
+  articlesObs = this.articles.asObservable();
+  isLatestArticlesLinkObs = this.isLatestArticlesLink.asObservable();
+
+  setLinkArticles(articles) {
+    this.articles.next(articles);
+  }
+
+  setLatestArticles(isSet: boolean) {
+    this.isLatestArticlesLink.next(isSet);
+  }
 }

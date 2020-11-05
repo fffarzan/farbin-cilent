@@ -12,13 +12,20 @@ export class LeftSideComponent implements OnInit {
   @Input() articles = Articles;
   @Input() isLeftSideMenuOpen: boolean;
   currentId: number;
+  isLatestArticlesClicked: boolean;
 
   constructor(private articlesLeftSideService: ArticlesLeftSideService) { }
 
   ngOnInit(): void {
   }
 
+  onChooseLatestArticles() {
+    this.articlesLeftSideService.setLatestArticles(true);
+    this.isLatestArticlesClicked = true;
+  }
+
   onSendCategoryItems(articles) {
-    this.articlesLeftSideService.articles = articles;
+    this.articlesLeftSideService.setLinkArticles(articles);
+    this.isLatestArticlesClicked = false;
   }
 }
