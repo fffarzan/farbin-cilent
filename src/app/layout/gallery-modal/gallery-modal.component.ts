@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 import { environment } from 'src/environments/environment';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
 import { GalleryModalService } from './gallery-modal.service';
-import { GalleryCarousel, GalleryMedia } from '../../shared/gallery-carousel/gallery-carousel.model';
+import { GalleryCarousel, GalleryMedia } from '../../shared/components/gallery-carousel/gallery-carousel.model';
 
 @Component({
   selector: 'app-gallery-modal',

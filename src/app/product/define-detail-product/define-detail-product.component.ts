@@ -17,7 +17,7 @@ import { OtherImage } from './other-image.model';
 import { DataManagementService } from 'src/app/shared/services/data-management.service';
 import { removeDotFromObjectFileType } from '../../shared/utils/common-utils';
 import { GalleryModalService } from 'src/app/layout/gallery-modal/gallery-modal.service';
-import { GalleryMedia } from 'src/app/shared/gallery-carousel/gallery-carousel.model';
+import { GalleryMedia } from 'src/app/shared/components/gallery-carousel/gallery-carousel.model';
 import { element } from 'protractor';
 
 @Component({

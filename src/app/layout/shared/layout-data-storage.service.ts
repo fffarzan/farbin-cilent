@@ -10,8 +10,8 @@ import { Supplier } from '../navbar/supplier-menu/supplier.model';
 import { SupplierService } from '../navbar/supplier-menu/supplier.service';
 import { Catalog } from '../header/catalogs/catalog.model';
 import { CatalogsService } from '../header/catalogs/catalogs.service';
-import { Product } from '../../shared/product-carousel/product.model';
-import { ProductCarouselService } from '../../shared/product-carousel/product-carousel.service';
+import { Product } from '../../shared/components/product-carousel/product.model';
+import { ProductCarouselService } from '../../shared/components/product-carousel/product-carousel.service';
 import { SearchService } from '../header/search/search.service';
 import { SearchContent, SearchTrainingCourse, SearchTrainingCourseUser, SearchTrainingCourseBatch, SearchIncident, SearchDefineDetail } from '../header/search/search.model';
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { ProductCarouselParams } from '../../shared/product-carousel/product-carousel-params.model';
+import { ProductCarouselParams } from '../../shared/components/product-carousel/product-carousel-params.model';
 import { LayoutDataStorageService } from '../shared/layout-data-storage.service';
-import { ProductCarouselService } from 'src/app/shared/product-carousel/product-carousel.service';
+import { ProductCarouselService } from 'src/app/shared/components/product-carousel/product-carousel.service';
 
 @Component({
   selector: 'app-home',

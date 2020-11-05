@@ -7,7 +7,7 @@ import { CompareListService } from './compare-list.service';
 import { CookieUtils } from 'src/app/shared/utils/cookie-utils';
 import { ProductsCompareDetail } from './products-compare-detail.model';
 import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
-import { ProductCarouselParams } from 'src/app/shared/product-carousel/product-carousel-params.model';
+import { ProductCarouselParams } from 'src/app/shared/components/product-carousel/product-carousel-params.model';
 
 @Component({
   selector: 'app-compare-list',

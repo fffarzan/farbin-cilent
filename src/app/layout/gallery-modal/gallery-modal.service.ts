@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GalleryMedia } from 'src/app/shared/gallery-carousel/gallery-carousel.model';
+import { GalleryMedia } from 'src/app/shared/components/gallery-carousel/gallery-carousel.model';
 import { Subject } from 'rxjs';
 
 @Injectable({

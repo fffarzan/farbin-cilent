@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import * as CommonUtils from '../../../../shared/utils/common-utils';
 import { environment } from 'src/environments/environment';
-import { ProductCarouselParams } from 'src/app/shared/product-carousel/product-carousel-params.model';
+import { ProductCarouselParams } from 'src/app/shared/components/product-carousel/product-carousel-params.model';
 import { DataManagementService } from 'src/app/shared/services/data-management.service';
 import { CookieUtils } from 'src/app/shared/utils/cookie-utils';
 

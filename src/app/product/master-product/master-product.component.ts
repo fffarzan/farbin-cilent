@@ -8,7 +8,7 @@ import { MasterProductService } from './master-product.service';
 import { SupplierLogoService } from '../shared/supplier-logo/supplier.logo.service';
 import { BreadcrumbService } from '../shared/breadcrumb/breadcrumb.service';
 import { MasterProduct } from './master-product.model';
-import { ProductCarouselParams } from '../../shared/product-carousel/product-carousel-params.model'
+import { ProductCarouselParams } from '../../shared/components/product-carousel/product-carousel-params.model'
 
 @Component({
   selector: 'app-master-product',
