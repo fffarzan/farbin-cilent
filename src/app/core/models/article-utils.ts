@@ -1,3 +1,5 @@
+import { Params } from '@angular/router';
+
 import { ArticlePreview } from './article-preview.model';
 import { Articles } from './articles.model';
 
@@ -9,52 +11,43 @@ export class ArticleUtils {
     let dataArrayLength: number;
     let articleCategoryTitlesLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let articlesLazyLoad: ArticlePreview[] = [];
-    let daLength: number = dataArray.length;
-
-    console.log('dataArray', dataArray);
-    console.log('daLength', daLength);
+    const daLength: number = dataArray.length;
 
     if (!dataArray.Items && !daLength) dataArrayLength = 0;
-    // else dataArrayLength = Object.keys(dataArray).length;
+    else dataArrayLength = Object.keys(dataArray).length;
 
-    if (daLength) { // if data has loaded for first time, loading titles and first five articles
+    if (dataArrayLength) { // if data has loaded for first time, loading titles and first five articles
       articleCategoryTitlesLazyLoad = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).articleCategoryTitles;
 
-      let allArticles = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).allArticles;
-      console.log(allArticles)
+      const allArticles = ArticleUtils.getAllArticleCategoryTitlesAndItems(dataArray).allArticles;
       articlesLazyLoad = ArticleUtils.getArticleItemsForLazyLoading(allArticles, 0);
-      console.log(articlesLazyLoad)
-    } else if (!dataArrayLength)  // if no article was existed in the category
+    } else if (!dataArrayLength) // if no article was existed in the category
       articleCategoryTitlesLazyLoad.push({ 'Title': dataArray.Title, 'ID': dataArray.ID, 'ErrorText': 'مقاله ای یافت نشد!' });
 
-    // console.log(articlesLazyLoad)
     return { articlesLazyLoad, articleCategoryTitlesLazyLoad }
   }
 
-  static getAllArticleCategoryTitlesAndItems(dataArray): { 'allArticles': ArticlePreview[], 'articleCategoryTitles': { 'Title': string, 'ID': string, 'ErrorText'?: string }[] } {
-    const dataArrayLength = Object.keys(dataArray).length;
+  static getAllArticleCategoryTitlesAndItems(dataObj): {
+    'allArticles': ArticlePreview[],
+    'articleCategoryTitles': { 'Title': string, 'ID': string, 'ErrorText'?: string }[]
+  } {
+    const dataObjLength = Object.keys(dataObj).length;
     let articleCategoryTitles: { 'Title': string, 'ID': string, 'ErrorText'?: string }[] = [];
     let allArticles: ArticlePreview[] = [];
 
-    if (dataArray.Items) {
-      let items = dataArray.Items;
-      articleCategoryTitles.push({ 'Title': dataArray.Title, 'ID': dataArray.ID });
+    if (dataObj.Items) {
+      articleCategoryTitles.push({ 'Title': dataObj.Title, 'ID': dataObj.ID });
 
-      if (items) {
-        for (let i = 0; i < items.length; i++) {
-          allArticles.push(items[i]);
-        }
-      }
+      const items = dataObj.Items;
+      if (items)
+        for (let i = 0; i < items.length; i++) allArticles.push(items[i]);
     } else {
-      for (let i = 0; i < dataArrayLength; i++) {
-        articleCategoryTitles.push({ 'Title': dataArray[i].Title, 'ID': dataArray[i].ID });
+      for (let i = 0; i < dataObjLength; i++) {
+        articleCategoryTitles.push({ 'Title': dataObj[i].Title, 'ID': dataObj[i].ID });
 
-        let items = dataArray[i].Items;
-        if (items) {
-          for (let j = 0; j < items.length; j++) {
-            allArticles.push(items[j]);
-          }
-        }
+        const items = dataObj[i].Items;
+        if (items)
+          for (let j = 0; j < items.length; j++) allArticles.push(items[j]);
       }
     }
 
@@ -82,6 +75,7 @@ export class ArticleUtils {
       for (let i = 0; i < 5; i++) lazyLoadArticles.push(articles[i]);
     }
 
+    console.log(lazyLoadArticles)
     return lazyLoadArticles
   }
 

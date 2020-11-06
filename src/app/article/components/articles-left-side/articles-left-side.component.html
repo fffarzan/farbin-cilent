@@ -2,7 +2,7 @@
   <!-- panel links -->
   <section class="LeftSideArticleList-HeaderWrapper">
     <div class="LeftSideArticleList-HeaderInner">
-
+      <!-- for you -->
       <a class="LeftSideArticleList-HeaderLink">
         <img class="LeftSideArticleList-HeaderLink-icon" src="assets/img/personaaa.png"
           alt="نوآوران شبکه فربین - Farbin Corporation" />
@@ -12,6 +12,7 @@
         </div>
       </a>
 
+      <!-- favorites -->
       <a class="LeftSideArticleList-HeaderLink">
         <img class="LeftSideArticleList-HeaderLink-icon" src="assets/img/staraaa.png"
           alt="نوآوران شبکه فربین - Farbin Corporation" />
@@ -20,7 +21,6 @@
           <span class="LeftSideArticleList-Header-LinkFa">علاقه مندی ها</span>
         </div>
       </a>
-
     </div>
   </section>
 
@@ -45,7 +45,7 @@
       <div class="LeftSideArticleList-BodyInner">
         <a *ngFor="let article of articles" class="LeftSideArticleList-Body-Link"
           [routerLink]="['/article-category', article.IDX]" routerLinkActive="LeftSideArticleList-Header-LinkActive"
-          (click)="onSendCategoryItems(article)">{{ article.Title }}</a>
+          (click)="onChooseArticleCategory(article)">{{ article.Title }}</a>
       </div>
     </div>
   </section>

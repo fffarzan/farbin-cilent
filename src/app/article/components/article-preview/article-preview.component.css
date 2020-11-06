@@ -1,0 +1,146 @@
+.imgTopArticleContent img {
+  width: 100%;
+  height: auto;
+  padding: 0px;
+  border-radius: 3px;
+}
+
+.TopArticleContent {
+  display: flex;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  border-radius: 3px;
+  background-color: #fff;
+  position: relative;
+}
+
+.TitleTopArticleContent {
+  float: right;
+  width: 60%;
+  text-align: right;
+  padding: 10px 10px 0 5px;
+  color: #000;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.TitleTopArticleContent a {
+  display: block;
+  color: #000 !important;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.TitleTopArticleContent span {
+  color: #444 !important;
+  font-weight: bold;
+}
+
+.imgTopArticleContent {
+  order: 1;
+  width: 39%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 2px;
+  height: 100%;
+}
+
+.imgTopArticleContent a {
+  display: block;
+}
+
+.AbstractArticle {
+  text-align: justify;
+  direction: rtl;
+  font-size: 10px;
+  padding: 5px 0px 10px 5px;
+  color: #000 !important;
+  padding-bottom: 25px;
+  line-height: 17px;
+}
+
+.SocialFooter {
+  bottom: 0;
+}
+
+.LiKeDisLike {
+  float: left;
+  font-size: 11px;
+  width: 30%;
+  text-align: left;
+  color: #494949;
+}
+
+.LiKeDisLike img {
+  width: 20px;
+}
+
+.LiKeDisLike .DisLike {
+  border: solid 1px #ddd;
+  width: 46%;
+  display: inline-block;
+  padding: 2px;
+  border-radius: 2px;
+  color: #da0404;
+}
+
+.LiKeDisLike .DisLike i {
+  color: #da0404;
+}
+
+@media screen and (min-width: 768px) {
+  .TitleTopArticleContent {
+    font-size: 15px;
+    order: 2;
+  }
+  .TitleTopArticleContent span {
+    font-size: 13px;
+  }
+  .TitleTopArticleContent a {
+    line-height: 24px;
+  }
+  .imgTopArticleContent {
+    order: 1;
+    height: 100%;
+  }
+  .imgTopArticleContent img {
+    height: auto;
+  }
+  .AbstractArticle {
+    font-size: 12px;
+  }
+  .SocialFooter {
+    position: absolute;
+    bottom: 10px;
+    width: 60%;
+    left: 0;
+  }
+  .LiKeDisLike {
+    width: 35%;
+    margin-left: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .TitleTopArticleContent {
+    width: 63%;
+    padding: 7px 10px 0 0;
+    line-height: 16px;
+  }
+  .TitleTopArticleContent a {
+    color: #444 !important;
+    line-height: 22px;
+  }
+  .imgTopArticleContent {
+    margin: 2px;
+  }
+  .imgTopArticleContent img {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border-radius: 3px;
+  }
+  .LiKeDisLike {
+    width: 30%;
+  }
+}

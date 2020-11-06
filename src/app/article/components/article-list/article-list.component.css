@@ -1,0 +1,37 @@
+.ArticleListContainer-Header {
+  font-size: 16px !important;
+  direction: rtl;
+  text-align: right;
+  margin: 20px 0;
+  color: #000;
+  font-weight: bold;
+}
+
+.ContentTitle {
+  padding: 0 0 15px 3px;
+}
+
+.ArticleListContainer-Error {
+  color: #000;
+  direction: rtl;
+  text-align: right;
+  margin: 10px 1%;
+}
+
+@media screen and (min-width: 768px) {
+  .ArticleListContainer-Header {
+    margin: 0 0 20px 0;
+    font-size: 15px !important;
+  }
+  .ContentTitle {
+    padding: 0 5px 30px 3px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .ArticleListContainer-Header {
+    font-size: 16px !important;
+    margin: 20px 0;
+  }
+}

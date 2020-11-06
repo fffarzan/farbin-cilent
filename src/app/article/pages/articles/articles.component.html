@@ -1,26 +1,47 @@
 <article class="ArticleContainer" *ngIf="rightSideAtricles && leftSideArticles && randomDictionaryWord">
-
   <!-- navbar (mobile) -->
   <app-navbar (leftSideMenuOpen)="onLeftSideMenuToggle($event)" (rightSideMenuOpen)="onRightSideMenuToggle($event)"
     [dictionary]="randomDictionaryWord"></app-navbar>
 
-  <!-- dictionary (desktop) -->
-  <a class="DictionaryContainer" [routerLink]="['dictionary', randomDictionaryWord.IDX]" *ngIf="!isMobile">
-    <span class="DailySentence">اصطلاحات پسیو</span>
-    <div>
-      <p class="DicTitle">{{ randomDictionaryWord.Title }}</p>
-      <p class="DicAbastract">{{ randomDictionaryWord.Abstract }}</p>
-    </div>
-    <span class="DictionaryContainer-More">ادامه مطلب</span>
-  </a>
+  <!-- daily phrases (desktop) -->
+  <app-daily-phrase [phrase]="randomDictionaryWord"></app-daily-phrase>
 
-  <!-- left-side -->
-  <app-left-side [articles]="leftSideArticles" [isLeftSideMenuOpen]="isLeftSideMenuOpen"></app-left-side>
+  <!-- left side -->
+  <app-articles-left-side [articles]="leftSideArticles" [isLeftSideMenuOpen]="isLeftSideMenuOpen">
+  </app-articles-left-side>
 
   <!-- content -->
-  <app-articles-contents></app-articles-contents>
+  <section class="MiddleContainer">
+    <div class="ArticleListContainer" appGetScrollData (scrolled)="onScrollContents($event)">
+      <app-article-list [heading]="title" [articles]="contentArticleLazyLoad"
+        *ngFor="let title of contentTitleLazyLoad">
+      </app-article-list>
 
-  <!-- right-side -->
-  <app-right-side [articles]="rightSideAtricles" [isRightSideMenuOpen]="isRightSideMenuOpen"></app-right-side>
+      <!-- <img class="LazyLoadingMiddleGif"
+        src="assets/img/ArticleLazyLoadGif.gif"
+        alt="نوآوران شبکه فربین - Farbin Corporation">
+      <img class="LazyLoadingMiddleGifMobile"
+        src="assets/img/ArticleLazyLoadGif.gif"
+        alt="نوآوران شبکه فربین - Farbin Corporation"> -->
+    </div>
+    <!-- onclick="ArticleCategoryCloseAllMenus()" -->
+    <!-- <div class="ArticleContainer-HinderClicking"></div> -->
+  </section>
 
+  <!-- right side -->
+  <section class="RightSideArticleList clearfix" [ngClass]="{'RightSideArticleList-Active': isRightSideMenuOpen}"
+    *ngIf="(isMobile && isRightSideMenuOpen) || (!isMobile && rightSideAtricles)">
+    <!-- heading -->
+    <h4 class="ContentTitle RightSideArticleContainer-ContentOuter-title">
+      {{ rightSideAtricles[0].Title }}
+    </h4>
+
+    <!-- list -->
+    <div class="RightSideArticleContainer clearfix" appGetScrollData (scrolled)="onScrollRightSide($event)">
+      <div class="RightSideArticleContainer-ContentWrapper">
+        <app-article-right-side-item [article]="article" *ngFor="let article of rightSideArticlesLazyLoad">
+        </app-article-right-side-item>
+      </div>
+    </div>
+  </section>
 </article>

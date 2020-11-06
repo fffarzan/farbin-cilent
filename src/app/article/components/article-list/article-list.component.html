@@ -1,0 +1,12 @@
+<section>
+  <!-- title -->
+  <h2 class="ArticleListContainer-Header ContentTitle">{{ heading.Title }}</h2>
+
+  <!-- article previews -->
+  <app-article-preview [article]="article" *ngFor="let article of articles"></app-article-preview>
+
+  <!-- not-found-message -->
+  <div class="ArticleListContainer-Error" *ngIf="heading.ErrorText">
+    <p>{{ heading.ErrorText }}</p>
+  </div>
+</section>

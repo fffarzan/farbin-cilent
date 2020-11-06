@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 
-import { ArticleRouting } from './article.routing';
 import { SharedModule } from '../shared/shared.module';
-import { ArticleCarouselComponent } from './components/article-carousel/article-carousel.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { RightSideComponent } from './components/right-side/right-side.component';
-import { LeftSideComponent } from './components/left-side/left-side.component';
-import { ArticlesContentsComponent } from './components/articles-contents/articles-contents.component';
+import { ArticleRouting } from './article.routing';
+
 import { ArticlesComponent } from './pages/articles/articles.component';
 import { ArticleDetailComponent } from './pages/article-detail/article-detail.component';
 import { DictionaryDetailComponent } from './pages/dictionary-detail/dictionary-detail.component';
+
+import { ArticleCarouselComponent } from './components/article-carousel/article-carousel.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ArticlesLeftSideComponent } from './components/articles-left-side/articles-left-side.component';
+import { DailyPhraseComponent } from './components/daily-phrase/daily-phrase.component';
+import { ArticleRightSideItemComponent } from './components/article-right-side-item/article-right-side-item.component';
+import { ArticlePreviewComponent } from './components/article-preview/article-preview.component';
+import { ArticleListComponent } from './components/article-list/article-list.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +21,12 @@ import { DictionaryDetailComponent } from './pages/dictionary-detail/dictionary-
     ArticleDetailComponent,
     DictionaryDetailComponent,
     NavbarComponent,
-    RightSideComponent,
-    LeftSideComponent,
+    ArticlesLeftSideComponent,
     ArticleCarouselComponent,
-    ArticlesContentsComponent,
+    DailyPhraseComponent,
+    ArticleRightSideItemComponent,
+    ArticlePreviewComponent,
+    ArticleListComponent,
   ],
   imports: [
     ArticleRouting,

@@ -4,27 +4,23 @@ import { Articles } from '../../../core/models/articles.model';
 import { ArticlesLeftSideService } from '../../../core/services/articles-left-side.service';
 
 @Component({
-  selector: 'app-left-side',
-  templateUrl: './left-side.component.html',
-  styleUrls: ['./left-side.component.css']
+  selector: 'app-articles-left-side',
+  templateUrl: './articles-left-side.component.html',
+  styleUrls: ['./articles-left-side.component.css']
 })
-export class LeftSideComponent implements OnInit {
+export class ArticlesLeftSideComponent {
   @Input() articles = Articles;
   @Input() isLeftSideMenuOpen: boolean;
-  currentId: number;
   isLatestArticlesClicked: boolean;
 
   constructor(private articlesLeftSideService: ArticlesLeftSideService) { }
 
-  ngOnInit(): void {
-  }
-
   onChooseLatestArticles() {
-    this.articlesLeftSideService.setLatestArticles(true);
+    this.articlesLeftSideService.setLatestArticles();
     this.isLatestArticlesClicked = true;
   }
 
-  onSendCategoryItems(articles) {
+  onChooseArticleCategory(articles: Articles) {
     this.articlesLeftSideService.setLinkArticles(articles);
     this.isLatestArticlesClicked = false;
   }

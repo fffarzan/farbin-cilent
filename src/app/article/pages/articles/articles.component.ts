@@ -2,13 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { ExtensionMethodService } from 'src/app/shared/extension-method.service';
+import { detectMobile } from '../../../core/utils/common-utils';
 import { ArtcileDataStorageService } from '../../../core/services/article-data-storage.service';
 import { ArticlesService } from '../../../core/services/articles.service';
 import { DictionaryWord } from '../../../core/models/dictionary-word.model';
 import { Articles } from '../../../core/models/articles.model';
 import { ArticlePreview } from '../../../core/models/article-preview.model';
 import { ArticleUtils } from '../../../core/models/article-utils';
+import { ArticlesLeftSideService } from '../../../core/services/articles-left-side.service';
 
 @Component({
   selector: 'app-articles',
@@ -17,20 +18,30 @@ import { ArticleUtils } from '../../../core/models/article-utils';
 })
 export class ArticlesComponent implements OnInit, OnDestroy {
   enviornment: { production: boolean, baseUrl: string } = environment;
-  isMobile: boolean = this.extensionMethodService.DetectMobile();
-  isLeftSideMenuOpen: boolean = false;
-  isRightSideMenuOpen: boolean = false;
+  isMobile: boolean = detectMobile();
+  isLeftSideMenuOpen: boolean;
+  isRightSideMenuOpen: boolean;
   randomDictionaryWord: DictionaryWord;
   randomDictionaryWordSub: Subscription;
-  rightSideAtricles: Articles;
+  rightSideAtricles: Articles[];
   rightSideAtriclesSub: Subscription;
+  rightSideArticlesLazyLoad: ArticlePreview[];
+  rightSideLazyLoadPageNumber: number = 0;
   leftSideArticles: Articles;
   leftSideArticlesSub: Subscription;
+
+  contentArticlesSub: Subscription;
+  contentArticles;
+  contentArticleLazyLoad;
+  contentTitleLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[];
+  contentLazyLoadPageNumber: number = 0;
+  contentArticlesObsSub: Subscription;
+  isLatestArticlesLinkObsSub: Subscription;
 
   constructor(
     private articleDataStorageService: ArtcileDataStorageService,
     private articlesService: ArticlesService,
-    private extensionMethodService: ExtensionMethodService
+    private articlesLeftSideService: ArticlesLeftSideService,
   ) { }
 
   ngOnInit(): void {
@@ -40,11 +51,23 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
     this.rightSideAtriclesSub = this.articleDataStorageService
       .fetchArticlesForSides({ UniqueName: 'RightArticleCategory' })
-      .subscribe(() => this.rightSideAtricles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items'));
+      .subscribe(() => {
+        this.rightSideAtricles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items');
+        this.rightSideArticlesLazyLoad = ArticleUtils.contentLazyLoad(this.rightSideAtricles).articlesLazyLoad;
+      });
 
     this.leftSideArticlesSub = this.articleDataStorageService
       .fetchArticlesForSides({ UniqueName: 'LeftArticleCategory' })
       .subscribe(() => this.leftSideArticles = ArticleUtils.convertStringToJson(this.articlesService.getArticles(), 'Items'));
+
+    this.getLatestArticles();
+
+    this.contentArticlesObsSub = this.articlesLeftSideService.articlesObs.subscribe(articles => {
+      this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(articles).articleCategoryTitlesLazyLoad;
+      this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(articles).articlesLazyLoad;
+    });
+
+    this.setLatestArticlesFromLeftSide();
   }
 
   onLeftSideMenuToggle(isOpen: boolean) {
@@ -55,9 +78,44 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     this.isRightSideMenuOpen = isOpen;
   }
 
+  onScrollRightSide(event: Event) {
+    const { allArticles } = ArticleUtils.getAllArticleCategoryTitlesAndItems(this.rightSideAtricles);
+    const articles = ArticleUtils.getArticleItemsForLazyLoading(allArticles, this.rightSideLazyLoadPageNumber++);
+
+    this.rightSideArticlesLazyLoad = this.rightSideArticlesLazyLoad.concat(articles);
+  }
+
+  onScrollContents(event: Event) {
+    const { allArticles } = ArticleUtils.getAllArticleCategoryTitlesAndItems(this.contentArticles);
+    const articles = ArticleUtils.getArticleItemsForLazyLoading(allArticles, this.contentLazyLoadPageNumber++);
+
+    this.contentArticleLazyLoad = this.contentArticleLazyLoad.concat(articles);
+    // for (let i = 0; i < articles.length; i++) this.contentArticleLazyLoad.push(articles[i]);
+  }
+
   ngOnDestroy() {
     this.randomDictionaryWordSub.unsubscribe();
     this.rightSideAtriclesSub.unsubscribe();
     this.leftSideArticlesSub.unsubscribe();
+    this.contentArticlesSub.unsubscribe();
+    this.contentArticlesObsSub.unsubscribe();
+    this.isLatestArticlesLinkObsSub.unsubscribe();
+  }
+
+  setLatestArticlesFromLeftSide() {
+    this.isLatestArticlesLinkObsSub = this.articlesLeftSideService.isLatestArticlesLinkObs
+      .subscribe(() => this.getLatestArticles());
+  }
+
+  private getLatestArticles() {
+    this.contentArticlesSub = this.articleDataStorageService
+      .fetchArticlesForSides({ UniqueName: 'MiddleArticleCategory' })
+      .subscribe(() => {
+        const articlesObjectStr = this.articlesService.getArticles();
+        this.contentArticles = ArticleUtils.convertStringToJson(articlesObjectStr, 'Items');
+
+        this.contentTitleLazyLoad = ArticleUtils.contentLazyLoad(this.contentArticles).articleCategoryTitlesLazyLoad;
+        this.contentArticleLazyLoad = ArticleUtils.contentLazyLoad(this.contentArticles).articlesLazyLoad;
+      })
   }
 }
