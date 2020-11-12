@@ -1,12 +1,6 @@
-<section *ngIf="article" class="RightSideArticleContainer-ContentInner">
-  <div class="RightSideArticleContainer-ArticleImg">
-    <a [routerLink]="['article', article.IDX]">
-      <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage" alt="{{ article.Name_Fa }}" />
-    </a>
-  </div>
-  <div class="RightSideArticleContainer-ArticleTitle">
-    <a [routerLink]="['article', article.IDX]">
-      <h4>{{ article.Abstract_Fa }}</h4>
-    </a>
-  </div>
+<section *ngIf="article" class="articles-rightSide-item">
+  <a [routerLink]="['article', article.IDX]">
+    <img [src]="enviornment.baseUrl + article.PicUrl | getSmallImage" alt="{{ article.Name_Fa }}" />
+    <h4>{{ article.Abstract_Fa }}</h4>
+  </a>
 </section>

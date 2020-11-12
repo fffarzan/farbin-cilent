@@ -43,7 +43,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private componentFatoryResolver: ComponentFactoryResolver,
     private navbarService: NavbarService,
     private galleryMoadalServeic: GalleryModalService,
-    private staticModalService: StaticModalService
+    private staticModalService: StaticModalService,
   ) { }
 
   ngOnInit() {

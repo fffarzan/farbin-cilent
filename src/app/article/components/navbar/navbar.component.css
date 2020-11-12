@@ -1,62 +1,63 @@
-.Article-MenuBar {
+/* navbar */
+
+.navbar {
   display: flex;
   justify-content: space-between;
   background-color: #333;
   border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc !important;
+  min-height: 40px !important;
   height: 40px;
+  margin-bottom: 0;
   position: relative;
   top: 0;
   width: 100%;
   z-index: 10000;
 }
 
-.Article-DictionaryContainer-MenuBar {
-  display: block !important;
-  width: 100%;
-}
-
-.Article-MenuBar-Button {
+.navbar .rightSide-button {
   cursor: pointer;
   width: 60px;
-}
-
-.Article-MenuBar-RightButton {
   border-left: 1px solid #ccc;
   padding: 0 9px;
 }
 
-.Article-MenuBar-LeftButton {
+.navbar .leftSide-button {
+  cursor: pointer;
+  width: 60px;
   border-right: 1px solid #ccc;
   padding: 0 9px;
 }
 
-.Article-MenuBar-DailySentence {
+.navbar .dialyPhrase {
   display: flex !important;
   flex-flow: column;
   background-color: #333 !important;
   margin: 2px auto 0 auto;
+  width: 100%;
 }
 
-.Article-MenuBar-DailySentence span {
+.navbar .dialyPhrase span {
   color: #ffb700;
   font-size: 12px;
   line-height: 15px;
   text-align: center;
 }
 
-.ArticleMenuBar-DailySentence-img {
+.navbar .dialyPhrase img {
   width: 15px;
   height: 15px;
   margin: 5px auto 0px auto;
   transform: rotate(180deg);
 }
 
-.ArticleMenuBar-DailySentence-img-Animate {
-  transform: rotate(0deg);
+.animate {
+  transform: rotate(0deg) !important;
 }
 
-.DictionaryContainer-MobileMenu {
+/* dialy phrase desc */
+
+.dialyPhrase-desc {
   color: #fff;
   background-color: #333;
   position: absolute;
@@ -67,15 +68,15 @@
   height: 0px;
 }
 
-.DictionaryContainer-MobileMenu-Active {
+.dialyPhrase-desc-abs {
   height: 200px;
 }
 
-.DictionaryContainer-MobileMenu-MoreDetailsActive {
+.dialyPhrase-desc-more {
   height: calc(100vh - 160px);
 }
 
-.MobileMenu-DicTitle {
+.dialyPhrase-desc .title {
   text-align: right;
   margin: 20px;
   font-size: 15px;
@@ -83,7 +84,7 @@
   direction: rtl;
 }
 
-.MobileMenu-DicAbastract {
+.dialyPhrase-desc .abs {
   text-align: right;
   margin: 0px 30px;
   direction: rtl;
@@ -91,17 +92,7 @@
   text-align: justify;
 }
 
-.MobileMenu-DicDescButton {
-  position: absolute;
-  color: #ffb700;
-  cursor: pointer;
-  bottom: 10px;
-  left: 0px;
-  right: 0px;
-  text-align: center;
-}
-
-.MobileMenu-DicDesc {
+.dialyPhrase-desc .more {
   text-align: right;
   margin: 20px 30px 10px 30px;
   overflow-y: scroll;
@@ -109,18 +100,18 @@
   width: 84%;
 }
 
-.MobileMenu-DicDesc::-webkit-scrollbar {
+.dialyPhrase-desc .more::-webkit-scrollbar {
   display: none;
 }
 
-.MobileMenu-MulCloseButton {
-  width: 25px;
-  margin: 0px auto;
-  display: none;
-}
-
-.MobileMenu-times {
-  display: inline-block;
+.dialyPhrase-desc .btn {
+  position: absolute;
+  color: #ffb700;
+  cursor: pointer;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {

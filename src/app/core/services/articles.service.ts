@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { DictionaryWord } from '../models/dictionary-word.model';
-import { Articles } from '../models/articles.model';
+import { ArticleCategory } from '../models/articles.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
   private randomDictionaryWord: DictionaryWord;
-  private articles: Articles;
+  private articles: ArticleCategory;
 
   setRandomDictionaryWord(word: DictionaryWord) {
     this.randomDictionaryWord = word;
@@ -17,7 +17,7 @@ export class ArticlesService {
     return this.randomDictionaryWord;
   }
 
-  setArticles(articles: Articles) {
+  setArticles(articles: ArticleCategory) {
     this.articles = articles;
   }
 

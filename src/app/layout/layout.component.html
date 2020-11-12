@@ -3,8 +3,6 @@
 <app-fixed-menu></app-fixed-menu>
 
 <div class="MovableContainer">
-  <!-- [style.height.px]="height" -->
-  <!-- <div class="MainSection"> -->
   <div id="DarkBody" *ngIf="isDarkbodyShown" (click)="onCloseDarkbody()"></div>
 
   <div class="ViewContainer" [ngClass]="{Blur: isDarkbodyShown, NoBlur: !isDarkbodyShown}">
@@ -15,7 +13,6 @@
   <ng-template appSupplierMenuPlaceholder></ng-template>
   <ng-template appGalleryModalPlaceholder></ng-template>
   <ng-template appStaticModalPlaceholder></ng-template>
-  <!-- </div> -->
 </div>
 
 <app-navbar [darkbodyRemoved]="darkbodyRemoved"></app-navbar>

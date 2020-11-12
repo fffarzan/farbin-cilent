@@ -1,24 +1,16 @@
 <header class="SideMenu">
 
   <!-- catalog menu button -->
-  <a class="CatalogMenuButton"
-    *ngIf="!isSearchMenuOpen">
-    <img id="OpenCatalogMenu"
-      src="assets/img/Catalog.png"
-      class="CursorPointer btnMenu"
-      alt="نوآوران شبکه فربین - کاتالوگها"
-      (click)="openCatalog()" />
+  <a class="CatalogMenuButton" *ngIf="!isSearchMenuOpen">
+    <img id="OpenCatalogMenu" src="assets/img/Catalog.png" class="CursorPointer btnMenu"
+      alt="نوآوران شبکه فربین - کاتالوگها" (click)="openCatalog()" />
   </a>
 
   <!-- signin button -->
   <!-- href="/SignIn"  -->
   <!-- ng-if="!Login" -->
-  <a id="SignInIcon"
-    class="CatalogMenuButton"
-    *ngIf="!isSearchMenuOpen">
-    <img src="assets/img/UserIcon.png"
-      class="CursorPointer btnMenu"
-      alt="نوآوران شبکه فربین - ورود به بخش کاربری" />
+  <a id="SignInIcon" class="CatalogMenuButton" *ngIf="!isSearchMenuOpen">
+    <img src="assets/img/UserIcon.png" class="CursorPointer btnMenu" alt="نوآوران شبکه فربین - ورود به بخش کاربری" />
   </a>
 
   <!-- user menu button -->
@@ -31,73 +23,51 @@
   </a> -->
 
   <!-- compare button -->
-  <a class="CatalogMenuButton"
-    [routerLink]="['product/compare-list']"
-    *ngIf="!isSearchMenuOpen">
-    <img src="assets/img/Compare.png"
-      class="CursorPointer btnMenu imgCompareTopButton"
+  <a class="CatalogMenuButton" [routerLink]="['product/compare-list']" *ngIf="!isSearchMenuOpen">
+    <img src="assets/img/Compare.png" class="CursorPointer btnMenu imgCompareTopButton"
       alt="نوآوران شبکه فربین - مقایسه محصولات">
-    <h3 class="ComareCount"
-      *ngIf="compareListNumber">{{ compareListNumber }}</h3>
+    <h3 class="ComareCount" *ngIf="compareListNumber">{{ compareListNumber }}</h3>
     <div id="CompareImageDefineMovable"></div>
   </a>
 
   <!-- searchbox -->
-  <section (click)="onOpenSearchMenu()"
-    class="searchbox">
-    <i class="fa fa-search SearchModule-Icon"></i>
+  <section (click)="onOpenSearchMenu()" class="searchbox">
+    <!-- <i class="fa fa-search SearchModule-Icon"></i> -->
     <!-- ng-model-options="{ debounce: 500 }"  -->
-    <input id="txtIndexSearch"
+    <!-- <input id="txtIndexSearch"
       class="SearchModule-TextBox-TextSearch"
       type="text"
-      [(ngModel)]="searchText">
+      [(ngModel)]="searchText"> -->
     <!-- onclick="HideSearchListWithClearButton()" -->
-    <span *ngIf="searchText"
+    <!-- <span *ngIf="searchText"
       (click)="onClearSearchContent()"
-      class="Color-Withe SearchModule-ClearTextSearch">×</span>
-    <img class="SearchModule-ImgLoaderSearch"
+      class="Color-Withe SearchModule-ClearTextSearch">×</span> -->
+    <!-- <img class="SearchModule-ImgLoaderSearch"
       *ngIf="isDataFetched"
       src="assets/img/loader1.gif"
-      alt="جستجو - نوآوران شبکه فربین - Farbin Co">
+      alt="جستجو - نوآوران شبکه فربین - Farbin Co"> -->
   </section>
 
   <!-- logo -->
   <!-- onclick="ClickDarkBody()" -->
-  <a [routerLink]="['/home']"
-    routerLinkActive="router-link-active"
-    class="LogoInHeader"
-    *ngIf="!isSearchMenuOpen">
+  <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="LogoInHeader" *ngIf="!isSearchMenuOpen">
     <!-- onclick="UnBlueFooterIcons()" -->
-    <img src="assets/img/header2.png"
-      id="OpenCatalogMenu"
-      class="CursorPointer"
-      alt="نوآوران شبکه فربین - لوگو" />
+    <img src="assets/img/header2.png" id="OpenCatalogMenu" class="CursorPointer" alt="نوآوران شبکه فربین - لوگو" />
   </a>
 
   <!-- close search menu button -->
-  <div id="SearchBackWard1"
-    class="SearchModule-Backward"
-    *ngIf="isSearchMenuOpen && isSearchListShow"
+  <div id="SearchBackWard1" class="SearchModule-Backward" *ngIf="isSearchMenuOpen && isSearchListShow"
     (click)="onCloseSearchMenu(); searchText = ''">
-    <img src="assets/img/backward.png"
-      alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+    <img src="assets/img/backward.png" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
   </div>
 
   <!-- back to search list button -->
-  <div id="SearchBackWard2"
-    class="SearchModule-Backward"
-    *ngIf="isSearchContentShow"
-    (click)="onBackToSearchList()">
-    <img src="assets/img/backward.png"
-      alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
+  <div id="SearchBackWard2" class="SearchModule-Backward" *ngIf="isSearchContentShow" (click)="onBackToSearchList()">
+    <img src="assets/img/backward.png" alt="جستجو - نوآوران شبکه فربین - Farbin Co" />
   </div>
 
-  <app-search class="SearchModule-Container"
-    [searchText]="searchText"
-    [isSearchMenuOpen]="!isSearchMenuOpen"
-    [isSearchListShow]="isSearchListShow"
-    [isSearchContentShow]="isSearchContentShow"
-    (searchContentShow)="onShowBackward2()"
-    (closeSearchMenu)="onCloseSearchMenu()">
+  <app-search class="SearchModule-Container" [searchText]="searchText" [isSearchMenuOpen]="!isSearchMenuOpen"
+    [isSearchListShow]="isSearchListShow" [isSearchContentShow]="isSearchContentShow"
+    (searchContentShow)="onShowBackward2()" (closeSearchMenu)="onCloseSearchMenu()">
   </app-search>
 </header>

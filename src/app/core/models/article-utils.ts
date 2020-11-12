@@ -1,7 +1,4 @@
-import { Params } from '@angular/router';
-
 import { ArticlePreview } from './article-preview.model';
-import { Articles } from './articles.model';
 
 export class ArticleUtils {
   static contentLazyLoad(dataArray): {

@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { DictionaryWord } from '../models/dictionary-word.model';
 import { ArticlesService } from './articles.service';
-import { Articles } from "../models/articles.model";
+import { ArticleCategory } from "../models/articles.model";
 import { Article } from '../models/article.model';
 import { ArticleDetailService } from './article-detail.service';
 import { DictionaryDetailService } from './dictionary-detial.service';
@@ -54,7 +54,7 @@ export class ArtcileDataStorageService {
 
   fetchArticlesForSides(param: object) {
     return this.http
-      .post<Articles>(
+      .post<ArticleCategory>(
         environment.baseUrl + '/api/ContentModuleRet/GetContentModuleByUniqueName/',
         param,
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }

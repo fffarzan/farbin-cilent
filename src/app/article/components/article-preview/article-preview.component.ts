@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { ArticlePreview } from 'src/app/core/models/article.model';

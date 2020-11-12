@@ -1,20 +1,17 @@
-.RightSideArticleContainer-ContentInner {
+.articles-rightSide-item {
   margin-bottom: 10px;
 }
 
-.RightSideArticleContainer-ArticleImg {
+.articles-rightSide-item a {
   margin-bottom: 5px;
 }
 
-.RightSideArticleContainer-ArticleImg img {
+.articles-rightSide-item img {
   width: 100%;
 }
 
-.RightSideArticleContainer-ArticleTitle {
+.articles-rightSide-item h4 {
   text-align: right;
-}
-
-.RightSideArticleContainer-ArticleTitle h4 {
   color: #fff;
   font-size: 13px !important;
   font-weight: bold;
@@ -23,11 +20,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .RightSideArticleContainer-ContentInner {
+  .articles-rightSide-item {
     margin-bottom: 30px;
     left: 0;
   }
-  .RightSideArticleContainer-ArticleTitle h4 {
+  .articles-rightSide-item h4 {
     color: #000;
     font-size: 12px !important;
     font-weight: bold;

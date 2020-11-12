@@ -1,4 +1,4 @@
-export class Articles {
+export class ArticleCategory {
   constructor(
     public ID: string,
     public IDX: number,

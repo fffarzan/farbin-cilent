@@ -1,22 +1,16 @@
 <section *ngIf="article">
   <!-- *ngIf="title.ID === article.IDContentCategory" -->
   <div class="TopArticleContent">
-    <div class="imgTopArticleContent">
-      <a [routerLink]="['article', article.IDX]">
-        <img [src]="article.PicUrl ? enviornment.baseUrl + article.PicUrl : '' | getSmallImage"
-          alt="{{ article.Name_Fa }}" />
-      </a>
-    </div>
+    <a class="imgTopArticleContent" [routerLink]="['article', article.IDX]">
+      <img [src]="article.PicUrl ? enviornment.baseUrl + article.PicUrl : '' | getSmallImage"
+        alt="{{ article.Name_Fa }}" />
+    </a>
     <div class="TitleTopArticleContent">
-      <a class="clearfix" [routerLink]="['article', article.IDX]">
-        <span dir="rtl">{{ article.Name_Fa }}</span>
-      </a>
+      <a class="clearfix" [routerLink]="['article', article.IDX]">{{ article.Name_Fa }}</a>
       <p class="AbstractArticle clearfix">{{ article.Abstract_Fa }}</p>
-      <div class="SocialFooter">
-        <div class="LiKeDisLike">
-          <img src="assets/img/full color.png" class="LikeIcon" alt="نوآوران شبکه فربین - Farbin Corporation" />
-          {{ article.LikeCount }} Likes
-        </div>
+      <div class="LiKeDisLike">
+        <img src="assets/img/full color.png" class="LikeIcon" alt="نوآوران شبکه فربین - Farbin Corporation" />
+        {{ article.LikeCount }} Likes
       </div>
     </div>
   </div>

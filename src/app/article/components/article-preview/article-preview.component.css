@@ -26,14 +26,10 @@
 
 .TitleTopArticleContent a {
   display: block;
-  color: #000 !important;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.TitleTopArticleContent span {
   color: #444 !important;
   font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 13px;
 }
 
 .imgTopArticleContent {
@@ -59,16 +55,13 @@
   line-height: 17px;
 }
 
-.SocialFooter {
-  bottom: 0;
-}
-
 .LiKeDisLike {
   float: left;
   font-size: 11px;
   width: 30%;
   text-align: left;
   color: #494949;
+  bottom: 0;
 }
 
 .LiKeDisLike img {
@@ -109,15 +102,13 @@
   .AbstractArticle {
     font-size: 12px;
   }
-  .SocialFooter {
+  .LiKeDisLike {
+    width: 35%;
+    margin-left: 5px;
     position: absolute;
     bottom: 10px;
     width: 60%;
     left: 0;
-  }
-  .LiKeDisLike {
-    width: 35%;
-    margin-left: 5px;
   }
 }
 

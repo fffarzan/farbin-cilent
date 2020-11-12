@@ -6,7 +6,7 @@ import { detectMobile } from '../../../core/utils/common-utils';
 import { ArtcileDataStorageService } from '../../../core/services/article-data-storage.service';
 import { ArticlesService } from '../../../core/services/articles.service';
 import { DictionaryWord } from '../../../core/models/dictionary-word.model';
-import { Articles } from '../../../core/models/articles.model';
+import { ArticleCategory } from '../../../core/models/articles.model';
 import { ArticlePreview } from '../../../core/models/article-preview.model';
 import { ArticleUtils } from '../../../core/models/article-utils';
 import { ArticlesLeftSideService } from '../../../core/services/articles-left-side.service';
@@ -21,22 +21,26 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   isMobile: boolean = detectMobile();
   isLeftSideMenuOpen: boolean;
   isRightSideMenuOpen: boolean;
+  isOverlayShown: boolean;
   randomDictionaryWord: DictionaryWord;
   randomDictionaryWordSub: Subscription;
-  rightSideAtricles: Articles[];
+
+  rightSideAtricles: ArticleCategory[];
   rightSideAtriclesSub: Subscription;
   rightSideArticlesLazyLoad: ArticlePreview[];
   rightSideLazyLoadPageNumber: number = 0;
-  leftSideArticles: Articles;
+  leftSideArticles: ArticleCategory;
   leftSideArticlesSub: Subscription;
 
   contentArticlesSub: Subscription;
-  contentArticles;
+  contentArticles: ArticleCategory[];
   contentArticleLazyLoad;
   contentTitleLazyLoad: { 'Title': string, 'ID': string, 'ErrorText'?: string }[];
   contentLazyLoadPageNumber: number = 0;
   contentArticlesObsSub: Subscription;
   isLatestArticlesLinkObsSub: Subscription;
+
+  isLatestArticlesClicked: boolean;
 
   constructor(
     private articleDataStorageService: ArtcileDataStorageService,
@@ -71,11 +75,18 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   }
 
   onLeftSideMenuToggle(isOpen: boolean) {
+    this.isOverlayShown = isOpen;
     this.isLeftSideMenuOpen = isOpen;
   }
 
   onRightSideMenuToggle(isOpen: boolean) {
+    this.isOverlayShown = isOpen;
     this.isRightSideMenuOpen = isOpen;
+  }
+
+  onCloseAll() {
+    this.isRightSideMenuOpen = false;
+    this.isLeftSideMenuOpen = false;
   }
 
   onScrollRightSide(event: Event) {
@@ -90,7 +101,15 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     const articles = ArticleUtils.getArticleItemsForLazyLoading(allArticles, this.contentLazyLoadPageNumber++);
 
     this.contentArticleLazyLoad = this.contentArticleLazyLoad.concat(articles);
-    // for (let i = 0; i < articles.length; i++) this.contentArticleLazyLoad.push(articles[i]);
+  }
+
+  onChooseLatestArticles() {
+    this.articlesLeftSideService.setLatestArticles();
+    this.isLatestArticlesClicked = true;
+  }
+
+  onLatestArticledNotClicked() {
+    this.isLatestArticlesClicked = false;
   }
 
   ngOnDestroy() {

@@ -1,8 +1,8 @@
-<a class="DictionaryContainer" [routerLink]="['dictionary', phrase.IDX]" *ngIf="!isMobile">
-  <span class="DailySentence">اصطلاحات پسیو</span>
+<a class="articles-dailyPhrase" [routerLink]="['dictionary', phrase.IDX]" *ngIf="!isMobile">
+  <span class="bluebox">اصطلاحات پسیو</span>
   <div>
-    <p class="DicTitle">{{ phrase.Title }}</p>
-    <p class="DicAbastract">{{ phrase.Abstract }}</p>
+    <p class="title">{{ phrase.Title }}</p>
+    <p class="desc">{{ phrase.Abstract }}</p>
   </div>
-  <span class="DictionaryContainer-More">ادامه مطلب</span>
+  <span class="link">ادامه مطلب</span>
 </a>

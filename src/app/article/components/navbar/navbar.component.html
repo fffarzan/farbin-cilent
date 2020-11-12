@@ -1,46 +1,27 @@
-<article class="Article-MenuBar-Wrapper">
-
+<section>
   <!-- navbar -->
-  <nav class="Article-MenuBar">
-
-    <img id="LeftButton"
-      (click)="onToggleLeftSide()"
-      class="Article-MenuBar-Button Article-MenuBar-LeftButton EqIcon"
-      [src]="isLeftSideMenuOpen ? 'assets/img/mul.png' : 'assets/img/eq.png'"
+  <nav class="navbar">
+    <img (click)="onToggleLeftSide()" class="leftSide-button"
+      [src]="isLeftSideOpen ? 'assets/img/mul.png' : 'assets/img/eq.png'"
       alt="نوآوران شبکه فربین - Farbin Corporation" />
 
-    <section class="DictionaryContainer Article-DictionaryContainer-MenuBar"
-      (click)="onOpenDictionaryMenu()">
-      <div class="Article-MenuBar-DailySentence">
-        <span>اصطلاحات پسیو</span>
-        <img class="ArticleMenuBar-DailySentence-img"
-          [ngClass]="{'ArticleMenuBar-DailySentence-img-Animate': isDictionaryMenuOpen}"
-          src="assets/img/down.png"
-          alt="نوآوران شبکه فربین - Farbin Corporation" />
-      </div>
-    </section>
+    <div (click)="onOpenDictionaryMenu()" class="dialyPhrase">
+      <span>اصطلاحات پسیو</span>
+      <img [ngClass]="{'animate': isDictionaryMenuOpen}" src="assets/img/down.png"
+        alt="نوآوران شبکه فربین - Farbin Corporation" />
+    </div>
 
-    <img id="RightButton"
-      (click)="onToggleRightSide()"
-      class="Article-MenuBar-Button Article-MenuBar-RightButton EqIcon"
-      [src]="isRightSideMenuOpen ? 'assets/img/mul.png' : 'assets/img/eq.png'">
-
+    <img (click)="onToggleRightSide()" class="rightSide-button"
+      [src]="isRightSideOpen ? 'assets/img/mul.png' : 'assets/img/eq.png'"
+      alt="نوآوران شبکه فربین - Farbin Corporation" />
   </nav>
 
-  <!-- dictionary page -->
-  <section class="DictionaryContainer-MobileMenu"
-    *ngIf="isDictionaryMenuOpen"
-    [ngClass]="{
-      'DictionaryContainer-MobileMenu-Active': isDictionaryMenuOpen,
-      'DictionaryContainer-MobileMenu-MoreDetailsActive': isDictionaryMoreDetailsOpen
-    }">
-    <p class="MobileMenu-DicTitle">{{ dictionary.Title }}</p>
-    <p class="MobileMenu-DicAbastract">{{ dictionary.Abstract }}</p>
-    <p class="MobileMenu-DicDesc"
-      [innerHtml]="dictionary.Value"
-      *ngIf="isDictionaryMoreDetailsOpen"></p>
-    <span class="MobileMenu-DicDescButton"
-      (click)="onOpenDictionaryMoreDetails()">{{ isDictionaryMoreDetailsOpen ? '×' : 'بیشتر' }}</span>
+  <!-- dialy phrase desc -->
+  <section class="dialyPhrase-desc" *ngIf="isDictionaryMenuOpen"
+    [ngClass]="{ 'dialyPhrase-desc-abs': isDictionaryMenuOpen, 'dialyPhrase-desc-more': isDialyPhraseOpen }">
+    <p class="title">{{ dictionary.Title }}</p>
+    <p class="abs">{{ dictionary.Abstract }}</p>
+    <p class="more" [innerHtml]="dictionary.Value" *ngIf="isDialyPhraseOpen"></p>
+    <span class="btn" (click)="onOpenDictionaryMoreDetails()">{{ isDialyPhraseOpen ? '×' : 'بیشتر' }}</span>
   </section>
-
-</article>
+</section>

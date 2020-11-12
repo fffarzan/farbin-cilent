@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+
 import { DictionaryWord } from '../../../core/models/dictionary-word.model';
 
 @Component({
@@ -6,59 +7,51 @@ import { DictionaryWord } from '../../../core/models/dictionary-word.model';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   @Output() rightSideMenuOpen = new EventEmitter<boolean>();
   @Output() leftSideMenuOpen = new EventEmitter<boolean>();
   @Input() dictionary: DictionaryWord;
-  isRightSideMenuOpen: boolean = false;
-  isLeftSideMenuOpen: boolean = false;
-  isDictionaryMenuOpen: boolean = false;
-  isDictionaryMoreDetailsOpen: boolean = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  isRightSideOpen: boolean;
+  isLeftSideOpen: boolean;
+  isDictionaryMenuOpen: boolean;
+  isDialyPhraseOpen: boolean;
 
   onToggleRightSide() {
-    this.isRightSideMenuOpen = !this.isRightSideMenuOpen;
+    this.isRightSideOpen = !this.isRightSideOpen;
 
-    if (this.isRightSideMenuOpen) {
+    if (this.isRightSideOpen) {
       this.rightSideMenuOpen.emit(true);
 
-      this.isLeftSideMenuOpen = false;
+      this.isLeftSideOpen = false;
       this.leftSideMenuOpen.emit(false);
       this.isDictionaryMenuOpen = false;
-    } else
-      this.rightSideMenuOpen.emit(false);
+    } else this.rightSideMenuOpen.emit(false);
   }
 
   onToggleLeftSide() {
-    this.isLeftSideMenuOpen = !this.isLeftSideMenuOpen;
+    this.isLeftSideOpen = !this.isLeftSideOpen;
 
-    if (this.isLeftSideMenuOpen) {
+    if (this.isLeftSideOpen) {
       this.leftSideMenuOpen.emit(true);
-
-      this.isRightSideMenuOpen = false;
+      this.isRightSideOpen = false;
       this.rightSideMenuOpen.emit(false);
       this.isDictionaryMenuOpen = false;
     }
-    else
-      this.leftSideMenuOpen.emit(false);
+    else this.leftSideMenuOpen.emit(false);
   }
 
   onOpenDictionaryMenu() {
     this.isDictionaryMenuOpen = !this.isDictionaryMenuOpen;
 
-    this.isRightSideMenuOpen = false;
+    this.isRightSideOpen = false;
     this.rightSideMenuOpen.emit(false);
-    this.isLeftSideMenuOpen = false
+    this.isLeftSideOpen = false
     this.leftSideMenuOpen.emit(false);
 
-    if (!this.isDictionaryMenuOpen) this.isDictionaryMoreDetailsOpen = false;
+    if (!this.isDictionaryMenuOpen) this.isDialyPhraseOpen = false;
   }
 
   onOpenDictionaryMoreDetails() {
-    this.isDictionaryMoreDetailsOpen = !this.isDictionaryMoreDetailsOpen;
+    this.isDialyPhraseOpen = !this.isDialyPhraseOpen;
   }
 }

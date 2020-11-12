@@ -1,4 +1,4 @@
-.DictionaryContainer {
+.articles-dailyPhrase {
   display: none;
   border-radius: 3px;
   padding: 0 0 5px 0;
@@ -6,12 +6,7 @@
   height: 72px;
 }
 
-.DictionaryContainer .DailySentence span {
-  color: #ffb700;
-  margin: 10px auto 0px auto;
-}
-
-.DictionaryContainer .DailySentence {
+.articles-dailyPhrase .bluebox {
   color: #ffb700;
   background-color: #232295 !important;
   width: 9%;
@@ -23,7 +18,7 @@
   border-radius: 3px 0 0 3px;
 }
 
-.DictionaryContainer .DicTitle {
+.articles-dailyPhrase .title {
   color: #333;
   display: inline-block;
   height: 20px;
@@ -35,7 +30,7 @@
   margin: 0px;
 }
 
-.DictionaryContainer .DicAbastract {
+.articles-dailyPhrase .desc {
   color: #333;
   display: inline-block;
   float: right;
@@ -48,7 +43,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .DictionaryContainer {
+  .articles-dailyPhrase {
     display: inline-block;
     margin-right: 22px;
     width: 75.8%;
@@ -56,11 +51,11 @@
     margin-top: 10px;
     padding: 5px 0 5px 0;
   }
-  .DictionaryContainer .DicTitle,
-  .DictionaryContainer .DicAbastract {
+  .articles-dailyPhrase .title,
+  .articles-dailyPhrase .desc {
     width: 81%;
   }
-  .DictionaryContainer-More {
+  .articles-dailyPhrase .link {
     margin-left: 5px;
     font-size: 11px;
     color: #ffb700 !important;
@@ -71,24 +66,24 @@
 }
 
 @media screen and (min-width: 992px) {
-  .DictionaryContainer {
+  .articles-dailyPhrase {
     width: 72.9%;
     left: 25%;
     margin-right: 70px;
   }
-  .DictionaryContainer .DailySentence {
+  .articles-dailyPhrase .bluebox {
     font-size: 12px;
     width: 12%;
     height: 40px;
   }
-  .DictionaryContainer .DicTitle {
+  .articles-dailyPhrase .title {
     width: 78%;
     font-size: 14px;
   }
-  .DictionaryContainer .DicAbastract {
+  .articles-dailyPhrase .desc {
     width: 78%;
   }
-  .DictionaryContainer-More {
+  .articles-dailyPhrase .link {
     font-size: 12px;
     margin-top: 45px;
     margin-left: 0;

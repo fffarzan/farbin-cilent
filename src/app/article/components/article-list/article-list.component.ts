@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ArticleCategory } from 'src/app/core/models/articles.model';
 
 @Component({
   selector: 'app-article-list',
@@ -7,5 +8,5 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ArticleListComponent {
   @Input() heading: { 'Title': string, 'ID': string, 'ErrorText'?: string };
-  @Input() articles;
+  @Input() articles: ArticleCategory;
 }

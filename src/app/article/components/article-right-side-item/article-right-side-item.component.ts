@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { ArticlePreview } from 'src/app/core/models/article.model';
@@ -8,13 +8,7 @@ import { ArticlePreview } from 'src/app/core/models/article.model';
   templateUrl: './article-right-side-item.component.html',
   styleUrls: ['./article-right-side-item.component.css']
 })
-export class ArticleRightSideItemComponent implements OnInit {
+export class ArticleRightSideItemComponent {
   @Input() article: ArticlePreview;
   enviornment: { production: boolean, baseUrl: string } = environment;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

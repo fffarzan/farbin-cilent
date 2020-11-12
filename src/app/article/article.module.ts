@@ -9,11 +9,11 @@ import { DictionaryDetailComponent } from './pages/dictionary-detail/dictionary-
 
 import { ArticleCarouselComponent } from './components/article-carousel/article-carousel.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ArticlesLeftSideComponent } from './components/articles-left-side/articles-left-side.component';
 import { DailyPhraseComponent } from './components/daily-phrase/daily-phrase.component';
 import { ArticleRightSideItemComponent } from './components/article-right-side-item/article-right-side-item.component';
 import { ArticlePreviewComponent } from './components/article-preview/article-preview.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
+import { ArticlesLeftSideLinkComponent } from './components/articles-left-side-link/articles-left-side-link.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +21,12 @@ import { ArticleListComponent } from './components/article-list/article-list.com
     ArticleDetailComponent,
     DictionaryDetailComponent,
     NavbarComponent,
-    ArticlesLeftSideComponent,
     ArticleCarouselComponent,
     DailyPhraseComponent,
     ArticleRightSideItemComponent,
     ArticlePreviewComponent,
     ArticleListComponent,
+    ArticlesLeftSideLinkComponent,
   ],
   imports: [
     ArticleRouting,
