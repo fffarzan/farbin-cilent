@@ -119,3 +119,20 @@
     display: none;
   }
 }
+
+/* overlay */
+
+.articles-overlay {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  left: 0;
+  bottom: 55px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.articles-overlay-active {
+  display: block;
+}

@@ -7,7 +7,7 @@
 
     <div (click)="onOpenDictionaryMenu()" class="dialyPhrase">
       <span>اصطلاحات پسیو</span>
-      <img [ngClass]="{'animate': isDictionaryMenuOpen}" src="assets/img/down.png"
+      <img [ngClass]="{ animate: isDictionaryMenuOpen }" src="assets/img/down.png"
         alt="نوآوران شبکه فربین - Farbin Corporation" />
     </div>
 
@@ -17,11 +17,18 @@
   </nav>
 
   <!-- dialy phrase desc -->
-  <section class="dialyPhrase-desc" *ngIf="isDictionaryMenuOpen"
-    [ngClass]="{ 'dialyPhrase-desc-abs': isDictionaryMenuOpen, 'dialyPhrase-desc-more': isDialyPhraseOpen }">
+  <section class="dialyPhrase-desc" *ngIf="isDictionaryMenuOpen" [ngClass]="{
+      'dialyPhrase-desc-abs': isDictionaryMenuOpen,
+      'dialyPhrase-desc-more': isDialyPhraseOpen
+    }">
     <p class="title">{{ dictionary.Title }}</p>
     <p class="abs">{{ dictionary.Abstract }}</p>
     <p class="more" [innerHtml]="dictionary.Value" *ngIf="isDialyPhraseOpen"></p>
-    <span class="btn" (click)="onOpenDictionaryMoreDetails()">{{ isDialyPhraseOpen ? '×' : 'بیشتر' }}</span>
+    <span class="btn" (click)="onOpenDictionaryMoreDetails()">
+      {{isDialyPhraseOpen ? "×" : "بیشتر"}}
+    </span>
   </section>
+
+  <!-- overlay -->
+  <div class="articles-overlay" [ngClass]="{ 'articles-overlay-active': isOverlayShown }" (click)="onCloseAll()"></div>z
 </section>

@@ -1,32 +1,29 @@
-<article class="ArticleContainer" *ngIf="rightSideAtricles && leftSideArticles && randomDictionaryWord">
-  <div class="articles-overlay" [ngClass]="{'articles-overlay-active': isLeftSideMenuOpen || isRightSideMenuOpen}"
-    (click)="onCloseAll()">
-  </div>
-
+<article class="ArticleContainer"
+  *ngIf="rightSideAtricles && leftSideArticles && randomDictionaryWord">
   <!-- navbar (mobile) -->
-  <app-navbar (leftSideMenuOpen)="onLeftSideMenuToggle($event)" (rightSideMenuOpen)="onRightSideMenuToggle($event)"
+  <app-navbar (sidesCondition)="onSidesToggle($event)"
     [dictionary]="randomDictionaryWord"></app-navbar>
-
   <!-- daily phrases (desktop) -->
   <app-daily-phrase [phrase]="randomDictionaryWord"></app-daily-phrase>
-
   <!-- left side -->
-  <article class="LeftSideArticleList" [ngClass]="{'LeftSideArticleList-Active': isLeftSideMenuOpen}">
+  <article class="LeftSideArticleList"
+    [ngClass]="{'LeftSideArticleList-Active': isLeftSideMenuOpen}">
     <section class="LeftSideArticleList-HeaderWrapper">
       <div class="LeftSideArticleList-HeaderInner">
         <!-- for you -->
         <a class="LeftSideArticleList-HeaderLink">
-          <img class="LeftSideArticleList-HeaderLink-icon" src="assets/img/personaaa.png"
+          <img class="LeftSideArticleList-HeaderLink-icon"
+            src="assets/img/personaaa.png"
             alt="نوآوران شبکه فربین - Farbin Corporation" />
           <div class="LeftSideArticleList-HeaderLink-desc">
             <span class="LeftSideArticleList-Header-LinkEn">For You</span>
             <span class="LeftSideArticleList-Header-LinkFa">برای شما</span>
           </div>
         </a>
-
         <!-- favorites -->
         <a class="LeftSideArticleList-HeaderLink">
-          <img class="LeftSideArticleList-HeaderLink-icon" src="assets/img/staraaa.png"
+          <img class="LeftSideArticleList-HeaderLink-icon"
+            src="assets/img/staraaa.png"
             alt="نوآوران شبکه فربین - Farbin Corporation" />
           <div class="LeftSideArticleList-HeaderLink-desc">
             <span class="LeftSideArticleList-Header-LinkEn">Favorites</span>
@@ -35,40 +32,42 @@
         </a>
       </div>
     </section>
-
     <!-- dynamic links -->
     <section class="LeftSideArticleList-BodyWrapper">
       <!-- main link -->
       <a [routerLink]="['/article-category']"
         class="LeftSideArticleList-HeaderLink LeftSideArticleList-HeaderLink-LatestArticle"
         (click)="onChooseLatestArticles()">
-        <img class="LeftSideArticleList-HeaderLink-icon" src="assets/img/writingaaa.png"
+        <img class="LeftSideArticleList-HeaderLink-icon"
+          src="assets/img/writingaaa.png"
           alt="نوآوران شبکه فربین - Farbin Corporation" />
         <div class="LeftSideArticleList-HeaderLink-desc">
           <span class="LeftSideArticleList-Header-LinkEn"
-            [ngClass]="{'LeftSideArticleList-Header-LinkActive': isLatestArticlesClicked}">LatestArticles</span>
-          <span [ngClass]="{'LeftSideArticleList-Header-LinkActive': isLatestArticlesClicked}"
-            class="LeftSideArticleList-Header-LinkFa">آخرین مقالات</span>
+            [ngClass]="{'LeftSideArticleList-Header-LinkActive': isLatestArticlesClicked}">
+            LatestArticles </span>
+          <span
+            [ngClass]="{'LeftSideArticleList-Header-LinkActive': isLatestArticlesClicked}"
+            class="LeftSideArticleList-Header-LinkFa"> آخرین مقالات </span>
         </div>
       </a>
-
       <!-- other links -->
       <div class="LeftSideArticleList-BodyScrolling">
         <div class="LeftSideArticleList-BodyInner">
-          <app-articles-left-side-link [article]="article" *ngFor="let article of leftSideArticles"
-            (isLatestArticlesClicked)="onLatestArticledNotClicked()"></app-articles-left-side-link>
+          <app-articles-left-side-link [article]="article"
+            *ngFor="let article of leftSideArticles"
+            (isLatestArticlesClicked)="onLatestArticledNotClicked()">
+          </app-articles-left-side-link>
         </div>
       </div>
     </section>
   </article>
-
   <!-- content -->
   <section class="MiddleContainer">
-    <div class="ArticleListContainer" appGetScrollData (scrolled)="onScrollContents($event)">
+    <div class="ArticleListContainer" appGetScrollData
+      (scrolled)="onScrollContents($event)">
       <app-article-list [heading]="title" [articles]="contentArticleLazyLoad"
         *ngFor="let title of contentTitleLazyLoad">
       </app-article-list>
-
       <!-- <img class="LazyLoadingMiddleGif"
         src="assets/img/ArticleLazyLoadGif.gif"
         alt="نوآوران شبکه فربین - Farbin Corporation">
@@ -79,19 +78,19 @@
     <!-- onclick="ArticleCategoryCloseAllMenus()" -->
     <!-- <div class="ArticleContainer-HinderClicking"></div> -->
   </section>
-
   <!-- right side -->
-  <section class="RightSideArticleList clearfix" [ngClass]="{'RightSideArticleList-Active': isRightSideMenuOpen}"
+  <section class="RightSideArticleList clearfix"
+    [ngClass]="{'RightSideArticleList-Active': isRightSideMenuOpen}"
     *ngIf="(isMobile && isRightSideMenuOpen) || (!isMobile && rightSideAtricles)">
     <!-- heading -->
     <h4 class="ContentTitle RightSideArticleContainer-ContentOuter-title">
-      {{ rightSideAtricles[0].Title }}
-    </h4>
-
+      {{ rightSideAtricles[0].Title }} </h4>
     <!-- list -->
-    <div class="RightSideArticleContainer clearfix" appGetScrollData (scrolled)="onScrollRightSide($event)">
+    <div class="RightSideArticleContainer clearfix" appGetScrollData
+      (scrolled)="onScrollRightSide($event)">
       <div class="RightSideArticleContainer-ContentWrapper">
-        <app-article-right-side-item [article]="article" *ngFor="let article of rightSideArticlesLazyLoad">
+        <app-article-right-side-item [article]="article"
+          *ngFor="let article of rightSideArticlesLazyLoad">
         </app-article-right-side-item>
       </div>
     </div>
